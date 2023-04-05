@@ -2,7 +2,14 @@
 
 <main>
     <section class="banner">
-      <!-- o conteúdo do banner vai aqui -->
+        <!-- o conteúdo do banner vai aqui -->
+        <div class="banner-overlay">
+            <div class="banner-text">
+                <h2 class="banner-title">MAIS QUE ATLETAS</h2>
+                <h2 class="banner-subtitle">FORMAMOS CIDADÃOS</h2>
+                <p class="banner-cta">MATRICULE SEU FILHO!</p>
+            </div>
+        </div>
     </section>
     <section class="latest-news">
       <!-- o conteúdo das notícias mais recentes vai aqui -->
