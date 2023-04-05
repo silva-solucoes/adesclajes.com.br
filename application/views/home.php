@@ -1,10 +1,10 @@
 <?php include_once 'header.php'; ?>
 
 <main>
-    <section class="banner">
+    <section class="banner text-center">
         <!-- o conteúdo do banner vai aqui -->
         <div class="banner-overlay">
-            <div class="banner-text">
+            <div class="banner-text text-center">
                 <h2 class="banner-title">MAIS QUE ATLETAS</h2>
                 <h2 class="banner-subtitle">FORMAMOS CIDADÃOS</h2>
                 <p class="banner-cta">MATRICULE SEU FILHO!</p>

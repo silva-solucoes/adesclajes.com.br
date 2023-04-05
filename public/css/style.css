@@ -12,14 +12,6 @@ body {
     margin: 0 auto;
   }
   
-  /* estilos de cabeçalho */
-  
-  header {
-    background-color: #47B5E9;
-    height: 80px;
-    padding: 20px;
-  }
-  
   /* estilos de banner */
   
   .banner {
@@ -59,6 +51,49 @@ body {
     color: #000;
     margin: 5% 0 0;
     text-align: center;
+  }
+
+  .banner {
+    background-image: url('../images/slider-01.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    position: relative;
+  }
+  
+  .banner-overlay {
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .banner-text {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+  }
+  
+  .banner-title {
+    font-size: 22px;
+    font-weight: 300;
+    color: #000;
+  }
+  
+  .banner-subtitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+    margin-top: 5px;
+  }
+  
+  .banner-cta {
+    font-size: 14px;
+    font-weight: 300;
+    color: #000;
+    margin-top: 5%;
   }
   
   /* estilos de últimos notícias */
