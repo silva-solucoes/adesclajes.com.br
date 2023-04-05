@@ -1,0 +1,103 @@
+/* estilos gerais */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* estilos de cabeçalho */
+  
+  header {
+    background-color: #47B5E9;
+    height: 80px;
+    padding: 20px;
+  }
+  
+  /* estilos de banner */
+  
+  .banner {
+    background-image: url('adescequipe.jpg');
+    background-size: cover;
+    height: 600px;
+    position: relative;
+  }
+  
+  .banner::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .banner h1 {
+    font-size: 22px;
+    font-weight: normal;
+    color: #000;
+    margin: 0;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .banner h1 span {
+    font-weight: bold;
+  }
+  
+  .banner p {
+    font-size: 14px;
+    color: #000;
+    margin: 5% 0 0;
+    text-align: center;
+  }
+  
+  /* estilos de últimos notícias */
+  
+  .latest-news {
+    background-color: #F5F5F5;
+    padding: 5% 0;
+  }
+  
+  .latest-news .bar {
+    width: 240px;
+    height: 64px;
+    float: left;
+    background-color: #47B5E9;
+  }
+  
+  .latest-news .bar.right {
+    float: right;
+  }
+  
+  .latest-news .news-container {
+    margin-top: 5%;
+  }
+  
+  .latest-news .news-container .col {
+    width: 33.33%;
+    float: left;
+    text-align: center;
+  }
+  
+  .latest-news .news-container .card {
+    width: 360px;
+    height: 250px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .latest-news .news-container .card img {
+    max-width: 100%;
+    height: auto;
+  }  
