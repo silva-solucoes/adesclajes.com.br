@@ -6,7 +6,8 @@
         <div class="banner-overlay">
             <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active"></div>
@@ -30,7 +31,7 @@
     </section>
     <section class="latest-news">
         <!-- o conteúdo das notícias mais recentes vai aqui -->
-        <div class="espaco-secao">
+        <div class="container">
             <div class="row">
                 <div class="col-2 bg-AzulMarinho"></div>
                 <div class="col-8 text-center">
@@ -38,10 +39,10 @@
                 </div>
                 <div class="col-2 bg-AzulMarinho"></div>
             </div>
-        <div>
+            <div>
     </section>
     <section class="corpo-diretivo">
-      <!-- o conteúdo do corpo diretivo vai aqui -->
+        <!-- o conteúdo do corpo diretivo vai aqui -->
     </section>
 </main>
 
