@@ -29,8 +29,16 @@
         </div>
     </section>
     <section class="latest-news">
-      <!-- o conteúdo das notícias mais recentes vai aqui -->
-      
+        <!-- o conteúdo das notícias mais recentes vai aqui -->
+        <div class="espaco-secao">
+            <div class="row">
+                <div class="col-2 bg-AzulMarinho"></div>
+                <div class="col-8 text-center">
+                    <h1 class="text-black font-weight-bold">ÚLTIMAS NOTÍCIAS</h1>
+                </div>
+                <div class="col-2 bg-AzulMarinho"></div>
+            </div>
+        <div>
     </section>
     <section class="corpo-diretivo">
       <!-- o conteúdo do corpo diretivo vai aqui -->

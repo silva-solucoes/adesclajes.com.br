@@ -11,6 +11,14 @@ body {
     max-width: 1200px;
     margin: 0 auto;
   }
+
+  .bg-AzulMarinho{
+    background-color: #47B5E9;
+    height: 64px;
+    width: 240px;
+    left: 0;
+    right: 0;
+  }
   
   /* estilos de banner */
 
@@ -78,6 +86,10 @@ body {
   .latest-news {
     background-color: #F5F5F5;
     padding: 5% 0;
+  }
+
+  .espaco-secao{
+    margin-right: 0.8%;
   }
   
   .latest-news .bar {
