@@ -7,16 +7,34 @@
     <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-x0yHE7q5YH62lV5ucdJFs9XVpKuMcIajR1RyKywGyLd7yvK+LSKpyCZBt/G9XtO2OClzrBwxjI1GyVNgN5Y5EA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+        .navbar-text1{    
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+            color: #003680;
+        } 
+
+        .navbar-img{
+            width: 50px;
+            height: auto;
+        }   
+    </style>
 </head>
 <body>
 <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container d-flex justify-content-center">
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                  <a class="navbar-brand" href="#">
-                    <img src="../../public/images/logo-01.png" alt="Logo" style="width: 50px;height: auto;">
-
+                  <a class="navbar-brand" href="#" style="margin: 0px;">
+                    <img class="navbar-img" src="../../public/images/logo-01.png" alt="Logo">                
                 </a>
+
+                <div class="col-sm-4" style="width: 135px; height: 50px;">
+                    <p class="navbar-text1">Associação Comunitaria Cultural, Social e Desportiva de Lajes</p>
+                </div>
+
                     <ul class="navbar-nav">
                         <li class="nav-item active">
                             <a class="nav-link" href="#">inicio</a>
