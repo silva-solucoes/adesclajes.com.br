@@ -13,43 +13,38 @@
 </head>
 
 <body>
-    <header>
-        <!-- header content goes here -->
+<header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><img src="../../public/images/logo-01.png" width="35"></a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="container d-flex justify-content-center">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                  <a class="navbar-brand" href="#">
+                    <img src="../../public/images/logo-01.png" alt="Logo" style="width: 50px;height: auto;">
+
+                </a>
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Início</a>
+                            <a class="nav-link" href="#">inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Notícias</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Futebol
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Sub-11</a></li>
-                                <li><a class="dropdown-item" href="#">Sub-14</a></li>
-                                <li><a class="dropdown-item" href="#">Sub-16</a></li>
-                            </ul>
+                            <a class="nav-link" href="#">notícias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contato</a>
+                            <a class="nav-link" href="#">futebol</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">contatos</a>
                         </li>
                     </ul>
-                </div>
-                <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary rounded-circle">
-                        <i class="bi bi-football"></i>
-                        Área de Inscrição
-                    </button>
+                    <button type="button" class="btn btn-warning rounded-pill text-white">Area de inscrição</button>
                 </div>
             </div>
         </nav>
     </header>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>
