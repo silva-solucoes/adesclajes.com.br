@@ -20,6 +20,22 @@ body {
   right: 0;
 }
 
+.bg-AmareloOuro{
+  background-color: #D98E04;
+  height: 64px;
+  width: 240px;
+  left: 0;
+  right: 0;
+}
+
+.bg-AzulCeleste{
+  background-color: #003680;
+  height: 64px;
+  width: 240px;
+  left: 0;
+  right: 0;
+}
+
 /* estilos de banner */
 
 .carousel-item {
@@ -178,4 +194,21 @@ body {
 .latest-news .news-container .card img {
   max-width: 100%;
   height: auto;
+}
+/*Sobre-nós*/
+.sobre-nos {
+  background-color: #FFFFFF;
+  padding: 5% 0;
+}
+
+/*Corpo Diretivo*/
+.corpo-diretivo {
+  background-color: #F5F5F5;
+  padding: 5% 0;
+}
+
+/*Contato*/
+.contato {
+  background-color: #FFFFFF;
+  padding: 5% 0;
 }
