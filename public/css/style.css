@@ -214,6 +214,10 @@ body {
   background-color: #F5F5F5;
   padding: 5% 0;
 }
+.tm-cartao{
+  width: 250px;
+  height: 340px;
+}
 
 /*Contato*/
 .contato {
