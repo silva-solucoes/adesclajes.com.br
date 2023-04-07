@@ -11,12 +11,15 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+        
+        
+         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 
         .navbar-text1{    
             font-family: 'Roboto', sans-serif;
             font-size: 12px;
             color: #003680;
+            line-height: 1.0em;
         } 
 
         .navbar-img{
@@ -35,7 +38,7 @@
                     <img class="navbar-img" src="../../public/images/logo-01.png" alt="Logo">                
                 </a>
 
-                <div class="col-sm-4" style="width: 135px; height: 50px;">
+                <div class="col-sm-4" style="width: 135px; height: 30px;">
                     <p class="navbar-text1">Associação Comunitaria Cultural, Social e Desportiva de Lajes</p>
                 </div>
 
