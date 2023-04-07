@@ -44,6 +44,7 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div class="col">
+                        <a calss="link-card" href="#">
                         <div class="card shadow-sm">
                             <img src="../../public/uploads/noticia-01.jpg" class="img-fluid" alt="Imagem responsiva" title="Título da Notícia">
                             <div class="bg-titulo card-body text-justify">
@@ -56,6 +57,39 @@
                                 </p>
                             </div>
                         </div>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a calss="link-card" href="#">
+                        <div class="card shadow-sm">
+                            <img src="../../public/uploads/noticia-02.jpg" class="img-fluid" alt="Imagem responsiva" title="Título da Notícia">
+                            <div class="bg-titulo card-body text-justify">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <small class="color-registro text-body-secondary">07 ABR 2023 - 15:30</small>
+                                    </div>
+                                </div>
+                                <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do campeonato de futebol local.
+                                </p>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a calss="link-card" href="#">
+                        <div class="card shadow-sm">
+                            <img src="../../public/uploads/noticia-03.jpg" class="img-fluid" alt="Imagem responsiva" title="Título da Notícia">
+                            <div class="bg-titulo card-body text-justify">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <small class="color-registro text-body-secondary">07 ABR 2023 - 20:10</small>
+                                    </div>
+                                </div>
+                                <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do campeonato de futebol local.
+                                </p>
+                            </div>
+                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

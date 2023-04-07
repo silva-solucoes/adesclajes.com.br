@@ -105,6 +105,10 @@ body {
   color: #FFFFFF;
 }
 
+.link-card{
+  text-decoration: none;
+}
+
 .latest-news .bar {
   width: 240px;
   height: 64px;
