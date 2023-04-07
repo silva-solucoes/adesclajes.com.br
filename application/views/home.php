@@ -44,52 +44,64 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div class="col">
-                        <a class="link-card" href="#">
                         <div class="card shadow-sm">
-                            <img src="../../public/uploads/noticia-01.jpg" class="img-fluid" alt="Imagem responsiva" title="Título da Notícia">
+                            <a class="link-card" href="#">
+                                <img src="../../public/uploads/noticia-01.jpg" class="img-fluid" alt="Imagem responsiva"
+                                    title="Título da Notícia">
+                            </a>
                             <div class="bg-titulo card-body text-justify">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <small class="color-registro text-body-secondary">06 ABR 2023 - 11:38</small>
                                     </div>
                                 </div>
-                                <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do campeonato de futebol local.
-                                </p>
+                                <a class="link-card" href="#">
+                                    <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do
+                                        campeonato de futebol local.
+                                    </p>
+                                </a>
                             </div>
                         </div>
-                        </a>
                     </div>
                     <div class="col">
-                        <a class="link-card" href="#">
                         <div class="card shadow-sm">
-                            <img src="../../public/uploads/noticia-02.jpg" class="img-fluid" alt="Imagem responsiva" title="Título da Notícia">
+                            <a class="link-card" href="#">
+                                <img src="../../public/uploads/noticia-02.jpg" class="img-fluid" alt="Imagem responsiva"
+                                    title="Título da Notícia">
+                            </a>
                             <div class="bg-titulo card-body text-justify">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <small class="color-registro text-body-secondary">07 ABR 2023 - 15:30</small>
+                                        <small class="color-registro text-body-secondary">07 ABR 2023 - 15:25</small>
                                     </div>
                                 </div>
-                                <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do campeonato de futebol local.
-                                </p>
+                                <a class="link-card" href="#">
+                                    <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do
+                                        campeonato de futebol local.
+                                    </p>
+                                </a>
                             </div>
                         </div>
-                        </a>
                     </div>
                     <div class="col">
-                        <a class="link-card" href="#">
                         <div class="card shadow-sm">
-                            <img src="../../public/uploads/noticia-03.jpg" class="img-fluid" alt="Imagem responsiva" title="Título da Notícia">
+                            <a class="link-card" href="#">
+                                <img src="../../public/uploads/noticia-03.jpg" class="img-fluid" alt="Imagem responsiva"
+                                    title="Título da Notícia">
+                            </a>
                             <div class="bg-titulo card-body text-justify">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <small class="color-registro text-body-secondary">07 ABR 2023 - 20:10</small>
+                                        <small class="color-registro text-body-secondary">08 ABR 2023 - 20:38</small>
                                     </div>
                                 </div>
-                                <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do campeonato de futebol local.
-                                </p>
+                                <a class="link-card" href="#">
+                                    <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do
+                                        campeonato de futebol local.
+                                    </p>
+                                </a>
                             </div>
                         </div>
-                        </a>
                     </div>
                 </div>
             </div>
