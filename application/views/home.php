@@ -109,6 +109,11 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="text-center d-grid gap-2 col-md-12 mx-auto">
+                <button class="btn btn-primary btn-modificado rounded-pill" type="button">Ver mais notícias</button>
+            </div>
+        </div>
     </section>
     <section class="corpo-diretivo">
         <!-- o conteúdo do corpo diretivo vai aqui -->

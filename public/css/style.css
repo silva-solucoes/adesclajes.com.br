@@ -124,6 +124,17 @@ body {
   background-color: #47B5E9;
 }
 
+.btn-modificado{
+  width: 235px;
+  background-color: #47B5E9;
+  color: #FFFFFF;
+}
+
+.btn-modificado:hover {
+  background-color: #3ba4d4;
+  color: #FFFFFF;
+}
+
 .latest-news .bar.right {
   float: right;
 }
