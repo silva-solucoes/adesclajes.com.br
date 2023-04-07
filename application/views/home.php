@@ -111,7 +111,7 @@
         </div>
         <div class="container text-center">
             <div class="d-grid gap-2 col-md-12">
-                <button class="btn btn-modificado btn-primary rounded-pill" type="button">Ver Mais Notícias</button>
+                <a href="#" class="ver-mais-btn">Ver Mais Notícias</a>
             </div>
         </div>
     </section>
