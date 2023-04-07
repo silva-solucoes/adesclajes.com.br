@@ -126,12 +126,15 @@ body {
 
 .btn-modificado{
   width: 235px;
+  height: 50px;
   background-color: #47B5E9;
+  border-color: #47B5E9;
   color: #FFFFFF;
 }
 
 .btn-modificado:hover {
   background-color: #3ba4d4;
+  border-color: #3ba4d4;
   color: #FFFFFF;
 }
 
