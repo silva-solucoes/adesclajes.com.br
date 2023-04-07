@@ -92,11 +92,65 @@ body {
   margin-right: 0.8%;
 }
 
+.bg-titulo{
+  color: #FFFFFF;
+  background-color: #47B5E9;
+}
+
+.bg-registro{
+  background-color: #3ba4d4;
+  text-indent: 0.5cm;
+  color:#D9D9D9;
+}
+
+.color-registro{
+  color: #fff;
+}
+
+.color-titulo{
+  color: #FFFFFF;
+  font-weight: bold;
+  text-align: justify;
+}
+
+.link-card{
+  text-decoration: none;
+}
+
 .latest-news .bar {
   width: 240px;
   height: 64px;
   float: left;
   background-color: #47B5E9;
+}
+
+.ver-mais-btn {
+  background-color: #47B5E9;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+
+.ver-mais-btn:hover {
+  background-color: #3ba4d4;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
 }
 
 .latest-news .bar.right {
