@@ -23,19 +23,19 @@
                 </a>
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">inicio</a>
+                            <a class="nav-link" href="#">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">notícias</a>
+                            <a class="nav-link" href="#">Notícias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">futebol</a>
+                            <a class="nav-link" href="#">Futebol</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">sobre</a>
+                            <a class="nav-link" href="#">Sobre</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">contatos</a>
+                            <a class="nav-link" href="#">Contatos</a>
                         </li>
                     </ul>
                     <button type="button" class="btn btn-warning rounded-pill text-white">Area de inscrição</button>
