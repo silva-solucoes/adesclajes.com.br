@@ -44,7 +44,7 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div class="col">
-                        <a calss="link-card" href="#">
+                        <a class="link-card" href="#">
                         <div class="card shadow-sm">
                             <img src="../../public/uploads/noticia-01.jpg" class="img-fluid" alt="Imagem responsiva" title="Título da Notícia">
                             <div class="bg-titulo card-body text-justify">
@@ -60,7 +60,7 @@
                         </a>
                     </div>
                     <div class="col">
-                        <a calss="link-card" href="#">
+                        <a class="link-card" href="#">
                         <div class="card shadow-sm">
                             <img src="../../public/uploads/noticia-02.jpg" class="img-fluid" alt="Imagem responsiva" title="Título da Notícia">
                             <div class="bg-titulo card-body text-justify">
@@ -76,7 +76,7 @@
                         </a>
                     </div>
                     <div class="col">
-                        <a calss="link-card" href="#">
+                        <a class="link-card" href="#">
                         <div class="card shadow-sm">
                             <img src="../../public/uploads/noticia-03.jpg" class="img-fluid" alt="Imagem responsiva" title="Título da Notícia">
                             <div class="bg-titulo card-body text-justify">
