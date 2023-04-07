@@ -92,6 +92,19 @@ body {
   margin-right: 0.8%;
 }
 
+.bg-titulo{
+  color: #FFFFFF;
+  background-color: #47B5E9;
+}
+
+.color-registro{
+  color: #D9D9D9;
+}
+
+.color-titulo{
+  color: #FFFFFF;
+}
+
 .latest-news .bar {
   width: 240px;
   height: 64px;

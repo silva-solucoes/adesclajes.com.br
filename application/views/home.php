@@ -46,15 +46,14 @@
                     <div class="col">
                         <div class="card shadow-sm">
                             <img src="../../public/uploads/noticia-01.jpg" class="img-fluid" alt="Imagem responsiva" title="Título da Notícia">
-                            <div class="bg-titulo card-body">
-                                <p class="card-text text-justify">ADSC vence de virada e segue na liderança do campeonato de futebol local.
-                                </p>
+                            <div class="bg-titulo card-body text-justify">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <small class="text-body-secondary">06 ABR 2023 - 11:38</small>
+                                        <small class="color-registro text-body-secondary">06 ABR 2023 - 11:38</small>
                                     </div>
-                                    <small class="text-body-secondary">Autor: Nome do Autor</small>
                                 </div>
+                                <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do campeonato de futebol local.
+                                </p>
                             </div>
                         </div>
                     </div>
