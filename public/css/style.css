@@ -36,6 +36,14 @@ body {
   right: 0;
 }
 
+.bg-cinza{
+  background-color: #A5A3A3;
+  height: 64px;
+  width: 240px;
+  left: 0;
+  right: 0;
+}
+
 /* estilos de banner */
 
 .carousel-item {
@@ -211,4 +219,33 @@ body {
 .contato {
   background-color: #FFFFFF;
   padding: 5% 0;
+}
+
+.btn-contato {
+  background-color: #A5A3A3;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+
+.btn-contato:hover {
+  background-color: #929191;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
 }
