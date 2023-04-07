@@ -109,9 +109,9 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="text-center d-grid gap-2 col-md-12 mx-auto">
-                <button class="btn btn-modificado rounded-pill" type="button">Ver Mais Notícias</button>
+        <div class="container text-center">
+            <div class="d-grid gap-2 col-md-12">
+                <button class="btn btn-modificado btn-primary rounded-pill" type="button">Ver Mais Notícias</button>
             </div>
         </div>
     </section>
