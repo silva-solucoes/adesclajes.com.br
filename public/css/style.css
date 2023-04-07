@@ -97,12 +97,20 @@ body {
   background-color: #47B5E9;
 }
 
+.bg-registro{
+  background-color: #3ba4d4;
+  text-indent: 0.5cm;
+  color:#D9D9D9;
+}
+
 .color-registro{
-  color: #D9D9D9;
+  color: #fff;
 }
 
 .color-titulo{
   color: #FFFFFF;
+  font-weight: bold;
+  text-align: justify;
 }
 
 .link-card{

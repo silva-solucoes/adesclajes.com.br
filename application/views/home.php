@@ -49,12 +49,13 @@
                                 <img src="../../public/uploads/noticia-01.jpg" class="img-fluid" alt="Imagem responsiva"
                                     title="Título da Notícia">
                             </a>
-                            <div class="bg-titulo card-body text-justify">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <small class="color-registro text-body-secondary">06 ABR 2023 - 11:38</small>
-                                    </div>
+                            <div class="bg-registro text-justify d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <small class="color-registro text-body-secondary">Postado em: 07 ABR 2023 -
+                                        15:25</small>
                                 </div>
+                            </div>
+                            <div class="bg-titulo card-body text-justify">
                                 <a class="link-card" href="#">
                                     <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do
                                         campeonato de futebol local.
@@ -69,12 +70,13 @@
                                 <img src="../../public/uploads/noticia-02.jpg" class="img-fluid" alt="Imagem responsiva"
                                     title="Título da Notícia">
                             </a>
-                            <div class="bg-titulo card-body text-justify">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <small class="color-registro text-body-secondary">07 ABR 2023 - 15:25</small>
-                                    </div>
+                            <div class="bg-registro text-justify d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <small class="color-registro text-body-secondary">Postado em: 07 ABR 2023 -
+                                        15:25</small>
                                 </div>
+                            </div>
+                            <div class="bg-titulo card-body text-justify">
                                 <a class="link-card" href="#">
                                     <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do
                                         campeonato de futebol local.
@@ -89,12 +91,13 @@
                                 <img src="../../public/uploads/noticia-03.jpg" class="img-fluid" alt="Imagem responsiva"
                                     title="Título da Notícia">
                             </a>
-                            <div class="bg-titulo card-body text-justify">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <small class="color-registro text-body-secondary">08 ABR 2023 - 20:38</small>
-                                    </div>
+                            <div class="bg-registro text-justify d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <small class="color-registro text-body-secondary">Postado em: 07 ABR 2023 -
+                                        15:25</small>
                                 </div>
+                            </div>
+                            <div class="bg-titulo card-body text-justify">
                                 <a class="link-card" href="#">
                                     <p class="color-titulo card-text">ADSC vence de virada e segue na liderança do
                                         campeonato de futebol local.
