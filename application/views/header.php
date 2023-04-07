@@ -9,6 +9,37 @@
     <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <!-- header content goes here -->
+<header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container d-flex justify-content-center">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                  <a class="navbar-brand" href="#">
+                    <img src="../../public/images/logo-01.png" alt="Logo" style="width: 50px;height: auto;">
+
+                </a>
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">notícias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">futebol</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">contatos</a>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-warning rounded-pill text-white">Area de inscrição</button>
+                </div>
+            </div>
+        </nav>
     </header>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
