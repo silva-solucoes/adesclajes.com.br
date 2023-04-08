@@ -10,6 +10,7 @@
         integrity="sha512-x0yHE7q5YH62lV5ucdJFs9XVpKuMcIajR1RyKywGyLd7yvK+LSKpyCZBt/G9XtO2OClzrBwxjI1GyVNgN5Y5EA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/css/bootstrap-icons.css" rel="stylesheet">
     <style>
         
         
@@ -31,6 +32,8 @@
 </head>
 
 <body>
+<!-- BOTÃO DE ROLAR A PÁGINA AO TOPO -->
+<a href="#" class="btn-topo"><i class="fas fa-chevron-up"></i></a>
 <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class=" justify-content-center align-items-center container-fluid d-flex flex-column flex-sm-row " id="navbarNav">
