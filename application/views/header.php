@@ -32,8 +32,9 @@
 </head>
 
 <body>
+<script src="../../public/js/script.js"></script>
 <!-- BOTÃO DE ROLAR A PÁGINA AO TOPO -->
-<a href="#" class="btn-topo"><i class="fas fa-chevron-up"></i></a>
+<a href="#" id="botao-topo" class="btn-topo mostrar"><i class="fas fa-chevron-up"></i></a>
 <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class=" justify-content-center align-items-center container-fluid d-flex flex-column flex-sm-row " id="navbarNav">

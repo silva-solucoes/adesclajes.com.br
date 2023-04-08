@@ -45,32 +45,48 @@ body {
 }
 
 /* estilo Botão Rolar ao topo */
-.btn-topo {
-  display: none;
+#botao-topo {
+  background-color: #D98E04;
+  border: none;
+  border-radius: 50%;
+  color: #F2F2F2;
+  cursor: pointer;
+  font-size: 20px;
+  height: 50px;
+  width: 50px;
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #D98E04;
-  z-index: 99;
+}
+
+#botao-topo:hover {
+  opacity: 0.8;
+}
+
+#botao-topo:focus {
+  outline: none;
+}
+ 
+#botao-topo:before {
+  content: "\2191";
+  display: block;
+  background-image: none;
+  font-size: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-top: -15px;
+  position: absolute;
   text-align: center;
-  line-height: 50px;
-  font-size: 20px;
-  color: #F2F2F2;
+  top: 50%;
+  width: 100%;
 }
 
-.btn-topo:hover {
-  cursor: pointer;
+.mostrar {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 
-@media only screen and (max-width: 768px) {
-  .btn-topo {
-      bottom: 10px;
-      right: 10px;
-  }
-}
 
 /* estilos de banner */
 
