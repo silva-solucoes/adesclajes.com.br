@@ -32,7 +32,6 @@
 </head>
 
 <body>
-<script src="../../public/js/script.js"></script>
 <!-- BOTÃO DE ROLAR A PÁGINA AO TOPO -->
 <a href="#" id="botao-topo" class="btn-topo mostrar"><i class="fas fa-chevron-up"></i></a>
 <header>
