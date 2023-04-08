@@ -26,19 +26,20 @@
             width: 50px;
             height: auto;
         }   
+       
     </style>
 </head>
 
 <body>
 <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container d-flex justify-content-center">
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class=" justify-content-center align-items-center container-fluid d-flex flex-column flex-sm-row " id="navbarNav">
+                <div class="navbar-collapse justify-content-center">
                   <a class="navbar-brand" href="#" style="margin: 0px;">
                     <img class="navbar-img" src="../../public/images/logo-01.png" alt="Logo">                
                 </a>
 
-                <div class="col-sm-4" style="width: 135px; height: 30px;">
+                <div class="col-sm-4" style="width: 135px; height: 30px; margin-right:1%;">
                     <p class="navbar-text1">Associação Comunitaria Cultural, Social e Desportiva de Lajes</p>
                 </div>
 
@@ -49,8 +50,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Notícias</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Futebol</a>
+                        <li class="nav-item dropdown"> 
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Futebol
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="#">SUB 09</a>
+                              <a class="dropdown-item" href="#">SUB 13</a>
+                              <a class="dropdown-item" href="#">SUB 15</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Sobre</a>
@@ -66,6 +74,9 @@
     </header>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 </body>
 </html>

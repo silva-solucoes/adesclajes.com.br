@@ -1,6 +1,6 @@
 <?php include_once 'header.php'; ?>
 
-<main>
+<main class="mt-5">
     <section class="banner">
         <!-- o conteúdo do banner vai aqui -->
         <div class="banner-overlay">
