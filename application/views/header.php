@@ -87,7 +87,7 @@
                     </ul>
                     <button type="button" class="btn btn-warning rounded-pill text-white">Area de inscrição</button>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>

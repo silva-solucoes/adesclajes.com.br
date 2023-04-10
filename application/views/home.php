@@ -205,7 +205,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="tm-cartao card">
-                            <img class="card-img-top" src="../../public/uploads/corpo-diretivo-01.jpg" alt="Imagem do card">
+                            <img class="card-img-top" src="../../public/uploads/corpo-diretivo-01.jpg"
+                                alt="Imagem do card">
                             <div class="card-body" style="background-color: #D98E04;">
                                 <div class="card-title">
                                     <h5 class="text-center">Adeilson Fernandes</h5>
@@ -216,7 +217,8 @@
                     </div>
                     <div class="col-md-3">
                         <div class="tm-cartao card">
-                            <img class="card-img-top" src="../../public/uploads/corpo-diretivo-00.jpg" alt="Imagem do card">
+                            <img class="card-img-top" src="../../public/uploads/corpo-diretivo-00.jpg"
+                                alt="Imagem do card">
                             <div class="card-body" style="background-color: #D98E04;">
                                 <div class="card-title">
                                     <h5 class="text-center">Nome do Funcionário</h5>
@@ -227,7 +229,8 @@
                     </div>
                     <div class="col-md-3">
                         <div class="tm-cartao card">
-                            <img class="card-img-top" src="../../public/uploads/corpo-diretivo-00.jpg" alt="Imagem do card">
+                            <img class="card-img-top" src="../../public/uploads/corpo-diretivo-00.jpg"
+                                alt="Imagem do card">
                             <div class="card-body" style="background-color: #D98E04;">
                                 <div class="card-title">
                                     <h5 class="text-center">Nome do Funcionário</h5>
@@ -238,7 +241,8 @@
                     </div>
                     <div class="col-md-3">
                         <div class="tm-cartao card">
-                            <img class="card-img-top" src="../../public/uploads/corpo-diretivo-00.jpg" alt="Imagem do card">
+                            <img class="card-img-top" src="../../public/uploads/corpo-diretivo-00.jpg"
+                                alt="Imagem do card">
                             <div class="card-body" style="background-color: #D98E04;">
                                 <div class="card-title">
                                     <h5 class="text-center">Nome do Funcionário</h5>
@@ -299,7 +303,58 @@
             </div>
 
     </section>
-
+    <!-- MODAL DE INSCRIÇÃO -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control rounded-3" id="floatingInput"
+                                placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control rounded-3" id="floatingPassword"
+                                placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+                        <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+                        <hr class="my-4">
+                        <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
+                        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
+                            <svg class="bi me-1" width="16" height="16">
+                                <use xlink:href="#twitter" />
+                            </svg>
+                            Sign up with Twitter
+                        </button>
+                        <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit">
+                            <svg class="bi me-1" width="16" height="16">
+                                <use xlink:href="#facebook" />
+                            </svg>
+                            Sign up with Facebook
+                        </button>
+                        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
+                            <svg class="bi me-1" width="16" height="16">
+                                <use xlink:href="#github" />
+                            </svg>
+                            Sign up with GitHub
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </main>
 
 <?php include_once 'footer.php'; ?>
