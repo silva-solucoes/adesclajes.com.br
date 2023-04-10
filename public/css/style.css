@@ -97,6 +97,32 @@ body {
   width: 100%;
 }
 
+/* BOTÃO DO HEADER */
+.botaoHeader{
+  background-color: #D98E04;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  width: 200px;
+  height: 45px;
+  display: block;
+  text-decoration: none;
+}
+.botaoHeader:hover {
+  background-color: #c88302;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  width: 200px;
+  height: 45px;
+  display: block;
+  text-decoration: none;
+}
+
 /* estilos de banner */
 
 .carousel-item {

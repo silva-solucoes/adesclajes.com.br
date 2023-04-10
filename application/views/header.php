@@ -91,7 +91,7 @@
                             <a class="nav-link" href="#">Contatos</a>
                         </li>
                     </ul>
-                    <button type="button" class="btn btn-warning rounded-pill text-white" data-bs-toggle="modal"
+                    <button type="button" class="botaoHeader" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">Área de Inscrição</button>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

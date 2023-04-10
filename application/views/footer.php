@@ -1,6 +1,12 @@
+
 <style>
   .bi {
-    font-size: 2.5em;
+    font-size: 1.5em;
+    color: #F2F2F2;
+  }
+  .cor-link{
+    background-color: #47B5E9;
+    width: 9%;
   }
 </style>
 
@@ -12,25 +18,16 @@
       </div>
       <div class="col-md-4">
         <h5>Privacidade</h5>
-        <p>Politica de Privacidade</p>
-        <div class="col-sm-6 col-md-3">
-          <h5 class="mb-3 text-nowrap">Redes Sociais</h5>
-          <div class="d-flex align-items-center">
-            <div class="me-3">
-              <i class="bi bi-facebook"></i>
-            </div>
-            <div class="me-3">
-              <i class="bi bi-instagram"></i>
-            </div>
-            <div class="me-3">
-              <i class="bi bi-whatsapp"></i>
-            </div>
-            <div class="me-3">
-              <i class="bi bi-envelope"></i>
-            </div>
-          </div>
-        </div>
-
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Politica de Privacidade</a></li>
+        </ul>
+        <h5 class="mt-5">Redes Sociais</h5>
+        <ul class="list-inline">
+          <li class="list-inline-item cor-link rounded-circle text-center"><a href="#link_facebook"><i class="bi bi-facebook"></i></a></li>
+          <li class="list-inline-item cor-link rounded-circle text-center"><a href="#link_twitter"><i class="bi bi-instagram"></i></a></li>
+          <li class="list-inline-item cor-link rounded-circle text-center"><a href="#link_instagram"><i class="bi bi-whatsapp"></i></a></li></a></li>
+          <li class="list-inline-item cor-link rounded-circle text-center"><a href="#link_linkedin"><i class="bi bi-envelope"></i></a></li>
+        </ul>
       </div>
       <div class="col-md-3">
         <h5>Tem alguma pergunta?</h5>
