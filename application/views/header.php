@@ -107,12 +107,159 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header" style="background-image: url('../../public/images/fundo.jpg'); background-size: cover; width: 100% relative; height: 100px; color: #D98E04;">
+                <div class="modal-header"
+                    style="background-image: url('../../public/images/fundo.jpg'); background-size: cover; width: 100% relative; height: 100px; color: #D98E04;">
                     <h5 class="modal-title w-bold mb-0 fs-2" id="meuModalLabel">Área de Inscrição</h5>
-                    <button type="button" class="btn-close cor-texto" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Fechar"></button>
                 </div>
-                <div class="modal-body">
-                    <p>Conteúdo do modal aqui...</p>
+                <div class="modal-body text-center">
+                    <p class="mb-5 bt-5">Não perca a chance de fazer parte da Escolinha Esportiva ADESC!<br>Inscreva-se
+                        agora mesmo
+                        preenchendo nosso formulário e garanta seu lugar na equipe de sucesso!</p>
+                    <div class="row g-5">
+                        <div class="col-md-7 col-lg-8">
+                            <div class="bg-fundo">
+                                <h4 class="mb-3">Formulário de Inscrição</h4>
+                            </div>
+                            <form class="needs-validation borda-form" novalidate>
+                                <label for="firstName" class="form-label"><b>Dados do Atleta</b></label>
+                                <hr>
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="firstName" class="form-label">Nome Completo:</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="" value=""
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Nome é obrigatório.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <label for="lastName" class="form-label">Data de Nascimento:</label>
+                                        <input type="date" class="form-control" id="lastName" placeholder="" value=""
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Data de Nascimento é obrigatório.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <label for="lastName" class="form-label">RG:</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="" value=""
+                                            required>
+                                        <div class="invalid-feedback">
+                                            RG é obrigatório.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label for="lastName" class="form-label">CPF:</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="" value=""
+                                            required>
+                                        <div class="invalid-feedback">
+                                            CPF é obrigatório.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="username" class="form-label">Nome da Escola que estuda:</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text">@</span>
+                                            <input type="text" class="form-control" id="username" placeholder="Username"
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Nome da Escola é obrigatório.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="country" class="form-label">Nível de Escolaridade:</label>
+                                        <select class="form-select" id="country" required>
+                                            <option value="">Ensino Fundamental</option>
+                                            <option>Ensino Médio</option>
+                                            <option>Ensino Superior</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a valid country.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label for="username" class="form-label">Série:</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="username" placeholder="Username"
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Série é obrigatório.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-4">
+                                    <label for="firstName" class="form-label"><b>Filiação</b></label>
+                                    <hr>
+                                    <div class="col-sm-6">
+                                        <label for="email" class="form-label">Nome da Mãe:<span
+                                                class="text-body-secondary">(Optional)</span></label>
+                                        <input type="text" class="form-control" id="email"
+                                            placeholder="you@example.com">
+                                        <div class="invalid-feedback">
+                                            Please enter a valid email address for shipping updates.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label for="address" class="form-label">Nome da Pai:</label>
+                                        <input type="text" class="form-control" id="address" placeholder="1234 Main St"
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Please enter your shipping address.
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <hr class="my-4">
+
+                                <p>Após o envio das informações acima, aguarde até que nossa equipe entre em contato.</p>
+
+                                <button class="finalizar-form-btn" type="submit">Finalizar Inscrição</button>
+                            </form>
+                        </div>
+                        <div class="col-md-5 col-lg-4 order-md-last">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-primary">Instruções</span>
+                            </h4>
+                            <ul class="list-group mb-3">
+                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                    <div>
+                                        <h6 class="my-0">Preencha Todos os Campos</h6>
+                                        <small class="text-body-secondary">Para garantir o sucesso de sua inscrição, é
+                                            necessário preencher todos os campos do formulário ao lado.</small>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                    <div>
+                                        <h6 class="my-0">Validação da Inscrição</h6>
+                                        <small class="text-body-secondary">Após concluir sua inscrição em nosso site,
+                                            você receberá uma confirmação por e-mail ou WhatsApp, com as instruções para
+                                            comparecer à sede da ADESC e validar sua inscrição.</small>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between lh-sm">
+                                    <div>
+                                        <h6 class="my-0">Copias de Documentos</h6>
+                                        <small class="text-body-secondary">É necessário entregar as cópias dos
+                                            documentos solicitados no formulário de inscrição. As cópias dos documentos
+                                            podem ser entregues pessoalmente em nossa sede.</small>
+                                    </div>
+                                </li>
+                            </ul>
+                            <img src="../../public/images/campiao.png" width="70%">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

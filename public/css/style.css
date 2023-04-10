@@ -20,7 +20,7 @@ body {
   right: 0;
 }
 
-.bg-AmareloOuro{
+.bg-AmareloOuro {
   background-color: #D98E04;
   height: 64px;
   width: 240px;
@@ -28,7 +28,7 @@ body {
   right: 0;
 }
 
-.bg-AzulCeleste{
+.bg-AzulCeleste {
   background-color: #003680;
   height: 64px;
   width: 240px;
@@ -36,7 +36,7 @@ body {
   right: 0;
 }
 
-.bg-cinza{
+.bg-cinza {
   background-color: #A5A3A3;
   height: 64px;
   width: 240px;
@@ -69,9 +69,11 @@ body {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.1);
   }
+
   100% {
     transform: scale(1);
   }
@@ -80,7 +82,7 @@ body {
 #botao-topo:focus {
   outline: none;
 }
- 
+
 #botao-topo:before {
   content: "\2191";
   display: block;
@@ -167,28 +169,28 @@ body {
   margin-right: 0.8%;
 }
 
-.bg-titulo{
+.bg-titulo {
   color: #FFFFFF;
   background-color: #47B5E9;
 }
 
-.bg-registro{
+.bg-registro {
   background-color: #3ba4d4;
   text-indent: 0.5cm;
-  color:#D9D9D9;
+  color: #D9D9D9;
 }
 
-.color-registro{
+.color-registro {
   color: #fff;
 }
 
-.color-titulo{
+.color-titulo {
   color: #FFFFFF;
   font-weight: bold;
   text-align: justify;
 }
 
-.link-card{
+.link-card {
   text-decoration: none;
 }
 
@@ -254,6 +256,7 @@ body {
   max-width: 100%;
   height: auto;
 }
+
 /*Sobre-nós*/
 .sobre-nos {
   background-color: #FFFFFF;
@@ -265,7 +268,8 @@ body {
   background-color: #F5F5F5;
   padding: 5% 0;
 }
-.tm-cartao{
+
+.tm-cartao {
   width: 250px;
   height: 340px;
 }
@@ -306,16 +310,64 @@ body {
 }
 
 /* Estilo do Modal */
-.bg-foto{
+.bg-foto {
   background-image: url('../../public/images/fd.jpg');
   background-size: cover;
   width: 100% relative;
   height: 500px;
   position: relative;
 }
-#meuModalLabel{
+
+#meuModalLabel {
   color: #D98E04;
 }
-.cor-texto{
+
+.cor-texto {
   color: #F2F2F2;
+}
+
+.bg-fundo {
+  background-color: #D98E04;
+  color: #F2F2F2;
+}
+
+.borda-form {
+  border: 2px solid #D98E04;
+  /* Cor da borda */
+  border-radius: 30px;
+  /* Curva da borda */
+  padding: 20px;
+  /* Espaçamento interno do formulário */
+  max-width: 800px;
+  /* Largura máxima do formulário */
+  margin: 0 auto;
+  /* Centralizar o formulário na página */
+}
+.finalizar-form-btn {
+  background-color: #D98E04;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+
+.finalizar-form-btn:hover {
+  background-color: #c88302;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
 }
