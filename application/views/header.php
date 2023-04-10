@@ -105,11 +105,11 @@
 
     <!-- MODAL DE INSCRIÇÃO -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header" style="background-image: url('../../public/images/fundo.jpg'); background-size: cover; width: 100% relative; height: 100px;">
+                <div class="modal-header" style="background-image: url('../../public/images/fundo.jpg'); background-size: cover; width: 100% relative; height: 100px; color: #D98E04;">
                     <h5 class="modal-title w-bold mb-0 fs-2" id="meuModalLabel">Área de Inscrição</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    <button type="button" class="btn-close cor-texto" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="modal-body">
                     <p>Conteúdo do modal aqui...</p>
