@@ -304,3 +304,15 @@ body {
   margin: 0 auto;
   text-decoration: none;
 }
+
+/* Estilo do Modal */
+.bg-foto{
+  background-image: url('../../public/images/fd.jpg');
+  background-size: cover;
+  width: 100% relative;
+  height: 500px;
+  position: relative;
+}
+#meuModalLabel{
+  color: #D98E04;
+}

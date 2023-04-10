@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../public/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
@@ -106,8 +107,8 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title w-bold mb-0 fs-2" id="meuModalLabel">Sign up for free</h5>
+                <div class="modal-header" style="background-image: url('../../public/images/fundo.jpg'); background-size: cover; width: 100% relative; height: 100px;">
+                    <h5 class="modal-title w-bold mb-0 fs-2" id="meuModalLabel">Área de Inscrição</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="modal-body">
