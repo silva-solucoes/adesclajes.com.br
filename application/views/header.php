@@ -24,6 +24,21 @@
             width: 50px;
             height: auto;
         }
+
+        .collapse button{
+            margin-left: 40px;
+        }
+        @media (min-width: 991px) {
+        .img-redu {
+            display: none;
+        }
+        }
+
+        @media (max-width: 767px) {
+        .img-redu {
+            display: block;
+        }
+        }
     </style>
 </head>
 
@@ -33,16 +48,19 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class=" justify-content-center align-items-center container-fluid d-flex flex-column flex-sm-row" id="navbarNav">
-            
-                <a class="navbar-brand" href="#" style="margin: 0px;">
-                    <img class="navbar-img" src="../../public/images/logo-01.png" alt="Logo">
-                </a>
-
-                <div class="col-sm-4 " style="width: 135px; height: 30px; margin-right:1%;">
-                    <p class="navbar-text1">Associação Comunitaria Cultural, Social e Desportiva de Lajes</p>
-                </div>
+                    <a class="navbar-brand img-redu" href="#" style="margin: 0px;">
+                        <img class="navbar-img" src="../../public/images/logo-01.png" alt="Logo">
+                    </a>
                 
                 <div class="collapse navbar-collapse justify-content-center align-items-center" id="navbarTogglerDemo03">
+                    <a class="navbar-brand" href="#" style="margin: 0px;">
+                        <img class="navbar-img" src="../../public/images/logo-01.png" alt="Logo">
+                    </a>
+
+                    <div class="col-sm-4" style="width: 135px; height: 30px; margin-right:1%;">
+                        <p class="navbar-text1">Associação Comunitaria Cultural, Social e Desportiva de Lajes</p>
+                    </div>
+
                     <ul class="navbar-nav">
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Início</a>
