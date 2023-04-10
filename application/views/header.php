@@ -49,15 +49,14 @@
     <a href="#" id="botao-topo" class="btn-topo mostrar"><i class="fas fa-chevron-up"></i></a>
 
     <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class=" justify-content-center align-items-center container-fluid d-flex flex-column flex-sm-row"
                 id="navbarNav">
                 <a class="navbar-brand img-redu" href="#" style="margin: 0px;">
                     <img class="navbar-img" src="../../public/images/logo-01.png" alt="Logo">
                 </a>
 
-                <div class="collapse navbar-collapse justify-content-center align-items-center"
-                    id="navbarTogglerDemo03">
+                <div class="collapse navbar-collapse justify-content-center align-items-center" id="navbarNavDropdown">
                     <a class="navbar-brand" href="#" style="margin: 0px;">
                         <img class="navbar-img" src="../../public/images/logo-01.png" alt="Logo">
                     </a>
@@ -91,10 +90,12 @@
                             <a class="nav-link" href="#">Contatos</a>
                         </li>
                     </ul>
-                    <button type="button" class="btn btn-warning rounded-pill text-white">Area de inscrição</button>
+                    <button type="button" class="btn btn-warning rounded-pill text-white" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Área de Inscrição</button>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="modal"
-                    data-bs-target="#meuModal">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -102,7 +103,7 @@
     </header>
 
     <!-- MODAL DE INSCRIÇÃO -->
-    <div class="modal fade" id="meuModal" tabindex="-1" aria-labelledby="meuModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
