@@ -7,7 +7,7 @@ class MainController {
         require_once 'application/views/user/home.php';
     }
     static function error(){
-        require_once 'application/views/erros/error.php';
+        require_once 'application/views/errors/error.php';
     }
 
 }

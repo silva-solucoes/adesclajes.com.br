@@ -8,9 +8,10 @@ spl_autoload_register(function($className){
 $route = filter_input(INPUT_GET, "url", FILTER_DEFAULT); #$_GET['_route_'];#substr($_SERVER["QUERY_STRING"], 8);
 
 $routes=[
-    '' => 'Controller::home',
-    'index' => 'Controller::home',
-    '404' => 'Controller::error',
+    '' => 'MainController::home',
+    'index' => 'MainController::home',
+    'noticias' => 'NewsController::index',
+    '404' => 'MainController::error',
 ];
 
 
