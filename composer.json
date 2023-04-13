@@ -1,0 +1,16 @@
+{
+    "description": "Silva Soluções Tech Projeto ADESC MVC",
+    "authors": [
+        {
+            "name": "José Windenberg Andrade de Melo",
+            "email": "windenbergandrade@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4":{
+            "App\\": "application",
+            "System\\": "system"
+        }
+    },
+    "require": {}
+}

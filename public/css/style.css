@@ -20,6 +20,109 @@ body {
   right: 0;
 }
 
+.bg-AmareloOuro {
+  background-color: #D98E04;
+  height: 64px;
+  width: 240px;
+  left: 0;
+  right: 0;
+}
+
+.bg-AzulCeleste {
+  background-color: #003680;
+  height: 64px;
+  width: 240px;
+  left: 0;
+  right: 0;
+}
+
+.bg-cinza {
+  background-color: #A5A3A3;
+  height: 64px;
+  width: 240px;
+  left: 0;
+  right: 0;
+}
+
+/* estilo Botão Rolar ao topo */
+#botao-topo {
+  background-color: #D98E04;
+  border: none;
+  border-radius: 50%;
+  color: #F2F2F2;
+  cursor: pointer;
+  font-size: 20px;
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+
+#botao-topo:hover {
+  animation: pulse 1s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+#botao-topo:focus {
+  outline: none;
+}
+
+#botao-topo:before {
+  content: "\2191";
+  display: block;
+  background-image: none;
+  font-size: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-top: -15px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+
+/* BOTÃO DO HEADER */
+.botaoHeader{
+  background-color: #D98E04;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  width: 200px;
+  height: 45px;
+  display: block;
+  text-decoration: none;
+}
+.botaoHeader:hover {
+  background-color: #c88302;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  width: 200px;
+  height: 45px;
+  display: block;
+  text-decoration: none;
+}
+
 /* estilos de banner */
 
 .carousel-item {
@@ -92,11 +195,65 @@ body {
   margin-right: 0.8%;
 }
 
+.bg-titulo {
+  color: #FFFFFF;
+  background-color: #47B5E9;
+}
+
+.bg-registro {
+  background-color: #3ba4d4;
+  text-indent: 0.5cm;
+  color: #D9D9D9;
+}
+
+.color-registro {
+  color: #fff;
+}
+
+.color-titulo {
+  color: #FFFFFF;
+  font-weight: bold;
+  text-align: justify;
+}
+
+.link-card {
+  text-decoration: none;
+}
+
 .latest-news .bar {
   width: 240px;
   height: 64px;
   float: left;
   background-color: #47B5E9;
+}
+
+.ver-mais-btn {
+  background-color: #47B5E9;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+
+.ver-mais-btn:hover {
+  background-color: #3ba4d4;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
 }
 
 .latest-news .bar.right {
@@ -124,4 +281,119 @@ body {
 .latest-news .news-container .card img {
   max-width: 100%;
   height: auto;
+}
+
+/*Sobre-nós*/
+.sobre-nos {
+  background-color: #FFFFFF;
+  padding: 5% 0;
+}
+
+/*Corpo Diretivo*/
+.corpo-diretivo {
+  background-color: #F5F5F5;
+  padding: 5% 0;
+}
+
+.tm-cartao {
+  width: 250px;
+  height: 340px;
+}
+
+/*Contato*/
+.contato {
+  background-color: #FFFFFF;
+  padding: 5% 0;
+}
+
+.btn-contato {
+  background-color: #A5A3A3;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+
+.btn-contato:hover {
+  background-color: #929191;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+/* Estilo do Modal */
+.bg-foto {
+  background-image: url('../../public/images/fd.jpg');
+  background-size: cover;
+  width: 100% relative;
+  height: 500px;
+  position: relative;
+}
+
+#meuModalLabel {
+  color: #D98E04;
+}
+
+.cor-texto {
+  color: #F2F2F2;
+}
+
+.bg-fundo {
+  background-color: #D98E04;
+  color: #F2F2F2;
+}
+
+.borda-form {
+  border: 2px solid #D98E04;
+  /* Cor da borda */
+  border-radius: 30px;
+  /* Curva da borda */
+  padding: 20px;
+  /* Espaçamento interno do formulário */
+  max-width: 800px;
+  /* Largura máxima do formulário */
+  margin: 0 auto;
+  /* Centralizar o formulário na página */
+}
+.finalizar-form-btn {
+  background-color: #D98E04;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+
+.finalizar-form-btn:hover {
+  background-color: #c88302;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 235px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
 }
