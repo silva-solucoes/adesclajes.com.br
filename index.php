@@ -1,9 +1,5 @@
 <?php
 
-require_once('controllers/MainController.php');
-
-$controller = new MainController();
-
-$controller->home();
+require_once 'system/router.php';
 
 ?>
