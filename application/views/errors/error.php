@@ -1,6 +1,7 @@
 <?php include_once 'application/views/user/header.php'; ?>
 <link rel="stylesheet" href="<?php echo URL . 'public/css/styleErro.css'; ?>">
 
+
 <main>
     <section id="not-found">
         <div id="title">Erro 404 &bull; Página não encontrada!</div>
@@ -14,5 +15,6 @@
         </div>
     </section>
 </main>
+
 
 <?php include_once 'application/views/user/footer.php'; ?>
