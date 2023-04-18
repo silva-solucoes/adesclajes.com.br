@@ -6,7 +6,8 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3><a href="index" class="logo me-auto"><img src="<?php echo URL . 'Public/images/logo-d.png'; ?>" alt="" class="img-fluid" width="50%"></a></h3>
+                    <h3><a href="index" class="logo me-auto"><img src="<?php echo URL . 'Public/images/logo-d.png'; ?>"
+                                alt="" class="img-fluid" width="50%"></a></h3>
                     <p>
                         Rua Riacho Madeira, s.n. Centro,<br>
                         Lajes/RN, CEP: 59535-000<br>
@@ -21,20 +22,23 @@
                     <ul>
                         <li><i class="bx bx-chevron-right"></i> <a href="index">Início</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Sobre-nós</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?php echo URL . 'noticias' ?>">Notícias</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Termos de serviço</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Política de privacidade</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?php echo URL . 'noticias' ?>">Notícias</a>
+                        </li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="privacidade">Política de privacidade</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Últimas Notícias</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Notícia A</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Notícia B</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Notícia C</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Notícia D</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Notícia E</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="noticia/">ADESC vence de virada e segue na
+                                liderança do campeonato de futebol local</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">O prefeito Felipe Menezes marcou presença no
+                                campeonato local</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Entrega de materiais esportivos fortalece
+                                atletas da ADESC</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Entrega de materiais esportivos promove mais
+                                qualidade e desempenho para atletas da ADESC</a></li>
                     </ul>
                 </div>
 
@@ -72,7 +76,8 @@
 </footer><!-- End Footer -->
 
 <div id="preloader"></div>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
 <script src="<?php echo URL . 'Public/vendor/aos/aos.js'; ?>"></script>
