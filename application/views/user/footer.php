@@ -6,7 +6,7 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3><a href="index" class="logo me-auto"><img src="<?php echo URL . 'Public/img/logo-d.png'; ?>" alt="" class="img-fluid" width="50%"></a></h3>
+                    <h3><a href="index" class="logo me-auto"><img src="<?php echo URL . 'Public/images/logo-d.png'; ?>" alt="" class="img-fluid" width="50%"></a></h3>
                     <p>
                         Rua Riacho Madeira, s.n. Centro,<br>
                         Lajes/RN, CEP: 59535-000<br>
