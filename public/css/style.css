@@ -7,7 +7,7 @@
 */
 
 /*--------------------------------------------------------------
-# General
+# Geral
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
@@ -36,7 +36,7 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Preloader
+# Carregar Página
 --------------------------------------------------------------*/
 #preloader {
   position: fixed;
@@ -46,7 +46,7 @@ h6 {
   bottom: 0;
   z-index: 9999;
   overflow: hidden;
-  background: #444444;
+  background: #003680;
 }
 
 #preloader:before {
@@ -54,7 +54,7 @@ h6 {
   position: fixed;
   top: calc(50% - 30px);
   left: calc(50% - 30px);
-  border: 6px solid #F2A413;
+  border: 6px solid #D98E04;
   border-top-color: #fff;
   border-bottom-color: #fff;
   border-radius: 50%;
@@ -275,7 +275,7 @@ h6 {
 * Mobile Navigation 
 */
 .mobile-nav-toggle {
-  color: #fff;
+  color: #003680;
   font-size: 28px;
   cursor: pointer;
   display: none;
@@ -304,7 +304,7 @@ h6 {
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(251, 195, 2, 0.9);
+  background: rgba(0, 54, 128, 0.9);
   transition: 0.3s;
   z-index: 999;
 }
