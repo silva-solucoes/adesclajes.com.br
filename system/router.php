@@ -5,12 +5,16 @@ spl_autoload_register(function($className){
 });
 
 #Route recebe tudo que vem depois /.
-$route = filter_input(INPUT_GET, "url", FILTER_DEFAULT); #$_GET['_route_'];#substr($_SERVER["QUERY_STRING"], 8);
+$route = filter_input(INPUT_GET, "url", FILTER_DEFAULT);
 
 $routes=[
     '' => 'MainController::home',
     'index' => 'MainController::home',
+    'portifolio' => 'PortifolioController::index',
+    'forms/contact' => 'MainController::envioEmail',
     'noticias' => 'NewsController::index',
+    'noticia/' => 'NewsDescriptionController::index',
+    'sobre' => 'SobreController::index',
     '404' => 'MainController::error',
 ];
 

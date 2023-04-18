@@ -9,6 +9,6 @@ class NewsController
     }
     static function error()
     {
-        require_once 'application/views/errors/error.php';
+        require_once 'application/views/erros/erro.php';
     }
 }
