@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                <img src="<?php echo URL . 'Public/img/destaque-img.png'; ?>" class="img-fluid animated" alt="">
+                <img src="<?php echo URL . 'Public/images/destaque-img.png'; ?>" class="img-fluid animated" alt="">
             </div>
         </div>
     </div>
@@ -34,27 +34,27 @@
             <div class="row" data-aos="zoom-in">
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/img/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/img/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/img/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/img/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/img/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/img/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
                 </div>
 
             </div>
@@ -250,7 +250,7 @@
                 </div>
 
                 <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
-                    style='background-image: url("<?php echo URL . 'Public/img/why-us.png'; ?>");' data-aos="zoom-in"
+                    style='background-image: url("<?php echo URL . 'Public/images/why-us.png'; ?>");' data-aos="zoom-in"
                     data-aos-delay="150">
                     &nbsp;</div>
             </div>
@@ -293,7 +293,7 @@
 
                 <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
                     <div class="member d-flex align-items-start">
-                        <div class="pic"><img src="<?php echo URL . 'Public/img/equipe/adeilson.jpg'; ?>"
+                        <div class="pic"><img src="<?php echo URL . 'Public/images/equipe/adeilson.jpg'; ?>"
                                 class="img-fluid" alt=""></div>
                         <div class="member-info">
                             <h4>Adeilson Fernandes</h4>
@@ -311,7 +311,7 @@
 
                 <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
                     <div class="member d-flex align-items-start">
-                        <div class="pic"><img src="<?php echo URL . 'Public/img/equipe/semfoto.jpg'; ?>"
+                        <div class="pic"><img src="<?php echo URL . 'Public/images/equipe/semfoto.jpg'; ?>"
                                 class="img-fluid" alt=""></div>
                         <div class="member-info">
                             <h4>Nome do Funcionário</h4>
