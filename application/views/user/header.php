@@ -57,47 +57,7 @@
           <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#about">Sobre-nós</a></li>
           <li class="dropdown"><a href="#"><span>Esportes</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li class="dropdown"><a href="#"><span>Futsal</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Categoria A</a></li>
-                  <li><a href="#">Categoria B</a></li>
-                  <li><a href="#">Categoria C</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="#"><span>Hidroginástica</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Categoria A</a></li>
-                  <li><a href="#">Categoria B</a></li>
-                  <li><a href="#">Categoria C</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="#"><span>Natação</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Categoria A</a></li>
-                  <li><a href="#">Categoria B</a></li>
-                  <li><a href="#">Categoria C</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="#"><span>Taekwondo</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Categoria A</a></li>
-                  <li><a href="#">Categoria B</a></li>
-                  <li><a href="#">Categoria C</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="#"><span>Vôlei</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Categoria A</a></li>
-                  <li><a href="#">Categoria B</a></li>
-                  <li><a href="#">Categoria C</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>Mídias</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Galeria de Fotos</a></li>
-              <li class="dropdown"><a href="#"><span>Atletas</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="#"><span>Categorias Esportivas</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Futsal</a></li>
                   <li><a href="#">Hidroginástica</a></li>
@@ -106,6 +66,8 @@
                   <li><a href="#">Vôlei</a></li>
                 </ul>
               </li>
+              <li><a href="#">Galeria de Fotos</a></li>
+              <li><a href="#">Quadro de Atletas</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#team">Equipe</a></li>

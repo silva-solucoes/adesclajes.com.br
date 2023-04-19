@@ -8,10 +8,10 @@
 
             <ol>
                 <li><a href="<?php echo URL . 'index' ?>">Início</a></li>
-                <li><a href="<?php echo URL . 'noticias' ?>">Notícia</a></li>
-                <li>Título da Notícia</li>
+                <li>Esportes</li>
+                <li>Título do tipo de esporte</li>
             </ol>
-            <h2>Título da Notícia</h2>
+            <h2>Título do tipo de esporte</h2>
 
         </div>
     </section><!-- End Breadcrumbs -->
@@ -21,7 +21,45 @@
         <div class="container">
 
             <div class="row gy-4">
-                <p>Detalhes de Esportes</p>
+
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+                        <h3>Informações</h3>
+                        <ul>
+                            <li><strong>Categoria</strong>: Tipo do Esporte</li>
+                            <li><strong>Autor</strong>: ADESC Lajes</li>
+                            <li><strong>Postado em</strong>: 17 Abr 2023</li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-description">
+                        <h2>Breve descrição da página</h2>
+                        <p>
+                            Aqui serão exibidas os conteúdos dos esportes, Atletas de cada esporte e as mídias.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper">
+                        <div class="swiper-wrapper align-items-center">
+
+                            <div class="swiper-slide">
+                                <img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>" alt="">
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>" alt="">
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>" alt="">
+                            </div>
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
