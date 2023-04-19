@@ -34,27 +34,33 @@
             <div class="row" data-aos="zoom-in">
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid" alt="">
+                    <img src="<?php echo URL . 'Public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
                 </div>
 
             </div>
@@ -63,7 +69,8 @@
     </section><!-- Fim Patrocinadores -->
 
     <!-- ======= Seção de Últimas Notícias ======= -->
-    <section id="noticias" class="noticias">
+    <section id="noticias" class="recent-blog-posts">
+
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
@@ -73,80 +80,68 @@
             </div>
 
             <div class="row">
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="icon-box">
-                        <img src="<?php echo URL . 'Public/uploads/noticia-01.jpg'; ?>" class="img-fluid"
-                            alt="Imagem responsiva"
-                            title="ADESC vence de virada e segue na liderança do campeonato de futebol local">
-                        <div class="icon"><i class="bi bi-calendar-event"></i> 17 DE ABR DE 2023<br><i
-                                class="bi bi-person-circle"></i> Postado por: <b>ADESC Lajes</b></div>
-                        <h4><a href="<?php echo URL . 'noticia/'; ?>">ADESC vence de virada e segue na liderança do campeonato de futebol local</a>
-                        </h4>
-                        <p class="text-justify">A equipe da ADESC mostrou garra e determinação em mais uma vitória
-                            emocionante de virada, mantendo-se na liderança do campeonato de futebol local. Com um
-                            desempenho impressionante em campo, nossos atletas provaram mais uma vez o comprometimento e
-                            habilidade que os mantêm no topo da competição.</p>
+
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="post-box">
+                        <div class="post-img"><img src="<?php echo URL . 'Public/uploads/noticia-01.jpg'; ?>"
+                                class="img-fluid" alt=""></div>
+                        <div class="meta">
+                            <span class="post-date"><i class="bi bi-calendar-event"></i> 19 de Abril de 2023</span>
+                            <span class="post-author"> / <i class="bi bi-person-circle"></i> ADESC Lajes</span>
+                        </div>
+                        <h3 class="post-title">ADESC vence de virada e segue na liderança do
+                            campeonato de futebol local
+                        </h3>
+                        <p>A equipe da ADESC mostrou garra e determinação em mais uma vitória
+                            emocionante de virada, mantendo-se na liderança do campeonato de futebol local...</p>
+                        <a href="<?php echo URL . 'noticia/'; ?>" class="readmore stretched-link"><span>Ler
+                                mais</span><i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
-                    data-aos-delay="200">
-                    <div class="icon-box">
-                        <img src="<?php echo URL . 'Public/uploads/noticia-02.jpg'; ?>" class="img-fluid"
-                            alt="Imagem responsiva" title="Título da Notícia">
-                        <div class="icon"><i class="bi bi-calendar-event"></i> 18 DE ABR DE 2023<br><i
-                                class="bi bi-person-circle"></i> Postado por: <b>ADESC Lajes</b></div>
-                        <h4><a href="">O prefeito Felipe Menezes marcou presença no campeonato local</a>
-                        </h4>
-                        <p class="text-justify">O prefeito Felipe Meneze demonstrou apoio ao esporte local ao marcar
-                            presença no campeonato da região. Durante o evento, ele conversou com os atletas e
-                            torcedores presentes, destacando a importância do esporte para a comunidade e ressaltando o
-                            compromisso da prefeitura em investir em infraestrutura e incentivar a prática esportiva na
-                            cidade.</p>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="post-box">
+                        <div class="post-img"><img src="<?php echo URL . 'Public/uploads/noticia-02.jpg'; ?>"
+                                class="img-fluid" alt=""></div>
+                        <div class="meta">
+                            <span class="post-date"><i class="bi bi-calendar-event"></i> 18 de Abril de 2023</span>
+                            <span class="post-author"> / <i class="bi bi-person-circle"></i> ADESC Lajes</span>
+                        </div>
+                        <h3 class="post-title">O prefeito Felipe Menezes marcou presença no campeonato local</h3>
+                        <p>O prefeto Felipe Menezes demonstrou apoio ao esporte local ao marcar presença no campeonato
+                            da região...</p>
+                        <a href="blog-details.html" class="readmore stretched-link"><span>Ler mais</span><i
+                                class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                    data-aos-delay="300">
-                    <div class="icon-box">
-                        <img src="<?php echo URL . 'Public/uploads/noticia-03.jpg'; ?>" class="img-fluid"
-                            alt="Imagem responsiva" title="Título da Notícia">
-                        <div class="icon"><i class="bi bi-calendar-event"></i> 19 DE ABR DE 2023<br><i
-                                class="bi bi-person-circle"></i> Postado por: <b>ADESC Lajes</b></div>
-                        <h4><a href="">Entrega de materiais esportivos fortalece atletas da ADESC</a>
-                        </h4>
-                        <p class="text-justify">A entrega contou com a presença de representantes da ADESC e dos atletas
-                            beneficiados, que receberam equipamentos como uniformes e outros acessórios essenciais para
-                            a prática esportiva.</p>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="post-box">
+                        <div class="post-img"><img src="<?php echo URL . 'Public/uploads/noticia-03.jpg'; ?>"
+                                class="img-fluid" alt=""></div>
+                        <div class="meta">
+                            <span class="post-date"><i class="bi bi-calendar-event"></i> 17 de Abril de 2023</span>
+                            <span class="post-author"> / <i class="bi bi-person-circle"></i> ADESC Lajes</span>
+                        </div>
+                        <h3 class="post-title">Entrega de materiais esportivos fortalece atletas da ADESC</h3>
+                        <p>A entrega contou com a presença de representantes da ADESC e dos atletas beneficiados, que
+                            receberam equipamentos como uniformes e outros acessórios essenciais para a prática
+                            esportiva...</p>
+                        <a href="blog-details.html" class="readmore stretched-link"><span>Ler mais</span><i
+                                class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                    data-aos-delay="400">
-                    <div class="icon-box">
-                        <img src="<?php echo URL . 'Public/uploads/noticia-04.jpg'; ?>" class="img-fluid"
-                            alt="Imagem responsiva" title="Título da Notícia">
-                        <div class="icon"><i class="bi bi-calendar-event"></i> 20 DE ABR DE 2023<br><i
-                                class="bi bi-person-circle"></i> Postado por: <b>ADESC Lajes</b></div>
-                        <h4><a href="">Entrega de materiais esportivos promove mais qualidade e desempenho para atletas
-                                da ADESC</a>
-                        </h4>
-                        <p class="text-justify">Os atletas ficaram muito felizes e motivados com a iniciativa, e
-                            acreditam que o novo equipamento contribuirá significativamente para o desempenho da equipe
-                            nas próximas competições..</p>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 text-center" data-aos="zoom-in"
-                    data-aos-delay="500">
-                    <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="<?php echo URL . 'noticias' ?>" class="btn-get-started">Ver Mais Notícias</a>
-                    </div>
+            </div>
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 text-center" data-aos="zoom-in"
+                data-aos-delay="500">
+                <div class="d-flex justify-content-center justify-content-lg-start">
+                    <a href="<?php echo URL . 'noticias' ?>" class="btn-get-started">Ver Mais Notícias</a>
                 </div>
             </div>
-
         </div>
-    </section><!-- Fim Seção de Últimas Notícias -->
+
+    </section><!-- End Seção de Últimas Notícias -->
 
     <!-- ======= Seção Sobre-nós ======= -->
     <section id="about" class="about section-bg">
