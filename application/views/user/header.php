@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?php echo URL . 'Public/img/favicon.png'; ?>" rel="icon">
-  <link href="<?php echo URL . 'Public/img/apple-touch-icon.php'; ?>" rel="apple-touch-icon">
+  <link href="<?php echo URL . 'public/images/favicon.png'; ?>" rel="icon">
+  <link href="<?php echo URL . 'public/images/apple-touch-icon.php'; ?>" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link
@@ -19,16 +19,16 @@
     rel="stylesheet">
 
   <!-- Arquivos CSS -->
-  <link href="<?php echo URL . 'Public/vendor/aos/aos.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'Public/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'Public/vendor/bootstrap-icons/bootstrap-icons.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'Public/vendor/boxicons/css/boxicons.min.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'Public/vendor/glightbox/css/glightbox.min.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'Public/vendor/remixicon/remixicon.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'Public/vendor/swiper/swiper-bundle.min.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . 'public/vendor/aos/aos.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . 'public/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . 'public/vendor/bootstrap-icons/bootstrap-icons.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . 'public/vendor/boxicons/css/boxicons.min.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . 'public/vendor/glightbox/css/glightbox.min.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . 'public/vendor/remixicon/remixicon.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . 'public/vendor/swiper/swiper-bundle.min.css'; ?>" rel="stylesheet">
 
   <!-- Arquivo Principal CSS -->
-  <link href="<?php echo URL . 'Public/css/style.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . 'public/css/style.css'; ?>" rel="stylesheet">
 
   <!-- =======================================================
   * Nome do site: Silva Soluções Tech
@@ -47,7 +47,7 @@
 
       <!--<h1 class="logo me-auto"><a href="index">Silva Soluções Tech</a></h1>-->
       <!-- Descomente abaixo se preferir usar um logotipo de imagem -->
-      <a href="index" class="logo me-auto"><img src="<?php echo URL . 'Public/images/logo-d.png'; ?>" alt=""
+      <a href="index" class="logo me-auto"><img src="<?php echo URL . 'public/images/logo-d.png'; ?>" alt=""
           class="img-fluid"></a>
 
       <nav id="navbar" class="navbar">
