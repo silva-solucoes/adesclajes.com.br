@@ -16,157 +16,282 @@
         </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Seção de Detalhes de Notícia ======= -->
-    <section id="portfolio-details" class="portfolio-details">
-        <div class="container">
+    <!-- ======= Blog Details Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
 
-            <div class="row gy-4">
+            <div class="row g-5">
 
                 <div class="col-lg-8">
-                    <div class="portfolio-details-slider swiper">
-                        <div class="swiper-wrapper align-items-center">
 
-                            <div class="swiper-slide">
-                                <img src="<?php echo URL . 'Public/uploads/noticia-01.jpg'; ?>" alt="">
-                            </div>
+                    <article class="blog-details">
 
-                            <div class="swiper-slide">
-                                <img src="<?php echo URL . 'Public/uploads/noticia-02.jpg'; ?>" alt="">
-                            </div>
+                        <div class="post-img">
+                            <img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>" alt="" class="img-fluid">
+                        </div>
 
-                            <div class="swiper-slide">
-                                <img src="<?php echo URL . 'Public/uploads/noticia-03.jpg'; ?>" alt="">
+                        <h2 class="title">ADESC vence de virada e segue na liderança do campeonato de futebol local</h2>
+
+                        <div class="meta-top">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="bi bi-person-circle"></i> <a
+                                        href="blog-details.html">ADESC Lajes</a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-calendar-event"></i> <a
+                                        href="blog-details.html"><time datetime="2022-01-01">19 Abr
+                                            2023</time></a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
+                                        href="blog-details.html">5 Comentários</a></li>
+                            </ul>
+                        </div><!-- End meta top -->
+
+                        <div class="content">
+                            <p>
+                                Em um jogo emocionante, a equipe da ADESC venceu de virada e segue na liderança do
+                                campeonato de futebol local. O jogo aconteceu no último domingo, no Estádio Municipal, e
+                                contou com uma torcida animada que não parou de incentivar os jogadores do início ao fim
+                                da partida.
+                            </p>
+
+                            <p>
+                                O time adversário começou na frente e manteve a vantagem durante boa parte do primeiro
+                                tempo. Mas, com muito empenho e dedicação, a ADESC conseguiu empatar o jogo no final da
+                                primeira etapa. No segundo tempo, a equipe não se acomodou e partiu para cima do
+                                adversário, conquistando a virada com um belo gol.
+                            </p>
+
+                            <img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>" class="img-fluid" alt="">
+
+                            <blockquote>
+                                <p>
+                                    Com o resultado positivo, a ADESC segue firme na liderança do campeonato, mostrando
+                                    que tem um elenco forte e preparado para enfrentar qualquer desafio. O técnico
+                                    elogiou a postura dos jogadores em campo e destacou a importância da vitória para a
+                                    equipe.
+                                </p>
+                            </blockquote>
+
+                            <p>
+                                A torcida também está de parabéns pelo apoio constante, que foi fundamental para a
+                                virada do jogo. Agora é seguir treinando e se preparando para as próximas partidas,
+                                sempre com muita garra e determinação. Vamos lá, ADESC!
+                            </p>
+
+                        </div><!-- End post content -->
+
+                        <div class="meta-bottom">
+                            <i class="bi bi-folder"></i>
+                            <ul class="cats">
+                                <li><a href="#">Futebol</a></li>
+                            </ul>
+
+                            <i class="bi bi-tags"></i>
+                            <ul class="tags">
+                                <li><a href="#">Esporte</a></li>
+                                <li><a href="#">Educação</a></li>
+                                <li><a href="#">Inclusão</a></li>
+                            </ul>
+                        </div><!-- End meta bottom -->
+
+                    </article><!-- End blog post -->
+
+                    <div class="post-author d-flex align-items-center">
+                        <img src="<?php echo URL . 'public/images/equipe/semfoto.jpg'; ?>"
+                            class="rounded-circle flex-shrink-0" alt="">
+                        <div>
+                            <h4>Paulo Rodrigues</h4>
+                            <div class="social-links">
+                                <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                                <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                                <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
                             </div>
+                            <p>
+                                Parabéns para a equipe da ADESC pela vitória de virada! É muito emocionante ver o
+                                esforço e dedicação dos atletas para alcançar a liderança do campeonato de futebol
+                                local. Continuem com esse desempenho incrível e boa sorte nas próximas partidas!
+                            </p>
+                        </div>
+                    </div><!-- End post author -->
+
+                    <div class="comments">
+
+                        <h4 class="comments-count">5 Comentários</h4>
+
+                        <div id="comment-1" class="comment">
+                            <div class="d-flex">
+                                <div class="comment-img"><img
+                                        src="<?php echo URL . 'public/images/equipe/semfoto.jpg'; ?>" alt=""></div>
+                                <div>
+                                    <h5><a href="">Maria Eduarda</a> <a href="#" class="reply"><i
+                                                class="bi bi-reply-fill"></i> Responder</a></h5>
+                                    <time datetime="2020-01-01">19 Abr 2023</time>
+                                    <p>
+                                        Parabéns à equipe da ADESC pela vitória de virada! É incrível ver como o esforço
+                                        e a dedicação dos atletas estão rendendo resultados positivos. A liderança no
+                                        campeonato de futebol local é uma prova do talento e empenho dessa equipe.
+                                        Estamos orgulhosos de fazer parte dessa instituição que promove o esporte, a
+                                        educação e a inclusão de forma tão exemplar. Vamos em frente, rumo a mais
+                                        conquistas!
+                                    </p>
+                                </div>
+                            </div>
+                        </div><!-- End comment #1 -->
+
+                        <div class="reply-form">
+
+                            <h4>Deixe um comentário</h4>
+                            <p>Seu endereço de e-mail não será publicado. Os campos obrigatórios estão marcados * </p>
+                            <form action="">
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <input name="name" type="text" class="form-control" placeholder="Seu nome*">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input name="email" type="text" class="form-control" placeholder="Seu e-mail*">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col form-group">
+                                        <textarea name="comment" class="form-control"
+                                            placeholder="Seu comentário*"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Postar comentário</button>
+
+                            </form>
 
                         </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
+
+                    </div><!-- End blog comments -->
+
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="portfolio-info">
-                        <h3>Informações da Postagem</h3>
-                        <ul>
-                            <li><strong>Categória</strong>: Futsal</li>
-                            <li><strong>Autor</strong>: ADESC Lajes</li>
-                            <li><strong>Postado em</strong>: 18 Abril 2023</li>
-                            <li><strong>Compartilhe</strong>: <a href="#">www.example.com</a></li>
-                        </ul>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Últimas Notícias</h3>
-                        <ul>
-                            <li><a href="#"><strong>O prefeito Felipe Menezes marcou presença no campeonato
-                                        local</strong></a></li>
-                            <li><a href="#"><strong>Entrega de materiais esportivos fortalece atletas da
-                                        ADESC</strong></a></li>
-                            <li><a href="#"><strong>Entrega de materiais esportivos promove mais qualidade e desempenho
-                                        para atletas da ADESC</strong></a></li>
-                        </ul>
-                    </div>
+
+                    <div class="sidebar">
+
+                        <div class="sidebar-item search-form">
+                            <h3 class="sidebar-title">Search</h3>
+                            <form action="" class="mt-3">
+                                <input type="text">
+                                <button type="submit"><i class="bi bi-search"></i></button>
+                            </form>
+                        </div><!-- End sidebar search formn-->
+
+                        <div class="sidebar-item categories">
+                            <h3 class="sidebar-title">Categories</h3>
+                            <ul class="mt-3">
+                                <li><a href="#">General <span>(25)</span></a></li>
+                                <li><a href="#">Lifestyle <span>(12)</span></a></li>
+                                <li><a href="#">Travel <span>(5)</span></a></li>
+                                <li><a href="#">Design <span>(22)</span></a></li>
+                                <li><a href="#">Creative <span>(8)</span></a></li>
+                                <li><a href="#">Educaion <span>(14)</span></a></li>
+                            </ul>
+                        </div><!-- End sidebar categories-->
+
+                        <div class="sidebar-item recent-posts">
+                            <h3 class="sidebar-title">Recent Posts</h3>
+
+                            <div class="mt-3">
+
+                                <div class="post-item mt-3">
+                                    <img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>" alt=""
+                                        class="flex-shrink-0">
+                                    <div>
+                                        <h4><a href="blog-post.html">Nihil blanditiis at in nihil autem</a></h4>
+                                        <time datetime="2020-01-01">19 Abr 2023</time>
+                                    </div>
+                                </div><!-- End recent post item-->
+
+                                <div class="post-item">
+                                    <img src="<?php echo URL . 'public/uploads/noticia-02.jpg'; ?>" alt=""
+                                        class="flex-shrink-0">
+                                    <div>
+                                        <h4><a href="blog-post.html">Quidem autem et impedit</a></h4>
+                                        <time datetime="2020-01-01">18 Abr 2023</time>
+                                    </div>
+                                </div><!-- End recent post item-->
+
+                                <div class="post-item">
+                                    <img src="<?php echo URL . 'public/uploads/noticia-03.jpg'; ?>" alt=""
+                                        class="flex-shrink-0">
+                                    <div>
+                                        <h4><a href="blog-post.html">Id quia et et ut maxime similique occaecati ut</a>
+                                        </h4>
+                                        <time datetime="2020-01-01">17 Abr 2023</time>
+                                    </div>
+                                </div><!-- End recent post item-->
+
+                                <div class="post-item">
+                                    <img src="<?php echo URL . 'public/uploads/noticia-04.jpg'; ?>" alt=""
+                                        class="flex-shrink-0">
+                                    <div>
+                                        <h4><a href="blog-post.html">Laborum corporis quo dara net para</a></h4>
+                                        <time datetime="2020-01-01">16 Abr 2023</time>
+                                    </div>
+                                </div><!-- End recent post item-->
+
+                            </div>
+
+                        </div><!-- End sidebar recent posts-->
+
+                        <div class="sidebar-item tags">
+                            <h3 class="sidebar-title">Tags</h3>
+                            <ul class="mt-3">
+                                <li><a href="#">ADESC Lajes</a></li>
+                                <li><a href="#">Notícias</a></li>
+                                <li><a href="#">Esportes</a></li>
+                            </ul>
+                        </div><!-- End sidebar tags-->
+
+                    </div><!-- End Blog Sidebar -->
+
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Blog Details Section -->
+
+    <!-- ======= Seção de Patrocinadores ======= -->
+    <section id="clients" class="clients section-bg">
+        <div class="container">
+
+            <div class="row" data-aos="zoom-in">
+
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
                 </div>
 
-                <div class="col-lg-8">
-                    <div class="portfolio-description">
-                        <h2>ADESC vence de virada e segue na liderança do campeonato de futebol local</h2>
-                        <p>
-                            A equipe da ADESC mostrou garra e determinação em mais uma vitória
-                            emocionante de virada, mantendo-se na liderança do campeonato de futebol local. Com um
-                            desempenho impressionante em campo, nossos atletas provaram mais uma vez o
-                            comprometimento e
-                            habilidade que os mantêm no topo da competição.
-                        </p>
-                    </div>
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
                 </div>
 
-                <!--COMPARTILHAMENTO-->
-                <div class="col-lg-8">
-                    <div class="portfolio-info">
-                        <h3>Compartilhe</h3>
-                        <div class="compart-links mt-3">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=URL_DA_PÁGINA" class="facebook"
-                                target="_blank"><i class="bx bxl-facebook"></i></a>
-                            <a href="https://twitter.com/intent/tweet?url=SUA_URL_AQUI&text=SUA_MENSAGEM_AQUI"
-                                class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a>
-                            <a href="instagram://share?url=[URL DA PÁGINA]" class="instagram"><i
-                                    class="bx bxl-instagram"></i></a>
-                            <a href="mailto:SEU_EMAIL_AQUI?subject=ASSUNTO_AQUI&body=MENSAGEM_AQUI"
-                                class="google-plus"><i class="bx bxl-google-plus"></i></a>
-                            <a href="whatsapp://send?text=Confira%20essa%20notícia:%20https://www.example.com/noticia"
-                                class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
-                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.exemplo.com"
-                                class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                        </div>
-                    </div>
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
                 </div>
 
-                <!--COMENTÁRIOS E FORMULÁRIO DE COMENTAR-->
-                <div class="col-lg-8">
-                    <div class="portfolio-info">
-                        <h3>Comentários</h3>
-                        <div class="row g-4 py-2 mb-4 row-cols-1 row-cols-lg-3">
-                            <div class="feature col">
-                                <div
-                                    class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-                                    <i class="bi bi-chat-left-dots"></i>
-                                </div>
-                                <h3>Marcos Rodrigues</h3>
-                                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with
-                                    another sentence and probably just keep going until we run out of words.</p>
-                                <a href="#" class="icon-link">Terça-feira, 18 de Abr de 2023</a>
-                            </div>
-                            <div class="feature col">
-                                <div
-                                    class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-                                    <i class="bi bi-chat-left-dots"></i>
-                                </div>
-                                <h3>Maria Antônia</h3>
-                                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with
-                                    another sentence and probably just keep going until we run out of words.</p>
-                                <a href="#" class="icon-link">Segunda-feira, 17 de Abr de 2023</a>
-                            </div>
-                            <div class="feature col">
-                                <div
-                                    class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-                                    <i class="bi bi-chat-left-dots"></i>
-                                </div>
-                                <h3>Paulo Vitor</h3>
-                                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with
-                                    another sentence and probably just keep going until we run out of words.</p>
-                                <a href="#" class="icon-link">Domingo, 16 de Abr de 2023</a>
-                            </div>
-                        </div>
-                        <h3>Deixe um comentário</h3>
-                        <form action="forms/contact" method="post" role="form" class="php-form">
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="name">Seu Nome:</label>
-                                    <input type="text" name="name" class="form-control" id="name" required="">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="name">Seu E-mail:</label>
-                                    <input type="email" class="form-control" name="email" id="email" required="">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Menssagem:</label>
-                                <textarea class="form-control" name="message" rows="10" required=""></textarea>
-                            </div>
-                            <div class="my-3">
-                                <div class="loading">Carregando</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Seu comentário foi enviada. Obrigado!</div>
-                            </div>
-                            <div class="text-center"><button type="submit"><i class="bi bi-chat-left-dots"></i> Enviar
-                                    Comentário</button></div>
-                        </form>
-                    </div>
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                        alt="">
                 </div>
 
             </div>
 
         </div>
-    </section><!-- End Portfolio Details Section -->
+    </section><!-- Fim Patrocinadores -->
 
 </main><!-- End #main -->
 
