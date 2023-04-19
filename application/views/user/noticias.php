@@ -34,19 +34,19 @@
                                 </div>
 
                                 <h2 class="title">
-                                    <a href="blog-details.html">ADESC vence de virada e segue na liderança do campeonato
+                                    <a href="<?php echo URL . 'noticia/'; ?>">ADESC vence de virada e segue na liderança do campeonato
                                         de futebol local</a>
                                 </h2>
 
                                 <div class="meta-top">
                                     <ul>
                                         <li class="d-flex align-items-center"><i class="bi bi-person-circle"></i> <a
-                                                href="blog-details.html">ADESC Lajes</a></li>
+                                                href="<?php echo URL . 'noticia/' ?>">ADESC Lajes</a></li>
                                         <li class="d-flex align-items-center"><i class="bi bi-calendar-event"></i> <a
-                                                href="blog-details.html"><time datetime="2022-01-01">19 Abr
+                                                href="<?php echo URL . 'noticia/' ?>"><time datetime="2022-01-01">19 Abr
                                                     2023</time></a></li>
                                         <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                                href="blog-details.html">5 Coment.</a></li>
+                                                href="<?php echo URL . 'noticia/' ?>">5 Coment.</a></li>
                                     </ul>
                                 </div>
 
@@ -62,7 +62,7 @@
                                 </div>
 
                                 <div class="read-more mt-auto align-self-end">
-                                    <a href="blog-details.html">Ler mais</a>
+                                    <a href="<?php echo URL . 'noticia/' ?>">Ler mais</a>
                                 </div>
 
                             </article>
@@ -241,7 +241,7 @@
                                     <img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>" alt=""
                                         class="flex-shrink-0">
                                     <div>
-                                        <h4><a href="blog-post.html">ADESC vence de virada e segue na liderança do
+                                        <h4><a href="<?php echo URL . 'noticia/' ?>">ADESC vence de virada e segue na liderança do
                                                 campeonato de futebol local</a></h4>
                                         <time datetime="2020-01-01">19 Abr 2023</time>
                                     </div>
