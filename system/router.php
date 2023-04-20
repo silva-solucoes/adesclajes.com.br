@@ -20,6 +20,8 @@ $routes=[
     'natacao' => 'EsportesController::natacao',
     'taekwondo' => 'EsportesController::taekwondo',
     'volei' => 'EsportesController::volei',
+    'galeria_fotos' => 'EsportesController::galeria',
+    'quadro_atletas' => 'EsportesController::atletas',
     '404' => 'MainController::error',
 ];
 

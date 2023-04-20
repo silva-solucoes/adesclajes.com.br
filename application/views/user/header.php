@@ -67,8 +67,8 @@
                   <li><a href="volei">Vôlei</a></li>
                 </ul>
               </li>
-              <li><a href="#">Galeria de Fotos</a></li>
-              <li><a href="#">Quadro de Atletas</a></li>
+              <li><a href="galeria_fotos">Galeria de Fotos</a></li>
+              <li><a href="quadro_atletas">Quadro de Atletas</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#team">Equipe</a></li>

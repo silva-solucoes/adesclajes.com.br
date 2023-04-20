@@ -23,6 +23,14 @@ class EsportesController {
         require_once 'application/views/user/detalhe_esporte.php';
     }
 
+    static function galeria(){
+        require_once 'application/views/user/detalhe_esporte.php';
+    }
+
+    static function atletas(){
+        require_once 'application/views/user/detalhe_esporte.php';
+    }
+
     static function error(){
         require_once 'application/views/erros/erro.php';
     }
