@@ -15,6 +15,11 @@ $routes=[
     'noticias' => 'NewsController::index',
     'noticia/' => 'NewsDescriptionController::index',
     'sobre' => 'SobreController::index',
+    'futsal' => 'EsportesController::futsal',
+    'hidroginastica' => 'EsportesController::hidroginastica',
+    'natacao' => 'EsportesController::natacao',
+    'taekwondo' => 'EsportesController::taekwondo',
+    'volei' => 'EsportesController::volei',
     '404' => 'MainController::error',
 ];
 
