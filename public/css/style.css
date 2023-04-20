@@ -2709,10 +2709,26 @@ section {
 .blog .blog-pagination li.active,
 .blog .blog-pagination li:hover {
   background: #47B5E9;
-  border-radius: 80%;
+  border-radius: 8  0%;
 }
 
 .blog .blog-pagination li.active a,
 .blog .blog-pagination li:hover a {
   color: #F2F2F2;
+}
+
+/*--------------------------------------------------------------
+# Modal
+--------------------------------------------------------------*/
+#botao-privacidade{
+  border-radius: 30px;
+}
+
+#secao-privada{
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+#botao-inscricao{
+  border-radius: 30px;
 }

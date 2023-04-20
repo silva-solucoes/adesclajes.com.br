@@ -24,7 +24,7 @@
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Sobre-nós</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="<?php echo URL . 'noticias' ?>">Notícias</a>
                         </li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="privacidade">Política de privacidade</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#privacidade">Política de privacidade</a></li>
                     </ul>
                 </div>
 

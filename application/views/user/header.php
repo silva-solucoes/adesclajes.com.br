@@ -57,7 +57,8 @@
           <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#about">Sobre-nós</a></li>
           <li class="dropdown"><a href="#"><span>Esportes</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li class="dropdown"><a href="#"><span>Categorias Esportivas</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="#"><span>Categorias Esportivas</span> <i
+                    class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Futsal</a></li>
                   <li><a href="#">Hidroginástica</a></li>
@@ -95,8 +96,102 @@
           ...
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Agendar</button>
+          <button id="botao-inscricao" type="button" class="btn btn-primary">Agendar</button>
+          <button id="botao-inscricao" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Inserindo Modal POLÍTICA DE PRIVACIDADE ======= -->
+  <!-- Modal -->
+  <div class="modal fade" id="privacidade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-shield-lock"></i> Política de Privacidade da Escolinha ADESC Lajes</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- ======= Seção de Política de Privacidade ======= -->
+          <section id="secao-privada" class="inner-page">
+            <div class="container" data-aos="fade-up">
+              <div class="section-header text-center">
+                <p>Proteger sua privacidade é nossa prioridade. Conheça nossa política de privacidade e saiba como seus
+                  dados são utilizados e protegidos. Leia agora e fique por dentro de seus direitos!</p>
+              </div>
+
+              <p class="text-justify">
+                A Escolinha ADESC valoriza a privacidade dos usuários do site institucional e se compromete em proteger
+                todas as informações pessoais fornecidas durante a inscrição e outras atividades relacionadas.
+              </p>
+
+              <h5>Coleta de dados</h5>
+              <p class="text-justify">
+                Durante o processo de inscrição, a Escolinha ADESC coleta informações pessoais dos novos atletas, tais
+                como
+                nome completo, data de nascimento, endereço de e-mail, endereço residencial, número de telefone e
+                informações médicas relevantes. Estes dados são usados apenas para fins de cadastro e para garantir que
+                os
+                atletas estejam aptos para participar das atividades esportivas oferecidas pela escolinha.
+              </p>
+
+              <h5>Uso de informações</h5>
+              <p class="text-justify">
+                A Escolinha ADESC utiliza as informações coletadas apenas para fins internos, como para gerenciar a
+                inscrição
+                dos atletas, oferecer serviços personalizados e melhorar a qualidade das atividades esportivas
+                oferecidas. Os
+                dados pessoais fornecidos pelos atletas não serão divulgados a terceiros sem o consentimento prévio.
+              </p>
+
+              <h5>Exibição de imagens</h5>
+              <p class="text-justify">
+                A Escolinha ADESC pode exibir imagens dos atletas em seu site institucional e em suas redes sociais,
+                desde
+                que os pais ou responsáveis pelos atletas tenham concedido a devida autorização. Caso a autorização não
+                seja
+                fornecida, as imagens não serão exibidas.
+              </p>
+
+              <h5>Segurança de dados</h5>
+              <p class="text-justify">
+                A Escolinha ADESC adota medidas de segurança para garantir a proteção dos dados pessoais dos atletas,
+                incluindo medidas físicas, eletrônicas e administrativas para prevenir o acesso não autorizado ou
+                ilegal, uso
+                indevido, perda ou alteração dos dados coletados.
+              </p>
+
+              <h5>Direitos do usuário</h5>
+              <p class="text-justify">
+                Os usuários têm o direito de solicitar acesso aos seus dados pessoais, bem como a correção ou exclusão
+                de
+                informações imprecisas ou incompletas. Além disso, os usuários têm o direito de se opor ao uso de seus
+                dados
+                pessoais para fins de marketing direto.
+              </p>
+
+              <h5>Alterações na política de privacidade</h5>
+              <p class="text-justify">
+                A Escolinha ADESC pode atualizar esta política de privacidade periodicamente, e os usuários serão
+                notificados
+                sobre quaisquer alterações relevantes. É recomendável que os usuários revisem regularmente esta política
+                de
+                privacidade para estar sempre cientes das informações coletadas e do uso das mesmas pela escolinha.
+              </p>
+
+              <h5>Contato</h5>
+              <p class="text-justify">
+                Em caso de dúvidas ou sugestões relacionadas à política de privacidade, entre em contato com a equipe da
+                Escolinha ADESC pelo formulário de contato disponível em nosso site institucional.
+              </p>
+
+            </div>
+          </section><!-- End Seção de Política de Privacidade -->
+        </div>
+        <div class="modal-footer">
+          <button id="botao-privacidade" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceito</button>
         </div>
       </div>
     </div>
