@@ -1,3 +1,3 @@
 <?php
-    define('URL', 'http://localhost/backup/adesclajes.com.br/');
+    define('URL', 'http://localhost/adesclajes/');
 ?>

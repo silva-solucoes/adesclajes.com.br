@@ -59,11 +59,11 @@
             <ul>
               <li class="dropdown"><a href="#"><span>Categorias Esportivas</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Futsal</a></li>
-                  <li><a href="#">Hidroginástica</a></li>
-                  <li><a href="#">Natação</a></li>
-                  <li><a href="#">Taekwondo</a></li>
-                  <li><a href="#">Vôlei</a></li>
+                  <li><a href="futsal">Futsal</a></li>
+                  <li><a href="hidroginastica">Hidroginástica</a></li>
+                  <li><a href="natacao">Natação</a></li>
+                  <li><a href="taekwondo">Taekwondo</a></li>
+                  <li><a href="volei">Vôlei</a></li>
                 </ul>
               </li>
               <li><a href="#">Galeria de Fotos</a></li>
