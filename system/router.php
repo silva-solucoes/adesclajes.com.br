@@ -22,6 +22,8 @@ $routes=[
     'volei' => 'EsportesController::volei',
     'galeria_fotos' => 'EsportesController::galeria',
     'quadro_atletas' => 'EsportesController::atletas',
+    'login' => 'LoginController::login',
+    'recuperar-senha' => 'LoginController::recuperar_senha',
     '404' => 'MainController::error',
 ];
 
