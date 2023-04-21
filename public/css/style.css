@@ -2732,3 +2732,177 @@ section {
 #botao-inscricao{
   border-radius: 30px;
 }
+
+.about-img {
+  position: relative;
+  margin: 60px 0 0 60px;
+}
+
+.about-img:before {
+  position: absolute;
+  inset: -60px 0 0 -60px;
+  z-index: -1;
+  content: "";
+  background: url(../images/about-bg.png) top left;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 575px) {
+  .about-img {
+    margin: 30px 0 0 30px;
+  }
+
+  .about-img:before {
+    inset: -30px 0 0 -30px;
+  }
+}
+
+#tituloForm {
+  color: var(--color-secondary);
+  font-family: var(--font-secondary);
+  font-weight: 300;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  #tituloForm {
+    font-size: 28px;
+  }
+}
+
+.nav-pills {
+  border-bottom: 1px solid rgba(71,181,233, 0.2);
+}
+
+.nav-pills li+li {
+  margin-left: 20px;
+}
+
+#guias {
+  background: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-secondary);
+  padding: 12px 0;
+  margin-bottom: -2px;
+  border-radius: 0;
+  font-family: var(--font-secondary);
+}
+
+#guias.active {
+  color: #47B5E9;
+  background: none;
+  border-bottom: 3px solid #47B5E9;
+}
+
+@media (max-width: 575px) {
+  #guias {
+    font-size: 14px;
+  }
+}
+
+.tab-content h4 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.tab-content i {
+  font-size: 22px;
+  line-height: 0;
+  margin-right: 8px;
+  color: var(--color-primary);
+}
+
+.php-inscricao-form {
+  width: 100%;
+  border-top: 3px solid #47B5E9;
+  border-bottom: 3px solid #47B5E9;
+  padding: 30px;
+  background: #fff;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+}
+
+.php-inscricao-form .form-group {
+  padding-bottom: 8px;
+}
+
+.php-inscricao-form .validate {
+  display: none;
+  color: red;
+  margin: 0 0 15px 0;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.php-inscricao-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: left;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.php-inscricao-form .error-message br+br {
+  margin-top: 25px;
+}
+
+.php-inscricao-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #18d26e;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.php-inscricao-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+.php-inscricao-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #18d26e;
+  border-top-color: #eee;
+  animation: animate-loading 1s linear infinite;
+}
+
+.php-inscricao-form .form-group {
+  margin-bottom: 20px;
+}
+
+.php-inscricao-form label {
+  padding-bottom: 8px;
+}
+
+.php-inscricao-form input,
+.php-inscricao-form select {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.php-inscricao-form input:focus,
+.php-inscricao-form select:focus {
+  border-color: #47B5E9;
+}
+
+.php-inscricao-form input {
+  height: 44px;
+}
+
+.php-inscricao-form select {
+  padding: 10px 12px;
+}
