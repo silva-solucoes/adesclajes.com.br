@@ -60,6 +60,15 @@
                     </div>
                 </div>
 
+                <div class="col-lg-12">
+                    <div class="portfolio-description">
+                        <h2>Breve descrição da página</h2>
+                        <p>
+                            Aqui serão exibidas os conteúdos dos esportes, Atletas de cada esporte e as mídias.
+                        </p>
+                    </div>
+                </div>
+
             </div>
 
         </div>
