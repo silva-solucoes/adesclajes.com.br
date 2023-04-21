@@ -2730,7 +2730,39 @@ section {
 }
 
 #botao-inscricao{
-  border-radius: 30px;
+  background-color: #47B5E9;
+  border: none;
+  padding: 12px 34px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+#botao-inscricao:hover{
+  background-color: #3d9fcc;
+  border: none;
+  padding: 12px 34px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+#botao-cancelar{
+  background-color: #595959;
+  border: none;
+  padding: 12px 34px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+#botao-cancelar:hover{
+  background-color: #3f3f3f;
+  border: none;
+  padding: 12px 34px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
 }
 
 .about-img {

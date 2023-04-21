@@ -106,7 +106,7 @@
             </div>
 
             <div class="col-lg-7">
-              <h3 class="pt-0 pt-lg-5" id="tituloForm">Formulário de Pré-Inscrição</h3>
+              <h3 class="pt-0 pt-lg-5" id="tituloForm">Formulário de Inscrição</h3>
 
               <!-- Tabs -->
               <ul class="nav nav-pills mb-3">
@@ -292,9 +292,9 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button id="botao-inscricao" type="button" class="btn btn-primary">Agendar</button>
+          <button id="botao-inscricao" type="submit" class="">Finalizar Inscrição</button>
           </form>
-          <button id="botao-inscricao" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="botao-cancelar" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
