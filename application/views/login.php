@@ -84,7 +84,8 @@
                                             <div class="input-group has-validation">
                                                 <input type="password" name="password" class="form-control"
                                                     id="yourPassword" placeholder="Sua senha" required>
-                                                <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-eye-fill"></i></span>
+                                                <span class="input-group-text" id="inputGroupPrepend"><i
+                                                        class="bi bi-eye-fill"></i></span>
                                                 <div class="invalid-feedback">Por favor, digite sua senha!</div>
                                             </div>
                                         </div>
@@ -102,7 +103,9 @@
                                         </div>
                                         <div class="col-12">
                                             <p class="small mb-0">Esqueceu a Senha? <a
-                                                    href="pages-register.html">Recupera Senha</a></p>
+                                                    href="<?php echo URL . 'recuperar-senha'; ?>">Recupera Senha</a></p>
+                                            <p class="small mb-0"><i class="bi bi-globe"></i> <a
+                                                    href="<?php echo URL . 'index'; ?>">Voltar para o site</a></p>
                                         </div>
                                     </form>
 
