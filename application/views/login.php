@@ -73,7 +73,7 @@
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">E-mail</label>
                                             <div class="input-group has-validation">
-                                                <input type="text" name="username" class="form-control"
+                                                <input type="email" name="username" class="form-control"
                                                     id="yourUsername" placeholder="Seu e-mail" required>
                                                 <div class="invalid-feedback">Por favor, digite seu e-mail.</div>
                                             </div>
@@ -141,7 +141,7 @@
     <script src="<?php echo URL . 'public/vendor/php-email-form/validate.js'; ?>"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="<?php echo URL . 'public/js/mainLogin.js'; ?>"></script>
 
 </body>
 
