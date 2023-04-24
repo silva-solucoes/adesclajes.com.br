@@ -47,7 +47,7 @@
 
       <!--<h1 class="logo me-auto"><a href="index">Silva Soluções Tech</a></h1>-->
       <!-- Descomente abaixo se preferir usar um logotipo de imagem -->
-      <a href="index" class="logo me-auto"><img src="<?php echo URL . 'public/images/logo-d.png'; ?>" alt=""
+      <a href="<?php echo URL . 'index'; ?>" class="logo me-auto"><img src="<?php echo URL . 'public/images/logo-d.png'; ?>" alt=""
           class="img-fluid"></a>
 
       <nav id="navbar" class="navbar">

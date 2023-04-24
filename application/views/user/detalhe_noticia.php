@@ -170,7 +170,7 @@
                     <div class="sidebar">
 
                         <div class="sidebar-item search-form">
-                            <h3 class="sidebar-title">Search</h3>
+                            <h3 class="sidebar-title">Burcar por</h3>
                             <form action="" class="mt-3">
                                 <input type="text">
                                 <button type="submit"><i class="bi bi-search"></i></button>
@@ -178,19 +178,19 @@
                         </div><!-- End sidebar search formn-->
 
                         <div class="sidebar-item categories">
-                            <h3 class="sidebar-title">Categories</h3>
+                            <h3 class="sidebar-title">Categoria</h3>
                             <ul class="mt-3">
-                                <li><a href="#">General <span>(25)</span></a></li>
-                                <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                                <li><a href="#">Travel <span>(5)</span></a></li>
-                                <li><a href="#">Design <span>(22)</span></a></li>
-                                <li><a href="#">Creative <span>(8)</span></a></li>
-                                <li><a href="#">Educaion <span>(14)</span></a></li>
+                                <li><a href="#">Geral <span>(25)</span></a></li>
+                                <li><a href="#">Futebol <span>(12)</span></a></li>
+                                <li><a href="#">Futsal <span>(5)</span></a></li>
+                                <li><a href="#">Natação <span>(22)</span></a></li>
+                                <li><a href="#">Taekwondo <span>(8)</span></a></li>
+                                <li><a href="#">Volêi <span>(14)</span></a></li>
                             </ul>
                         </div><!-- End sidebar categories-->
 
                         <div class="sidebar-item recent-posts">
-                            <h3 class="sidebar-title">Recent Posts</h3>
+                            <h3 class="sidebar-title">Últimas notícias</h3>
 
                             <div class="mt-3">
 
@@ -198,7 +198,9 @@
                                     <img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>" alt=""
                                         class="flex-shrink-0">
                                     <div>
-                                        <h4><a href="blog-post.html">Nihil blanditiis at in nihil autem</a></h4>
+                                        <h4><a href="<?php echo URL . 'noticia/' ?>">ADESC vence de virada e segue na
+                                                liderança do
+                                                campeonato de futebol local</a></h4>
                                         <time datetime="2020-01-01">19 Abr 2023</time>
                                     </div>
                                 </div><!-- End recent post item-->
@@ -207,7 +209,8 @@
                                     <img src="<?php echo URL . 'public/uploads/noticia-02.jpg'; ?>" alt=""
                                         class="flex-shrink-0">
                                     <div>
-                                        <h4><a href="blog-post.html">Quidem autem et impedit</a></h4>
+                                        <h4><a href="blog-post.html">O prefeito Felipe Menezes marcou presença no
+                                                campeonato local</a></h4>
                                         <time datetime="2020-01-01">18 Abr 2023</time>
                                     </div>
                                 </div><!-- End recent post item-->
@@ -216,7 +219,8 @@
                                     <img src="<?php echo URL . 'public/uploads/noticia-03.jpg'; ?>" alt=""
                                         class="flex-shrink-0">
                                     <div>
-                                        <h4><a href="blog-post.html">Id quia et et ut maxime similique occaecati ut</a>
+                                        <h4><a href="blog-post.html">Entrega de materiais esportivos fortalece atletas
+                                                da ADESC</a>
                                         </h4>
                                         <time datetime="2020-01-01">17 Abr 2023</time>
                                     </div>
@@ -226,7 +230,8 @@
                                     <img src="<?php echo URL . 'public/uploads/noticia-04.jpg'; ?>" alt=""
                                         class="flex-shrink-0">
                                     <div>
-                                        <h4><a href="blog-post.html">Laborum corporis quo dara net para</a></h4>
+                                        <h4><a href="blog-post.html">Entrega de materiais esportivos fortalece atletas
+                                                da ADESC</a></h4>
                                         <time datetime="2020-01-01">16 Abr 2023</time>
                                     </div>
                                 </div><!-- End recent post item-->
@@ -244,12 +249,10 @@
                             </ul>
                         </div><!-- End sidebar tags-->
 
-                    </div><!-- End Blog Sidebar -->
-
+                    </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
     </section><!-- End Blog Details Section -->
 
     <!-- ======= Seção de Patrocinadores ======= -->

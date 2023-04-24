@@ -84,56 +84,64 @@
                                         <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
                                             <p class="text-justify">
 
-                                            <div class="row">
+                                            <section id="noticias" class="recent-blog-posts">
+                                                <div class="container" data-aos="fade-up">
+                                                    <div class="row">
 
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                19 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        19 de Abril de 2023</span>
+                                                                    <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
+                                                                </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
+                                                            </div>
                                                         </div>
-                                                        <h3 class="post-title">Fulano de Tal
-                                                        </h3>
+
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-16.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        18 de Abril de 2023</span>
+                                                                    <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
+                                                                </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        17 de Abril de 2023</span>
+                                                                    <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
+                                                                </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
-
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-16.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                18 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
-                                                        </div>
-                                                        <h3 class="post-title">Fulano de Tal</h3>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                17 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
-                                                        </div>
-                                                        <h3 class="post-title">Fulano de Tal</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
+                                            </section>
                                             </p>
                                         </div>
                                     </li>
@@ -147,55 +155,64 @@
                                         <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
                                             <p class="text-justify">
 
-                                            <div class="row">
+                                                <section id="noticias" class="recent-blog-posts">
+                                                    <div class="container" data-aos="fade-up">
+                                                        <div class="row">
 
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                19 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
+                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                                                                <div class="post-box">
+                                                                    <div class="post-img"><img
+                                                                            src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
+                                                                            class="img-fluid" alt=""></div>
+                                                                    <div class="meta">
+                                                                        <span class="post-date"><i
+                                                                                class="bi bi-calendar-event"></i>
+                                                                            19 de Abril de 2023</span>
+                                                                        <span class="post-author"> / <i
+                                                                                class="bi bi-person-circle"></i> ADESC
+                                                                            Lajes</span>
+                                                                    </div>
+                                                                    <h3 class="post-title">Fulano de Tal</h3>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                                                                <div class="post-box">
+                                                                    <div class="post-img"><img
+                                                                            src="<?php echo URL . 'public/uploads/noticia-16.jpg'; ?>"
+                                                                            class="img-fluid" alt=""></div>
+                                                                    <div class="meta">
+                                                                        <span class="post-date"><i
+                                                                                class="bi bi-calendar-event"></i>
+                                                                            18 de Abril de 2023</span>
+                                                                        <span class="post-author"> / <i
+                                                                                class="bi bi-person-circle"></i> ADESC
+                                                                            Lajes</span>
+                                                                    </div>
+                                                                    <h3 class="post-title">Fulano de Tal</h3>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                                                                <div class="post-box">
+                                                                    <div class="post-img"><img
+                                                                            src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
+                                                                            class="img-fluid" alt=""></div>
+                                                                    <div class="meta">
+                                                                        <span class="post-date"><i
+                                                                                class="bi bi-calendar-event"></i>
+                                                                            17 de Abril de 2023</span>
+                                                                        <span class="post-author"> / <i
+                                                                                class="bi bi-person-circle"></i> ADESC
+                                                                            Lajes</span>
+                                                                    </div>
+                                                                    <h3 class="post-title">Fulano de Tal</h3>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
-                                                        <h3 class="post-title">Fulano de Tal
-                                                        </h3>
                                                     </div>
-                                                </div>
-
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-16.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                18 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
-                                                        </div>
-                                                        <h3 class="post-title">Fulano de Tal</h3>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                17 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
-                                                        </div>
-                                                        <h3 class="post-title">Fulano de Tal</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                                </section>
 
                                             </p>
                                         </div>
@@ -210,55 +227,64 @@
                                         <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
                                             <p class="text-justify">
 
-                                            <div class="row">
+                                                <section id="noticias" class="recent-blog-posts">
+                                                    <div class="container" data-aos="fade-up">
+                                                        <div class="row">
 
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                19 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
+                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                                                                <div class="post-box">
+                                                                    <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                    <div class="meta">
+                                                                        <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        19 de Abril de 2023</span>
+                                                                        <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
+                                                                    </div>
+                                                                    <h3 class="post-title">Fulano de Tal</h3>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                                                                <div class="post-box">
+                                                                    <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-16.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                    <div class="meta">
+                                                                        <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        18 de Abril de 2023</span>
+                                                                        <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
+                                                                    </div>
+                                                                    <h3 class="post-title">Fulano de Tal</h3>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                                                                <div class="post-box">
+                                                                    <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                    <div class="meta">
+                                                                        <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        17 de Abril de 2023</span>
+                                                                        <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
+                                                                    </div>
+                                                                    <h3 class="post-title">Fulano de Tal</h3>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
-                                                        <h3 class="post-title">Fulano de Tal
-                                                        </h3>
                                                     </div>
-                                                </div>
-
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-16.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                18 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
-                                                        </div>
-                                                        <h3 class="post-title">Fulano de Tal</h3>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                17 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
-                                                        </div>
-                                                        <h3 class="post-title">Fulano de Tal</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                                </section>
 
                                             </p>
                                         </div>
@@ -273,55 +299,64 @@
                                         <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                                             <p class="text-justify">
 
-                                            <div class="row">
+                                                <section id="noticias" class="recent-blog-posts">
+                                                    <div class="container" data-aos="fade-up">
+                                                        <div class="row">
 
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-15.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                19 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
+                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                                                                <div class="post-box">
+                                                                    <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-15.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                    <div class="meta">
+                                                                        <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        19 de Abril de 2023</span>
+                                                                        <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
+                                                                    </div>
+                                                                    <h3 class="post-title">Fulano de Tal</h3>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                                                                <div class="post-box">
+                                                                    <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-14.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                    <div class="meta">
+                                                                        <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        18 de Abril de 2023</span>
+                                                                        <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
+                                                                    </div>
+                                                                    <h3 class="post-title">Fulano de Tal</h3>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                                                                <div class="post-box">
+                                                                    <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-15.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                    <div class="meta">
+                                                                        <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        17 de Abril de 2023</span>
+                                                                        <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
+                                                                    </div>
+                                                                    <h3 class="post-title">Fulano de Tal</h3>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
-                                                        <h3 class="post-title">Fulano de Tal
-                                                        </h3>
                                                     </div>
-                                                </div>
-
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-14.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                18 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
-                                                        </div>
-                                                        <h3 class="post-title">Fulano de Tal</h3>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                                                    <div class="post-box">
-                                                        <div class="post-img"><img
-                                                                src="<?php echo URL . 'public/uploads/noticia-15.jpg'; ?>"
-                                                                class="img-fluid" alt=""></div>
-                                                        <div class="meta">
-                                                            <span class="post-date"><i class="bi bi-calendar-event"></i>
-                                                                17 de Abril de 2023</span>
-                                                            <span class="post-author"> / <i
-                                                                    class="bi bi-person-circle"></i> ADESC Lajes</span>
-                                                        </div>
-                                                        <h3 class="post-title">Fulano de Tal</h3>
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                                </section>
 
                                             </p>
                                         </div>
@@ -373,120 +408,120 @@
                                         <div class="row gy-4 justify-content-center">
                                             <div class="col-xl-3 col-lg-4 col-md-6">
                                                 <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-13.jpg'; ?>" class="img-fluid"
-                                                        alt="">
+                                                    <img src="<?php echo URL . 'public/uploads/noticia-13.jpg'; ?>"
+                                                        class="img-fluid" alt="">
                                                     <div
                                                         class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-13.jpg'; ?>" title="Gallery 1"
-                                                            class="glightbox preview-link"><i
+                                                        <a href="<?php echo URL . 'public/uploads/noticia-13.jpg'; ?>"
+                                                            title="Gallery 1" class="glightbox preview-link"><i
                                                                 class="bi bi-arrows-angle-expand"></i></a>
                                                     </div>
                                                 </div>
                                             </div><!-- End Gallery Item -->
                                             <div class="col-xl-3 col-lg-4 col-md-6">
                                                 <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-08.jpg'; ?>" class="img-fluid"
-                                                        alt="">
+                                                    <img src="<?php echo URL . 'public/uploads/noticia-08.jpg'; ?>"
+                                                        class="img-fluid" alt="">
                                                     <div
                                                         class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-08.jpg'; ?>" title="Gallery 2"
-                                                            class="glightbox preview-link"><i
+                                                        <a href="<?php echo URL . 'public/uploads/noticia-08.jpg'; ?>"
+                                                            title="Gallery 2" class="glightbox preview-link"><i
                                                                 class="bi bi-arrows-angle-expand"></i></a>
                                                     </div>
                                                 </div>
                                             </div><!-- End Gallery Item -->
                                             <div class="col-xl-3 col-lg-4 col-md-6">
                                                 <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-09.jpg'; ?>" class="img-fluid"
-                                                        alt="">
+                                                    <img src="<?php echo URL . 'public/uploads/noticia-09.jpg'; ?>"
+                                                        class="img-fluid" alt="">
                                                     <div
                                                         class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-09.jpg'; ?>" title="Gallery 3"
-                                                            class="glightbox preview-link"><i
+                                                        <a href="<?php echo URL . 'public/uploads/noticia-09.jpg'; ?>"
+                                                            title="Gallery 3" class="glightbox preview-link"><i
                                                                 class="bi bi-arrows-angle-expand"></i></a>
                                                     </div>
                                                 </div>
                                             </div><!-- End Gallery Item -->
                                             <div class="col-xl-3 col-lg-4 col-md-6">
                                                 <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-05.jpg'; ?>" class="img-fluid"
-                                                        alt="">
+                                                    <img src="<?php echo URL . 'public/uploads/noticia-05.jpg'; ?>"
+                                                        class="img-fluid" alt="">
                                                     <div
                                                         class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-05.jpg'; ?>" title="Gallery 4"
-                                                            class="glightbox preview-link"><i
+                                                        <a href="<?php echo URL . 'public/uploads/noticia-05.jpg'; ?>"
+                                                            title="Gallery 4" class="glightbox preview-link"><i
                                                                 class="bi bi-arrows-angle-expand"></i></a>
                                                     </div>
                                                 </div>
                                             </div><!-- End Gallery Item -->
                                             <div class="col-xl-3 col-lg-4 col-md-6">
                                                 <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-06.jpg'; ?>" class="img-fluid"
-                                                        alt="">
+                                                    <img src="<?php echo URL . 'public/uploads/noticia-06.jpg'; ?>"
+                                                        class="img-fluid" alt="">
                                                     <div
                                                         class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-06.jpg'; ?>" title="Gallery 5"
-                                                            class="glightbox preview-link"><i
+                                                        <a href="<?php echo URL . 'public/uploads/noticia-06.jpg'; ?>"
+                                                            title="Gallery 5" class="glightbox preview-link"><i
                                                                 class="bi bi-arrows-angle-expand"></i></a>
                                                     </div>
                                                 </div>
                                             </div><!-- End Gallery Item -->
                                             <div class="col-xl-3 col-lg-4 col-md-6">
                                                 <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-10.jpg'; ?>" class="img-fluid"
-                                                        alt="">
+                                                    <img src="<?php echo URL . 'public/uploads/noticia-10.jpg'; ?>"
+                                                        class="img-fluid" alt="">
                                                     <div
                                                         class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-10.jpg'; ?>" title="Gallery 6"
-                                                            class="glightbox preview-link"><i
+                                                        <a href="<?php echo URL . 'public/uploads/noticia-10.jpg'; ?>"
+                                                            title="Gallery 6" class="glightbox preview-link"><i
                                                                 class="bi bi-arrows-angle-expand"></i></a>
                                                     </div>
                                                 </div>
                                             </div><!-- End Gallery Item -->
                                             <div class="col-xl-3 col-lg-4 col-md-6">
                                                 <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-11.jpg'; ?>" class="img-fluid"
-                                                        alt="">
+                                                    <img src="<?php echo URL . 'public/uploads/noticia-11.jpg'; ?>"
+                                                        class="img-fluid" alt="">
                                                     <div
                                                         class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-11.jpg'; ?>" title="Gallery 7"
-                                                            class="glightbox preview-link"><i
+                                                        <a href="<?php echo URL . 'public/uploads/noticia-11.jpg'; ?>"
+                                                            title="Gallery 7" class="glightbox preview-link"><i
                                                                 class="bi bi-arrows-angle-expand"></i></a>
                                                     </div>
                                                 </div>
                                             </div><!-- End Gallery Item -->
                                             <div class="col-xl-3 col-lg-4 col-md-6">
                                                 <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-12.jpg'; ?>" class="img-fluid"
-                                                        alt="">
+                                                    <img src="<?php echo URL . 'public/uploads/noticia-12.jpg'; ?>"
+                                                        class="img-fluid" alt="">
                                                     <div
                                                         class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-12.jpg'; ?>" title="Gallery 8"
-                                                            class="glightbox preview-link"><i
+                                                        <a href="<?php echo URL . 'public/uploads/noticia-12.jpg'; ?>"
+                                                            title="Gallery 8" class="glightbox preview-link"><i
                                                                 class="bi bi-arrows-angle-expand"></i></a>
                                                     </div>
                                                 </div>
                                             </div><!-- End Gallery Item -->
                                             <div class="col-xl-3 col-lg-4 col-md-6">
                                                 <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-20.jpg'; ?>" class="img-fluid"
-                                                        alt="">
+                                                    <img src="<?php echo URL . 'public/uploads/noticia-20.jpg'; ?>"
+                                                        class="img-fluid" alt="">
                                                     <div
                                                         class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-20.jpg'; ?>" title="Gallery 9"
-                                                            class="glightbox preview-link"><i
+                                                        <a href="<?php echo URL . 'public/uploads/noticia-20.jpg'; ?>"
+                                                            title="Gallery 9" class="glightbox preview-link"><i
                                                                 class="bi bi-arrows-angle-expand"></i></a>
                                                     </div>
                                                 </div>
                                             </div><!-- End Gallery Item -->
                                             <div class="col-xl-3 col-lg-4 col-md-6">
                                                 <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-21.jpg'; ?>" class="img-fluid"
-                                                        alt="">
+                                                    <img src="<?php echo URL . 'public/uploads/noticia-21.jpg'; ?>"
+                                                        class="img-fluid" alt="">
                                                     <div
                                                         class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-21.jpg'; ?>" title="Gallery 10"
-                                                            class="glightbox preview-link"><i
+                                                        <a href="<?php echo URL . 'public/uploads/noticia-21.jpg'; ?>"
+                                                            title="Gallery 10" class="glightbox preview-link"><i
                                                                 class="bi bi-arrows-angle-expand"></i></a>
                                                     </div>
                                                 </div>
@@ -544,6 +579,10 @@
 
                     </div>
                 </section><!-- Fim Patrocinadores -->
+
+                <!-- Modal de Atletas -->
+
+                <!-- Fim Modal de Atletas -->
 
 </main><!-- End #main -->
 
