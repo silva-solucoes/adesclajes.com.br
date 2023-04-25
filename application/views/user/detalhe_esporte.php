@@ -90,6 +90,7 @@
 
                                                         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                                                             <div class="post-box">
+
                                                                 <div class="post-img"><img
                                                                         src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
                                                                         class="img-fluid" alt=""></div>
@@ -101,7 +102,10 @@
                                                                             class="bi bi-person-circle"></i> ADESC
                                                                         Lajes</span>
                                                                 </div>
-                                                                <h3 class="post-title">Fulano de Tal</h3>
+                                                                <a data-bs-toggle="modal"
+                                                                    data-bs-target="#detalhesAtletaModal">
+                                                                    <h3 class="post-title">Fulano de Tal</h3>
+                                                                </a>
                                                             </div>
                                                         </div>
 
@@ -155,64 +159,64 @@
                                         <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
                                             <p class="text-justify">
 
-                                                <section id="noticias" class="recent-blog-posts">
-                                                    <div class="container" data-aos="fade-up">
-                                                        <div class="row">
+                                            <section id="noticias" class="recent-blog-posts">
+                                                <div class="container" data-aos="fade-up">
+                                                    <div class="row">
 
-                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                                                                <div class="post-box">
-                                                                    <div class="post-img"><img
-                                                                            src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
-                                                                            class="img-fluid" alt=""></div>
-                                                                    <div class="meta">
-                                                                        <span class="post-date"><i
-                                                                                class="bi bi-calendar-event"></i>
-                                                                            19 de Abril de 2023</span>
-                                                                        <span class="post-author"> / <i
-                                                                                class="bi bi-person-circle"></i> ADESC
-                                                                            Lajes</span>
-                                                                    </div>
-                                                                    <h3 class="post-title">Fulano de Tal</h3>
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        19 de Abril de 2023</span>
+                                                                    <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
                                                                 </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
                                                             </div>
-
-                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                                                                <div class="post-box">
-                                                                    <div class="post-img"><img
-                                                                            src="<?php echo URL . 'public/uploads/noticia-16.jpg'; ?>"
-                                                                            class="img-fluid" alt=""></div>
-                                                                    <div class="meta">
-                                                                        <span class="post-date"><i
-                                                                                class="bi bi-calendar-event"></i>
-                                                                            18 de Abril de 2023</span>
-                                                                        <span class="post-author"> / <i
-                                                                                class="bi bi-person-circle"></i> ADESC
-                                                                            Lajes</span>
-                                                                    </div>
-                                                                    <h3 class="post-title">Fulano de Tal</h3>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                                                                <div class="post-box">
-                                                                    <div class="post-img"><img
-                                                                            src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
-                                                                            class="img-fluid" alt=""></div>
-                                                                    <div class="meta">
-                                                                        <span class="post-date"><i
-                                                                                class="bi bi-calendar-event"></i>
-                                                                            17 de Abril de 2023</span>
-                                                                        <span class="post-author"> / <i
-                                                                                class="bi bi-person-circle"></i> ADESC
-                                                                            Lajes</span>
-                                                                    </div>
-                                                                    <h3 class="post-title">Fulano de Tal</h3>
-                                                                </div>
-                                                            </div>
-
                                                         </div>
+
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-16.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        18 de Abril de 2023</span>
+                                                                    <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
+                                                                </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
+                                                                        src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
+                                                                        class="img-fluid" alt=""></div>
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
+                                                                            class="bi bi-calendar-event"></i>
+                                                                        17 de Abril de 2023</span>
+                                                                    <span class="post-author"> / <i
+                                                                            class="bi bi-person-circle"></i> ADESC
+                                                                        Lajes</span>
+                                                                </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
-                                                </section>
+                                                </div>
+                                            </section>
 
                                             </p>
                                         </div>
@@ -227,64 +231,64 @@
                                         <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
                                             <p class="text-justify">
 
-                                                <section id="noticias" class="recent-blog-posts">
-                                                    <div class="container" data-aos="fade-up">
-                                                        <div class="row">
+                                            <section id="noticias" class="recent-blog-posts">
+                                                <div class="container" data-aos="fade-up">
+                                                    <div class="row">
 
-                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                                                                <div class="post-box">
-                                                                    <div class="post-img"><img
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
                                                                         src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
                                                                         class="img-fluid" alt=""></div>
-                                                                    <div class="meta">
-                                                                        <span class="post-date"><i
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
                                                                             class="bi bi-calendar-event"></i>
                                                                         19 de Abril de 2023</span>
-                                                                        <span class="post-author"> / <i
+                                                                    <span class="post-author"> / <i
                                                                             class="bi bi-person-circle"></i> ADESC
                                                                         Lajes</span>
-                                                                    </div>
-                                                                    <h3 class="post-title">Fulano de Tal</h3>
                                                                 </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
                                                             </div>
+                                                        </div>
 
-                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                                                                <div class="post-box">
-                                                                    <div class="post-img"><img
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
                                                                         src="<?php echo URL . 'public/uploads/noticia-16.jpg'; ?>"
                                                                         class="img-fluid" alt=""></div>
-                                                                    <div class="meta">
-                                                                        <span class="post-date"><i
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
                                                                             class="bi bi-calendar-event"></i>
                                                                         18 de Abril de 2023</span>
-                                                                        <span class="post-author"> / <i
+                                                                    <span class="post-author"> / <i
                                                                             class="bi bi-person-circle"></i> ADESC
                                                                         Lajes</span>
-                                                                    </div>
-                                                                    <h3 class="post-title">Fulano de Tal</h3>
                                                                 </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
                                                             </div>
+                                                        </div>
 
-                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                                                                <div class="post-box">
-                                                                    <div class="post-img"><img
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
                                                                         src="<?php echo URL . 'public/uploads/noticia-17.jpg'; ?>"
                                                                         class="img-fluid" alt=""></div>
-                                                                    <div class="meta">
-                                                                        <span class="post-date"><i
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
                                                                             class="bi bi-calendar-event"></i>
                                                                         17 de Abril de 2023</span>
-                                                                        <span class="post-author"> / <i
+                                                                    <span class="post-author"> / <i
                                                                             class="bi bi-person-circle"></i> ADESC
                                                                         Lajes</span>
-                                                                    </div>
-                                                                    <h3 class="post-title">Fulano de Tal</h3>
                                                                 </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
                                                             </div>
-
                                                         </div>
+
                                                     </div>
-                                                </section>
+                                                </div>
+                                            </section>
 
                                             </p>
                                         </div>
@@ -299,64 +303,64 @@
                                         <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                                             <p class="text-justify">
 
-                                                <section id="noticias" class="recent-blog-posts">
-                                                    <div class="container" data-aos="fade-up">
-                                                        <div class="row">
+                                            <section id="noticias" class="recent-blog-posts">
+                                                <div class="container" data-aos="fade-up">
+                                                    <div class="row">
 
-                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                                                                <div class="post-box">
-                                                                    <div class="post-img"><img
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
                                                                         src="<?php echo URL . 'public/uploads/noticia-15.jpg'; ?>"
                                                                         class="img-fluid" alt=""></div>
-                                                                    <div class="meta">
-                                                                        <span class="post-date"><i
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
                                                                             class="bi bi-calendar-event"></i>
                                                                         19 de Abril de 2023</span>
-                                                                        <span class="post-author"> / <i
+                                                                    <span class="post-author"> / <i
                                                                             class="bi bi-person-circle"></i> ADESC
                                                                         Lajes</span>
-                                                                    </div>
-                                                                    <h3 class="post-title">Fulano de Tal</h3>
                                                                 </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
                                                             </div>
+                                                        </div>
 
-                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                                                                <div class="post-box">
-                                                                    <div class="post-img"><img
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
                                                                         src="<?php echo URL . 'public/uploads/noticia-14.jpg'; ?>"
                                                                         class="img-fluid" alt=""></div>
-                                                                    <div class="meta">
-                                                                        <span class="post-date"><i
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
                                                                             class="bi bi-calendar-event"></i>
                                                                         18 de Abril de 2023</span>
-                                                                        <span class="post-author"> / <i
+                                                                    <span class="post-author"> / <i
                                                                             class="bi bi-person-circle"></i> ADESC
                                                                         Lajes</span>
-                                                                    </div>
-                                                                    <h3 class="post-title">Fulano de Tal</h3>
                                                                 </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
                                                             </div>
+                                                        </div>
 
-                                                            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                                                                <div class="post-box">
-                                                                    <div class="post-img"><img
+                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                                                            <div class="post-box">
+                                                                <div class="post-img"><img
                                                                         src="<?php echo URL . 'public/uploads/noticia-15.jpg'; ?>"
                                                                         class="img-fluid" alt=""></div>
-                                                                    <div class="meta">
-                                                                        <span class="post-date"><i
+                                                                <div class="meta">
+                                                                    <span class="post-date"><i
                                                                             class="bi bi-calendar-event"></i>
                                                                         17 de Abril de 2023</span>
-                                                                        <span class="post-author"> / <i
+                                                                    <span class="post-author"> / <i
                                                                             class="bi bi-person-circle"></i> ADESC
                                                                         Lajes</span>
-                                                                    </div>
-                                                                    <h3 class="post-title">Fulano de Tal</h3>
                                                                 </div>
+                                                                <h3 class="post-title">Fulano de Tal</h3>
                                                             </div>
-
                                                         </div>
+
                                                     </div>
-                                                </section>
+                                                </div>
+                                            </section>
 
                                             </p>
                                         </div>
@@ -581,8 +585,52 @@
                 </section><!-- Fim Patrocinadores -->
 
                 <!-- Modal de Atletas -->
+                <!-- Botão para abrir o modal -->
+                <div class="modal fade" id="detalhesAtletaModal" tabindex="-1"
+                    aria-labelledby="detalhesAtletaModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="detalhesAtletaModalLabel">Detalhes Técnicos do Atleta</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p><b>Nome:</b> João da Silva</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p><b>Idade:</b> 25 anos</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p><b>Altura:</b> 1,80m</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p><b>Peso:</b> 75kg</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p><b>Posição:</b> Atacante</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p><b>Habilidades:</b> Chute potente, velocidade, drible</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p><b>Experiência:</b> 5 anos</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Fim Modal de Atletas -->
+            </div>
+        </div>
+    </section>
 
 </main><!-- End #main -->
 

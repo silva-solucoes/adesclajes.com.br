@@ -266,7 +266,7 @@
                 </div>
                 <div class="col-lg-3 cta-btn-container text-center">
                     <a class="cta-btn align-middle" href="#" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">Agendar Consultoria</a>
+                        data-bs-target="#staticBackdrop">Área de Inscrição</a>
                 </div>
             </div>
 
