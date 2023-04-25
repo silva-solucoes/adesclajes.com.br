@@ -10,6 +10,10 @@ class LoginController {
         require_once 'application/views/recuperar-senha.php';
     }
 
+    static function painel(){
+        require_once 'application/views/admin/painel.php';
+    }
+
     static function error(){
         require_once 'application/views/erros/erro.php';
     }

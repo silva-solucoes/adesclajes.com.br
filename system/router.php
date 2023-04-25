@@ -24,6 +24,7 @@ $routes=[
     'quadro_atletas' => 'EsportesController::atletas',
     'login' => 'LoginController::login',
     'recuperar-senha' => 'LoginController::recuperar_senha',
+    'painel' => 'LoginController::painel',
     '404' => 'MainController::error',
 ];
 
