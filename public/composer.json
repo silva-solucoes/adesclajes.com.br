@@ -12,5 +12,7 @@
             "System\\": "system"
         }
     },
-    "require": {}
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
 }

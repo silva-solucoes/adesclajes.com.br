@@ -9,7 +9,7 @@ class MainController {
 
     static function envioEmail(){
         
-        require_once 'application/views/user/forms/contact.php';
+        require_once 'EmailVerification.php';
     }
 
     static function error(){
