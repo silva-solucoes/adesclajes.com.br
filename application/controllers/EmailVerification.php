@@ -11,11 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $modelo = new Modelo();
 
-    if($modelo->enviarEmail($nome, $email, $titulo, $mensagem)){
-        echo 'E-mail enviado com sucesso!';
-        
-    } else {
-        echo 'Erro ao enviar e-mail';
-    }
+    $modelo->enviarEmail($nome, $email, $titulo, $mensagem);
+      
 
 }
