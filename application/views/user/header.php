@@ -139,11 +139,11 @@
                       </div>
                       <div class="form-group col-md-4">
                         <label for="name">CPF:</label>
-                        <input type="text" name="cpf" class="form-control" placeholder="Somente o número" id="name" required>
+                        <input type="text" name="cpf" class="form-control" placeholder="Somente o número" id="cpfAtle" onkeyup="formatarCampo(this, '###.###.###-##')" required>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="name">RG:</label>
-                        <input type="text" name="rg" class="form-control" placeholder="Somente o número" id="name" required>
+                        <input type="text" name="rg" class="form-control" placeholder="Somente o número" id="rgAtle" onkeyup="formatarCampo(this, '##.###.###-#')" required>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="name">Data de Nascimento:</label>
@@ -219,7 +219,7 @@
                       </div>
                       <div class="form-group col-md-5">
                         <label for="name">Telefone do Pai:</label>
-                        <input type="text" name="telefonePai" class="form-control" placeholder="Somente o número" id="name" required>
+                        <input type="text" name="telefonePai" class="form-control" placeholder="Somente o número" id="phoneP" onkeyup="formatarCampo(this, '(##) ####-####')" required>
                       </div>
 
                       <p class="fst-italic mt-4">Informações do Mãe</p>
@@ -230,7 +230,7 @@
                       </div>
                       <div class="form-group col-md-5">
                         <label for="name">Telefone do Mãe:</label>
-                        <input type="text" name="telefoneMae" class="form-control" placeholder="Somente o número" id="name" required>
+                        <input type="text" name="telefoneMae" class="form-control" placeholder="Somente o número" id="phoneM" onkeyup="formatarCampo(this, '(##) ####-####')" required>
                       </div>
                     </div>
 
@@ -257,15 +257,15 @@
                       </div>
                       <div class="form-group col-md-4">
                         <label for="name">CPF:</label>
-                        <input type="text" name="CPFResponsavel" placeholder="Somente o número" class="form-control" id="name" required>
+                        <input type="text" name="CPFResponsavel" placeholder="Somente o número" class="form-control" id="cpfRes" onkeyup="formatarCampo(this, '###.###.###-##')" required>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="name">RG:</label>
-                        <input type="text" name="rgResponsavel" placeholder="Somente o número" class="form-control" id="name" required>
+                        <input type="text" name="rgResponsavel" placeholder="Somente o número" class="form-control" id="rgRes" onkeyup="formatarCampo(this, '##.###.###-#')" required>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="name">Telefone:</label>
-                        <input type="text" name="telefoneResponsavel" placeholder="Somente o número" class="form-control" id="name" required>
+                        <input type="text" name="telefoneResponsavel" placeholder="Somente o número" class="form-control" id="phoneRes" onkeyup="formatarCampo(this, '(##) ####-####')" required>
                       </div>
                       <div class="form-group col-md-7">
                         <label for="name">Logradouro:</label>
