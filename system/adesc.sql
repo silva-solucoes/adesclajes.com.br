@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Abr-2023 às 18:41
+-- Tempo de geração: 10-Maio-2023 às 00:25
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -24,26 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `bl_detalheresponsavel`
---
-
-CREATE TABLE `bl_detalheresponsavel` (
-  `id_responsavel` int(11) NOT NULL,
-  `nomeResponsavel` varchar(255) DEFAULT NULL,
-  `rgResponsavel` int(16) DEFAULT NULL,
-  `bairro` varchar(50) DEFAULT NULL,
-  `uf` varchar(2) DEFAULT NULL,
-  `cep` int(16) DEFAULT NULL,
-  `nLougradoura` varchar(10) DEFAULT NULL,
-  `logradouraResponsavel` varchar(200) DEFAULT NULL,
-  `celularResponsavel` int(16) DEFAULT NULL,
-  `grauParentesco` varchar(30) DEFAULT NULL,
-  `cpfResponsavel` int(16) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `categorianoticia`
 --
 
@@ -60,13 +40,8 @@ CREATE TABLE `categorianoticia` (
 
 CREATE TABLE `tbl_atleta` (
   `nome_atleta` varchar(255) DEFAULT NULL,
-  `nRG_atleta` int(11) DEFAULT NULL,
-  `nCPF_atleta` int(11) DEFAULT NULL,
   `dtNascimento_atleta` datetime DEFAULT NULL,
   `sexo_atleta` varchar(2) DEFAULT NULL,
-  `estadoCivil_atleta` varchar(35) DEFAULT NULL,
-  `nNIS_atleta` int(11) DEFAULT NULL,
-  `anexoResgistro_atleta` text DEFAULT NULL,
   `dtCadastro_atleta` datetime DEFAULT NULL,
   `dtAtualizacao_atleta` datetime DEFAULT NULL,
   `id_atleta` int(11) NOT NULL,
@@ -160,12 +135,8 @@ CREATE TABLE `tbl_contatos` (
 
 CREATE TABLE `tbl_detalheescolar` (
   `turma` varchar(50) DEFAULT NULL,
-  `horarioSaida` datetime DEFAULT NULL,
   `logradouro` varchar(200) DEFAULT NULL,
   `nLogradouro` varchar(10) DEFAULT NULL,
-  `gostaEstudar_atleta` int(11) DEFAULT NULL,
-  `estudaCasa` int(11) DEFAULT NULL,
-  `horarioEntrada` datetime DEFAULT NULL,
   `turno` varchar(50) DEFAULT NULL,
   `serie` varchar(50) DEFAULT NULL,
   `id_escolar` int(11) NOT NULL,
@@ -194,20 +165,26 @@ CREATE TABLE `tbl_detalhefiliacao` (
 
 CREATE TABLE `tbl_detalhesaude` (
   `id_saude` int(11) NOT NULL,
-  `tipoSanguineo` varchar(3) DEFAULT NULL,
-  `temAlergia` int(11) DEFAULT NULL,
-  `detalheAlergia` text DEFAULT NULL,
-  `medicamentoControlado` int(11) DEFAULT NULL,
-  `detalheMedicamento` text DEFAULT NULL,
-  `usoDrogas` int(11) DEFAULT NULL,
-  `possuiDoenca` int(11) DEFAULT NULL,
-  `detalheDroga` text DEFAULT NULL,
-  `legumeVerdura_atleta` int(11) DEFAULT NULL,
-  `altura_atleta` decimal(10,0) DEFAULT NULL,
-  `dormeCedo_atleta` int(11) DEFAULT NULL,
-  `detalheDoenca` text DEFAULT NULL,
-  `peso_atleta` decimal(10,0) DEFAULT NULL,
-  `alimentaBem_atleta` int(11) DEFAULT NULL
+  `altura_atleta` float DEFAULT NULL,
+  `peso_atleta` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tbl_detalhesresponsavel`
+--
+
+CREATE TABLE `tbl_detalhesresponsavel` (
+  `id_responsavel` int(11) NOT NULL,
+  `nomeResponsavel` varchar(255) DEFAULT NULL,
+  `bairro` varchar(50) DEFAULT NULL,
+  `uf` varchar(2) DEFAULT NULL,
+  `cep` int(16) DEFAULT NULL,
+  `nLougradoura` varchar(10) DEFAULT NULL,
+  `logradouraResponsavel` varchar(200) DEFAULT NULL,
+  `celularResponsavel` int(16) DEFAULT NULL,
+  `grauParentesco` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -229,10 +206,10 @@ CREATE TABLE `tbl_detalhetecnicos` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tbl_equipe`
+-- Estrutura da tabela `tbl_diretoria`
 --
 
-CREATE TABLE `tbl_equipe` (
+CREATE TABLE `tbl_diretoria` (
   `id_equipe` int(11) NOT NULL,
   `tl_pgEquipe` varchar(150) DEFAULT NULL,
   `sub_tlEquipe` varchar(255) DEFAULT NULL
@@ -529,12 +506,6 @@ CREATE TABLE `tbl_usuario` (
 --
 
 --
--- Índices para tabela `bl_detalheresponsavel`
---
-ALTER TABLE `bl_detalheresponsavel`
-  ADD PRIMARY KEY (`id_responsavel`);
-
---
 -- Índices para tabela `categorianoticia`
 --
 ALTER TABLE `categorianoticia`
@@ -607,15 +578,21 @@ ALTER TABLE `tbl_detalhesaude`
   ADD PRIMARY KEY (`id_saude`);
 
 --
+-- Índices para tabela `tbl_detalhesresponsavel`
+--
+ALTER TABLE `tbl_detalhesresponsavel`
+  ADD PRIMARY KEY (`id_responsavel`);
+
+--
 -- Índices para tabela `tbl_detalhetecnicos`
 --
 ALTER TABLE `tbl_detalhetecnicos`
   ADD PRIMARY KEY (`id_tecnico`);
 
 --
--- Índices para tabela `tbl_equipe`
+-- Índices para tabela `tbl_diretoria`
 --
-ALTER TABLE `tbl_equipe`
+ALTER TABLE `tbl_diretoria`
   ADD PRIMARY KEY (`id_equipe`);
 
 --
@@ -754,12 +731,6 @@ ALTER TABLE `tbl_usuario`
 --
 
 --
--- AUTO_INCREMENT de tabela `bl_detalheresponsavel`
---
-ALTER TABLE `bl_detalheresponsavel`
-  MODIFY `id_responsavel` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `categorianoticia`
 --
 ALTER TABLE `categorianoticia`
@@ -814,15 +785,21 @@ ALTER TABLE `tbl_detalhesaude`
   MODIFY `id_saude` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `tbl_detalhesresponsavel`
+--
+ALTER TABLE `tbl_detalhesresponsavel`
+  MODIFY `id_responsavel` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `tbl_detalhetecnicos`
 --
 ALTER TABLE `tbl_detalhetecnicos`
   MODIFY `id_tecnico` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `tbl_equipe`
+-- AUTO_INCREMENT de tabela `tbl_diretoria`
 --
-ALTER TABLE `tbl_equipe`
+ALTER TABLE `tbl_diretoria`
   MODIFY `id_equipe` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -944,7 +921,7 @@ ALTER TABLE `tbl_atleta`
   ADD CONSTRAINT `tbl_atleta_ibfk_1` FOREIGN KEY (`id_saude`) REFERENCES `tbl_detalhesaude` (`id_saude`),
   ADD CONSTRAINT `tbl_atleta_ibfk_2` FOREIGN KEY (`id_escolar`) REFERENCES `tbl_detalheescolar` (`id_escolar`),
   ADD CONSTRAINT `tbl_atleta_ibfk_3` FOREIGN KEY (`id_filiacao`) REFERENCES `tbl_detalhefiliacao` (`id_filiacao`),
-  ADD CONSTRAINT `tbl_atleta_ibfk_4` FOREIGN KEY (`id_responsavel`) REFERENCES `bl_detalheresponsavel` (`id_responsavel`),
+  ADD CONSTRAINT `tbl_atleta_ibfk_4` FOREIGN KEY (`id_responsavel`) REFERENCES `tbl_detalhesresponsavel` (`id_responsavel`),
   ADD CONSTRAINT `tbl_atleta_ibfk_5` FOREIGN KEY (`id_tecnico`) REFERENCES `tbl_detalhetecnicos` (`id_tecnico`),
   ADD CONSTRAINT `tbl_atleta_ibfk_6` FOREIGN KEY (`id_pagAtleta`) REFERENCES `tbl_pagatletas` (`id_pagAtleta`);
 
@@ -974,7 +951,7 @@ ALTER TABLE `tbl_config`
   ADD CONSTRAINT `tbl_config_ibfk_5` FOREIGN KEY (`id_contato`) REFERENCES `tbl_contatos` (`id_contato`),
   ADD CONSTRAINT `tbl_config_ibfk_6` FOREIGN KEY (`id_infoFooter`) REFERENCES `tbl_infofooter` (`id_infoFooter`),
   ADD CONSTRAINT `tbl_config_ibfk_7` FOREIGN KEY (`id_perguntas`) REFERENCES `tbl_perguntas` (`id_perguntas`),
-  ADD CONSTRAINT `tbl_config_ibfk_8` FOREIGN KEY (`id_equipe`) REFERENCES `tbl_equipe` (`id_equipe`),
+  ADD CONSTRAINT `tbl_config_ibfk_8` FOREIGN KEY (`id_equipe`) REFERENCES `tbl_diretoria` (`id_equipe`),
   ADD CONSTRAINT `tbl_config_ibfk_9` FOREIGN KEY (`id_sobre`) REFERENCES `tbl_sobre` (`id_sobre`);
 
 --
@@ -1008,10 +985,10 @@ ALTER TABLE `tbl_listaperguntas`
 -- Limitadores para a tabela `tbl_membro`
 --
 ALTER TABLE `tbl_membro`
-  ADD CONSTRAINT `tbl_membro_ibfk_1` FOREIGN KEY (`id_equipe`) REFERENCES `tbl_equipe` (`id_equipe`),
-  ADD CONSTRAINT `tbl_membro_ibfk_2` FOREIGN KEY (`id_equipe`) REFERENCES `tbl_equipe` (`id_equipe`),
-  ADD CONSTRAINT `tbl_membro_ibfk_3` FOREIGN KEY (`id_equipe`) REFERENCES `tbl_equipe` (`id_equipe`),
-  ADD CONSTRAINT `tbl_membro_ibfk_4` FOREIGN KEY (`id_equipe`) REFERENCES `tbl_equipe` (`id_equipe`);
+  ADD CONSTRAINT `tbl_membro_ibfk_1` FOREIGN KEY (`id_equipe`) REFERENCES `tbl_diretoria` (`id_equipe`),
+  ADD CONSTRAINT `tbl_membro_ibfk_2` FOREIGN KEY (`id_equipe`) REFERENCES `tbl_diretoria` (`id_equipe`),
+  ADD CONSTRAINT `tbl_membro_ibfk_3` FOREIGN KEY (`id_equipe`) REFERENCES `tbl_diretoria` (`id_equipe`),
+  ADD CONSTRAINT `tbl_membro_ibfk_4` FOREIGN KEY (`id_equipe`) REFERENCES `tbl_diretoria` (`id_equipe`);
 
 --
 -- Limitadores para a tabela `tbl_noticias`

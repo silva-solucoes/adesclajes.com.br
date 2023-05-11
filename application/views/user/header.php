@@ -60,17 +60,15 @@
               <li class="dropdown"><a href="#"><span>Categorias Esportivas</span> <i
                     class="bi bi-chevron-right"></i></a>
                 <ul>
+                  <li><a href="futebol">Futebol</a></li>
                   <li><a href="futsal">Futsal</a></li>
-                  <li><a href="hidroginastica">Hidroginástica</a></li>
-                  <li><a href="natacao">Natação</a></li>
-                  <li><a href="taekwondo">Taekwondo</a></li>
-                  <li><a href="volei">Vôlei</a></li>
+                  <li><a href="fut7">Fut7</a></li>
                 </ul>
               </li>
               <li><a href="galeria_fotos">Galeria de Fotos</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#team">Equipe</a></li>
+          <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#team">Diretoria</a></li>
           <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#contact">Contato</a></li>
           <li><a class="getstarted scrollto" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Área de
               Inscrição</a></li>

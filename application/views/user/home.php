@@ -278,7 +278,7 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
-                <h2>Equipe</h2>
+                <h2>Diretoria</h2>
                 <p>Conheça os líderes que fazem a diferença! Descubra quem são os membros do corpo diretivo da ADESC e
                     saiba mais sobre suas histórias, paixão pelo esporte e comprometimento em impulsionar nosso clube
                     para o sucesso. Junte-se a nós e conheça as mentes por trás do nosso time!</p>

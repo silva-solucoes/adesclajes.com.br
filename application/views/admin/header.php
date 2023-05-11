@@ -32,11 +32,11 @@
     <link href="<?php echo URL . 'public/css/styleAdm.css'; ?>" rel="stylesheet">
 
     <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Mar 09 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
+  * Nome do site: Silva Soluções Tech
+  * Atualizado: 02 maio 2023 com Bootstrap v5.2.3
+  * URL: https://silvasolucoestec.com.br
+  * Autor: Silva Soluções Tech
+  * Licença: https://silvasolucoestech.com.br/license/
   ======================================================== -->
 </head>
 
@@ -304,7 +304,7 @@
                 
             </li><!-- End Icons Nav -->
 
-            <li class="nav-heading">Pages</li>
+            <li class="nav-heading">Paginas</li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="users-profile.html">
