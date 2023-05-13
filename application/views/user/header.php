@@ -103,16 +103,7 @@
             </div>
 
             <div class="col-lg-7">
-              <h3 class="pt-0 pt-lg-5" id="tituloForm">Formulário de Inscrição</h3>
-
-              <!-- Tabs -->
-              <ul class="nav nav-pills mb-3">
-                <li><a class="nav-link active" id="guias" data-bs-toggle="pill" href="#tab1">Informações do Atleta</a>
-                </li>
-                <li><a class="nav-link" id="guias" data-bs-toggle="pill" href="#tab2">Informações de Filiação</a></li>
-                <li><a class="nav-link" id="guias" data-bs-toggle="pill" href="#tab3">Informações de Responsável</a>
-                </li>
-              </ul><!-- End Tabs -->
+              <h3 class="pt-0 pt-lg-5" id="tituloForm">Formulário de Pré-Inscrição</h3>
 
               <form class="needs-validation borda-form php-inscricao-form" novalidate>
                 <!-- Tab Content -->
@@ -123,54 +114,21 @@
                     <p class="fst-italic">Informações Pessoais</p>
 
                     <div class="row">
-                      <div class="form-group col-md-7">
+                      <div class="form-group col-md-12">
                         <label for="name">Nome Completo:</label>
                         <input type="text" name="name" class="form-control" placeholder="Nome do Atleta completo" id="name" required>
-                      </div>
-                      <div class="form-group col-md-5">
-                        <label for="name">Gêrero:</label>
-                        <select class="form-select" aria-label="Default select example" required>
-                          <option selected>Selecione o gênero</option>
-                          <option value="1">Feminino</option>
-                          <option value="2">Masculino</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="name">CPF:</label>
-                        <input type="text" name="cpf" class="form-control" placeholder="Somente o número" id="cpfAtle" onkeyup="formatarCampo(this, '###.###.###-##')" required>
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="name">RG:</label>
-                        <input type="text" name="rg" class="form-control" placeholder="Somente o número" id="rgAtle" onkeyup="formatarCampo(this, '##.###.###-#')" required>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="name">Data de Nascimento:</label>
                         <input type="date" name="dataNascimento" class="form-control" id="name" required>
                       </div>
-                      <div class="form-group col-md-5">
-                        <label for="name">Estado Civil:</label>
+                      <div class="form-group col-md-3">
+                        <label for="name">Gêrero:</label>
                         <select class="form-select" aria-label="Default select example" required>
-                          <option selected>Selecione o Estado Civil</option>
-                          <option value="1">Solteiro/a</option>
-                          <option value="2">Casado/a</option>
-                          <option value="3">Divorciado/a</option>
-                          <option value="4">Viúvo/a</option>
+                          <option selected>Selecione</option>
+                          <option value="1">Feminino</option>
+                          <option value="2">Masculino</option>
                         </select>
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="name">Número do NIS:</label>
-                        <input type="text" name="nis" class="form-control" placeholder="Somente o número" id="name" required>
-                      </div>
-                      <div class="form-group col-md-12">
-                        <label for="name">Anexo do Registro:</label>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple required>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="form-group col-md-7">
-                        <label for="name">Nome da Escola:</label>
-                        <input type="text" name="nomeEscola" class="form-control" placeholder="Nome completo da Escola" id="name" required>
                       </div>
                       <div class="form-group col-md-5">
                         <label for="name">Nível de Ensino:</label>
@@ -182,107 +140,61 @@
                           <option value="4">Ensino Superior</option>
                         </select>
                       </div>
-                      <div class="form-group col-md-6">
-                        <label for="name">Série:</label>
-                        <input type="text" name="serie" class="form-control" placeholder="Informe a série" id="name" required>
+                      <div class="form-group col-md-12">
+                        <label for="name">Nome da Escola:</label>
+                        <input type="text" name="nomeEscola" class="form-control" placeholder="Nome completo da Escola" id="name" required>
                       </div>
                       <div class="form-group col-md-6">
-                        <label for="name">Turno:</label>
-                        <input type="text" name="turno" class="form-control" placeholder="Informe o turno" id="name" required>
+                        <label for="name">Nome da sua Mãe:</label>
+                        <input type="text" name="nomeMae" class="form-control" placeholder="Nome da sua Mãe" id="name" required>
                       </div>
-                      <div class="form-group col-md-7">
-                        <label for="name">Categoria Esportiva que deseja atuar:</label>
+                      <div class="form-group col-md-6">
+                        <label for="name">Nome da seu Pai:</label>
+                        <input type="text" name="nomePai" class="form-control" placeholder="Nome da sua Mãe" id="name" required>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="name">Telefone do Responsável:</label>
+                        <input type="tel" name="telRespon" class="form-control" placeholder="(00)00000-0000" id="name" required>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="name">Categoria Esportiva:</label>
                         <select class="form-select" aria-label="Default select example" required>
                           <option selected>Selecione uma categoria</option>
-                          <option value="1">Futsal</option>
-                          <option value="2">Hidroginástica</option>
-                          <option value="3">Natação</option>
-                          <option value="4">Taekwondo</option>
-                          <option value="5">Vôlei</option>
+                          <option value="1">Futebol</option>
+                          <option value="2">Futsal</option>
+                          <option value="3">Fut7</option>
                         </select>
                       </div>
-
+                      <div class="form-group col-md-6">
+                        <label for="name">Posição:</label>
+                        <select class="form-select" aria-label="Default select example" required>
+                          <option selected>Selecione</option>
+                          <option value="1">Goleiro</option>
+                          <option value="2">Zagueiro</option>
+                          <option value="3">Lateral</option>
+                          <option value="4">Volante</option>
+                          <option value="5">Meia</option>
+                          <option value="6">Ponta</option>
+                          <option value="7">Atacante</option>
+                          <option value="8">Pivô</option>
+                          <option value="9">Fixo</option>
+                          <option value="10">Ala Esquerda</option>
+                          <option value="11">Ala Direita</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="name">Altura:</label>
+                        <input type="text" name="altura" class="form-control" placeholder="Ex:1,60" id="name" required>
+                      </div>
+                      <div class="form-group col-md-12">
+                        <label for="name">Digite uma frase motivacional:</label>
+                        <textarea class="form-control" name="message" rows="5" required></textarea>
+                      </div>
                     </div>
 
                   </div><!-- End Tab 1 Content -->
 
-                  <div class="tab-pane fade show" id="tab2">
-
-                    <p class="fst-italic">Informações do Pai</p>
-
-                    <div class="row">
-                      <div class="form-group col-md-7">
-                        <label for="name">Nome Completo do Pai:</label>
-                        <input type="text" name="namePai" class="form-control" placeholder="Nome completo do Pai" id="name" required>
-                      </div>
-                      <div class="form-group col-md-5">
-                        <label for="name">Telefone do Pai:</label>
-                        <input type="text" name="telefonePai" class="form-control" placeholder="Somente o número" id="phoneP" onkeyup="formatarCampo(this, '(##) ####-####')" required>
-                      </div>
-
-                      <p class="fst-italic mt-4">Informações do Mãe</p>
-
-                      <div class="form-group col-md-7">
-                        <label for="name">Nome Completo do Mãe:</label>
-                        <input type="text" name="nameMae" class="form-control" placeholder="Nome completo da Mãe" id="name" required>
-                      </div>
-                      <div class="form-group col-md-5">
-                        <label for="name">Telefone do Mãe:</label>
-                        <input type="text" name="telefoneMae" class="form-control" placeholder="Somente o número" id="phoneM" onkeyup="formatarCampo(this, '(##) ####-####')" required>
-                      </div>
-                    </div>
-
-                  </div><!-- End Tab 2 Content -->
-
-                  <div class="tab-pane fade show" id="tab3">
-
-                    <p class="fst-italic">Informações do Responsável</p>
-
-                    <div class="row">
-                      <div class="form-group col-md-7">
-                        <label for="name">Nome Completo do Responsável:</label>
-                        <input type="text" name="nameResponsavel" class="form-control" placeholder="Nome completo do Responsável" id="name" required>
-                      </div>
-                      <div class="form-group col-md-5">
-                        <label for="name">Grau de Parentestco:</label>
-                        <select class="form-select" aria-label="Default select example" required>
-                          <option selected>Selecione um grau</option>
-                          <option value="1">Pai/Mãe</option>
-                          <option value="2">Tio/Tia</option>
-                          <option value="3">Avô/Avó</option>
-                          <option value="4">Irmão/Irmã</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="name">CPF:</label>
-                        <input type="text" name="CPFResponsavel" placeholder="Somente o número" class="form-control" id="cpfRes" onkeyup="formatarCampo(this, '###.###.###-##')" required>
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="name">RG:</label>
-                        <input type="text" name="rgResponsavel" placeholder="Somente o número" class="form-control" id="rgRes" onkeyup="formatarCampo(this, '##.###.###-#')" required>
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="name">Telefone:</label>
-                        <input type="text" name="telefoneResponsavel" placeholder="Somente o número" class="form-control" id="phoneRes" onkeyup="formatarCampo(this, '(##) ####-####')" required>
-                      </div>
-                      <div class="form-group col-md-7">
-                        <label for="name">Logradouro:</label>
-                        <input type="text" name="logradouro" class="form-control" placeholder="Informe o nome da rua" id="name" required>
-                      </div>
-                      <div class="form-group col-md-5">
-                        <label for="name">Nº da casa:</label>
-                        <input type="text" name="nCasa" class="form-control" placeholder="Nº" id="name" required>
-                      </div>
-                      <div class="form-group col-md-5">
-                        <label for="name">Bairro:</label>
-                        <input type="text" name="bairro" class="form-control" placeholder="Informe o bairro" id="name" required>
-                      </div>
-                    </div>
-
-                  </div><!-- End Tab 3 Content -->
-
                 </div>
-
 
             </div>
 

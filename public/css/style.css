@@ -117,7 +117,7 @@ h6 {
 
 #header.header-scrolled,
 #header.header-inner-pages {
-  background: rgba(242, 242, 242, 0.9);
+  background: rgba(71, 181, 233, 0.9);
 }
 
 #header .logo {
@@ -168,7 +168,7 @@ h6 {
   padding: 10px 0 10px 30px;
   font-size: 15px;
   font-weight: 500;
-  color: #444444;
+  color: rgba(2, 43, 102, 0.6);
   white-space: nowrap;
   transition: 0.3s;
 }
@@ -184,7 +184,7 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #D98E04;
+  color: #003680;
 }
 
 .navbar .getstarted,
@@ -192,16 +192,16 @@ h6 {
   padding: 8px 20px;
   margin-left: 30px;
   border-radius: 50px;
-  color: #444444;
+  color: #003680;
   font-size: 14px;
-  border: 2px solid #444444;
+  border: 2px solid #003680;
   font-weight: 600;
 }
 
 .navbar .getstarted:hover,
 .navbar .getstarted:focus:hover {
   color: #fff;
-  background: #444444;
+  background: #003680;
 }
 
 .navbar .dropdown ul {
@@ -239,7 +239,7 @@ h6 {
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover>a {
-  color: #F2B705;
+  color: #003680;
 }
 
 .navbar .dropdown:hover>ul {
@@ -339,7 +339,7 @@ h6 {
 .navbar-mobile a:hover,
 .navbar-mobile .active,
 .navbar-mobile li:hover>a {
-  color: #F2A413;
+  color: #003680;
 }
 
 .navbar-mobile .getstarted,
@@ -375,7 +375,7 @@ h6 {
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
 .navbar-mobile .dropdown ul li:hover>a {
-  color: #F2A413;
+  color: #003680;
 }
 
 .navbar-mobile .dropdown>.dropdown-active {
@@ -388,7 +388,7 @@ h6 {
 #hero {
   width: 100%;
   height: 80vh;
-  background: #F2F2F2;
+  background: #47B5E9;
 }
 
 #hero .container {
@@ -420,11 +420,11 @@ h6 {
   transition: 0.5s;
   margin: 10px 0 0 0;
   color: #fff;
-  background: #D98E04;
+  background: #003680;
 }
 
 #hero .btn-get-started:hover {
-  background: #cf8804;
+  background: #0143a0;
 }
 
 #hero .btn-watch-video {
