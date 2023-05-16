@@ -57,6 +57,7 @@
           <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#about">Sobre-nós</a></li>
           <li class="dropdown"><a href="#"><span>Esportes</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
+              <li><a href="bid">BID</a></li>
               <li class="dropdown"><a href="#"><span>Categorias Esportivas</span> <i
                     class="bi bi-chevron-right"></i></a>
                 <ul>

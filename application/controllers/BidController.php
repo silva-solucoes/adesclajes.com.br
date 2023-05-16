@@ -1,8 +1,8 @@
 <?php
-class SobreController{
+class BidController{
     static function index()
     {
-        require_once 'application/views/user/sobre.php';
+        require_once 'application/views/user/bid.php';
     }
 
     static function error(){
