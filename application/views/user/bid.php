@@ -524,9 +524,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="botao-inscricao" type="submit" class="">Finalizar Inscrição</button>
                     <button id="botao-cancelar" type="button" class="btn btn-secondary"
-                        data-bs-dismiss="modal">Cancelar</button>
+                        data-bs-dismiss="modal">Voltar</button>
                 </div>
             </div>
         </div>
