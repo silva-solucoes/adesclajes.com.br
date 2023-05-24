@@ -3112,3 +3112,11 @@ section {
 .BID .member:hover .social {
   opacity: 1;
 }
+
+.modal-title{
+  color: #f9fbfc;
+}
+
+.custom-border{
+  border: 10px solid #D98E04;
+}
