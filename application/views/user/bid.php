@@ -15,7 +15,7 @@
         </div>
     </section><!-- End Migalhas de pão -->
 
-    <section class="inner-page about">
+    <section class="inner-page BID">
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
@@ -45,7 +45,7 @@
                                 <input type="text" name="name" class="form-control" placeholder="Buscar pelo nome"
                                     id="name" required>
                             </div>
-                            <div class="form-group col-md-2"><button type="submit">Buscar</button></div>
+                            <div class="form-group col-md-2 divBotao"><button class="botaoBuscar" title="Buscar" type="submit"><i class="bi bi-search"></i> Buscar</button></div>
                         </div>
                     </form>
                 </div>
