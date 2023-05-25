@@ -57,13 +57,13 @@
           <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#about">Sobre-nós</a></li>
           <li class="dropdown"><a href="#"><span>Esportes</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="bid">BID</a></li>
+              <li><a href="<?php echo URL . 'bid' ?>">BID</a></li>
               <li class="dropdown"><a href="#"><span>Categorias Esportivas</span> <i
                     class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="futebol">Futebol</a></li>
-                  <li><a href="futsal">Futsal</a></li>
-                  <li><a href="fut7">Fut7</a></li>
+                  <li><a href="<?php echo URL . 'futebol' ?>">Futebol</a></li>
+                  <li><a href="<?php echo URL . 'futsal' ?>">Futsal</a></li>
+                  <li><a href="<?php echo URL . 'fut7' ?>">Fut7</a></li>
                 </ul>
               </li>
               <li><a href="galeria_fotos">Galeria de Fotos</a></li>

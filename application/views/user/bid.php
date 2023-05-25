@@ -210,7 +210,7 @@
                                 <li><i class="bi bi-check-circle"></i> Altura:.</li>
                             </ul>
                         </div>
-                        <div class="col-lg-6 pt-4 pt-lg-0 content text-justify" data-aos="fade-left">
+                        <div class="col-lg-7 pt-4 pt-lg-0 content text-justify" data-aos="fade-left">
                             <h3>ESTATÍSTICAS GERAIS</h3>
                             <select class="form-control dropDownAnos" id="anos" name="ano"
                                 onchange="changeAno(this.value)">
@@ -225,11 +225,11 @@
                                 <option value="2016">2016</option>
                             </select>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             Card com a equipe principal que o atleta joga. Abaixo liste o histórico de transferências do
                             atleta.
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-7">
                             <div class="row">
                                 <!-- Sales Card -->
                                 <div class="col-xxl-4 col-md-6">
@@ -516,7 +516,7 @@
                             </div>
                         </div><!-- End Right side columns -->
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             Card que apresente se oatleta já foi convocado ou se está atualmente convocado para
                             participações nacionais ou internacionais.
                         </div>
