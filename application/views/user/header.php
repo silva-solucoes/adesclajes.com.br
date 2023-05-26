@@ -106,7 +106,7 @@
             <div class="col-lg-7">
               <h3 class="pt-0 pt-lg-5" id="tituloForm">Formulário de Pré-Inscrição</h3>
 
-              <form class="needs-validation borda-form php-inscricao-form" novalidate>
+              <form action= "<?php echo URL .'Cadastrar'?>" method = "POST" class="needs-validation borda-form php-inscricao-form" novalidate>
                 <!-- Tab Content -->
                 <div class="tab-content">
                   <!-- Informações do Atleta -->
@@ -121,11 +121,11 @@
                       </div>
                       <div class="form-group col-md-4">
                         <label for="name">Data de Nascimento:</label>
-                        <input type="date" name="dataNascimento" class="form-control" id="name" required>
+                        <input type="date" name="dataNascimento" class="form-control" id="dataNascimento" required>
                       </div>
                       <div class="form-group col-md-3">
                         <label for="name">Gêrero:</label>
-                        <select class="form-select" aria-label="Default select example" required>
+                        <select name = "sexo" class="form-select" aria-label="Default select example" required>
                           <option selected>Selecione</option>
                           <option value="1">Feminino</option>
                           <option value="2">Masculino</option>
@@ -133,7 +133,7 @@
                       </div>
                       <div class="form-group col-md-5">
                         <label for="name">Nível de Ensino:</label>
-                        <select class="form-select" aria-label="Default select example" required>
+                        <select name="nivel_ensino" class="form-select" aria-label="Default select example" required>
                           <option selected>Selecione o nível</option>
                           <option value="1">Ensino Fundamental I</option>
                           <option value="2">Ensino Fundamental II</option>
@@ -159,8 +159,8 @@
                       </div>
                       <div class="form-group col-md-6">
                         <label for="name">Categoria Esportiva:</label>
-                        <select class="form-select" aria-label="Default select example" required>
-                          <option selected>Selecione uma categoria</option>
+                        <select name = "categoria_esportiva" class="form-select" aria-label="Default select example" required>
+                          <option  selected>Selecione uma categoria</option>
                           <option value="1">Futebol</option>
                           <option value="2">Futsal</option>
                           <option value="3">Fut7</option>
@@ -168,8 +168,8 @@
                       </div>
                       <div class="form-group col-md-6">
                         <label for="name">Posição:</label>
-                        <select class="form-select" aria-label="Default select example" required>
-                          <option selected>Selecione</option>
+                        <select name = "posicao" class="form-select" aria-label="Default select example" required>
+                          <option  selected>Selecione</option>
                           <option value="1">Goleiro</option>
                           <option value="2">Zagueiro</option>
                           <option value="3">Lateral</option>
@@ -202,7 +202,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button id="botao-inscricao" type="submit" class="">Finalizar Inscrição</button>
+          <button id="botao-inscricao" name="CadUsuario" type="submit"value = "cadastrar" class="">Finalizar Inscrição</button>
           </form>
           <button id="botao-cancelar" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         </div>

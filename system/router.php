@@ -10,6 +10,7 @@ $route = filter_input(INPUT_GET, "url", FILTER_DEFAULT);
 $routes=[
     '' => 'MainController::home',
     'index' => 'MainController::home',
+    'Cadastrar' => 'MainController::cadastrar',
     'portifolio' => 'PortifolioController::index',
     'forms/contact' => 'MainController::envioEmail',
     'noticias' => 'NewsController::index',
