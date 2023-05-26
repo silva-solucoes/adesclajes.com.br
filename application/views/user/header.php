@@ -26,6 +26,7 @@
   <link href="<?php echo URL . 'public/vendor/glightbox/css/glightbox.min.css'; ?>" rel="stylesheet">
   <link href="<?php echo URL . 'public/vendor/remixicon/remixicon.css'; ?>" rel="stylesheet">
   <link href="<?php echo URL . 'public/vendor/swiper/swiper-bundle.min.css'; ?>" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <!-- Arquivo Principal CSS -->
   <link href="<?php echo URL . 'public/css/style.css'; ?>" rel="stylesheet">

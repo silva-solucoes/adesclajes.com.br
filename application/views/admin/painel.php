@@ -18,22 +18,9 @@
             <!-- Left side columns -->
             <div class="col-lg-8">
                 <div class="row">
-                    <!-- Sales Card -->
+                    <!-- Card ADM -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card sales-card">
-
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
 
                             <div class="card-body">
                                 <h5 class="card-title">Quant. <span>| ADM</span></h5>
@@ -45,7 +32,7 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6>1</h6>
-                                        <span class="text-success small pt-1 fw-bold">0%</span> <span
+                                        <span
                                             class="text-muted small pt-2 ps-1">administrador</span>
 
                                     </div>
@@ -53,24 +40,11 @@
                             </div>
 
                         </div>
-                    </div><!-- End Sales Card -->
+                    </div><!-- End Card ADM -->
 
-                    <!-- Revenue Card -->
+                    <!-- Card Funcionários -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card revenue-card">
-
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
 
                             <div class="card-body">
                                 <h5 class="card-title">Quant. <span>| Funcionários</span></h5>
@@ -82,7 +56,7 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6>2</h6>
-                                        <span class="text-success small pt-1 fw-bold">100%</span> <span
+                                        <span
                                             class="text-muted small pt-2 ps-1">funcionários</span>
 
                                     </div>
@@ -90,25 +64,12 @@
                             </div>
 
                         </div>
-                    </div><!-- End Revenue Card -->
+                    </div><!-- End Card Funcionários -->
 
-                    <!-- Customers Card -->
+                    <!-- Card Atletas -->
                     <div class="col-xxl-4 col-xl-12">
 
                         <div class="card info-card customers-card">
-
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
 
                             <div class="card-body">
                                 <h5 class="card-title">Quant. <span>| Atletas</span></h5>
@@ -120,7 +81,7 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6>1244</h6>
-                                        <span class="text-danger small pt-1 fw-bold">100%</span> <span
+                                        <span
                                             class="text-muted small pt-2 ps-1">atletas</span>
 
                                     </div>
@@ -129,10 +90,199 @@
                             </div>
                         </div>
 
-                    </div><!-- End Customers Card -->
+                    </div><!-- End Card Atletas -->
 
                 </div>
             </div><!-- End Right side columns -->
+            <!-- Tabela dos Pré-Inscritos -->
+            <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Pré-Inscritos </font>
+                            </font><span>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">| </font>
+                                    <font style="vertical-align: inherit;">Recentes</font>
+                                </font>
+                            </span>
+                        </h5>
+
+                        <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+                            <div class="datatable-top">
+                                <div class="datatable-dropdown">
+                                    <label>
+                                        <select class="datatable-selector">
+                                            <option value="5">5</option>
+                                            <option value="10" selected="">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <option value="25">25</option>
+                                        </select>
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">entradas por página
+                                            </font>
+                                        </font>
+                                    </label>
+                                </div>
+                                <div class="datatable-search">
+                                    <input class="datatable-input" placeholder="Buscar por..." type="search"
+                                        title="Pesquisar na tabela">
+                                </div>
+                            </div>
+                            <div class="datatable-container">
+                                <table class="table table-borderless datatable datatable-table">
+                                    <thead>
+                                        <tr>
+                                            <th data-sortable="true" style="width: 12.708333333333332%;"><a href="#"
+                                                    class="datatable-sorter">Nº Inscrição</a></th>
+                                            <th data-sortable="true" style="width: 22.083333333333332%;"><a href="#"
+                                                    class="datatable-sorter">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Atleta</font>
+                                                    </font>
+                                                </a></th>
+                                            <th data-sortable="true" style="width: 35.41666666666667%;"><a href="#"
+                                                    class="datatable-sorter">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Categoria Esportiva</font>
+                                                    </font>
+                                                </a></th>
+                                            <th data-sortable="true" style="width: 12.291666666666666%;"><a href="#"
+                                                    class="datatable-sorter">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Posição</font>
+                                                    </font>
+                                                </a></th>
+                                            <th data-sortable="true" style="width: 17.5%;"><a href="#"
+                                                    class="datatable-sorter">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Status</font>
+                                                    </font>
+                                                </a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-index="0">
+                                            <td><a href="#">#2457</a></td>
+                                            <td>
+                                                <font style="vertical-align: inherit;">
+                                                    <font style="vertical-align: inherit;">José Mateus Benjamin</font>
+                                                </font>
+                                            </td>
+                                            <td><a href="#" class="text-primary">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Futebol</font>
+                                                    </font>
+                                                </a></td>
+                                            <td>Goleiro</td>
+                                            <td><span class="badge bg-warning">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Pendente</font>
+                                                    </font>
+                                                </span></td>
+                                        </tr>
+                                        <tr data-index="1">
+                                            <td><a href="#">#2147</a></td>
+                                            <td>
+                                                <font style="vertical-align: inherit;">
+                                                    <font style="vertical-align: inherit;">Fátima Ayla Tânia Duarte</font>
+                                                </font>
+                                            </td>
+                                            <td><a href="#" class="text-primary">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Fut7</font>
+                                                    </font>
+                                                </a></td>
+                                            <td>Zagueiro/a</td>
+                                            <td><span class="badge bg-warning">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Pendente</font>
+                                                    </font>
+                                                </span></td>
+                                        </tr>
+                                        <tr data-index="2">
+                                            <td><a href="#">#2049</a></td>
+                                            <td>
+                                                <font style="vertical-align: inherit;">
+                                                    <font style="vertical-align: inherit;">Sophia Regina Isadora Alves</font>
+                                                </font>
+                                            </td>
+                                            <td><a href="#" class="text-primary">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Futsal</font>
+                                                    </font>
+                                                </a></td>
+                                            <td>Ala Direita</td>
+                                            <td><span class="badge bg-success">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">aprovado</font>
+                                                    </font>
+                                                </span></td>
+                                        </tr>
+                                        <tr data-index="3">
+                                            <td><a href="#">#2644</a></td>
+                                            <td>
+                                                <font style="vertical-align: inherit;">
+                                                    <font style="vertical-align: inherit;">Edson Pietro Manuel</font>
+                                                </font>
+                                            </td>
+                                            <td><a href="#" class="text-primar">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Fut7</font>
+                                                    </font>
+                                                </a></td>
+                                            <td>Goleiro</td>
+                                            <td><span class="badge bg-danger">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">rejeitado</font>
+                                                    </font>
+                                                </span></td>
+                                        </tr>
+                                        <tr data-index="4">
+                                            <td><a href="#">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">#2644</font>
+                                                    </font>
+                                                </a></td>
+                                            <td>
+                                                <font style="vertical-align: inherit;">
+                                                    <font style="vertical-align: inherit;">Rafael Joaquim Yago</font>
+                                                </font>
+                                            </td>
+                                            <td><a href="#" class="text-primary">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Fut7</font>
+                                                    </font>
+                                                </a></td>
+                                            <td>Lateral Direita</td>
+                                            <td><span class="badge bg-success">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">aprovado</font>
+                                                    </font>
+                                                </span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="datatable-bottom">
+                                <div class="datatable-info">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Mostrando 1 a 5 de 5 entradas</font>
+                                    </font>
+                                </div>
+                                <nav class="datatable-pagination">
+                                    <ul class="datatable-pagination-list"></ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div><!-- End Tabela dos Pré-Inscritos -->
 
         </div>
     </section>

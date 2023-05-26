@@ -226,30 +226,28 @@
                             </select>
                         </div>
                         <div class="col-lg-5">
-                            Card com a equipe principal que o atleta joga. Abaixo liste o histórico de transferências do
-                            atleta.
+
+
                         </div>
                         <div class="col-lg-7">
                             <div class="row">
                                 <!-- Sales Card -->
                                 <div class="col-xxl-4 col-md-6">
-                                    <div class="card info-card sales-card">
+                                    <div class="card info-card jogos-card">
 
                                         <div class="card-body">
-                                            <h5 class="card-title">Total de Jogos</h5>
 
                                             <div class="d-flex align-items-center">
                                                 <div
                                                     class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-person-check"></i>
+                                                    <i class="fas fa-futbol"></i>
                                                 </div>
-                                                <div class="ps-3">
-                                                    <h6>1</h6>
-                                                    <span class="text-success small pt-1 fw-bold">0%</span> <span
-                                                        class="text-muted small pt-2 ps-1">Jogos</span>
-
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2>1</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Jogos</span>
                                                 </div>
                                             </div>
+
                                         </div>
 
                                     </div>
@@ -260,17 +258,14 @@
                                     <div class="card info-card revenue-card">
 
                                         <div class="card-body">
-                                            <h5 class="card-title">Gols Marcados</h5>
-
                                             <div class="d-flex align-items-center">
                                                 <div
                                                     class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-person-check"></i>
+                                                    <i class="fas fa-futbol"></i>
                                                 </div>
-                                                <div class="ps-3">
-                                                    <h6>2</h6>
-                                                    <span class="text-success small pt-1 fw-bold">100%</span> <span
-                                                        class="text-muted small pt-2 ps-1">Gols Marcados</span>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2>2</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Gols Marcados</span>
 
                                                 </div>
                                             </div>
@@ -282,20 +277,86 @@
                                 <!-- Customers Card -->
                                 <div class="col-xxl-4 col-xl-12">
 
-                                    <div class="card info-card customers-card">
+                                    <div class="card info-card golsPartidas-card">
 
                                         <div class="card-body">
-                                            <h5 class="card-title">Gols por partida</h5>
-
                                             <div class="d-flex align-items-center">
                                                 <div
                                                     class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-people"></i>
+                                                    <i class="fas fa-futbol"></i>
                                                 </div>
-                                                <div class="ps-3">
-                                                    <h6>1244</h6>
-                                                    <span class="text-danger small pt-1 fw-bold">100%</span> <span
-                                                        class="text-muted small pt-2 ps-1">Gols por partida</span>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2>0,55</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Gols por partida</span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div><!-- End Customers Card -->
+
+                                <!-- Customers Card -->
+                                <div class="col-xxl-4 col-xl-12">
+
+                                    <div class="card info-card vitorias-card">
+
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-trophy-fill"></i>
+                                                </div>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2>5</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Vitórias</span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div><!-- End Customers Card -->
+
+                                <!-- Customers Card -->
+                                <div class="col-xxl-4 col-xl-12">
+
+                                    <div class="card info-card empate-card">
+
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="fas fa-equals"></i>
+                                                </div>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2>0</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Empates</span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div><!-- End Customers Card -->
+
+                                <!-- Customers Card -->
+                                <div class="col-xxl-4 col-xl-12">
+
+                                    <div class="card info-card derrotas-card">
+
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="fas fa-times"></i>
+                                                </div>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2>0</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Derrotas</span>
 
                                                 </div>
                                             </div>
@@ -311,17 +372,14 @@
                                     <div class="card info-card customers-card">
 
                                         <div class="card-body">
-                                            <h5 class="card-title">Vitórias</h5>
-
                                             <div class="d-flex align-items-center">
                                                 <div
                                                     class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-people"></i>
+                                                    <i class="fas fa-times-circle"></i>
                                                 </div>
-                                                <div class="ps-3">
-                                                    <h6>1244</h6>
-                                                    <span class="text-danger small pt-1 fw-bold">100%</span> <span
-                                                        class="text-muted small pt-2 ps-1">Vitórias</span>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2>4</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Faltas</span>
 
                                                 </div>
                                             </div>
@@ -334,20 +392,17 @@
                                 <!-- Customers Card -->
                                 <div class="col-xxl-4 col-xl-12">
 
-                                    <div class="card info-card customers-card">
+                                    <div class="card info-card vermelho-card">
 
                                         <div class="card-body">
-                                            <h5 class="card-title">Empates</h5>
-
                                             <div class="d-flex align-items-center">
                                                 <div
                                                     class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-people"></i>
+                                                    <i class="bi bi-file-fill"></i>
                                                 </div>
-                                                <div class="ps-3">
-                                                    <h6>1244</h6>
-                                                    <span class="text-danger small pt-1 fw-bold">100%</span> <span
-                                                        class="text-muted small pt-2 ps-1">Empates</span>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2>3</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Cartões Amarelo</span>
 
                                                 </div>
                                             </div>
@@ -360,20 +415,17 @@
                                 <!-- Customers Card -->
                                 <div class="col-xxl-4 col-xl-12">
 
-                                    <div class="card info-card customers-card">
+                                    <div class="card info-card amarelo-card">
 
                                         <div class="card-body">
-                                            <h5 class="card-title">Derrotas</h5>
-
                                             <div class="d-flex align-items-center">
                                                 <div
                                                     class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-people"></i>
+                                                    <i class="bi bi-file-fill"></i>
                                                 </div>
-                                                <div class="ps-3">
-                                                    <h6>1244</h6>
-                                                    <span class="text-danger small pt-1 fw-bold">100%</span> <span
-                                                        class="text-muted small pt-2 ps-1">Derrotas</span>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2>1</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Cartões Vermelho</span>
 
                                                 </div>
                                             </div>
@@ -386,20 +438,17 @@
                                 <!-- Customers Card -->
                                 <div class="col-xxl-4 col-xl-12">
 
-                                    <div class="card info-card customers-card">
+                                    <div class="card info-card campeonato-card">
 
                                         <div class="card-body">
-                                            <h5 class="card-title">Faltas</h5>
-
                                             <div class="d-flex align-items-center">
                                                 <div
                                                     class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-people"></i>
+                                                    <i class="fas fa-trophy"></i>
                                                 </div>
-                                                <div class="ps-3">
-                                                    <h6>1244</h6>
-                                                    <span class="text-danger small pt-1 fw-bold">100%</span> <span
-                                                        class="text-muted small pt-2 ps-1">Faltas</span>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2>0</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Torneios</span>
 
                                                 </div>
                                             </div>
@@ -412,98 +461,17 @@
                                 <!-- Customers Card -->
                                 <div class="col-xxl-4 col-xl-12">
 
-                                    <div class="card info-card customers-card">
+                                    <div class="card info-card amistoso-card">
 
                                         <div class="card-body">
-                                            <h5 class="card-title">Cartões Amarelo</h5>
-
                                             <div class="d-flex align-items-center">
                                                 <div
                                                     class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-people"></i>
+                                                    <i class="fas fa-handshake"></i>
                                                 </div>
-                                                <div class="ps-3">
-                                                    <h6>1244</h6>
-                                                    <span class="text-danger small pt-1 fw-bold">100%</span> <span
-                                                        class="text-muted small pt-2 ps-1">Cartões Amarelo</span>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div><!-- End Customers Card -->
-
-                                <!-- Customers Card -->
-                                <div class="col-xxl-4 col-xl-12">
-
-                                    <div class="card info-card customers-card">
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">Cartões Vermelho</h5>
-
-                                            <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-people"></i>
-                                                </div>
-                                                <div class="ps-3">
-                                                    <h6>1244</h6>
-                                                    <span class="text-danger small pt-1 fw-bold">100%</span> <span
-                                                        class="text-muted small pt-2 ps-1">Cartões Vermelho</span>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div><!-- End Customers Card -->
-
-                                <!-- Customers Card -->
-                                <div class="col-xxl-4 col-xl-12">
-
-                                    <div class="card info-card customers-card">
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">Campeonatos</h5>
-
-                                            <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-people"></i>
-                                                </div>
-                                                <div class="ps-3">
-                                                    <h6>1244</h6>
-                                                    <span class="text-danger small pt-1 fw-bold">100%</span> <span
-                                                        class="text-muted small pt-2 ps-1">Campeonatos</span>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div><!-- End Customers Card -->
-
-                                <!-- Customers Card -->
-                                <div class="col-xxl-4 col-xl-12">
-
-                                    <div class="card info-card customers-card">
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">Amistosos</h5>
-
-                                            <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-people"></i>
-                                                </div>
-                                                <div class="ps-3">
-                                                    <h6>1244</h6>
-                                                    <span class="text-danger small pt-1 fw-bold">100%</span> <span
-                                                        class="text-muted small pt-2 ps-1">Amistosos</span>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2>0</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Amistosos</span>
 
                                                 </div>
                                             </div>
@@ -517,8 +485,41 @@
                         </div><!-- End Right side columns -->
 
                         <div class="col-lg-5">
-                            Card que apresente se oatleta já foi convocado ou se está atualmente convocado para
-                            participações nacionais ou internacionais.
+                            <div class="card">
+                                <div class="card-header">EQUIPE PRINCIPAL</div>
+                                <div class="card-body text-center">
+                                    <div class="row g-0">
+                                        <div class="col-md-5 text-center">
+                                            <img src="<?php echo URL . 'public/uploads/equipeA.jpg'; ?>"
+                                                class="img-fluid rounded-circle custom-border-escudo mt-3"
+                                                alt="Imagem Arredondada">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card-body mt-5">
+                                                <h5 class="card-title tamanhoF">ADESC F.C</h5>
+                                                <p class="card-text">Desde 2023</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    TRANSFERÊNCIAS DO ATLETA
+                                    <div class="col-md-12">
+                                        <div class="card-body mt-3">
+                                            <p class="card-text tamanhoFTransferencia">2023 - <b>Clube A</b> para
+                                                <b>ADESC F. C.</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">CONVOCAÇÕES</div>
+                                <div class="card-body mt-3">
+                                    <p class="card-text tamanhoFTransferencia">2023 - <b>Seleção Brasileira</b></p>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>

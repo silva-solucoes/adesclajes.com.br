@@ -3158,3 +3158,108 @@ section {
 .card-img-overlay {
   background-color: rgba(255, 255, 255, 0.6);
 }
+
+.custom-border-escudo{
+  border: 7px solid #D98E04;
+}
+
+.tamanhoF{
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.tamanhoFTransferencia{
+  font-size: 14px;
+}
+
+.content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.content ul i {
+  font-size: 20px;
+  padding-right: 4px;
+  color: #3fbbc0;
+}
+
+.info-card {
+  padding-bottom: 10px;
+}
+
+.info-card h2 {
+  font-size: 28px;
+  color: #012970;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+.card-icon {
+  font-size: 32px;
+  line-height: 0;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.jogos-card .card-icon {
+  color: #3fbbc0;
+  background: #f6f6fe;
+}
+
+.sales-card .card-icon {
+  color: #4154f1;
+  background: #f6f6fe;
+}
+
+.revenue-card .card-icon {
+  color: #2eca6a;
+  background: #e0f8e9;
+}
+
+.golsPartidas-card .card-icon {
+  color: #114b27;
+  background: #e0f8e9;
+}
+
+.vitorias-card .card-icon {
+  color: #1d7d42;
+  background: #e0f8e9;
+}
+
+.empate-card .card-icon {
+  color: #777777;
+  background: #e0f8e9;
+}
+
+.derrotas-card .card-icon {
+  color: #ef3c10;
+  background: #ffecdf;
+}
+
+.vermelho-card .card-icon {
+  color: #96270b;
+  background: #ffecdf;
+}
+
+.amarelo-card .card-icon {
+  color: #ffdd1d;
+  background: #ffecdf;
+}
+
+.customers-card .card-icon {
+  color: #ff771d;
+  background: #ffecdf;
+}
+
+.campeonato-card .card-icon {
+  color: #1b46f3;
+  background: #ffecdf;
+}
+
+.amistoso-card .card-icon {
+  color: #470ba2;
+  background: #ffecdf;
+}

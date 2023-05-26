@@ -27,6 +27,7 @@
     <link href="<?php echo URL . 'public/vendor/quill/quill.bubble.css'; ?>" rel="stylesheet">
     <link href="<?php echo URL . 'public/vendor/remixicon/remixicon.css'; ?>" rel="stylesheet">
     <link href="<?php echo URL . 'public/vendor/simple-datatables/style.css'; ?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Template Main CSS File -->
     <link href="<?php echo URL . 'public/css/styleAdm.css'; ?>" rel="stylesheet">
@@ -285,75 +286,144 @@
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                
+
             </li><!-- End Components Nav -->
 
             <li class="nav-item">
-                
+
             </li><!-- End Forms Nav -->
 
             <li class="nav-item">
-                
+
             </li><!-- End Tables Nav -->
 
             <li class="nav-item">
-                
+
             </li><!-- End Charts Nav -->
 
             <li class="nav-item">
-                
+
             </li><!-- End Icons Nav -->
 
             <li class="nav-heading">Paginas</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>Perfil</span>
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-gear"></i>
+                    <span>Configuração de Site</span>
                 </a>
-            </li><!-- End Profile Page Nav -->
+            </li><!-- End Navegação na página de Configuração de Site -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-faq.html">
-                    <i class="bi bi-question-circle"></i>
-                    <span>F.A.Q</span>
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-bookmark-star"></i>
+                    <span>Gerenciar Destaque</span>
                 </a>
-            </li><!-- End F.A.Q Page Nav -->
+            </li><!-- End Página de Destaque -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-contact.html">
-                    <i class="bi bi-envelope"></i>
-                    <span>Contatos</span>
+                <a class="nav-link collapsed" href="#">
+                    <i class="fas fa-handshake"></i>
+                    <span>Gerenciar Patrocinadores</span>
                 </a>
-            </li><!-- End Contact Page Nav -->
+            </li><!-- End Página de Patrocinador -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-register.html">
-                    <i class="bi bi-card-list"></i>
-                    <span>Registar Usuários</span>
+                <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#"
+                    aria-expanded="false">
+                    <i class="bi bi-newspaper"></i><span>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Gerenciar Notícias</font>
+                        </font>
+                    </span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-            </li><!-- End Register Page Nav -->
+                <ul id="icons-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav" style="">
+                    <li>
+                        <a href="icons-bootstrap.html">
+                            <i class="bi bi-circle"></i><span>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Cadastrar Notícia</font>
+                                </font>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="icons-remix.html">
+                            <i class="bi bi-circle"></i><span>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Listar Notícias</font>
+                                </font>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-login.html">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Login</span>
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-info-circle"></i>
+                    <span>Gerenciar Sobre-nós</span>
                 </a>
-            </li><!-- End Login Page Nav -->
+            </li><!-- End Página Sobre -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-error-404.html">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>Error 404</span>
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-people"></i>
+                    <span>Gerenciar BID</span>
                 </a>
-            </li><!-- End Error 404 Page Nav -->
+            </li><!-- End Página BID -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Blank</span>
+                <a class="nav-link collapsed" href="#l">
+                    <i class="bi bi-images"></i>
+                    <span>Gerenciar Fotos</span>
                 </a>
-            </li><!-- End Blank Page Nav -->
+            </li><!-- End Página Fotos -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-dribbble"></i>
+                    <span>Gerenciar Esportes</span>
+                </a>
+            </li><!-- End Página Esportes -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-diagram-3"></i>
+                    <span>Gerenciar Diretoria</span>
+                </a>
+            </li><!-- End Página Diretoria -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#icons-nav2" data-bs-toggle="collapse" href="#"
+                    aria-expanded="false">
+                    <i class="bi bi-person-plus"></i><span>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Gerenciar Administradores</font>
+                        </font>
+                    </span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="icons-nav2" class="nav-content collapse" data-bs-parent="#sidebar-nav" style="">
+                    <li>
+                        <a href="icons-bootstrap.html">
+                            <i class="bi bi-circle"></i><span>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Cadastrar Administrador</font>
+                                </font>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="icons-bootstrap.html">
+                            <i class="bi bi-circle"></i><span>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Listar Administradores</font>
+                                </font>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Página Adm -->
 
         </ul>
 
