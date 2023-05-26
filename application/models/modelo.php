@@ -33,7 +33,7 @@ class Modelo{
 
 		    $mail->send();
 
-			echo 'Menssagem enviada com sucesso<br>';
+			echo 'Menssagem enviada com sucesso';
 			} catch (Exception $e) {
 			echo "Erro ao enviar mensagem. PHPMailer Error: {$mail->ErrorInfo}";
 			}

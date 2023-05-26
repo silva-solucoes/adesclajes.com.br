@@ -86,7 +86,7 @@
 <script src="<?php echo URL . 'public/vendor/isotope-layout/isotope.pkgd.min.js'; ?>"></script>
 <script src="<?php echo URL . 'public/vendor/swiper/swiper-bundle.min.js'; ?>"></script>
 <script src="<?php echo URL . 'public/vendor/waypoints/noframework.waypoints.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/php-email-form/validate.js'; ?>"></script>
+<script src="<?php echo URL . 'public/js/php-email-form/validate.js'; ?>"></script>
 
 <!-- Template Main JS File -->
 <script src="<?php echo URL . 'public/js/main.js'; ?>"></script>
