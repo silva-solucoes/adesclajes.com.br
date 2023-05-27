@@ -14,10 +14,11 @@ class AdmsCadastrar extends Conn{
 	private object $conn;
     
     public function cadastrar(array $dados = null){
+		$dataHora = date('dd/mm/yyyy H:i:s');
 		$this->dados = $dados;
 		$this->conn = $this->connect();
 
-		$query_cad_usuario = "INSERT INTO tbl_incricao (nome, dtNascimento, genero, ensino, nome_escola, nome_mae, nome_pai, telefoneR, categoriaE, posicao, altura, frase) VALUES (:nome, :dtNascimento, :genero, :ensino, :nome_escola, :nome_mae, :nome_pai, :telefoneR, :categoriaE, :posicao, :altura, :frase)";
+		$query_cad_usuario = "INSERT INTO tbl_incricao (nome, dtNascimento, genero, ensino, nome_escola, nome_mae, nome_pai, telefoneR, categoriaE, posicao, altura, frase, dtRegistro) VALUES (:nome, :dtNascimento, :genero, :ensino, :nome_escola, :nome_mae, :nome_pai, :telefoneR, :categoriaE, :posicao, :altura, :frase, :dtRegistro)";
 
 		$cad_usuario = $this->conn->prepare($query_cad_usuario);
 		$cad_usuario->bindParam(':nome', $this->dados['name']);
@@ -32,6 +33,7 @@ class AdmsCadastrar extends Conn{
 		$cad_usuario->bindParam(':posicao', $this->dados['posicao']);
 		$cad_usuario->bindParam(':altura', $this->dados['altura']);
 		$cad_usuario->bindParam(':frase', $this->dados['message']);
+		$cad_usuario->bindParam(':dtRegistro', $this->dados[$dataHora]);
 
 		$cad_usuario->execute();
 

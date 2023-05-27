@@ -26,6 +26,7 @@ $routes=[
     'login' => 'LoginController::login',
     'recuperar-senha' => 'LoginController::recuperar_senha',
     'painel' => 'LoginController::painel',
+    'config' => 'ConfigController::index',
     '404' => 'MainController::error',
 ];
 

@@ -308,9 +308,9 @@
             <li class="nav-heading">Paginas</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?php echo URL . 'config'; ?>">
                     <i class="bi bi-gear"></i>
-                    <span>Configuração de Site</span>
+                    <span>Configurações do Site</span>
                 </a>
             </li><!-- End Navegação na página de Configuração de Site -->
 
