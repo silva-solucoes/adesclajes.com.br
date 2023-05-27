@@ -144,19 +144,19 @@
                       </div>
                       <div class="form-group col-md-12">
                         <label for="name">Nome da Escola:</label>
-                        <input type="text" name="nomeEscola" class="form-control" placeholder="Nome completo da Escola" id="name" required>
+                        <input type="text" name="nomeEscola" class="form-control" placeholder="Nome completo da Escola" id="nomeEscola" required>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="name">Nome da sua Mãe:</label>
-                        <input type="text" name="nomeMae" class="form-control" placeholder="Nome da sua Mãe" id="name" required>
+                        <input type="text" name="nomeMae" class="form-control" placeholder="Nome da sua Mãe" id="nomeMae" required>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="name">Nome da seu Pai:</label>
-                        <input type="text" name="nomePai" class="form-control" placeholder="Nome da sua Mãe" id="name" required>
+                        <input type="text" name="nomePai" class="form-control" placeholder="Nome do seu pai" id="nomePai" required>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="name">Telefone do Responsável:</label>
-                        <input type="tel" name="telRespon" class="form-control" placeholder="(00)00000-0000" id="name" required>
+                        <input type="tel" name="telRespon" class="form-control" maxlength="11" placeholder="(00)00000-0000" id="phone" oninput="formatPhone(this)" required>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="name">Categoria Esportiva:</label>
@@ -186,7 +186,7 @@
                       </div>
                       <div class="form-group col-md-6">
                         <label for="name">Altura:</label>
-                        <input type="text" name="altura" class="form-control" placeholder="Ex:1,60" id="name" required>
+                        <input type="text" name="altura" class="form-control" maxlength="4" placeholder="Ex:1,60" id="alturaInput" oninput="formatAltura()" required>
                       </div>
                       <div class="form-group col-md-12">
                         <label for="name">Digite uma frase motivacional:</label>
