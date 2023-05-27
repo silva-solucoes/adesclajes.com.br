@@ -282,33 +282,25 @@
   cpfResponsavel.addEventListener("input", function() {
     this.value = formatCPF(this.value);
   });
-  //edição de rg
-  function formatRG(rg) {
-    rg = rg.replace(/\D/g, ""); // remove todos os caracteres não numéricos
+
+  //edição de altura
   
-    // insere os pontos e o traço na formatação padrão do RG
-    rg = rg.replace(/(\d{2})(\d)/, "$1.$2");
-    rg = rg.replace(/(\d{3})(\d)/, "$1.$2");
-    rg = rg.replace(/(\d{3})([\dX]{1,2})$/, "$1-$2");
+  function formatAltura() {
+    let alturaInput = document.getElementById("alturaInput");
+    let altura = alturaInput.value.replace(/\D/g, ""); // remove todos os caracteres não numéricos
   
-    return rg;
+    // insere os pontos e o traço na formatação padrão do altura
+    altura = altura.replace(/(\d{1})(\d)/, "$1.$2");
+  
+    alturaInput.value = altura; 
   }
 
-  const rgAtleta = document.getElementById("rgAtle");
-  const rgResponsavel = document.getElementById("rgRes");
-
-  rgAtleta.addEventListener("input", function() {
-    this.value = formatRG(this.value);
-  });
-
-  rgResponsavel.addEventListener("input", function() {
-    this.value = formatRG(this.value);
-  });
+  
 
   //edição de telefone
 
-  function formatPhone(phone) {
-    phone = phone.replace(/\D/g, ""); // remove todos os caracteres não numéricos
+  function formatPhone(phoneInput) {
+    let phone = phoneInput.value.replace(/\D/g, ""); // remove todos os caracteres não numéricos
   
     // insere os parênteses, o traço e o nono dígito no número de telefone
     if (phone.length === 11) {
@@ -317,21 +309,5 @@
       phone = phone.replace(/^(\d{2})(\d{4})(\d{4})$/, "($1) $2-$3");
     }
   
-    return phone;
+    phoneInput.value = phone; // atualiza o valor do campo com o número de telefone formatado
   }
-
-  const phonePai = document.getElementById("phoneP");
-  const phoneMae = document.getElementById("phoneM");
-  const phoneResponsavel = document.getElementById("phoneRes");
-
-  phonePai.addEventListener("input", function() {
-    this.value = formatPhone(this.value);
-  });
-
-  phoneMae.addEventListener("input", function() {
-    this.value = formatPhone(this.value);
-  });
-
-  phoneResponsavel.addEventListener("input", function() {
-    this.value = formatPhone(this.value);
-  });
