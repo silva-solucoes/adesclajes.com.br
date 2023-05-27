@@ -38,7 +38,7 @@
 
                             <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab"
-                                    data-bs-target="#profile-change-password">Configuração de e-mail</button>
+                                    data-bs-target="#profile-change-password">Configuração de e-mail de Contato</button>
                             </li>
 
                         </ul>
@@ -385,29 +385,6 @@
                                                     <input name="fullName" type="text" class="form-control"
                                                         id="fullName" value="Kevin Anderson">
                                                 </div>
-                                                <label for="fullName"
-                                                    class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Localização:</label>
-                                                <div class="col-md-8 col-lg-9">
-                                                    <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Rua Riacho Madeira, S.N, Centro, Lajes/RN, CEP: 59535-000">
-                                                </div>
-                                                <label for="fullName"
-                                                    class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">E-mail:</label>
-                                                <div class="col-md-8 col-lg-9">
-                                                    <input name="fullName" type="email" class="form-control"
-                                                        id="fullName" value="adesclajes1997@gmail.com">
-                                                </div>
-                                                <label for="fullName"
-                                                    class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Telefone:</label>
-                                                <div class="col-md-8 col-lg-9">
-                                                    <input name="fullName" type="tel" class="form-control"
-                                                        id="fullName" value="+55 (84)99620-2499">
-                                                </div>
-                                                <label for="fullName"
-                                                    class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Incorporar um mapa:</label>
-                                                <div class="col-md-8 col-lg-9">
-                                                    <textarea class="form-control" style="height: 100px"></textarea>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="card-footer">
@@ -415,89 +392,120 @@
                                                     class="bi bi-check-circle"></i> Salvar Alterações</button>
                                         </div>
                                     </div>
-
+                                </form>
                             </div>
 
                             <div class="tab-pane fade pt-3" id="profile-settings">
-
+                                <p class="small fst-italic">A seção "Conteúdo Geral" é dedicada ao cadastro ou
+                                    atualização das informações do rodapé do site.</p>
                                 <!-- Settings Form -->
                                 <form>
 
                                     <div class="row mb-3">
-                                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email
-                                            Notifications</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="changesMade"
-                                                    checked>
-                                                <label class="form-check-label" for="changesMade">
-                                                    Changes made to your account
-                                                </label>
+                                        <div class="card">
+                                            <div class="card-header">SEÇÃO DE RODAPÉ</div>
+                                            <div class="card-body">
+                                                <div class="row g-0 mb-3 mt-3">
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Localização da
+                                                        ADESC:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="Rua Riacho Madeira, s.n. Centro, Lajes/RN, CEP: 59535-000, Brasil">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Telefone:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="tel" class="form-control"
+                                                            id="fullName" value="+55 (84)99620-2499">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - Facebook:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="#">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - Instagram:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="#">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - Linkedin:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="#">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - TikTok:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="#">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - Twitter:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="#">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - YouTube:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="#">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">E-mail:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="email" class="form-control"
+                                                            id="fullName" value="adesclajes1997@gmail.com">
+                                                    </div>                                                    
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Incorporar um
+                                                        mapa - Código Google Maps(iFrame):</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <textarea class="form-control" style="height: 100px"></textarea>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="newProducts"
-                                                    checked>
-                                                <label class="form-check-label" for="newProducts">
-                                                    Information on new products and services
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="proOffers">
-                                                <label class="form-check-label" for="proOffers">
-                                                    Marketing and promo offers
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="securityNotify"
-                                                    checked disabled>
-                                                <label class="form-check-label" for="securityNotify">
-                                                    Security alerts
-                                                </label>
+                                            <div class="card-footer">
+                                                <button type="button" class="btn btn-success"><i
+                                                        class="bi bi-check-circle"></i> Salvar Alterações</button>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        
                                     </div>
                                 </form><!-- End settings Form -->
 
                             </div>
 
                             <div class="tab-pane fade pt-3" id="profile-change-password">
+                                <p class="small fst-italic">A seção "Configuração de e-mail de Contato" é dedicada ao cadastro ou
+                                    atualização do e-mail que receberá as mensagem enviadas pelos usuários do site.</p>
                                 <!-- Change Password Form -->
                                 <form>
 
                                     <div class="row mb-3">
-                                        <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current
-                                            Password</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="password" type="password" class="form-control"
-                                                id="currentPassword">
+                                    <div class="card">
+                                            <div class="card-header">CONFIGURAÇÃO DE E-MAIL</div>
+                                            <div class="card-body">
+                                                <div class="row g-0 mb-3 mt-3">
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">E-mail:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="email" class="form-control"
+                                                            id="fullName" value="adesclajes1997@gmail.com">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <button type="button" class="btn btn-success"><i
+                                                        class="bi bi-check-circle"></i> Salvar Alterações</button>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="row mb-3">
-                                        <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New
-                                            Password</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="newpassword" type="password" class="form-control"
-                                                id="newPassword">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New
-                                            Password</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="renewpassword" type="password" class="form-control"
-                                                id="renewPassword">
-                                        </div>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Change Password</button>
-                                    </div>
                                 </form><!-- End Change Password Form -->
 
                             </div>
