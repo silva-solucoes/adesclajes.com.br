@@ -6,7 +6,8 @@
         <h1>Configurações do Site</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Painel</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo URL . 'painel'; ?>">Painel de Controle</a></li>
+                <li class="breadcrumb-item active">Configurações do Site</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->

@@ -315,14 +315,7 @@
             </li><!-- End Navegação na página de Configuração de Site -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="bi bi-bookmark-star"></i>
-                    <span>Gerenciar Destaque</span>
-                </a>
-            </li><!-- End Página de Destaque -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="patrocinadores">
                     <i class="fas fa-handshake"></i>
                     <span>Gerenciar Patrocinadores</span>
                 </a>
@@ -367,10 +360,34 @@
             </li><!-- End Página Sobre -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="bi bi-people"></i>
-                    <span>Gerenciar BID</span>
+                <a class="nav-link collapsed" data-bs-target="#icons-nav2" data-bs-toggle="collapse" href="#"
+                    aria-expanded="false">
+                        <i class="bi bi-people"></i><span>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Gerenciar BID</font>
+                        </font>
+                    </span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
+                <ul id="icons-nav2" class="nav-content collapse" data-bs-parent="#sidebar-nav" style="">
+                    <li>
+                        <a href="icons-bootstrap.html">
+                            <i class="bi bi-circle"></i><span>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Cadastrar Atleta ao BID</font>
+                                </font>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="icons-bootstrap.html">
+                            <i class="bi bi-circle"></i><span>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Listar BID</font>
+                                </font>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
             </li><!-- End Página BID -->
 
             <li class="nav-item">
@@ -395,7 +412,7 @@
             </li><!-- End Página Diretoria -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#icons-nav2" data-bs-toggle="collapse" href="#"
+                <a class="nav-link collapsed" data-bs-target="#icons-nav3" data-bs-toggle="collapse" href="#"
                     aria-expanded="false">
                     <i class="bi bi-person-plus"></i><span>
                         <font style="vertical-align: inherit;">
@@ -403,7 +420,7 @@
                         </font>
                     </span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="icons-nav2" class="nav-content collapse" data-bs-parent="#sidebar-nav" style="">
+                <ul id="icons-nav3" class="nav-content collapse" data-bs-parent="#sidebar-nav" style="">
                     <li>
                         <a href="icons-bootstrap.html">
                             <i class="bi bi-circle"></i><span>
