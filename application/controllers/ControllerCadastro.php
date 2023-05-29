@@ -22,11 +22,12 @@ class ControllerCadastro{
 			$cadUsuario = new \App\Models\AdmsCadastrar();
 			
 			if($cadUsuario->cadastrar($this->dados)){
-
+				echo 'Menssagem enviada com sucesso';
 				//$urlDestino = URL."login";
 				//header("Location: $urlDestino");
 
 			}else{
+				//echo 'Menssagem enviada com sucesso';
 				$this->dados['form'] = $this->dados;
 			}
 		}
