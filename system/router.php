@@ -28,6 +28,10 @@ $routes=[
     'painel' => 'LoginController::painel',
     'config' => 'ConfigController::index',
     'patrocinadores' => 'PatroController::index',
+    'admNoticias' => 'AdmNewsController::index',
+    'admSobre' => 'AdmSobreController::index',
+    'admBID' => 'AdmBidController::index',
+    'admFotos' => 'AdmFotoController::index',
     '404' => 'MainController::error',
 ];
 

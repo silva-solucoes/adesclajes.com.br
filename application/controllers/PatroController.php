@@ -6,7 +6,7 @@ class PatroController{
     }
 
     static function error(){
-        require_once 'application/views/erros/erro.php';
+        require_once 'application/views/erros/Admerro.php';
     }
 }
 ?>

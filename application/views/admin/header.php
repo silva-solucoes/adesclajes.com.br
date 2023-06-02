@@ -6,6 +6,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>Painel de Controle - ADESC Lajes</title>
+    <script src="<?php echo URL . 'public/js/ckeditor/ckeditor.js'; ?>"></script>
+    
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -31,6 +33,7 @@
 
     <!-- Template Main CSS File -->
     <link href="<?php echo URL . 'public/css/styleAdm.css'; ?>" rel="stylesheet">
+    
 
     <!-- =======================================================
   * Nome do site: Silva Soluções Tech
@@ -315,83 +318,35 @@
             </li><!-- End Navegação na página de Configuração de Site -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="patrocinadores">
+                <a class="nav-link collapsed" href="<?php echo URL . 'patrocinadores'; ?>">
                     <i class="fas fa-handshake"></i>
                     <span>Gerenciar Patrocinadores</span>
                 </a>
             </li><!-- End Página de Patrocinador -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#"
-                    aria-expanded="false">
-                    <i class="bi bi-newspaper"></i><span>
-                        <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">Gerenciar Notícias</font>
-                        </font>
-                    </span><i class="bi bi-chevron-down ms-auto"></i>
+                <a class="nav-link collapsed" href="<?php echo URL . 'admNoticias'; ?>">
+                    <i class="bi bi-newspaper"></i>
+                    <span>Gerenciar Notícias</span>
                 </a>
-                <ul id="icons-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav" style="">
-                    <li>
-                        <a href="icons-bootstrap.html">
-                            <i class="bi bi-circle"></i><span>
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Cadastrar Notícia</font>
-                                </font>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-remix.html">
-                            <i class="bi bi-circle"></i><span>
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Listar Notícias</font>
-                                </font>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            </li><!-- End Página de Notícias -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?php echo URL . 'admSobre'; ?>">
                     <i class="bi bi-info-circle"></i>
                     <span>Gerenciar Sobre-nós</span>
                 </a>
             </li><!-- End Página Sobre -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#icons-nav2" data-bs-toggle="collapse" href="#"
-                    aria-expanded="false">
-                        <i class="bi bi-people"></i><span>
-                        <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">Gerenciar BID</font>
-                        </font>
-                    </span><i class="bi bi-chevron-down ms-auto"></i>
+                <a class="nav-link collapsed" href="<?php echo URL . 'admBID'; ?>">
+                    <i class="bi bi-people"></i>
+                    <span>Gerenciar BID</span>
                 </a>
-                <ul id="icons-nav2" class="nav-content collapse" data-bs-parent="#sidebar-nav" style="">
-                    <li>
-                        <a href="icons-bootstrap.html">
-                            <i class="bi bi-circle"></i><span>
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Cadastrar Atleta ao BID</font>
-                                </font>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-bootstrap.html">
-                            <i class="bi bi-circle"></i><span>
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Listar BID</font>
-                                </font>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
             </li><!-- End Página BID -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#l">
+                <a class="nav-link collapsed" href="<?php echo URL . 'admFotos'; ?>">
                     <i class="bi bi-images"></i>
                     <span>Gerenciar Fotos</span>
                 </a>

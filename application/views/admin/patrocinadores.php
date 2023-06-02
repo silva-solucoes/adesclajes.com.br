@@ -19,7 +19,8 @@
             <div class="col-12">
                 <div class="card recent-sales overflow-auto">
                     <div class="filter">
-                        <a class="btn btn-primary rounded-pill espaco" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle"></i> Novo
+                        <a class="btn btn-primary rounded-pill espaco" href="#" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle"></i> Novo
                             Patrocinador</a>
                     </div>
                     <div class="card-body">
@@ -84,7 +85,7 @@
                                             <th data-sortable="true" style="width: 17.5%;"><a href="#"
                                                     class="datatable-sorter">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Status</font>
+                                                        <font style="vertical-align: inherit;">Ações</font>
                                                     </font>
                                                 </a></th>
                                         </tr>
@@ -152,127 +153,44 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="mb-5 bt-5 text-center">Não perca a chance de fazer parte da Escolinha Esportiva
-                        ADESC!<br>Inscreva-se agora
-                        mesmo preenchendo nosso formulário e garanta seu lugar na equipe de sucesso!</p>
-                    <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Formulário de Patrocinadores</h5>
+                            <p class="mb-3 bt-5 text-center">Preencha o formulário de patrocinadores agora mesmo e faça parte
+                        desse projeto incrível.</p>
+                            <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
 
-                        <div class="col-lg-12">
-                            <h3 class="pt-0" id="tituloForm">Formulário de Pré-Inscrição</h3>
-
-                            <form action="<?php echo URL . 'Cadastrar' ?>" method="POST"
-                                class="needs-validation borda-form php-inscricao-form" novalidate>
-                                <!-- Tab Content -->
-                                <div class="tab-content">
-                                    <!-- Informações do Atleta -->
-                                    <div class="tab-pane fade show active" id="tab1">
-
-                                        <p class="fst-italic">Informações Pessoais</p>
-
-                                        <div class="row">
-                                            <div class="form-group col-md-12">
-                                                <label for="name">Nome Completo:</label>
-                                                <input type="text" name="name" class="form-control"
-                                                    placeholder="Nome do Atleta completo" id="name" required>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="name">Data de Nascimento:</label>
-                                                <input type="date" name="dataNascimento" class="form-control"
-                                                    id="dataNascimento" required>
-                                            </div>
-                                            <div class="form-group col-md-3">
-                                                <label for="name">Gêrero:</label>
-                                                <select name="sexo" class="form-select"
-                                                    aria-label="Default select example" required>
-                                                    <option selected>Selecione</option>
-                                                    <option value="1">Feminino</option>
-                                                    <option value="2">Masculino</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-5">
-                                                <label for="name">Nível de Ensino:</label>
-                                                <select name="nivel_ensino" class="form-select"
-                                                    aria-label="Default select example" required>
-                                                    <option selected>Selecione o nível</option>
-                                                    <option value="1">Ensino Fundamental I</option>
-                                                    <option value="2">Ensino Fundamental II</option>
-                                                    <option value="3">Ensino Médio</option>
-                                                    <option value="4">Ensino Superior</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <label for="name">Nome da Escola:</label>
-                                                <input type="text" name="nomeEscola" class="form-control"
-                                                    placeholder="Nome completo da Escola" id="nomeEscola" required>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="name">Nome da sua Mãe:</label>
-                                                <input type="text" name="nomeMae" class="form-control"
-                                                    placeholder="Nome da sua Mãe" id="nomeMae" required>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="name">Nome da seu Pai:</label>
-                                                <input type="text" name="nomePai" class="form-control"
-                                                    placeholder="Nome do seu pai" id="nomePai" required>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="name">Telefone do Responsável:</label>
-                                                <input type="tel" name="telRespon" class="form-control" maxlength="11"
-                                                    placeholder="(00)00000-0000" id="phone" oninput="formatPhone(this)"
-                                                    required>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="name">Categoria Esportiva:</label>
-                                                <select name="categoria_esportiva" class="form-select"
-                                                    aria-label="Default select example" required>
-                                                    <option selected>Selecione uma categoria</option>
-                                                    <option value="1">Futebol</option>
-                                                    <option value="2">Futsal</option>
-                                                    <option value="3">Fut7</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="name">Posição:</label>
-                                                <select name="posicao" class="form-select"
-                                                    aria-label="Default select example" required>
-                                                    <option selected>Selecione</option>
-                                                    <option value="1">Goleiro</option>
-                                                    <option value="2">Zagueiro</option>
-                                                    <option value="3">Lateral</option>
-                                                    <option value="4">Volante</option>
-                                                    <option value="5">Meia</option>
-                                                    <option value="6">Ponta</option>
-                                                    <option value="7">Atacante</option>
-                                                    <option value="8">Pivô</option>
-                                                    <option value="9">Fixo</option>
-                                                    <option value="10">Ala Esquerda</option>
-                                                    <option value="11">Ala Direita</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="name">Altura:</label>
-                                                <input type="text" name="altura" class="form-control" maxlength="4"
-                                                    placeholder="Ex:1,60" id="alturaInput" oninput="formatAltura()"
-                                                    required>
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <label for="name">Digite uma frase motivacional:</label>
-                                                <textarea class="form-control" name="message" rows="5"
-                                                    required></textarea>
-                                            </div>
+                            <div class="col-lg-12">
+                                <form class="row g-3">
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="floatingName"
+                                                placeholder="Your Name">
+                                            <label for="floatingName">Nome do Patrocinador*:</label>
                                         </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Address" id="floatingTextarea"
+                                                style="height: 100px;"></textarea>
+                                            <label for="floatingTextarea">URL do site/rede social*:</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="floatingSelect">Foto do patrocinador*:</label>
+                                        <div class="form-floating">
+                                            <input class="form-control" type="file" id="formFile">
+                                        </div>
+                                    </div>
 
-                                    </div><!-- End Tab 1 Content -->
-
-                                </div>
-
+                            </div>
                         </div>
 
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="botao-inscricao" name="CadUsuario" type="submit" value="cadastrar" class="">Finalizar
-                        Inscrição</button>
+                    <button id="botao-inscricao" name="CadUsuario" type="submit" value="cadastrar" class="">Cadastrar
+                        Patrocinador</button>
                     </form>
                     <button id="botao-cancelar" type="button" class="btn btn-secondary"
                         data-bs-dismiss="modal">Cancelar</button>
