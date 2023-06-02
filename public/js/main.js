@@ -306,7 +306,7 @@
     if (phone.length === 11) {
       phone = phone.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
     } else {
-      phone = phone.replace(/^(\d{2})(\d{4})(\d{4})$/, "($1) $2-$3");
+      phone = phone.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
     }
   
     phoneInput.value = phone; // atualiza o valor do campo com o número de telefone formatado

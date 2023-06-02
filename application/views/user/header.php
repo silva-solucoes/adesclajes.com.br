@@ -201,7 +201,11 @@
             </div>
 
           </div>
-        </div>
+        </div><div class="my-3">
+                            <div class="loading">Carregando</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Sua mensagem foi enviada. Obrigado!</div>
+                        </div>
         <div class="modal-footer">
           <button id="botao-inscricao" name="CadUsuario" type="submit"value = "cadastrar" class="">Finalizar Inscrição</button>
           </form>
