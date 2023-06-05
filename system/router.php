@@ -32,6 +32,9 @@ $routes=[
     'admSobre' => 'AdmSobreController::index',
     'admBID' => 'AdmBidController::index',
     'admFotos' => 'AdmFotoController::index',
+    'admCategoriaEsportiva' => 'AdmEsportesController::index',
+    'admDiretoria' => 'AdmDiretoriaController::index',
+    'admUsuarios' => 'AdmUsuarioController::index',
     '404' => 'MainController::error',
 ];
 

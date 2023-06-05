@@ -353,48 +353,24 @@
             </li><!-- End Página Fotos -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?php echo URL . 'admCategoriaEsportiva'; ?>">
                     <i class="bi bi-dribbble"></i>
                     <span>Gerenciar Esportes</span>
                 </a>
             </li><!-- End Página Esportes -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?php echo URL . 'admDiretoria'; ?>">
                     <i class="bi bi-diagram-3"></i>
                     <span>Gerenciar Diretoria</span>
                 </a>
             </li><!-- End Página Diretoria -->
-
+            
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#icons-nav3" data-bs-toggle="collapse" href="#"
-                    aria-expanded="false">
-                    <i class="bi bi-person-plus"></i><span>
-                        <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">Gerenciar Administradores</font>
-                        </font>
-                    </span><i class="bi bi-chevron-down ms-auto"></i>
+                <a class="nav-link collapsed" href="<?php echo URL . 'admUsuarios'; ?>">
+                    <i class="bi bi-person-plus"></i>
+                    <span>Gerenciar Administradores</span>
                 </a>
-                <ul id="icons-nav3" class="nav-content collapse" data-bs-parent="#sidebar-nav" style="">
-                    <li>
-                        <a href="icons-bootstrap.html">
-                            <i class="bi bi-circle"></i><span>
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Cadastrar Administrador</font>
-                                </font>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-bootstrap.html">
-                            <i class="bi bi-circle"></i><span>
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Listar Administradores</font>
-                                </font>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
             </li><!-- End Página Adm -->
 
         </ul>

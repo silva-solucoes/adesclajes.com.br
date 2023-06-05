@@ -182,7 +182,6 @@
                         com o nome de Associação Comunitária Cultural, Social e Desportiva de Lajes/RN - ADESC LAJES. A
                         associação continua a prosperar e receber apoio de diversas organizações.
                     </p>
-                    <a href="sobre" class="btn-learn-more">Ler Mais</a>
                 </div>
             </div>
 
