@@ -64,7 +64,7 @@ class AdmsLogin extends Conn
             $this->resultado = true;
         } else {
             $_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>
-                <b>Erro:</b> Email ou senha incorretos!
+                <b>Erro:</b> E-mail ou senha incorretos!
             </div>";
             $this->resultado = false;
         }
