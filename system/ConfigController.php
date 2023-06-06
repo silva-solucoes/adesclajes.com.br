@@ -40,7 +40,7 @@ class ConfigController
         $valPermissao = new \System\Permissao();
         $valPermissao->index($this->urlController);
         $urlController = ucwords($this->urlController);
-        $classe = "\\App\\Controllers\\" . $urlController;
+        $classe = "\\App\\controllers\\" . $urlController;
         $classeCarregar = new $classe;
         $classeCarregar->index();
     }
