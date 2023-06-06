@@ -84,7 +84,7 @@
                                         </div>
                                         <div class="col-12">
                                             <p class="small mb-0">Já tem uma conta? <a
-                                                    href="<?php echo URL . 'login'; ?>">Área de Acesso</a></p>
+                                                    href="<?php echo URL . 'login/index'; ?>">Área de Acesso</a></p>
                                         </div>
                                     </form>
 

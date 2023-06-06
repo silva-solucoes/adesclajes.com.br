@@ -217,15 +217,14 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="<?php echo URL . 'public/images/equipe/adeilson.jpg'; ?>" alt="Profile"
+                        <img src="<?php echo URL . 'public/images/equipe/'.$_SESSION['usuario_foto']; ?>" alt="Profile"
                             class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">Adeilson Fernandes</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['usuario_nome']; ?></span>
                     </a><!-- End Profile Iamge Icon -->
-
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Adeilson Fernandes</h6>
-                            <span>Presidente</span>
+                            <h6><?php echo $_SESSION['usuario_nome']; ?></h6>
+                            <span><?php echo $_SESSION['usuario_funcao']; ?></span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -262,7 +261,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="<?php echo URL . 'login'; ?>">
+                            <a class="dropdown-item d-flex align-items-center" href="<?php echo URL . 'sair/index'; ?>">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sair</span>
                             </a>

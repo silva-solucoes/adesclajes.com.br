@@ -6,7 +6,7 @@
         <h1>Painel de Controle</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo URL . 'painel'; ?>">Início</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo URL . 'painel/index'; ?>">Início</a></li>
                 <li class="breadcrumb-item active">Painel de Controle</li>
             </ol>
         </nav>

@@ -48,17 +48,17 @@
 
       <!--<h1 class="logo me-auto"><a href="index">Silva Soluções Tech</a></h1>-->
       <!-- Descomente abaixo se preferir usar um logotipo de imagem -->
-      <a href="<?php echo URL . 'index'; ?>" class="logo me-auto"><img src="<?php echo URL . 'public/images/logo-d.png'; ?>" alt=""
+      <a href="<?php echo URL; ?>" class="logo me-auto"><img src="<?php echo URL . 'public/images/logo-d.png'; ?>" alt=""
           class="img-fluid"></a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="<?php echo URL . 'index' ?>#hero">Início</a></li>
-          <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#noticias">Notícias</a></li>
-          <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#about">Sobre-nós</a></li>
+          <li><a class="nav-link scrollto active" href="<?php echo URL; ?>#hero">Início</a></li>
+          <li><a class="nav-link scrollto" href="<?php echo URL; ?>#noticias">Notícias</a></li>
+          <li><a class="nav-link scrollto" href="<?php echo URL; ?>#about">Sobre-nós</a></li>
           <li class="dropdown"><a href="#"><span>Esportes</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="<?php echo URL . 'bid' ?>">BID</a></li>
+              <li><a href="<?php echo URL . 'bid/index' ?>">BID</a></li>
               <li class="dropdown"><a href="#"><span>Categorias Esportivas</span> <i
                     class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -70,8 +70,8 @@
               <li><a href="galeria_fotos">Galeria de Fotos</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#team">Diretoria</a></li>
-          <li><a class="nav-link scrollto" href="<?php echo URL . 'index' ?>#contact">Contato</a></li>
+          <li><a class="nav-link scrollto" href="<?php echo URL; ?>#team">Diretoria</a></li>
+          <li><a class="nav-link scrollto" href="<?php echo URL; ?>#contact">Contato</a></li>
           <li><a class="getstarted scrollto" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Área de
               Inscrição</a></li>
         </ul>
