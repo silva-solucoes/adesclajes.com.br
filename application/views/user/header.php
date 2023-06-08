@@ -58,7 +58,7 @@
           <li><a class="nav-link scrollto" href="<?php echo URL; ?>#about">Sobre-nós</a></li>
           <li class="dropdown"><a href="#"><span>Esportes</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="<?php echo URL . 'bid/index' ?>">BID</a></li>
+              <li><a href="<?php echo URL . 'paginas/bid' ?>">BID</a></li>
               <li class="dropdown"><a href="#"><span>Categorias Esportivas</span> <i
                     class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -107,7 +107,7 @@
             <div class="col-lg-7">
               <h3 class="pt-0 pt-lg-5" id="tituloForm">Formulário de Pré-Inscrição</h3>
 
-              <form action= "<?php echo URL .'Cadastrar'?>" method = "POST" class="needs-validation borda-form php-inscricao-form" novalidate>
+              <form action= "<?= URL ?>user/inscricao" method = "POST" class="needs-validation borda-form php-inscricao-form" novalidate>
                 <!-- Tab Content -->
                 <div class="tab-content">
                   <!-- Informações do Atleta -->
@@ -118,7 +118,7 @@
                     <div class="row">
                       <div class="form-group col-md-12">
                         <label for="name">Nome Completo:</label>
-                        <input type="text" name="name" class="form-control" placeholder="Nome do Atleta completo" id="name" required>
+                        <input type="text" name="nome" class="form-control" placeholder="Nome do Atleta completo" id="name" required>
                       </div>
                       <div class="form-group col-md-4">
                         <label for="name">Data de Nascimento:</label>

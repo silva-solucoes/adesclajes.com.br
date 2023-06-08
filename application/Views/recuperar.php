@@ -1,16 +1,3 @@
-<?php
-
-if (!defined('4578S9')) {
-    header("Location: /");
-    die("Erro: Página não encontrada!");
-}
-//Criptografar a senha
-//echo password_hash(4578S9, PASSWORD_DEFAULT);
-
-if (isset($this->dados['form'])) {
-    $valorForm = $this->dados['form'];
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -18,7 +5,7 @@ if (isset($this->dados['form'])) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Acesso Restrito - ADESC Lajes</title>
+    <title>Recuperar Senha - ADESC Lajes</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -44,12 +31,12 @@ if (isset($this->dados['form'])) {
     <!-- Template Main CSS File -->
     <link href="<?php echo URL . 'public/css/styleLogin.css'; ?>" rel="stylesheet">
 
-<!-- =======================================================
-  * Nome do site: Silva Soluções Tech
-  * Atualizado: 14 Abril 2023 com Bootstrap v5.2.3
-  * URL: https://silvasolucoestec.com.br
-  * Autor: Silva Soluções Tech
-  * Licença: https://silvasolucoestech.com.br/license/
+    <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
 
@@ -76,55 +63,28 @@ if (isset($this->dados['form'])) {
                                 <div class="card-body">
 
                                     <div class="pt-4 pb-2">
-                                        <h5 class="card-title text-center pb-0 fs-4">Acesse sua conta</h5>
-                                        <p class="text-center small">Digite seu e-mail e senha cadastrado para entrar
+                                        <h5 class="card-title text-center pb-0 fs-4">Recuperar Senha</h5>
+                                        <p class="text-center small">Digite seu e-mail de acesso para recuperar a senha
                                         </p>
                                     </div>
-                                    
-                                        <?php
-                                        if (isset($_SESSION['msg'])) {
-                                            echo $_SESSION['msg'];
-                                            unset($_SESSION['msg']);
-                                        }
-                                        ?>
 
-                                    <form class="row g-3 needs-validation" method="POST" action="" novalidate>
+                                    <form class="row g-3 needs-validation" novalidate>
 
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">E-mail</label>
                                             <div class="input-group has-validation">
-                                                <input type="email" name="email" class="form-control"
-                                                    id="yourUsername" placeholder="Seu e-mail" value="<?php if(isset($valorForm['email'])){echo $valorForm['email']; } ?>" required>
+                                                <input type="email" name="username" class="form-control"
+                                                    id="yourUsername" placeholder="Seu e-mail" required>
                                                 <div class="invalid-feedback">Por favor, digite seu e-mail.</div>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="yourPassword" class="form-label">Senha</label>
-                                            <div class="input-group has-validation">
-                                                <input type="password" name="senha" class="form-control"
-                                                    id="senha" placeholder="Sua senha" required>
-                                                        <span id="icone-olho" class="bi bi-eye-fill input-group-text" id="inputGroupPrepend" onclick="alternarVisibilidadeSenha()"></span>
-                                                <div class="invalid-feedback">Por favor, digite sua senha!</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="remember"
-                                                    value="true" id="rememberMe">
-                                                <label class="form-check-label" for="rememberMe">Lembrar da
-                                                    conta</label>
-                                            </div>
+                                            <button class=" w-100" id="botaoAcesso" type="submit">Recuperar</button>
                                         </div>
                                         <div class="col-12">
-                                            <input name="SendLogin" id="botaoAcesso" class="w-100" type="submit" value="Acessar">
-                                        </div>
-                                        <div class="col-12">
-                                            <p class="small mb-0">Esqueceu a Senha? <a
-                                                    href="<?php echo URL . 'paginas/recuperar'; ?>">Recupera Senha</a></p>
-                                            <p class="small mb-0"><i class="bi bi-globe"></i> <a
-                                                    href="<?php echo URL; ?>">Voltar para o site</a></p>
+                                            <p class="small mb-0">Já tem uma conta? <a
+                                                    href="<?php echo URL . 'paginas/login'; ?>">Área de Acesso</a></p>
                                         </div>
                                     </form>
 

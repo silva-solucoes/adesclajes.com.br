@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+use Conn;
 
 if(!defined('4578S9')){
     header("Location: /");
