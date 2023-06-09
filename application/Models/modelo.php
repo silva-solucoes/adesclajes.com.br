@@ -1,5 +1,6 @@
 <?php
 class Modelo {
+
     public function enviarEmail($nome, $email, $titulo, $mensagem) {
 
 		$headers = "From: $nome <$email>\r\n";
@@ -37,12 +38,42 @@ class Modelo {
    		}
 	}
 
-	public function enviarInscricao($nome, $dataNascimento, $sexo, $nivel_ensino, $nomeEscola, $nomeMae, $nomePai, $telRespon, $categoria_esportiva, $posicao, $altura, $message){
+	public function enviarInscricao($nome, $dataNascimento, $sexo, $nivel_ensino, $nomeEscola, $nomeMae, $nomePai, $telRespon, $categoria_esportiva, $posicao, $altura, $message, $dtRegistro){
 		
-    	$db = new Conn;
-		
-		$dataHora = date('dd/mm/yyyy H:i:s');
+    	$bd = new Conn;
 
+		$bd->query('INSERT INTO tbl_incricao (nome, dtNascimento, genero, ensino, nome_escola, nome_mae, nome_pai, telefoneR, categoriaE, posicao, altura, frase, dtRegistro) VALUES (:nome, :dtNascimento, :genero, :ensino, :nome_escola, :nome_mae, :nome_pai, :telefoneR, :categoriaE, :posicao, :altura, :frase, :dtRegistro)');
+		
+		$bd->bind(':nome', $nome);
+		$bd->bind(':dtNascimento', $dataNascimento);
+		$bd->bind(':genero', $sexo);
+		$bd->bind(':ensino', $nivel_ensino);
+		$bd->bind(':nome_escola', $nomeEscola);
+		$bd->bind(':nome_mae', $nomeMae);
+		$bd->bind(':nome_pai', $nomePai);
+		$bd->bind(':telefoneR', $telRespon);
+		$bd->bind(':categoriaE', $categoria_esportiva);
+		$bd->bind(':posicao', $posicao);
+		$bd->bind(':altura', $altura);
+		$bd->bind(':frase', $message);
+		$bd->bind(':dtRegistro', $dtRegistro);
+
+		if($bd->executa()):
+			$_SESSION['msg'] = "cadastrado com sucesso, confirme o cadastro via e-mail";
+		else:
+			$_SESSION['msg'] = "não foi possivel realizar o cadastrado";
+		endif;
 
 	}
+
+	public function informacoes(){
+        
+		$bd = new Conn;
+
+		$bd->query('SELECT * FROM tbl_config ORDER BY tbl_config.id_config DESC LIMIT 1;');
+
+		$bd->resultado();
+
+		return $bd->resultado();
+    }
 }

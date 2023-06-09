@@ -82,13 +82,10 @@ if (isset($this->dados['form'])) {
                                     </div>
                                     
                                         <?php
-                                        if (isset($_SESSION['msg'])) {
-                                            echo $_SESSION['msg'];
-                                            unset($_SESSION['msg']);
-                                        }
+                                            Sessao::mensagem('usuario');
                                         ?>
 
-                                    <form class="row g-3 needs-validation" method="POST" action="" novalidate>
+                                    <form class="row g-3 needs-validation" method="POST" action="<?=URL?>login/login" novalidate>
 
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">E-mail</label>

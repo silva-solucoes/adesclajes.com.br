@@ -107,7 +107,7 @@
             <div class="col-lg-7">
               <h3 class="pt-0 pt-lg-5" id="tituloForm">Formulário de Pré-Inscrição</h3>
 
-              <form action= "<?= URL ?>user/inscricao" method = "POST" class="needs-validation borda-form php-inscricao-form" novalidate>
+              <form action= "<?= URL ?>user/enviarInscricao" method = "POST" class="needs-validation borda-form php-inscricao-form" novalidate>
                 <!-- Tab Content -->
                 <div class="tab-content">
                   <!-- Informações do Atleta -->
