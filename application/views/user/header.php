@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?php echo URL . 'public/images/favicon.png'; ?>" rel="icon">
-  <link href="<?php echo URL . 'public/images/apple-touch-icon.php'; ?>" rel="apple-touch-icon">
+  <link href="<?php echo URL . '/public/images/favicon.png'; ?>" rel="icon">
+  <link href="<?php echo URL . '/public/images/apple-touch-icon.php'; ?>" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link
@@ -19,17 +19,17 @@
     rel="stylesheet">
 
   <!-- Arquivos CSS -->
-  <link href="<?php echo URL . 'public/vendor/aos/aos.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'public/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'public/vendor/bootstrap-icons/bootstrap-icons.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'public/vendor/boxicons/css/boxicons.min.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'public/vendor/glightbox/css/glightbox.min.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'public/vendor/remixicon/remixicon.css'; ?>" rel="stylesheet">
-  <link href="<?php echo URL . 'public/vendor/swiper/swiper-bundle.min.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . '/public/vendor/aos/aos.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . '/public/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . '/public/vendor/bootstrap-icons/bootstrap-icons.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . '/public/vendor/boxicons/css/boxicons.min.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . '/public/vendor/glightbox/css/glightbox.min.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . '/public/vendor/remixicon/remixicon.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . '/public/vendor/swiper/swiper-bundle.min.css'; ?>" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <!-- Arquivo Principal CSS -->
-  <link href="<?php echo URL . 'public/css/style.css'; ?>" rel="stylesheet">
+  <link href="<?php echo URL . '/public/css/style.css'; ?>" rel="stylesheet">
 
   <!-- =======================================================
   * Nome do site: Silva Soluções Tech
@@ -48,7 +48,7 @@
 
       <!--<h1 class="logo me-auto"><a href="index">Silva Soluções Tech</a></h1>-->
       <!-- Descomente abaixo se preferir usar um logotipo de imagem -->
-      <a href="<?php echo URL; ?>" class="logo me-auto"><img src="<?php echo URL . 'public/images/logo-d.png'; ?>" alt=""
+      <a href="<?php echo URL; ?>" class="logo me-auto"><img src="<?php echo URL . '/public/images/logo-d.png'; ?>" alt=""
           class="img-fluid"></a>
 
       <nav id="navbar" class="navbar">
@@ -58,7 +58,7 @@
           <li><a class="nav-link scrollto" href="<?php echo URL; ?>#about">Sobre-nós</a></li>
           <li class="dropdown"><a href="#"><span>Esportes</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="<?php echo URL . 'paginas/bid' ?>">BID</a></li>
+              <li><a href="<?php echo URL . '/paginas/bid' ?>">BID</a></li>
               <li class="dropdown"><a href="#"><span>Categorias Esportivas</span> <i
                     class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -88,7 +88,7 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header"
-          style="background-image: url('<?php echo URL; ?>public/images/fundo.jpg'); background-size: cover; width: 100% relative; height: 100px; color: #D98E04;">
+          style="background-image: url('<?php echo URL; ?>/public/images/fundo.jpg'); background-size: cover; width: 100% relative; height: 100px; color: #D98E04;">
           <h1 class="modal-title fs-5" id="staticBackdropLabel">Área de Inscrição</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -100,14 +100,14 @@
 
             <div class="col-lg-5">
               <div class="about-img">
-                <img src="<?php echo URL; ?>public/images/campeao.png" class="img-fluid" alt="">
+                <img src="<?php echo URL; ?>/public/images/campeao.png" class="img-fluid" alt="">
               </div>
             </div>
 
             <div class="col-lg-7">
               <h3 class="pt-0 pt-lg-5" id="tituloForm">Formulário de Pré-Inscrição</h3>
 
-              <form action= "<?= URL ?>user/enviarInscricao" method = "POST" class="needs-validation borda-form php-inscricao-form" novalidate>
+              <form action= "<?= URL ?>/user/enviarInscricao" method = "POST" class="needs-validation borda-form php-inscricao-form" novalidate>
                 <!-- Tab Content -->
                 <div class="tab-content">
                   <!-- Informações do Atleta -->

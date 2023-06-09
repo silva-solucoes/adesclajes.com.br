@@ -6,7 +6,7 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3><a href="index" class="logo me-auto"><img src="<?php echo URL . 'public/images/logo-d.png'; ?>"
+                    <h3><a href="<?=URL?>" class="logo me-auto"><img src="<?php echo URL . '/public/images/logo-d.png'; ?>"
                                 alt="" class="img-fluid" width="50%"></a></h3>
                     <p>
                         Rua Riacho Madeira, s.n. Centro,<br>
@@ -20,9 +20,9 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Links Úteis</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="index">Início</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Sobre-nós</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?php echo URL . 'noticias' ?>">Notícias</a>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?=URL?>#hero">Início</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?=URL?>#about">Sobre-nós</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?php echo URL . '/noticias' ?>">Notícias</a>
                         </li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#privacidade">Política de privacidade</a></li>
                     </ul>
@@ -80,16 +80,16 @@
         class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
-<script src="<?php echo URL . 'public/vendor/aos/aos.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/bootstrap/js/bootstrap.bundle.min.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/glightbox/js/glightbox.min.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/isotope-layout/isotope.pkgd.min.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/swiper/swiper-bundle.min.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/waypoints/noframework.waypoints.js'; ?>"></script>
-<script src="<?php echo URL . 'public/js/php-email-form/validate.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/aos/aos.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/bootstrap/js/bootstrap.bundle.min.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/glightbox/js/glightbox.min.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/isotope-layout/isotope.pkgd.min.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/swiper/swiper-bundle.min.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/waypoints/noframework.waypoints.js'; ?>"></script>
+<script src="<?php echo URL . '/public/js/php-email-form/validate.js'; ?>"></script>
 
 <!-- Template Main JS File -->
-<script src="<?php echo URL . 'public/js/main.js'; ?>"></script>
+<script src="<?php echo URL . '/public/js/main.js'; ?>"></script>
 
 </body>
 

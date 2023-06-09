@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                <img src="<?php echo URL . 'public/images/destaque-img.png'; ?>" class="img-fluid animated" alt="">
+                <img src="<?php echo URL . '/public/images/destaque-img.png'; ?>" class="img-fluid animated" alt="">
             </div>
         </div>
     </div>
@@ -34,32 +34,32 @@
             <div class="row" data-aos="zoom-in">
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 
@@ -83,7 +83,7 @@
 
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="post-box">
-                        <div class="post-img"><img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>"
+                        <div class="post-img"><img src="<?php echo URL . '/public/uploads/noticia-01.jpg'; ?>"
                                 class="img-fluid" alt=""></div>
                         <div class="meta">
                             <span class="post-date"><i class="bi bi-calendar-event"></i> 19 de Abril de 2023</span>
@@ -94,14 +94,14 @@
                         </h3>
                         <p>A equipe da ADESC mostrou garra e determinação em mais uma vitória
                             emocionante de virada, mantendo-se na liderança do campeonato de futebol local...</p>
-                        <a href="<?php echo URL . 'noticia/'; ?>" class="readmore stretched-link"><span>Ler
+                        <a href="<?php echo URL . '/noticia'; ?>" class="readmore stretched-link"><span>Ler
                                 mais</span><i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="post-box">
-                        <div class="post-img"><img src="<?php echo URL . 'public/uploads/noticia-02.jpg'; ?>"
+                        <div class="post-img"><img src="<?php echo URL . '/public/uploads/noticia-02.jpg'; ?>"
                                 class="img-fluid" alt=""></div>
                         <div class="meta">
                             <span class="post-date"><i class="bi bi-calendar-event"></i> 18 de Abril de 2023</span>
@@ -117,7 +117,7 @@
 
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
                     <div class="post-box">
-                        <div class="post-img"><img src="<?php echo URL . 'public/uploads/noticia-03.jpg'; ?>"
+                        <div class="post-img"><img src="<?php echo URL . '/public/uploads/noticia-03.jpg'; ?>"
                                 class="img-fluid" alt=""></div>
                         <div class="meta">
                             <span class="post-date"><i class="bi bi-calendar-event"></i> 17 de Abril de 2023</span>
@@ -136,7 +136,7 @@
             <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 text-center" data-aos="zoom-in"
                 data-aos-delay="500">
                 <div class="d-flex justify-content-center justify-content-lg-start">
-                    <a href="<?php echo URL . 'noticias' ?>" class="btn-get-started">Ver Mais Notícias</a>
+                    <a href="<?php echo URL . '/noticias' ?>" class="btn-get-started">Ver Mais Notícias</a>
                 </div>
             </div>
         </div>
@@ -244,7 +244,7 @@
                 </div>
 
                 <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
-                    style='background-image: url("<?php echo URL . 'public/images/why-us.png'; ?>");' data-aos="zoom-in"
+                    style='background-image: url("<?php echo URL . '/public/images/why-us.png'; ?>");' data-aos="zoom-in"
                     data-aos-delay="150">
                     &nbsp;</div>
             </div>
@@ -287,7 +287,7 @@
 
                 <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
                     <div class="member d-flex align-items-start">
-                        <div class="pic"><img src="<?php echo URL . 'public/images/equipe/adeilson.jpg'; ?>"
+                        <div class="pic"><img src="<?php echo URL . '/public/images/equipe/adeilson.jpg'; ?>"
                                 class="img-fluid" alt=""></div>
                         <div class="member-info">
                             <h4>Adeilson Fernandes</h4>
@@ -305,7 +305,7 @@
 
                 <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
                     <div class="member d-flex align-items-start">
-                        <div class="pic"><img src="<?php echo URL . 'public/images/equipe/semfoto.jpg'; ?>"
+                        <div class="pic"><img src="<?php echo URL . '/public/images/equipe/semfoto.jpg'; ?>"
                                 class="img-fluid" alt=""></div>
                         <div class="member-info">
                             <h4>Nome do Funcionário</h4>
@@ -436,7 +436,7 @@
                 </div>
 
                 <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-                    <form action="<?= URL ?>user/enviarContato" method="post" role="form" class="php-email-form">
+                    <form action="<?= URL ?>/user/enviarContato" method="post" role="form" class="php-email-form">
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="name">Seu Nome:</label>
@@ -476,32 +476,32 @@
             <div class="row" data-aos="zoom-in">
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
+                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
                         alt="">
                 </div>
 

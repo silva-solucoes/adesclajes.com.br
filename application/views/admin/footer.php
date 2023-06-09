@@ -20,17 +20,17 @@
         class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
-<script src="<?php echo URL . 'public/vendor/apexcharts/apexcharts.min.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/bootstrap/js/bootstrap.bundle.min.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/chart.js/chart.umd.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/echarts/echarts.min.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/quill/quill.min.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/simple-datatables/simple-datatables.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/tinymce/tinymce.min.js'; ?>"></script>
-<script src="<?php echo URL . 'public/vendor/php-email-form/validate.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/apexcharts/apexcharts.min.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/bootstrap/js/bootstrap.bundle.min.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/chart.js/chart.umd.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/echarts/echarts.min.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/quill/quill.min.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/simple-datatables/simple-datatables.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/tinymce/tinymce.min.js'; ?>"></script>
+<script src="<?php echo URL . '/public/vendor/php-email-form/validate.js'; ?>"></script>
 
 <!-- Template Main JS File -->
-<script src="<?php echo URL . 'public/js/mainAdm.js'; ?>"></script>
+<script src="<?php echo URL . '/public/js/mainAdm.js'; ?>"></script>
 
 </body>
 

@@ -130,8 +130,7 @@ class Login extends Controller{
         endif;
 
 
-        #$this->view('user/login', $dados);
-        header('Location:'.URL.'paginas/login');
+        $this->view('user/login', $dados);
 
     }
 

@@ -23,8 +23,8 @@ if (isset($this->dados['form'])) {
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?php echo URL . 'public/images/favicon.png'; ?>" rel="icon">
-    <link href="<?php echo URL . 'public/images/apple-touch-icon.php'; ?>" rel="apple-touch-icon">
+    <link href="<?php echo URL . '/public/images/favicon.png'; ?>" rel="icon">
+    <link href="<?php echo URL . '/public/images/apple-touch-icon.php'; ?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -33,16 +33,16 @@ if (isset($this->dados['form'])) {
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="<?php echo URL . 'public/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
-    <link href="<?php echo URL . 'public/vendor/bootstrap-icons/bootstrap-icons.css'; ?>" rel="stylesheet">
-    <link href="<?php echo URL . 'public/vendor/boxicons/css/boxicons.min.css'; ?>" rel="stylesheet">
-    <link href="<?php echo URL . 'public/vendor/quill/quill.snow.css'; ?>" rel="stylesheet">
-    <link href="<?php echo URL . 'public/vendor/quill/quill.bubble.css'; ?>" rel="stylesheet">
-    <link href="<?php echo URL . 'public/vendor/remixicon/remixicon.css'; ?>" rel="stylesheet">
-    <link href="<?php echo URL . 'public/vendor/simple-datatables/style.css'; ?>" rel="stylesheet">
+    <link href="<?php echo URL . '/public/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
+    <link href="<?php echo URL . '/public/vendor/bootstrap-icons/bootstrap-icons.css'; ?>" rel="stylesheet">
+    <link href="<?php echo URL . '/public/vendor/boxicons/css/boxicons.min.css'; ?>" rel="stylesheet">
+    <link href="<?php echo URL . '/public/vendor/quill/quill.snow.css'; ?>" rel="stylesheet">
+    <link href="<?php echo URL . '/public/vendor/quill/quill.bubble.css'; ?>" rel="stylesheet">
+    <link href="<?php echo URL . '/public/vendor/remixicon/remixicon.css'; ?>" rel="stylesheet">
+    <link href="<?php echo URL . '/public/vendor/simple-datatables/style.css'; ?>" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="<?php echo URL . 'public/css/styleLogin.css'; ?>" rel="stylesheet">
+    <link href="<?php echo URL . '/public/css/styleLogin.css'; ?>" rel="stylesheet">
 
 <!-- =======================================================
   * Nome do site: Silva Soluções Tech
@@ -66,7 +66,7 @@ if (isset($this->dados['form'])) {
 
                             <div class="d-flex justify-content-center py-4">
                                 <a href="index.html" class="logo d-flex align-items-center w-auto">
-                                    <img src="<?php echo URL . 'public/images/logo-d.png'; ?>" alt="" width="150">
+                                    <img src="<?php echo URL . '/public/images/logo-d.png'; ?>" alt="" width="150">
                                     <!--<span class="d-none d-lg-block">NiceAdmin</span>-->
                                 </a>
                             </div><!-- End Logo -->
@@ -85,7 +85,7 @@ if (isset($this->dados['form'])) {
                                             Sessao::mensagem('usuario');
                                         ?>
 
-                                    <form class="row g-3 needs-validation" method="POST" action="<?=URL?>login/login" novalidate>
+                                    <form class="row g-3 needs-validation" method="POST" action="<?=URL?>/login/login" novalidate>
 
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">E-mail</label>
@@ -119,7 +119,7 @@ if (isset($this->dados['form'])) {
                                         </div>
                                         <div class="col-12">
                                             <p class="small mb-0">Esqueceu a Senha? <a
-                                                    href="<?php echo URL . 'paginas/recuperar'; ?>">Recupera Senha</a></p>
+                                                    href="<?php echo URL . '/paginas/recuperar'; ?>">Recupera Senha</a></p>
                                             <p class="small mb-0"><i class="bi bi-globe"></i> <a
                                                     href="<?php echo URL; ?>">Voltar para o site</a></p>
                                         </div>
@@ -150,17 +150,17 @@ if (isset($this->dados['form'])) {
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="<?php echo URL . 'public/vendor/bootstrap/js/bootstrap.bundle.min.js'; ?>"></script>
-    <script src="<?php echo URL . 'public/vendor/apexcharts/apexcharts.min.js'; ?>"></script>
-    <script src="<?php echo URL . 'public/vendor/chart.js/chart.umd.js'; ?>"></script>
-    <script src="<?php echo URL . 'public/vendor/echarts/echarts.min.js'; ?>"></script>
-    <script src="<?php echo URL . 'public/vendor/quill/quill.min.js'; ?>"></script>
-    <script src="<?php echo URL . 'public/vendor/simple-datatables/simple-datatables.js'; ?>"></script>
-    <script src="<?php echo URL . 'public/vendor/tinymce/tinymce.min.js'; ?>"></script>
-    <script src="<?php echo URL . 'public/vendor/php-email-form/validate.js'; ?>"></script>
+    <script src="<?php echo URL . '/public/vendor/bootstrap/js/bootstrap.bundle.min.js'; ?>"></script>
+    <script src="<?php echo URL . '/public/vendor/apexcharts/apexcharts.min.js'; ?>"></script>
+    <script src="<?php echo URL . '/public/vendor/chart.js/chart.umd.js'; ?>"></script>
+    <script src="<?php echo URL . '/public/vendor/echarts/echarts.min.js'; ?>"></script>
+    <script src="<?php echo URL . '/public/vendor/quill/quill.min.js'; ?>"></script>
+    <script src="<?php echo URL . '/public/vendor/simple-datatables/simple-datatables.js'; ?>"></script>
+    <script src="<?php echo URL . '/public/vendor/tinymce/tinymce.min.js'; ?>"></script>
+    <script src="<?php echo URL . '/public/vendor/php-email-form/validate.js'; ?>"></script>
 
     <!-- Template Main JS File -->
-    <script src="<?php echo URL . 'public/js/mainLogin.js'; ?>"></script>
+    <script src="<?php echo URL . '/public/js/mainLogin.js'; ?>"></script>
 
 </body>
 
