@@ -2,6 +2,12 @@
 
 class Paginas extends Controller{
 
+    private $info;
+    public function __construct(){
+
+        $this->info = $this->model('modelo');
+
+    }
     public function login(){
         $this->view('login');
     }
@@ -10,8 +16,20 @@ class Paginas extends Controller{
     }
     public function index(){
         
+        $dados=[
+            'info' => $this->info->lerInformacao()
+        ];
+        //Exibir todos os membros
+        $dados['todosMembros']=$this->info->todosMembros();
+        //Exibir todas as redes sociais de um membro
+        $dados['rsMembros']=$this->info->lerRedesSociaisMembro($dados['info']->id_membro);
+        //Exibir perguntas frequentes
+        $dados['perguntas']=$this->info->todasPerguntas();
+        //Exibir todos os patrocinadores
+        $dados['patrocinadores']=$this->info->todasPatrocinadores();
+        
+        $this->view('user/home', $dados);
 
-        $this->view('user/home');
     }
     public function noticias(){
         $this->view('user/noticias');

@@ -91,20 +91,21 @@
                                     </thead>
                                     <tbody>
                                         <tr data-index="0">
-                                            <td><a href="#">#2457</a></td>
+                                            <?php foreach ($dados['user'] as $ler): ?>
+                                            <td><a href="#">#<?=$ler->id_usuario?></a></td>
                                             <td>
                                                 <font style="vertical-align: inherit;">
                                                     <font style="vertical-align: inherit;"><img
-                                                            src="<?php echo URL . 'public/images/equipe/adeilson.jpg'; ?>"
+                                                            src="<?php echo URL . '/public/images/equipe/'.$ler->foto_user; ?>"
                                                             alt="Patrocinador 1" style="width:120px;"></font>
                                                 </font>
                                             </td>
                                             <td><a href="#" class="text-primary">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Adeilson Fernandes</font>
+                                                        <font style="vertical-align: inherit;"><?=$ler->nome_usuario?></font>
                                                     </font>
                                                 </a></td>
-                                            <td>Presidente</td>
+                                            <td><?=$ler->nome_status?></td>
                                             <td><span class="badge">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;"><a
@@ -117,6 +118,7 @@
                                                         </font>
                                                     </font>
                                                 </span></td>
+                                            <?php endforeach; ?>
                                         </tr>
                                     </tbody>
                                 </table>

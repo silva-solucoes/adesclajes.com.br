@@ -1,6 +1,38 @@
 <?php
 class Modelo {
 
+	private $bd;
+
+    public function __construct(){
+        $this->bd = new Conn();
+    }
+
+	public function lerInformacao(){
+        $this->bd->query('SELECT * FROM tbl_config INNER JOIN tbl_infoheader ON tbl_infoheader.id_infoHeader=tbl_config.id_infoHeader INNER JOIN tbl_secaodestaque ON tbl_secaodestaque.id_secaoDestaque=tbl_config.id_secaoDestaque INNER JOIN tbl_secaopatrocinadores ON tbl_secaopatrocinadores.id_secaoPatrocinio=tbl_config.id_secaoPatrocinio INNER JOIN tbl_secaoescolher ON tbl_secaoescolher.id_escolher=tbl_config.id_escolher INNER JOIN tbl_contatos ON tbl_contatos.id_contato=tbl_config.id_contato INNER JOIN tbl_infofooter ON tbl_infofooter.id_infoFooter=tbl_config.id_infoFooter INNER JOIN tbl_perguntas ON tbl_perguntas.id_perguntas=tbl_config.id_perguntas INNER JOIN tbl_diretoria ON tbl_diretoria.id_equipe=tbl_config.id_equipe INNER JOIN tbl_membro ON tbl_membro.id_equipe=tbl_diretoria.id_equipe INNER JOIN tbl_sobre ON tbl_sobre.id_sobre=tbl_config.id_sobre INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas=tbl_config.id_ultimas WHERE tbl_config.id_config = 1');
+
+        return $this->bd->resultado();
+    }
+
+	public function todosMembros(){
+		$this->bd->query('SELECT * FROM tbl_membro INNER JOIN tbl_redesocialmembro ON tbl_redesocialmembro.id_membro=tbl_membro.id_membro');
+
+		return $this->bd->resultados();
+	}
+	public function lerRedesSociaisMembro($idMembro){
+		$this->bd->query('SELECT * FROM tbl_membro INNER JOIN tbl_redesocialmembro ON tbl_redesocialmembro.id_membro=tbl_membro.id_membro WHERE tbl_membro.id_membro = '.$idMembro);
+
+		return $this->bd->resultados();
+	}
+	public function todasPerguntas(){
+		$this->bd->query('SELECT * FROM tbl_listaperguntas');
+
+		return $this->bd->resultados();
+	}
+	public function todasPatrocinadores(){
+		$this->bd->query('SELECT * FROM tbl_secaopatrocinadores');
+
+		return $this->bd->resultados();
+	}
     public function enviarEmail($nome, $email, $titulo, $mensagem) {
 
 		$headers = "From: $nome <$email>\r\n";

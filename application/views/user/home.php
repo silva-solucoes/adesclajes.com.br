@@ -8,17 +8,17 @@
         <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
                 data-aos="fade-up" data-aos-delay="200">
-                <h1>Mais que atletas, educamos cidadãos</h1>
-                <h2>Esporte para a vida: formando cidadãos.</h2>
+                <h1><?=$dados['info']->titulo?></h1>
+                <h2><?=$dados['info']->sub_titulo?></h2>
                 <div class="d-flex justify-content-center justify-content-lg-start">
                     <a href="#" class="btn-get-started scrollto" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">Área de Inscrição</a>
-                    <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i
+                    <a href="<?=$dados['info']->incorporarVideo?>" class="glightbox btn-watch-video"><i
                             class="bi bi-play-circle"></i><span>Assistir Vídeo</span></a>
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                <img src="<?php echo URL . '/public/images/destaque-img.png'; ?>" class="img-fluid animated" alt="">
+                <img src="<?php echo URL . '/public/images/'.$dados['info']->imgDestaque; ?>" class="img-fluid animated" alt="">
             </div>
         </div>
     </div>
@@ -32,37 +32,14 @@
         <div class="container">
 
             <div class="row" data-aos="zoom-in">
-
+                <?php foreach($dados['patrocinadores'] as $listar):?>
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
+                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
+                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
+                        alt="<?=$listar->nomePatrocinador?>">
+                    </a>
                 </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
+                <?php endforeach;?>
             </div>
 
         </div>
@@ -74,9 +51,8 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
-                <h2>ÚLTIMAS NOTÍCIAS</h2>
-                <p>Saiba mais sobre nossas últimas conquistas e novidades! Fique por dentro das notícias da ADESC e
-                    acompanhe o sucesso dos nossos atletas!</p>
+                <h2><?=$dados['info']->tl_pgUltimas?></h2>
+                <p><?=$dados['info']->sub_tlPgUltimas?></p>
             </div>
 
             <div class="row">
@@ -148,40 +124,16 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
-                <h2>Sobre-nós</h2>
-                <p class="text-center">
-                    Conheça a ADESC: A Associação Comunitária que promove cultura, esporte e inclusão social!
-                </p>
+                <h2><?=$dados['info']->tl_pgSobre?></h2>
+                <p class="text-center"><?=$dados['info']->sub_tlSobre?></p>
             </div>
 
             <div class="row content">
                 <div class="col-lg-6">
-                    <p class="text-justify">
-                        A Associação Comunitária Cultural, Social e Desportiva de Lajes/RN (ADESC) iniciou suas
-                        atividades em 15 de novembro de 1997, em parceria com a Associação Atlética do Banco do Brasil,
-                        que era liderada por <b>José Anchieta dos Santos</b>. A associação começou como uma escola de
-                        futebol e depois expandiu para outros esportes, como:
-                    </p>
-                    <ul>
-                        <li><i class="ri-check-double-line"></i> Futsal </li>
-                        <li><i class="ri-check-double-line"></i> Natação </li>
-                        <li><i class="ri-check-double-line"></i> Taekwondo </li>
-                    </ul>
-                    <p class="text-justify">
-                        O projeto foi inicialmente organizado por <b>Adeilson Fernandes da Rocha</b>, que fundou a
-                        Associação Desportiva Lajes do Cabugi - ADLC. A escola não pôde iniciar suas atividades devido à
-                        falta de um local para operar, mas em agosto do mesmo ano, uma parceria foi formada com o
-                        Presidente da AABB Lajes, e as atividades começaram em novembro.
-                    </p>
+                    <?=$dados['info']->resumo?>
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0">
-                    <p class="text-justify">
-                        A escola rapidamente ganhou popularidade, e muitos de seus atletas passaram a jogar em nível
-                        estadual.
-                        Em 2015, a associação foi registrada e reconhecida como entidade de utilidade pública municipal
-                        com o nome de Associação Comunitária Cultural, Social e Desportiva de Lajes/RN - ADESC LAJES. A
-                        associação continua a prosperar e receber apoio de diversas organizações.
-                    </p>
+                    <?=$dados['info']->historia?>
                 </div>
             </div>
 
@@ -197,12 +149,8 @@
                 <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
                     <div class="content">
-                        <h3>Porque escolher a <strong>ADESC Lajes</strong></h3>
-                        <p class="text-justify">
-                            Descubra por que a ADESC Lajes é a melhor escolha para você e sua equipe esportiva - Conheça
-                            nossas instalações, programas de treinamento e experiência em formação de atletas e cidadãos
-                            de sucesso!
-                        </p>
+                        <h3><?=$dados['info']->tituloEscolha?> <strong><?=$dados['info']->subTituloEscolha?></strong></h3>
+                        <p class="text-justify"><?=$dados['info']->descricaoEscolha?></p>
                     </div>
 
                     <div class="accordion-list">
@@ -244,7 +192,7 @@
                 </div>
 
                 <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
-                    style='background-image: url("<?php echo URL . '/public/images/why-us.png'; ?>");' data-aos="zoom-in"
+                    style='background-image: url("<?php echo URL . '/public/images/'.$dados['info']->img_destaque; ?>");' data-aos="zoom-in"
                     data-aos-delay="150">
                     &nbsp;</div>
             </div>
@@ -277,49 +225,35 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
-                <h2>Diretoria</h2>
-                <p>Conheça os líderes que fazem a diferença! Descubra quem são os membros do corpo diretivo da ADESC e
-                    saiba mais sobre suas histórias, paixão pelo esporte e comprometimento em impulsionar nosso clube
-                    para o sucesso. Junte-se a nós e conheça as mentes por trás do nosso time!</p>
+                <h2><?=$dados['info']->tl_pgEquipe?></h2>
+                <p><?=$dados['info']->sub_tlEquipe?></p>
             </div>
 
             <div class="row">
-
+                <?php foreach($dados['todosMembros'] as $listar):?>
                 <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
                     <div class="member d-flex align-items-start">
-                        <div class="pic"><img src="<?php echo URL . '/public/images/equipe/adeilson.jpg'; ?>"
+                        <div class="pic"><img src="<?php echo URL . '/public/images/equipe/'.$listar->fotoMembro; ?>"
                                 class="img-fluid" alt=""></div>
                         <div class="member-info">
-                            <h4>Adeilson Fernandes</h4>
-                            <span>Presidente da ADESC Lajes</span>
-                            <p>Responsável pela gestão estratégica e operacional da ADESC.</p>
+                            <h4><?=$listar->nome_membro?></h4>
+                            <span><?=$listar->funcao?></span>
+                            <p><?=$listar->detalhe?></p>
                             <div class="social">
+                                <?php foreach($dados['rsMembros'] as $ler):?>
+                                <a href="<?=$ler->link_acesso?>"><?=$ler->icone?></a>
+                                    <!--
                                 <a href=""><i class="ri-twitter-fill"></i></a>
                                 <a href=""><i class="ri-facebook-fill"></i></a>
                                 <a href=""><i class="ri-instagram-fill"></i></a>
                                 <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                    -->
+                                <?php endforeach;?>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="member d-flex align-items-start">
-                        <div class="pic"><img src="<?php echo URL . '/public/images/equipe/semfoto.jpg'; ?>"
-                                class="img-fluid" alt=""></div>
-                        <div class="member-info">
-                            <h4>Nome do Funcionário</h4>
-                            <span>Função</span>
-                            <p>Descrição breve da função.</p>
-                            <div class="social">
-                                <a href=""><i class="ri-twitter-fill"></i></a>
-                                <a href=""><i class="ri-facebook-fill"></i></a>
-                                <a href=""><i class="ri-instagram-fill"></i></a>
-                                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach;?>
 
             </div>
 
@@ -331,63 +265,35 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
-                <h2>Perguntas Frequentes</h2>
-                <p>Você tem dúvidas? Confira nossa seção de Perguntas Frequentes e encontre as respostas que você
-                    procura. Se ainda tiver dúvidas, entre em contato conosco!.</p>
+                <h2><?=$dados['info']->tl_pagPerguntas?></h2>
+                <p><?=$dados['info']->sub_tlPerguntas?></p>
             </div>
 
             <div class="faq-list">
                 <ul>
-                    <li data-aos="fade-up" data-aos-delay="100">
+                    <?php $contador = 0; $i = 0; ?>
+                    <?php foreach($dados['perguntas'] as $listar): ?>
+                    <?php $contador += 100; $i += 1;?>
+                    <?php if($listar->id_listaPergunta  == 1):?>
+                    <li data-aos="fade-up" data-aos-delay="<?=$contador?>">
                         <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
-                            data-bs-target="#faq-list-1">Quais são os esportes oferecidos pela ADESC? <i
+                            data-bs-target="#faq-list-<?=$i?>"><?=$listar->tl_pergunta?> <i
                                 class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                            <p class="text-justify">
-                                A ADESC oferece treinamento e competições em várias modalidades esportivas, incluindo
-                                futebol, vôlei, basquete e atletismo.
-                            </p>
+                        <div id="faq-list-<?=$i?>" class="collapse show" data-bs-parent=".faq-list">
+                            <p class="text-justify"><?=$listar->resposta?></p>
                         </div>
                     </li>
-
-                    <li data-aos="fade-up" data-aos-delay="200">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                            data-bs-target="#faq-list-2" class="collapsed">Qual é a idade mínima para se juntar à
-                            escolinha esportiva da ADESC?
-                            <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                            <p class="text-justify">
-                                A idade mínima para ingressar na escolinha esportiva da ADESC é de 6 anos.
-                            </p>
+                    <?php else:?>
+                    <li data-aos="fade-up" data-aos-delay="<?=$contador?>">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
+                            data-bs-target="#faq-list-<?=$i?>"><?=$listar->tl_pergunta?> <i
+                                class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-<?=$i?>" class="collapse" data-bs-parent=".faq-list">
+                            <p class="text-justify"><?=$listar->resposta?></p>
                         </div>
                     </li>
-
-                    <li data-aos="fade-up" data-aos-delay="300">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                            data-bs-target="#faq-list-3" class="collapsed">Como posso me inscrever para participar da
-                            ADESC?
-                            <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                            <p class="text-justify">
-                                Você pode se inscrever para participar da ADESC preenchendo o formulário de inscrição em
-                                nosso site oficial. É só clicar no boão Área de Inscrição.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li data-aos="fade-up" data-aos-delay="400">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                            data-bs-target="#faq-list-4" class="collapsed">Como posso me tornar um patrocinador da
-                            ADESC? <i class="bx bx-chevron-down icon-show"></i><i
-                                class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                            <p class="text-justify">
-                                Para se tornar um patrocinador da ADESC, entre em contato conosco através do nosso site
-                                oficial ou do nosso endereço de e-mail para obter mais informações sobre nossas opções
-                                de patrocínio.
-                            </p>
-                        </div>
-                    </li>
+                    <?php endif;?>
+                    <?php endforeach;?>
 
                 </ul>
             </div>
@@ -400,9 +306,8 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
-                <h2>Contatos</h2>
-                <p>Entre em contato conosco e saiba mais sobre a Associação Desportiva de Lajes ADESC! Estamos prontos
-                    para te atender e responder a todas as suas dúvidas.</p>
+                <h2><?=$dados['info']->tl_contato?></h2>
+                <p><?=$dados['info']->sub_tlContato?></p>
             </div>
 
             <div class="row">
@@ -412,23 +317,23 @@
                         <div class="address">
                             <i class="bi bi-geo-alt"></i>
                             <h4>Localização:</h4>
-                            <p>Rua Riacho Madeira, S.N, Centro, Lajes/RN, CEP: 59535-000</p>
+                            <p><?=$dados['info']->logradouro?>, <?=$dados['info']->numero?>, <?=$dados['info']->bairro?>, <?=$dados['info']->cidade?>/<?=$dados['info']->uf?>, CEP: <?=$dados['info']->cep?></p>
                         </div>
 
                         <div class="email">
                             <i class="bi bi-envelope"></i>
                             <h4>E-mail:</h4>
-                            <p>adesclajes1997@gmail.com</p>
+                            <p><?=$dados['info']->email?></p>
                         </div>
 
                         <div class="phone">
                             <i class="bi bi-phone"></i>
                             <h4>Tel:</h4>
-                            <p>+55 (84)99620-2499</p>
+                            <p><?=$dados['info']->telefone?></p>
                         </div>
 
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d32953.101261157!2d-36.25227449509342!3d-5.691566132704865!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b1751f9151419d%3A0x8fc253446b03e80f!2sRiacho%20Madeira!5e0!3m2!1spt-BR!2sbr!4v1681780785543!5m2!1spt-BR!2sbr"
+                            src="<?=$dados['info']->localizaçãoIFRAM?>"
                             width="600" height="450" style="border:0; width: 100%; height: 290px;" allowfullscreen=""
                             loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
@@ -474,37 +379,14 @@
         <div class="container">
 
             <div class="row" data-aos="zoom-in">
-
+                <?php foreach($dados['patrocinadores'] as $listar):?>
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
+                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
+                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
+                        alt="<?=$listar->nomePatrocinador?>">
+                    </a>
                 </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . '/public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
+                <?php endforeach;?>
             </div>
 
         </div>

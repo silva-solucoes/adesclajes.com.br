@@ -224,7 +224,7 @@
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
                             <h6><?php echo $_SESSION['nome_user']; ?></h6>
-                            <span><?php echo $_SESSION['usuario_funcao']; ?></span>
+                            <span><?php echo $_SESSION['funcao_user']; ?></span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -366,7 +366,7 @@
             </li><!-- End Página Diretoria -->
             
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo URL . '/admUsuarios'; ?>">
+                <a class="nav-link collapsed" href="<?php echo URL . '/admin/usuario'; ?>">
                     <i class="bi bi-person-plus"></i>
                     <span>Gerenciar Administradores</span>
                 </a>

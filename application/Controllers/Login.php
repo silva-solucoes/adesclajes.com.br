@@ -138,6 +138,8 @@ class Login extends Controller{
         $_SESSION['id_user'] = $autenticarLogin->id_usuario;
         $_SESSION['nome_user'] = $autenticarLogin->nome_usuario;
         $_SESSION['email_user'] = $autenticarLogin->email_usuario;
+        $_SESSION['foto_user'] = $autenticarLogin->foto_user;
+        $_SESSION['funcao_user'] = $autenticarLogin->nome_status;
         URL::redirecionar('admin/painel');
     }
 
@@ -145,6 +147,8 @@ class Login extends Controller{
         unset($_SESSION['id_user']);
         unset($_SESSION['nome_user']);
         unset($_SESSION['email_user']);
+        unset($_SESSION['foto_user']);
+        unset($_SESSION['funcao_user']);
 
         session_destroy();
 
