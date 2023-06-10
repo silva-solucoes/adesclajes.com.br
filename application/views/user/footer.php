@@ -6,23 +6,23 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3><a href="<?=URL?>" class="logo me-auto"><img src="<?php echo URL . '/public/images/logo-d.png'; ?>"
+                    <h3><a href="<?=URL?>" class="logo me-auto"><img src="<?php echo URL . '/public/images/'.$dados['info']->logoHeaderFooter; ?>"
                                 alt="" class="img-fluid" width="50%"></a></h3>
                     <p>
-                        Rua Riacho Madeira, s.n. Centro,<br>
-                        Lajes/RN, CEP: 59535-000<br>
+                        <?=$dados['info']->logradouro?>, <?=$dados['info']->numero?>. <?=$dados['info']->bairro?>,<br>
+                        <?=$dados['info']->cidade?>/<?=$dados['info']->uf?>, CEP: <?=$dados['info']->cep?><br>
                         Brasil <br><br>
-                        <strong>Telefone:</strong> +55 (84)99620-2499<br>
-                        <strong>E-mail:</strong> adesclajes1997@gmail.com<br>
+                        <strong>Telefone:</strong> <?=$dados['info']->telefone?><br>
+                        <strong>E-mail:</strong> <?=$dados['info']->email?><br>
                     </p>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Links Úteis</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?=URL?>#hero">Início</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?=URL?>#about">Sobre-nós</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="<?php echo URL . '/noticias' ?>">Notícias</a>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?=URL?><?=$dados['info']->tl_link1?>">Início</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?=URL?><?=$dados['info']->tl_link3?>">Sobre-nós</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?=URL?><?=$dados['info']->tl_link9?>">Notícias</a>
                         </li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#privacidade">Política de privacidade</a></li>
                     </ul>
@@ -31,14 +31,9 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Últimas Notícias</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="noticia/">ADESC vence de virada e segue na
-                                liderança do campeonato de futebol local</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">O prefeito Felipe Menezes marcou presença no
-                                campeonato local</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Entrega de materiais esportivos fortalece
-                                atletas da ADESC</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Entrega de materiais esportivos promove mais
-                                qualidade e desempenho para atletas da ADESC</a></li>
+                        <?php foreach($dados['ultimasNoticias'] as $listar): ?>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#"><?=$listar->tl_noticia?></a></li>
+                        <?php endforeach;?>
                     </ul>
                 </div>
 
@@ -46,11 +41,9 @@
                     <h4>Nossas Redes Sociais</h4>
                     <p>Siga-nos nas redes sociais e fique por dentro de todas as novidades!</p>
                     <div class="social-links mt-3">
-                        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        <?php foreach($dados['redesSociais'] as $listar):?>
+                        <a href="<?=URL?><?=$listar->link_acesso?>" class="twitter"><?=$listar->iconeRede?></i></a>
+                        <?php endforeach;?>
                     </div>
                 </div>
 

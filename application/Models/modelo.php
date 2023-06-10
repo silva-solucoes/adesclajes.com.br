@@ -24,12 +24,34 @@ class Modelo {
 		return $this->bd->resultados();
 	}
 	public function todasPerguntas(){
-		$this->bd->query('SELECT * FROM tbl_listaperguntas');
+		$this->bd->query('SELECT *, (SELECT MIN(id_listaPergunta) FROM tbl_listaperguntas) AS menorID FROM tbl_listaperguntas');
 
 		return $this->bd->resultados();
 	}
 	public function todasPatrocinadores(){
 		$this->bd->query('SELECT * FROM tbl_secaopatrocinadores');
+
+		return $this->bd->resultados();
+	}
+	public function listarUltimasNoticias(){
+		$this->bd->query('SELECT *
+		FROM tbl_noticias
+		INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor
+		INNER JOIN categorianoticia ON categorianoticia.id_categoria = tbl_noticias.id_categoria
+		INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas = tbl_noticias.id_ultimas
+		INNER JOIN tbl_coment_tecnico ON tbl_coment_tecnico.id_coment_tec = tbl_noticias.id_coment_tec
+		ORDER BY tbl_noticias.dtAtualizacao DESC
+		LIMIT 3');
+
+		return $this->bd->resultados();
+	}
+	public function todasOpcaoEscolher(){
+		$this->bd->query('SELECT *, (SELECT MIN(id_opcao) FROM tbl_opcaoescolha) AS menorID FROM tbl_opcaoescolha;');
+
+		return $this->bd->resultados();
+	}
+	public function todasRedesSociais(){
+		$this->bd->query('SELECT * FROM tbl_redessociais');
 
 		return $this->bd->resultados();
 	}

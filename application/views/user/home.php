@@ -1,6 +1,8 @@
 <!-- ======= Inserindo Cabeçalho ======= -->
 <?php include_once 'header.php'; ?>
-
+<?php
+    setlocale(LC_TIME, 'portuguese');
+?>
 <!-- ======= Seção de Destaque ======= -->
 <section id="hero" class="d-flex align-items-center">
 
@@ -56,63 +58,35 @@
             </div>
 
             <div class="row">
-
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <?php $i = 0; ?>
+                <?php foreach($dados['ultimasNoticias'] as $listar): ?>
+                <?php $i += 200;?>
+                <?php $dataPostagem = strftime('%d de %B de %Y', strtotime($listar->dtAtualizacao));?>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?$i?>">
                     <div class="post-box">
-                        <div class="post-img"><img src="<?php echo URL . '/public/uploads/noticia-01.jpg'; ?>"
-                                class="img-fluid" alt=""></div>
+                        <div class="post-img"><img src="<?php echo URL . '/public/uploads/'.$listar->img_Noticia; ?>"
+                                class="img-fluid" alt="Imagem Destaque"></div>
                         <div class="meta">
-                            <span class="post-date"><i class="bi bi-calendar-event"></i> 19 de Abril de 2023</span>
-                            <span class="post-author"> / <i class="bi bi-person-circle"></i> ADESC Lajes</span>
+                            <span class="post-date"><i class="bi bi-calendar-event"></i> <?=$dataPostagem?></span>
+                            <span class="post-author"> / <i class="bi bi-person-circle"></i> <?=$listar->nome_usuario?></span>
                         </div>
-                        <h3 class="post-title">ADESC vence de virada e segue na liderança do
-                            campeonato de futebol local
-                        </h3>
-                        <p>A equipe da ADESC mostrou garra e determinação em mais uma vitória
-                            emocionante de virada, mantendo-se na liderança do campeonato de futebol local...</p>
+                        <h3 class="post-title"><?=$listar->tl_noticia?></h3>
+                        <?php if(strlen($listar->descricao) >= 100):?>
+                        <p><?php echo $descricao = substr($listar->descricao, 0, 100) . "...";?></p>
+                        <?php else:?>
+                        <p><?= $listar->descricao?></p>
+                        <?php endif;?>
                         <a href="<?php echo URL . '/noticia'; ?>" class="readmore stretched-link"><span>Ler
                                 mais</span><i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
-
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="post-box">
-                        <div class="post-img"><img src="<?php echo URL . '/public/uploads/noticia-02.jpg'; ?>"
-                                class="img-fluid" alt=""></div>
-                        <div class="meta">
-                            <span class="post-date"><i class="bi bi-calendar-event"></i> 18 de Abril de 2023</span>
-                            <span class="post-author"> / <i class="bi bi-person-circle"></i> ADESC Lajes</span>
-                        </div>
-                        <h3 class="post-title">O prefeito Felipe Menezes marcou presença no campeonato local</h3>
-                        <p>O prefeto Felipe Menezes demonstrou apoio ao esporte local ao marcar presença no campeonato
-                            da região...</p>
-                        <a href="blog-details.html" class="readmore stretched-link"><span>Ler mais</span><i
-                                class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                    <div class="post-box">
-                        <div class="post-img"><img src="<?php echo URL . '/public/uploads/noticia-03.jpg'; ?>"
-                                class="img-fluid" alt=""></div>
-                        <div class="meta">
-                            <span class="post-date"><i class="bi bi-calendar-event"></i> 17 de Abril de 2023</span>
-                            <span class="post-author"> / <i class="bi bi-person-circle"></i> ADESC Lajes</span>
-                        </div>
-                        <h3 class="post-title">Entrega de materiais esportivos fortalece atletas da ADESC</h3>
-                        <p>A entrega contou com a presença de representantes da ADESC e dos atletas beneficiados, que
-                            receberam equipamentos como uniformes e outros acessórios essenciais para a prática
-                            esportiva...</p>
-                        <a href="blog-details.html" class="readmore stretched-link"><span>Ler mais</span><i
-                                class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
+                <?php endforeach;?>
 
             </div>
             <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 text-center" data-aos="zoom-in"
                 data-aos-delay="500">
                 <div class="d-flex justify-content-center justify-content-lg-start">
-                    <a href="<?php echo URL . '/noticias' ?>" class="btn-get-started">Ver Mais Notícias</a>
+                    <a href="<?php echo URL . '/paginas/noticias' ?>" class="btn-get-started">Ver Mais Notícias</a>
                 </div>
             </div>
         </div>
@@ -155,36 +129,31 @@
 
                     <div class="accordion-list">
                         <ul>
+                            <?php $i = 0; ?>
+                            <?php foreach($dados['escolher'] as $listar): ?>
+                            <?php $i += 1;?>
+                            <?php if($listar->id_opcao == $listar->menorID):?>
                             <li>
                                 <a data-bs-toggle="collapse" class="collapse"
-                                    data-bs-target="#accordion-list-1"><span>01</span> Qualidade e Experiência <i
+                                    data-bs-target="#accordion-list-<?=$i?>"><span>0<?=$i?></span> <?=$listar->tituloOpcao?> <i
                                         class="bx bx-chevron-down icon-show"></i><i
                                         class="bx bx-chevron-up icon-close"></i></a>
-                                <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
-                                    <p class="text-justify">
-                                        Oferecemos um serviço de alta qualidade com base em sua vasta experiência no
-                                        campo
-                                        esportivo. A ADESC possui um histórico comprovado de treinamento e formação de
-                                        atletas de alto nível, bem como de organizar eventos esportivos de sucesso. Essa
-                                        experiência permite que a ADESC ofereça um ambiente de treinamento de alta
-                                        qualidade, bem como uma ampla variedade de programas e atividades esportivas
-                                        para atender às necessidades de cada indivíduo.
-                                    </p>
+                                <div id="accordion-list-<?=$i?>" class="collapse show" data-bs-parent=".accordion-list">
+                                    <p class="text-justify"><?=$listar->descricaoOpcao?></p>
                                 </div>
                             </li>
-
+                            <?php else:?>
                             <li>
-                                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2"
-                                    class="collapsed"><span>02</span> Atendimento Personalizado <i
+                                <a data-bs-toggle="collapse" class="collapse"
+                                    data-bs-target="#accordion-list-<?=$i?>"><span>0<?=$i?></span> <?=$listar->tituloOpcao?> <i
                                         class="bx bx-chevron-down icon-show"></i><i
                                         class="bx bx-chevron-up icon-close"></i></a>
-                                <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
-                                    <p class="text-justify">
-                                        Programa de treinamento personalizado para cada criança, levando em consideração
-                                        suas habilidades e necessidades individuais.
-                                    </p>
+                                <div id="accordion-list-<?=$i?>" class="collapse" data-bs-parent=".accordion-list">
+                                    <p class="text-justify"><?=$listar->descricaoOpcao?></p>
                                 </div>
                             </li>
+                            <?php endif;?>
+                            <?php endforeach;?>
 
                         </ul>
                     </div>
@@ -274,7 +243,7 @@
                     <?php $contador = 0; $i = 0; ?>
                     <?php foreach($dados['perguntas'] as $listar): ?>
                     <?php $contador += 100; $i += 1;?>
-                    <?php if($listar->id_listaPergunta  == 1):?>
+                    <?php if($listar->id_listaPergunta  == $listar->menorID):?>
                     <li data-aos="fade-up" data-aos-delay="<?=$contador?>">
                         <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
                             data-bs-target="#faq-list-<?=$i?>"><?=$listar->tl_pergunta?> <i
