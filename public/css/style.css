@@ -528,6 +528,10 @@ section {
   overflow: hidden;
 }
 
+#loom-companion-mv3 {
+  display: none;
+}
+
 .section-bg {
   background-color: #f3f5fa;
 }

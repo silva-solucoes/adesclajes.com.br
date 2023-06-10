@@ -62,6 +62,7 @@
                 <?php foreach($dados['ultimasNoticias'] as $listar): ?>
                 <?php $i += 200;?>
                 <?php $dataPostagem = strftime('%d de %B de %Y', strtotime($listar->dtAtualizacao));?>
+
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?$i?>">
                     <div class="post-box">
                         <div class="post-img"><img src="<?php echo URL . '/public/uploads/'.$listar->img_Noticia; ?>"
@@ -76,10 +77,11 @@
                         <?php else:?>
                         <p><?= $listar->descricao?></p>
                         <?php endif;?>
-                        <a href="<?php echo URL . '/noticia'; ?>" class="readmore stretched-link"><span>Ler
+                        <a href="<?php echo URL . '/paginas/detalheNoticias/'.$listar->id_noticia; ?>" class="readmore stretched-link"><span>Ler
                                 mais</span><i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
+
                 <?php endforeach;?>
 
             </div>

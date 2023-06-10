@@ -1,5 +1,7 @@
 <?php include_once 'header.php'; ?>
-
+<?php
+    setlocale(LC_TIME, 'portuguese');
+?>
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -7,11 +9,11 @@
         <div class="container">
 
             <ol>
-                <li><a href="<?php echo URL . 'index' ?>">Início</a></li>
-                <li><a href="<?php echo URL . 'noticias' ?>">Notícia</a></li>
-                <li>ADESC vence de virada e segue na liderança do campeonato de futebol local</li>
+                <li><a href="<?php echo URL ?>">Início</a></li>
+                <li><a href="<?php echo URL . '/paginas/noticias' ?>">Notícia</a></li>
+                <li><?=$dados['noticia']->tl_noticia?></li>
             </ol>
-            <h2>ADESC vence de virada e segue na liderança do campeonato de futebol local</h2>
+            <h2><?=$dados['noticia']->tl_noticia?></h2>
 
         </div>
     </section><!-- End Breadcrumbs -->
@@ -27,20 +29,20 @@
                     <article class="blog-details">
 
                         <div class="post-img">
-                            <img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>" alt="" class="img-fluid">
+                            <img src="<?php echo URL . '/public/uploads/'.$dados['noticia']->img_Noticia; ?>" alt="Imagem Destaque" class="img-fluid">
                         </div>
 
-                        <h2 class="title">ADESC vence de virada e segue na liderança do campeonato de futebol local</h2>
+                        <h2 class="title"><?=$dados['noticia']->tl_noticia?></h2>
 
                         <div class="meta-top">
                             <ul>
                                 <li class="d-flex align-items-center"><i class="bi bi-person-circle"></i> <a
-                                        href="blog-details.html">ADESC Lajes</a></li>
+                                        href="blog-details.html"><?=$dados['noticia']->nome_usuario?></a></li>
+                                <?php $dataPostagem = strftime('%d de %B de %Y', strtotime($dados['noticia']->dtAtualizacao));?>
                                 <li class="d-flex align-items-center"><i class="bi bi-calendar-event"></i> <a
-                                        href="blog-details.html"><time datetime="2022-01-01">19 Abr
-                                            2023</time></a></li>
+                                        href="blog-details.html"><time datetime="2022-01-01"><?=$dataPostagem?></time></a></li>
                                 <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                        href="blog-details.html">5 Comentários</a></li>
+                                        href="blog-details.html"><?=$dados['noticia']->quantComentario?> Comentários</a></li>
                             </ul>
                         </div><!-- End meta top -->
 
@@ -260,37 +262,14 @@
         <div class="container">
 
             <div class="row" data-aos="zoom-in">
-
+                <?php foreach($dados['patrocinadores'] as $listar):?>
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
+                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
+                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
+                        alt="<?=$listar->nomePatrocinador?>">
+                    </a>
                 </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <img src="<?php echo URL . 'public/images/patrocinadores/client-0.png'; ?>" class="img-fluid"
-                        alt="">
-                </div>
-
+                <?php endforeach;?>
             </div>
 
         </div>

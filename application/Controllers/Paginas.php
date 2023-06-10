@@ -41,31 +41,67 @@ class Paginas extends Controller{
         $dados=[
             'info' => $this->info->lerInformacao()
         ];
+        //Exibir todos os patrocinadores
+        $dados['patrocinadores']=$this->info->todasPatrocinadores();
+        //Exibir as três últimas notícias
+        $dados['ultimasNoticias']=$this->info->listarUltimasNoticias();
+        //Exibir todas as redes sociais da ADESC
+        $dados['redesSociais']=$this->info->todasRedesSociais();
 
         $this->view('user/noticias', $dados);
     }
-    public function detalheNoticias(){
+    public function detalheNoticias($idNoticia){
         $dados=[
             'info' => $this->info->lerInformacao()
         ];
+        //exibir notícia
+        $dados['noticia']=$this->info->exibirNoticia($idNoticia);
+        //Exibir todos os patrocinadores
+        $dados['patrocinadores']=$this->info->todasPatrocinadores();
+        //Exibir as três últimas notícias
+        $dados['ultimasNoticias']=$this->info->listarUltimasNoticias();
+        //Exibir todas as redes sociais da ADESC
+        $dados['redesSociais']=$this->info->todasRedesSociais();
+
         $this->view('user/detalhe_noticia', $dados);
     }
     public function bid(){
         $dados=[
             'info' => $this->info->lerInformacao()
         ];
+        //Exibir todos os patrocinadores
+        $dados['patrocinadores']=$this->info->todasPatrocinadores();
+        //Exibir as três últimas notícias
+        $dados['ultimasNoticias']=$this->info->listarUltimasNoticias();
+        //Exibir todas as redes sociais da ADESC
+        $dados['redesSociais']=$this->info->todasRedesSociais();
+
         $this->view('user/bid', $dados);
     }
     public function catEsportiva(){
         $dados=[
             'info' => $this->info->lerInformacao()
         ];
+        //Exibir todos os patrocinadores
+        $dados['patrocinadores']=$this->info->todasPatrocinadores();
+        //Exibir as três últimas notícias
+        $dados['ultimasNoticias']=$this->info->listarUltimasNoticias();
+        //Exibir todas as redes sociais da ADESC
+        $dados['redesSociais']=$this->info->todasRedesSociais();
+
         $this->view('user/detalhe_esporte', $dados);
     }
     public function galeriaFoto(){
         $dados=[
             'info' => $this->info->lerInformacao()
         ];
+        //Exibir todos os patrocinadores
+        $dados['patrocinadores']=$this->info->todasPatrocinadores();
+        //Exibir as três últimas notícias
+        $dados['ultimasNoticias']=$this->info->listarUltimasNoticias();
+        //Exibir todas as redes sociais da ADESC
+        $dados['redesSociais']=$this->info->todasRedesSociais();
+
         $this->view('user/galeria_fotos', $dados);
     }
     

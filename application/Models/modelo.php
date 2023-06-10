@@ -45,6 +45,19 @@ class Modelo {
 
 		return $this->bd->resultados();
 	}
+	public function exibirNoticia($id){
+		$this->bd->query('SELECT *, (SELECT COUNT(*) FROM tbl_comentario WHERE id_noticia = :id) AS quantComentario
+		FROM tbl_noticias
+		INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor
+		INNER JOIN categorianoticia ON categorianoticia.id_categoria = tbl_noticias.id_categoria
+		INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas = tbl_noticias.id_ultimas
+		INNER JOIN tbl_coment_tecnico ON tbl_coment_tecnico.id_coment_tec = tbl_noticias.id_coment_tec
+		WHERE tbl_noticias.id_noticia = :id;
+		');
+		$this->bd->bind('id', $id);
+
+		return $this->bd->resultado();
+	}
 	public function todasOpcaoEscolher(){
 		$this->bd->query('SELECT *, (SELECT MIN(id_opcao) FROM tbl_opcaoescolha) AS menorID FROM tbl_opcaoescolha;');
 
