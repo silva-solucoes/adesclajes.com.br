@@ -6,10 +6,13 @@
         <h1>Gerenciar Administradores</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo URL . 'painel'; ?>">Painel de Controle</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo URL . 'admin/painel'; ?>">Painel de Controle</a></li>
                 <li class="breadcrumb-item active">Lista de Usuários</li>
             </ol>
         </nav>
+        <?php
+            Sessao::mensagem('cadastroUser');
+        ?>
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
@@ -90,13 +93,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach ($dados['user'] as $ler): ?>
                                         <tr data-index="0">
-                                            <?php foreach ($dados['user'] as $ler): ?>
+                                            
                                             <td><a href="#">#<?=$ler->id_usuario?></a></td>
                                             <td>
                                                 <font style="vertical-align: inherit;">
                                                     <font style="vertical-align: inherit;"><img
-                                                            src="<?php echo URL . '/public/images/equipe/'.$ler->foto_user; ?>"
+                                                            src="<?php echo URL . '/public/uploads/adms/'.$ler->foto_user; ?>"
                                                             alt="Patrocinador 1" style="width:120px;"></font>
                                                 </font>
                                             </td>
@@ -109,17 +113,18 @@
                                             <td><span class="badge">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-warning rounded-pill" href="#"
+                                                                class="btn btn-warning rounded-pill" href="<?=$ler->id_usuario?>"
                                                                 title="Editar Atleta"><i
                                                                     class="bi bi-pencil-square"></i></a></font>
                                                         <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-danger rounded-pill" href="#"
+                                                                class="btn btn-danger rounded-pill" href="<?=$ler->id_usuario?>"
                                                                 title="Excluir Atleta"><i class="bi bi-trash3"></i></a>
                                                         </font>
                                                     </font>
                                                 </span></td>
-                                            <?php endforeach; ?>
+                                            
                                         </tr>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -160,122 +165,78 @@
                             <p class="mb-3 bt-5 text-center">Preencha o formulário abaixo para adicionar novos Usuários
                                 à nossa Escolinha!</p>
                             <!-- Floating Labels Form -->
-                            <form class="row g-3">
-                                <div class="col-md-12 text-center">
+                            <form class="row g-3" action="<?=URL?>/admin/cadastrarUser" method="post" enctype="multipart/form-data">
+                                <div class="col-md-12 text-left">
                                     <div class="form-floating">
-                                        <img class="rounded-circle img-fluid"
-                                            src="<?php echo URL . 'public/images/equipe/adeilson.jpg'; ?>" alt="Patrocinador 1"
-                                            style="width:120px;">
+                                        <img class="rounded-circle img-fluid" id="imagemPreview"
+                                            src="<?php echo URL . '/public/uploads/adms/semfoto.jpg'; ?>" alt="Imagem de Perfil"
+                                            style="width:120px; height: 120px;">
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-center">
                                     <div class="col-md-4 text-center">
-                                        <div class="form-floating">
-                                            <input class="form-control" type="file" id="formFile">
+                                        <div class="form-floating <?=$dados['upload_erro'] ? 'is-invalid' : '' ?>">
+                                            <input class="form-control" type="file" name="fotoPerfil" id="formFile">
                                         </div>
+                                        <div class="invalid-feedback"><?=$dados['upload_erro']?></div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="floatingName"
-                                            placeholder="Your Name">
-                                        <label for="floatingName">Nome do Atleta*:</label>
+                                        <input type="text" class="form-control <?= $dados['nomeUser_erro'] ? 'is-invalid' : '' ?>" name="nomeUser" id="floatingName"
+                                            placeholder="Nome Completo">
+                                        <label for="floatingName">Nome Completo*:</label>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        <?= $dados['nomeUser_erro'] ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" name="cpfUser" id="cpf-input" oninput="formatarCPF(this.value)"
+                                            placeholder="000.000.000-00">
+                                        <label for="floatingName">CPF:</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="date" class="form-control" id="floatingCity"
-                                                placeholder="Data e Hora">
-                                            <label for="floatingCity">Data de Nascimento*:</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-floating mb-3">
-                                        <select class="form-select" id="floatingSelect" aria-label="State">
-                                            <option selected>Selecione</option>
-                                            <option value="1">Feminino</option>
-                                            <option value="2">Masculino</option>
-                                        </select>
-                                        <label for="floatingSelect">Genero*:</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-floating mb-3">
-                                        <select class="form-select" id="floatingSelect" aria-label="State">
-                                            <option selected>Selecione</option>
-                                            <option value="1">Futebol</option>
-                                            <option value="2">Futesal</option>
-                                            <option value="3">Fut7</option>
-                                        </select>
-                                        <label for="floatingSelect">Categoria Esportiva*:</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="col-md-12">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="floatingCity"
-                                                placeholder="Altura">
-                                            <label for="floatingCity">Altura do Atleta*:</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="col-md-12">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="floatingCity"
-                                                placeholder="Autor">
-                                            <label for="floatingCity">Nome da Escola*:</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-floating mb-3">
-                                        <select class="form-select" id="floatingSelect" aria-label="State">
-                                            <option selected>Selecione</option>
-                                            <option value="1">Ensino Fundamental</option>
-                                            <option value="2">Ensino Médio</option>
-                                            <option value="3">Ensino Superior</option>
-                                        </select>
-                                        <label for="floatingSelect">Nível de Escolaridade*:</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="col-md-12">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="floatingCity"
-                                                placeholder="Nome da Mãe">
-                                            <label for="floatingCity">Nome da Mãe*:</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="col-md-12">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="floatingCity"
-                                                placeholder="Nome da Pai">
-                                            <label for="floatingCity">Nome do Pai:</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="col-md-12">
-                                        <div class="form-floating">
-                                            <input type="tel" class="form-control" id="floatingCity"
+                                            <input type="tel" class="form-control <?= $dados['telUser_erro'] ? 'is-invalid' : '' ?>" name="telUser" id="telefone-input" maxlength="14" oninput="formatarTelefone(this.value)"
                                                 placeholder="(84)99999-9999">
-                                            <label for="floatingCity">Telefone do Responsável*:</label>
+                                            <label for="floatingCity">Telefone*:</label>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            <?= $dados['telUser_erro'] ?>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <label for="floatingPassword">Frase Motivacional*:</label>
-                                    <div class="form-floating">
-
-                                        <textarea name="editor1"></textarea>
-                                        <script>
-                                            CKEDITOR.replace('editor1');
-                                        </script>
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" name="funcaoUser" id="floatingSelect" aria-label="State">
+                                            <option selected>Selecione</option>
+                                            <?php foreach($dados['funcao'] as $listar):?>
+                                            <option value="<?=$listar->id_funcao?>"><?=$listar->nome_status?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <label for="floatingSelect">Função*:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" name="emailUser" id="floatingCity"
+                                                placeholder="Digite o e-mail válido">
+                                            <label for="floatingCity">E-mail*:</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <input type="password" class="form-control" name="senhaUser" id="floatingCity"
+                                                placeholder="Digite uma senha">
+                                            <label for="floatingCity">Senha*:</label>
+                                        </div>
                                     </div>
                                 </div>
 

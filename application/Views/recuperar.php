@@ -67,13 +67,15 @@
                                         <p class="text-center small">Digite seu e-mail de acesso para recuperar a senha
                                         </p>
                                     </div>
-
-                                    <form class="row g-3 needs-validation" novalidate>
+                                    <?php
+                                        Sessao::mensagem('recuperarConta');
+                                    ?>
+                                    <form class="row g-3 needs-validation" method="POST" action="<?=URL?>/login/recuperarConta" novalidate>
 
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">E-mail</label>
                                             <div class="input-group has-validation">
-                                                <input type="email" name="username" class="form-control"
+                                                <input type="email" name="email" class="form-control"
                                                     id="yourUsername" placeholder="Seu e-mail" required>
                                                 <div class="invalid-feedback">Por favor, digite seu e-mail.</div>
                                             </div>

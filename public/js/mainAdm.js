@@ -327,95 +327,156 @@ const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
 
 tinymce.init({
-  selector: 'textarea.tinymce-editor',
-  plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
-  editimage_cors_hosts: ['picsum.photos'],
-  menubar: 'file edit view insert format tools table help',
-  toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
-  toolbar_sticky: true,
-  toolbar_sticky_offset: isSmallScreen ? 102 : 108,
-  autosave_ask_before_unload: true,
-  autosave_interval: '30s',
-  autosave_prefix: '{path}{query}-{id}-',
-  autosave_restore_when_empty: false,
-  autosave_retention: '2m',
-  image_advtab: true,
-  link_list: [{
-      title: 'My page 1',
-      value: 'https://www.tiny.cloud'
+    selector: 'textarea.tinymce-editor',
+    plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
+    editimage_cors_hosts: ['picsum.photos'],
+    menubar: 'file edit view insert format tools table help',
+    toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+    toolbar_sticky: true,
+    toolbar_sticky_offset: isSmallScreen ? 102 : 108,
+    autosave_ask_before_unload: true,
+    autosave_interval: '30s',
+    autosave_prefix: '{path}{query}-{id}-',
+    autosave_restore_when_empty: false,
+    autosave_retention: '2m',
+    image_advtab: true,
+    link_list: [{
+        title: 'My page 1',
+        value: 'https://www.tiny.cloud'
     },
     {
-      title: 'My page 2',
-      value: 'http://www.moxiecode.com'
+        title: 'My page 2',
+        value: 'http://www.moxiecode.com'
     }
-  ],
-  image_list: [{
-      title: 'My page 1',
-      value: 'https://www.tiny.cloud'
+    ],
+    image_list: [{
+        title: 'My page 1',
+        value: 'https://www.tiny.cloud'
     },
     {
-      title: 'My page 2',
-      value: 'http://www.moxiecode.com'
+        title: 'My page 2',
+        value: 'http://www.moxiecode.com'
     }
-  ],
-  image_class_list: [{
-      title: 'None',
-      value: ''
+    ],
+    image_class_list: [{
+        title: 'None',
+        value: ''
     },
     {
-      title: 'Some class',
-      value: 'class-name'
+        title: 'Some class',
+        value: 'class-name'
     }
-  ],
-  importcss_append: true,
-  file_picker_callback: (callback, value, meta) => {
-    /* Provide file and text for the link dialog */
-    if (meta.filetype === 'file') {
-      callback('https://www.google.com/logos/google.jpg', {
-        text: 'My text'
-      });
-    }
+    ],
+    importcss_append: true,
+    file_picker_callback: (callback, value, meta) => {
+        /* Provide file and text for the link dialog */
+        if (meta.filetype === 'file') {
+            callback('https://www.google.com/logos/google.jpg', {
+                text: 'My text'
+            });
+        }
 
-    /* Provide image and alt text for the image dialog */
-    if (meta.filetype === 'image') {
-      callback('https://www.google.com/logos/google.jpg', {
-        alt: 'My alt text'
-      });
-    }
+        /* Provide image and alt text for the image dialog */
+        if (meta.filetype === 'image') {
+            callback('https://www.google.com/logos/google.jpg', {
+                alt: 'My alt text'
+            });
+        }
 
-    /* Provide alternative source and posted for the media dialog */
-    if (meta.filetype === 'media') {
-      callback('movie.mp4', {
-        source2: 'alt.ogg',
-        poster: 'https://www.google.com/logos/google.jpg'
-      });
-    }
-  },
-  templates: [{
-      title: 'New Table',
-      description: 'creates a new table',
-      content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>'
+        /* Provide alternative source and posted for the media dialog */
+        if (meta.filetype === 'media') {
+            callback('movie.mp4', {
+                source2: 'alt.ogg',
+                poster: 'https://www.google.com/logos/google.jpg'
+            });
+        }
+    },
+    templates: [{
+        title: 'New Table',
+        description: 'creates a new table',
+        content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>'
     },
     {
-      title: 'Starting my story',
-      description: 'A cure for writers block',
-      content: 'Once upon a time...'
+        title: 'Starting my story',
+        description: 'A cure for writers block',
+        content: 'Once upon a time...'
     },
     {
-      title: 'New list with dates',
-      description: 'New List with dates',
-      content: '<div class="mceTmpl"><span class="cdate">cdate</span><br><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>'
+        title: 'New list with dates',
+        description: 'New List with dates',
+        content: '<div class="mceTmpl"><span class="cdate">cdate</span><br><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>'
     }
-  ],
-  template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
-  template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
-  height: 600,
-  image_caption: true,
-  quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
-  noneditable_class: 'mceNonEditable',
-  toolbar_mode: 'sliding',
-  contextmenu: 'link image table',
-  skin: useDarkMode ? 'oxide-dark' : 'oxide',
-  content_css: useDarkMode ? 'dark' : 'default',
-  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+    ],
+    template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
+    template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
+    height: 600,
+    image_caption: true,
+    quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+    noneditable_class: 'mceNonEditable',
+    toolbar_mode: 'sliding',
+    contextmenu: 'link image table',
+    skin: useDarkMode ? 'oxide-dark' : 'oxide',
+    content_css: useDarkMode ? 'dark' : 'default',
+    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
 });
+
+/**
+* Exibir imagem de perfil do usuário
+*/
+// Obtém o elemento de input do tipo "file"
+const inputImagem = document.getElementById('formFile');
+
+// Obtém o elemento da imagem de visualização
+const imagemPreview = document.getElementById('imagemPreview');
+
+// Define um evento de escuta para o input de imagem
+inputImagem.addEventListener('change', function (event) {
+    // Verifica se algum arquivo foi selecionado
+    if (event.target.files && event.target.files[0]) {
+        // Cria um objeto URL para a imagem selecionada
+        const objetoURL = URL.createObjectURL(event.target.files[0]);
+
+        // Define o atributo "src" da imagem de visualização com o objeto URL
+        imagemPreview.src = objetoURL;
+
+        // Exibe a imagem de visualização
+        imagemPreview.style.display = 'block';
+    }
+});
+
+/**
+* Exibir formatação de CPF
+*/
+function formatarCPF(cpf) {
+    // Remove qualquer caractere que não seja número
+    cpf = cpf.replace(/\D/g, '');
+
+    // Limita a quantidade de caracteres a 14
+    cpf = cpf.substring(0, 11);
+
+    // Aplica a máscara de CPF (XXX.XXX.XXX-XX)
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+    // Atualiza o valor do input com o CPF formatado
+    document.getElementById('cpf-input').value = cpf;
+}
+
+/**
+* Exibir formatação de telefone
+*/
+function formatarTelefone(telefone) {
+    // Remove qualquer caractere que não seja número
+    telefone = telefone.replace(/\D/g, '');
+
+    // Verifica se o número de telefone tem um formato válido
+    if (telefone.length === 11) {
+        telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    } else if (telefone.length === 9) {
+        telefone = telefone.replace(/(\d{5})(\d{4})/, '$1-$2');
+    }
+
+    // Atualiza o valor do input com o telefone formatado
+    document.getElementById('telefone-input').value = telefone;
+}

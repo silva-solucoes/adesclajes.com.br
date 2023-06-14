@@ -83,4 +83,41 @@ class User extends Controller{
         header('Location:'.URL);
 
     }
+
+    public function enviarComentarioNoticia($idNoticia){
+        $dataHora = date('Y-m-d H:i:s');
+        //Capta os dados do formulário
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if(isset($formulario)):
+            $dados = [
+                'nameVisitante' => trim($formulario['nameVisitante']),
+                'foto' => 'semfoto.jpg',
+                'emailVisitante' => trim($formulario['emailVisitante']),
+                'comentarioVisitante' => trim($formulario['comentarioVisitante']),
+                'idNoticia' => trim($idNoticia),
+                'dtCadastroComent' => $dataHora,
+            ];
+            
+            if(empty($formulario['nome'])):
+                $dados['nome_erro'] = "Preencha o campo Seu nome";
+            endif;
+        else:
+            $dados = [
+                'nameVisitante' => '',
+                'emailVisitante' => '',
+                'comentarioVisitante' => '',
+                'dtCadastroComent' => ''
+            ];
+        endif;
+
+        $this->model('modelo');
+
+        $modelo = new Modelo();
+
+        $modelo->cadastrarComentarioNoticia($dados['nameVisitante'],$dados['foto'],$dados['dtCadastroComent'],$dados['comentarioVisitante'],$dados['emailVisitante'],$dados['idNoticia']);
+        
+        header('Location:'.URL.'/paginas/detalheNoticias/'.$idNoticia);
+
+    }
+
 }

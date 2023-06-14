@@ -41,119 +41,122 @@
                                 <?php $dataPostagem = strftime('%d de %B de %Y', strtotime($dados['noticia']->dtAtualizacao));?>
                                 <li class="d-flex align-items-center"><i class="bi bi-calendar-event"></i> <a
                                         href="blog-details.html"><time datetime="2022-01-01"><?=$dataPostagem?></time></a></li>
+                                <?php if($dados['contagemComentarios']->quantComentario <> 0):?>
                                 <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                        href="blog-details.html"><?=$dados['noticia']->quantComentario?> Comentários</a></li>
+                                        href="blog-details.html"><?=$dados['contagemComentarios']->quantComentario?> Comentários</a></li>
+                                <?php else: ?>
+                                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
+                                        href="blog-details.html"><?=$dados['contagemComentarios']->quantComentario?> Comentários</a></li>
+                                <?php endif;?>
                             </ul>
                         </div><!-- End meta top -->
 
                         <div class="content">
-                            <p>
-                                Em um jogo emocionante, a equipe da ADESC venceu de virada e segue na liderança do
-                                campeonato de futebol local. O jogo aconteceu no último domingo, no Estádio Municipal, e
-                                contou com uma torcida animada que não parou de incentivar os jogadores do início ao fim
-                                da partida.
-                            </p>
-
-                            <p>
-                                O time adversário começou na frente e manteve a vantagem durante boa parte do primeiro
-                                tempo. Mas, com muito empenho e dedicação, a ADESC conseguiu empatar o jogo no final da
-                                primeira etapa. No segundo tempo, a equipe não se acomodou e partiu para cima do
-                                adversário, conquistando a virada com um belo gol.
-                            </p>
-
-                            <img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>" class="img-fluid" alt="">
-
-                            <blockquote>
-                                <p>
-                                    Com o resultado positivo, a ADESC segue firme na liderança do campeonato, mostrando
-                                    que tem um elenco forte e preparado para enfrentar qualquer desafio. O técnico
-                                    elogiou a postura dos jogadores em campo e destacou a importância da vitória para a
-                                    equipe.
-                                </p>
-                            </blockquote>
-
-                            <p>
-                                A torcida também está de parabéns pelo apoio constante, que foi fundamental para a
-                                virada do jogo. Agora é seguir treinando e se preparando para as próximas partidas,
-                                sempre com muita garra e determinação. Vamos lá, ADESC!
-                            </p>
-
+                            <?=$dados['noticia']->conteudo?>
                         </div><!-- End post content -->
 
                         <div class="meta-bottom">
                             <i class="bi bi-folder"></i>
                             <ul class="cats">
-                                <li><a href="#">Futebol</a></li>
-                            </ul>
-
-                            <i class="bi bi-tags"></i>
-                            <ul class="tags">
-                                <li><a href="#">Esporte</a></li>
-                                <li><a href="#">Educação</a></li>
-                                <li><a href="#">Inclusão</a></li>
+                                <li><a href="#"><?=$dados['noticia']->nome?></a></li>
                             </ul>
                         </div><!-- End meta bottom -->
 
                     </article><!-- End blog post -->
 
                     <div class="post-author d-flex align-items-center">
-                        <img src="<?php echo URL . 'public/images/equipe/semfoto.jpg'; ?>"
+                        <img src="<?php echo URL . '/public/images/equipe/'.$dados['noticia']->fotoMembro; ?>"
                             class="rounded-circle flex-shrink-0" alt="">
                         <div>
-                            <h4>Paulo Rodrigues</h4>
+                            <h4><?=$dados['noticia']->nome_membro?></h4>
                             <div class="social-links">
-                                <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
-                                <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                                <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                                <?php foreach($dados['rsMembros'] as $ler):?>
+                                    <a href="<?=$ler->link_acesso?>"><?=$ler->icone?></a>
+                                <?php endforeach;?>
                             </div>
                             <p>
-                                Parabéns para a equipe da ADESC pela vitória de virada! É muito emocionante ver o
-                                esforço e dedicação dos atletas para alcançar a liderança do campeonato de futebol
-                                local. Continuem com esse desempenho incrível e boa sorte nas próximas partidas!
+                                <?=$dados['noticia']->comentario?>
                             </p>
                         </div>
                     </div><!-- End post author -->
 
                     <div class="comments">
-
-                        <h4 class="comments-count">5 Comentários</h4>
-
+                        <?php if($dados['contagemComentarios']->quantComentario <> 0):?>
+                        <h4 class="comments-count"><?=$dados['contagemComentarios']->quantComentario?> Comentários</h4>
+                        <?php else: ?>
+                        <h4 class="comments-count"><?=$dados['contagemComentarios']->quantComentario?> Comentários</h4>
+                        <?php endif;?>
+                        <?php if($dados['contagemComentarios']->quantComentario <> 0):?>
                         <div id="comment-1" class="comment">
+                            <?php foreach($dados['controleComentarios'] as $ler):?>
                             <div class="d-flex">
                                 <div class="comment-img"><img
-                                        src="<?php echo URL . 'public/images/equipe/semfoto.jpg'; ?>" alt=""></div>
+                                        src="<?php echo URL . '/public/images/equipe/'.$ler->fotoComent; ?>" alt=""></div>
                                 <div>
-                                    <h5><a href="">Maria Eduarda</a> <a href="#" class="reply"><i
-                                                class="bi bi-reply-fill"></i> Responder</a></h5>
-                                    <time datetime="2020-01-01">19 Abr 2023</time>
+                                    <h5><a href=""><?=$ler->nomeComent?></a></h5>
+                                    <?php $dataPostagem = strftime('%d de %B de %Y', strtotime($ler->dtCadastroComent));?>
+                                    <time datetime="2020-01-01"><?=$dataPostagem?></time>
                                     <p>
-                                        Parabéns à equipe da ADESC pela vitória de virada! É incrível ver como o esforço
-                                        e a dedicação dos atletas estão rendendo resultados positivos. A liderança no
-                                        campeonato de futebol local é uma prova do talento e empenho dessa equipe.
-                                        Estamos orgulhosos de fazer parte dessa instituição que promove o esporte, a
-                                        educação e a inclusão de forma tão exemplar. Vamos em frente, rumo a mais
-                                        conquistas!
+                                        <?=$ler->comentarioInter?>
                                     </p>
                                 </div>
                             </div>
+                            <?php endforeach;?>
                         </div><!-- End comment #1 -->
+                        <?php else: ?>
+                        <div id="comment-1" class="comment">
+                            <div class="d-flex">
+                                <div>
+                                    <p>Nenhum comentário</p>
+                                </div>
+                            </div>
+                        </div><!-- End comment #1 -->
+                        <?php endif; ?>
+                        <?php if($dados['contagemComentarios']->quantComentario > 5):?>
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Ver mais comentários</button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div id="comment-1" class="comment">
+                                            <?php foreach($dados['todosComentarios'] as $listar): ?>
 
+                                            <div class="d-flex">
+                                                <div class="comment-img"><img src="<?php echo URL . '/public/images/equipe/'.$listar->fotoComent; ?>" alt=""></div>
+                                                <div>
+                                                    <h5><a href=""><?=$listar->nomeComent?></a></h5>
+                                                    <?php $dataPostagem = strftime('%d de %B de %Y', strtotime($listar->dtCadastroComent));?>
+                                                    <time datetime="2020-01-01"><?=$dataPostagem?></time>
+                                                    <p>
+                                                        <?=$listar->comentarioInter?>
+                                                    </p>
+                                                    <?php endforeach;?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif; ?>
                         <div class="reply-form">
 
                             <h4>Deixe um comentário</h4>
                             <p>Seu endereço de e-mail não será publicado. Os campos obrigatórios estão marcados * </p>
-                            <form action="">
+                            <form action="<?= URL ?>/user/enviarComentarioNoticia/<?=$dados['noticia']->id_noticia?>" method="post">
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <input name="name" type="text" class="form-control" placeholder="Seu nome*">
+                                        <input name="nameVisitante" type="text" class="form-control" placeholder="Seu nome*">
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input name="email" type="text" class="form-control" placeholder="Seu e-mail*">
+                                        <input name="emailVisitante" type="text" class="form-control" placeholder="Seu e-mail*">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col form-group">
-                                        <textarea name="comment" class="form-control"
+                                        <textarea name="comentarioVisitante" class="form-control"
                                             placeholder="Seu comentário*"></textarea>
                                     </div>
                                 </div>
@@ -182,12 +185,9 @@
                         <div class="sidebar-item categories">
                             <h3 class="sidebar-title">Categoria</h3>
                             <ul class="mt-3">
-                                <li><a href="#">Geral <span>(25)</span></a></li>
-                                <li><a href="#">Futebol <span>(12)</span></a></li>
-                                <li><a href="#">Futsal <span>(5)</span></a></li>
-                                <li><a href="#">Natação <span>(22)</span></a></li>
-                                <li><a href="#">Taekwondo <span>(8)</span></a></li>
-                                <li><a href="#">Volêi <span>(14)</span></a></li>
+                            <?php foreach($dados['categorias'] as $listar): ?>
+                                <li><a href="#"><?=$listar->nome_categoria?> <span>(<?=$listar->quantidade_registros?>)</span></a></li>
+                            <?php endforeach; ?>
                             </ul>
                         </div><!-- End sidebar categories-->
 
@@ -195,53 +195,30 @@
                             <h3 class="sidebar-title">Últimas notícias</h3>
 
                             <div class="mt-3">
-
+                            <?php foreach($dados['ultimasNoticias'] as $listar): ?>
+                            <?php $dataPostagem = strftime('%d de %B de %Y', strtotime($listar->dtAtualizacao));?>
                                 <div class="post-item mt-3">
-                                    <img src="<?php echo URL . 'public/uploads/noticia-01.jpg'; ?>" alt=""
+                                    <img src="<?php echo URL . '/public/uploads/'.$listar->img_Noticia; ?>" alt=""
                                         class="flex-shrink-0">
                                     <div>
-                                        <h4><a href="<?php echo URL . 'noticia/' ?>">ADESC vence de virada e segue na
-                                                liderança do
-                                                campeonato de futebol local</a></h4>
-                                        <time datetime="2020-01-01">19 Abr 2023</time>
+                                        <h4><a href="<?php echo URL . '/paginas/detalheNoticias/'.$listar->id_noticia; ?>">
+                                        <?php 
+                                            if(strlen($listar->tl_noticia) >= 50): 
+                                                echo $descricao = substr($listar->tl_noticia, 0, 50) . "...";
+                                            else:
+                                                echo $listar->tl_noticia;
+                                            endif;
+                                        ?>
+                                        </a></h4>
+                                        <time datetime="2020-01-01"><?=$dataPostagem?></time>
                                     </div>
                                 </div><!-- End recent post item-->
-
-                                <div class="post-item">
-                                    <img src="<?php echo URL . 'public/uploads/noticia-02.jpg'; ?>" alt=""
-                                        class="flex-shrink-0">
-                                    <div>
-                                        <h4><a href="blog-post.html">O prefeito Felipe Menezes marcou presença no
-                                                campeonato local</a></h4>
-                                        <time datetime="2020-01-01">18 Abr 2023</time>
-                                    </div>
-                                </div><!-- End recent post item-->
-
-                                <div class="post-item">
-                                    <img src="<?php echo URL . 'public/uploads/noticia-03.jpg'; ?>" alt=""
-                                        class="flex-shrink-0">
-                                    <div>
-                                        <h4><a href="blog-post.html">Entrega de materiais esportivos fortalece atletas
-                                                da ADESC</a>
-                                        </h4>
-                                        <time datetime="2020-01-01">17 Abr 2023</time>
-                                    </div>
-                                </div><!-- End recent post item-->
-
-                                <div class="post-item">
-                                    <img src="<?php echo URL . 'public/uploads/noticia-04.jpg'; ?>" alt=""
-                                        class="flex-shrink-0">
-                                    <div>
-                                        <h4><a href="blog-post.html">Entrega de materiais esportivos fortalece atletas
-                                                da ADESC</a></h4>
-                                        <time datetime="2020-01-01">16 Abr 2023</time>
-                                    </div>
-                                </div><!-- End recent post item-->
+                            <?php endforeach;?>
 
                             </div>
 
                         </div><!-- End sidebar recent posts-->
-
+                        <!--
                         <div class="sidebar-item tags">
                             <h3 class="sidebar-title">Tags</h3>
                             <ul class="mt-3">
@@ -249,7 +226,7 @@
                                 <li><a href="#">Notícias</a></li>
                                 <li><a href="#">Esportes</a></li>
                             </ul>
-                        </div><!-- End sidebar tags-->
+                        </div> End sidebar tags-->
 
                     </div>
                 </div>

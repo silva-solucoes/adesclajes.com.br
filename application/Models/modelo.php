@@ -1,7 +1,17 @@
 <?php
+include_once('src/PHPMailer.php');
+include_once('src/SMTP.php');
+include_once('src/Exception.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Modelo {
 
 	private $bd;
+	private $chave;
+	private $resultado;
 
     public function __construct(){
         $this->bd = new Conn();
@@ -33,6 +43,20 @@ class Modelo {
 
 		return $this->bd->resultados();
 	}
+
+	public function listar4Noticias(){
+		$this->bd->query('SELECT *
+		FROM tbl_noticias
+		INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor
+		INNER JOIN categorianoticia ON categorianoticia.id_categoria = tbl_noticias.id_categoria
+		INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas = tbl_noticias.id_ultimas
+		INNER JOIN tbl_coment_tecnico ON tbl_coment_tecnico.id_coment_tec = tbl_noticias.id_coment_tec
+		ORDER BY tbl_noticias.dtAtualizacao DESC
+		LIMIT 4');
+
+		return $this->bd->resultados();
+	}
+
 	public function listarUltimasNoticias(){
 		$this->bd->query('SELECT *
 		FROM tbl_noticias
@@ -46,18 +70,105 @@ class Modelo {
 		return $this->bd->resultados();
 	}
 	public function exibirNoticia($id){
-		$this->bd->query('SELECT *, (SELECT COUNT(*) FROM tbl_comentario WHERE id_noticia = :id) AS quantComentario
+		$this->bd->query('SELECT *
 		FROM tbl_noticias
 		INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor
 		INNER JOIN categorianoticia ON categorianoticia.id_categoria = tbl_noticias.id_categoria
 		INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas = tbl_noticias.id_ultimas
 		INNER JOIN tbl_coment_tecnico ON tbl_coment_tecnico.id_coment_tec = tbl_noticias.id_coment_tec
+		INNER JOIN tbl_membro ON tbl_coment_tecnico.id_membro = tbl_membro.id_membro
 		WHERE tbl_noticias.id_noticia = :id;
 		');
 		$this->bd->bind('id', $id);
 
 		return $this->bd->resultado();
 	}
+
+	public function exibir5ComentariosNoticia($id){
+		$this->bd->query('SELECT *
+		FROM tbl_noticias
+		INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor
+		INNER JOIN tbl_comentario ON tbl_noticias.id_noticia = tbl_comentario.id_noticia
+		WHERE tbl_noticias.id_noticia = :id
+		ORDER BY tbl_comentario.id_comentario DESC
+		LIMIT 5;
+		');
+		$this->bd->bind('id', $id);
+
+		return $this->bd->resultados();
+	}
+
+	public function resultadoTodosComentarios($id){
+		$this->bd->query('SELECT *
+		FROM tbl_noticias
+		INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor
+		INNER JOIN tbl_comentario ON tbl_noticias.id_noticia = tbl_comentario.id_noticia
+		WHERE tbl_noticias.id_noticia = :id
+		ORDER BY tbl_comentario.id_comentario DESC;
+		');
+		$this->bd->bind('id', $id);
+
+		return $this->bd->resultados();
+	}
+
+	public function contagemComentarios($id){
+		$this->bd->query('SELECT COUNT(*) AS quantComentario FROM tbl_comentario WHERE tbl_comentario.id_noticia = :id;
+		');
+		$this->bd->bind('id', $id);
+
+		return $this->bd->resultado();
+	}
+
+	public function exibirCategorias(){
+		$this->bd->query("SELECT categorianoticia.nome AS nome_categoria, COUNT(*) AS quantidade_registros FROM tbl_noticias INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor INNER JOIN categorianoticia ON categorianoticia.id_categoria = tbl_noticias.id_categoria INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas = tbl_noticias.id_ultimas INNER JOIN tbl_coment_tecnico ON tbl_coment_tecnico.id_coment_tec = tbl_noticias.id_coment_tec INNER JOIN tbl_membro ON tbl_coment_tecnico.id_membro = tbl_membro.id_membro WHERE categorianoticia.nome IN ('Futebol', 'Futsal', 'Fut7') GROUP BY categorianoticia.nome ORDER BY categorianoticia.nome DESC;
+		");
+
+		return $this->bd->resultados();
+	}
+
+	public function exibirTodosComentariosNoticia($id){
+		$this->bd->query('SELECT *
+		FROM tbl_noticias
+		INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor
+		INNER JOIN tbl_comentario ON tbl_noticias.id_noticia = tbl_comentario.id_noticia
+		WHERE tbl_noticias.id_noticia = :id
+		AND tbl_comentario.id_comentario NOT IN (
+			SELECT id_comentario
+			FROM (
+				SELECT id_comentario
+				FROM tbl_comentario
+				WHERE id_noticia = :id
+				ORDER BY dtCadastroComent DESC
+				LIMIT 5 OFFSET 0
+			) AS comentarios_recentes
+		)
+		ORDER BY tbl_comentario.dtCadastroComent ASC
+		');
+		$this->bd->bind('id', $id);
+
+		return $this->bd->resultados();
+	}
+
+	public function cadastrarComentarioNoticia($nome, $foto, $dtCadastro, $comentario, $email, $idNoticia){
+		
+    	$bd = new Conn;
+
+		$bd->query('INSERT INTO tbl_comentario (nomeComent, fotoComent, dtCadastroComent, comentarioInter, emailInter, id_noticia) VALUES (:nomeComent, :fotoComent, :dtCadastroComent, :comentarioInter, :emailInter, :id_noticia)');
+		
+		$bd->bind(':nomeComent', $nome);
+		$bd->bind(':fotoComent', $foto);
+		$bd->bind(':dtCadastroComent', $dtCadastro);
+		$bd->bind(':comentarioInter', $comentario);
+		$bd->bind(':emailInter', $email);
+		$bd->bind(':id_noticia', $idNoticia);
+
+		if($bd->executa()):
+			$_SESSION['msg'] = "cadastrado com sucesso, confirme o cadastro via e-mail";
+		else:
+			$_SESSION['msg'] = "não foi possivel realizar o cadastrado";
+		endif;
+	}
+
 	public function todasOpcaoEscolher(){
 		$this->bd->query('SELECT *, (SELECT MIN(id_opcao) FROM tbl_opcaoescolha) AS menorID FROM tbl_opcaoescolha;');
 
@@ -76,8 +187,8 @@ class Modelo {
 
     	$host = 'sandbox.smtp.mailtrap.io';
     	$port = 2525;
-    	$username = 'ccef44a3f5bd8a';
-    	$password = '7d07425282aead';
+    	$username = '2d8079c52a0c00';
+    	$password = '58d5514ba5acbd';
 
     	$assunto = "$titulo";
     	$corpo = "$mensagem";
@@ -103,6 +214,91 @@ class Modelo {
     	} else {
         	echo 'Erro ao enviar mensagem';
    		}
+	}
+
+	public function enviarAtivacaoConta($dados) {
+ 
+		$mail = new PHPMailer(true);
+
+		try {
+			#$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+			$mail->isSMTP();
+			$mail->Host = 'sandbox.smtp.mailtrap.io';
+			$mail->SMTPAuth = true;
+			$mail->Username = 'b37f9d489ed790';
+			$mail->Password = '24566e2fa66e36';
+			$mail->Port = 587;
+
+			$mail->setFrom('adesclajes1997@gmail.com');
+			$mail->addAddress($dados['emailUser']);
+
+			$mail->isHTML(true);
+			$mail->CharSet = 'UTF-8';
+			$mail->Subject = 'CONTA ADESC - Ativação da Sua Conta';
+			$mail->Body = "Prezado(a) ".$dados['nomeUser'].",<br><br><b>CREDENCIAIS DE ACESSO</b><br>E-mail: {$dados['emailUser']}<br>Senha: {$dados['senhaUser']}<br><br><b>ALERTA DE SEGURANÇA</b><br><h3>Por motivos de segurança, é necessário que você altere a senha padrão que foi enviada para você por e-mail após o seu primeiro acesso. Recomendamos que escolha uma senha única e de sua preferência, para garantir a proteção dos seus dados e dos dados da ADESC Lajes.</h3><br><br>Para ativar a sua conta, por favor, clique no link abaixo:<br><a href=".URL."/admin/ativarConta?chave={$dados['chave_ativar']}>Clique aqui para ativar sua conta</a><br><br>Desejamos uma ótima experiência em nosso site.<br><br>Atenciosamente,<br>
+			Diretoria da ADESC Lajes.";
+			$mail->AltBody = "Prezado(a)".$dados['nomeUser'].",
+			CREDENCIAIS DE ACESSO
+			E-mail: {$dados['emailUser']}
+			Senha: {$dados['senhaUser']}
+			ALERTA DE SEGURANÇA
+			Por motivos de segurança, é necessário que você altere a senha padrão que foi enviada para você por e-mail após o seu primeiro acesso. Recomendamos que escolha uma senha única e de sua preferência, para garantir a proteção dos seus dados e dos dados da ADESC Lajes.
+			Para ativar a sua conta, por favor, clique no link abaixo:<br><a href=".URL."/admin/ativarConta?chave={$dados['chave_ativar']}>Clique aqui para ativar sua conta</a>
+			Desejamos uma ótima experiência em nosso site.
+			Atenciosamente,
+			Diretoria da ADESC Lajes.";
+
+			if($mail->send()) {
+				
+			} else {
+				echo 'Email nao enviado';
+			}
+		} catch (Exception $e) {
+			echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+		}
+		
+	}
+
+	public function validarChave($chave){
+		$this->chave = $chave;
+
+		$this->bd->query('SELECT id_usuario FROM tbl_usuario WHERE tbl_usuario.chave_ativae = :chave LIMIT 1');
+		$this->bd->bind('chave', $this->chave);
+		$this->resultado = $resultado = $this->bd->resultado();
+        if ($resultado):
+            if ($this->ativarUsuario()):
+				echo 'Deu certo';
+				Sessao::mensagem('usuario','Usuário ativado com sucesso!');
+				return true;
+			else:
+				echo 'Deu errado';
+				Sessao::mensagem('usuario','Erro: Usuário não ativado, tente mais tarde!', 'alert alert-danger');
+				return false;
+			endif;
+			
+        else:
+			
+			Sessao::mensagem('usuario','Erro: Link inválido!', 'alert alert-danger');
+    		return false;
+		endif;
+	}
+
+	public function ativarUsuario(){
+		
+		$chave_ativar = "";
+        $sits_usuario_id = 1;
+		$idUsuario = $this->resultado->id_usuario;
+
+		$this->bd->query('UPDATE tbl_usuario SET tbl_usuario.chave_ativae = :chave_ativar, tbl_usuario.status = :sits_usuario_id, tbl_usuario.dt_edicao = NOW() WHERE tbl_usuario.id_usuario = :id');
+		$this->bd->bind(':chave_ativar', $chave_ativar);
+		$this->bd->bind(':sits_usuario_id', $sits_usuario_id);
+		$this->bd->bind(':id', $idUsuario);
+
+        if ($this->bd->executa()) {
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function enviarInscricao($nome, $dataNascimento, $sexo, $nivel_ensino, $nomeEscola, $nomeMae, $nomePai, $telRespon, $categoria_esportiva, $posicao, $altura, $message, $dtRegistro){

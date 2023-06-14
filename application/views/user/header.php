@@ -1,3 +1,7 @@
+<?php
+    setlocale(LC_TIME, 'portuguese');
+    $dataAtual = date('Y-m-d');
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -72,8 +76,10 @@
           </li>
           <li><a class="nav-link scrollto" href="<?=URL?><?=$dados['info']->tl_link7?>">Diretoria</a></li>
           <li><a class="nav-link scrollto" href="<?=URL?><?=$dados['info']->tl_link8?>">Contato</a></li>
+          <?php if($dataAtual >= $dados['info']->dt_abe_inscricao && $dataAtual <= $dados['info']->dt_enc_Inscricao): ?>
           <li><a class="getstarted scrollto" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Área de
               Inscrição</a></li>
+          <?php endif; ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

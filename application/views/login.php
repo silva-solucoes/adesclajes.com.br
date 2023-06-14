@@ -7,9 +7,6 @@ if (!defined('4578S9')) {
 //Criptografar a senha
 //echo password_hash(4578S9, PASSWORD_DEFAULT);
 
-if (isset($this->dados['form'])) {
-    $valorForm = $this->dados['form'];
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -91,7 +88,7 @@ if (isset($this->dados['form'])) {
                                             <label for="yourUsername" class="form-label">E-mail</label>
                                             <div class="input-group has-validation">
                                                 <input type="email" name="email" class="form-control"
-                                                    id="yourUsername" placeholder="Seu e-mail" value="<?php if(isset($valorForm['email'])){echo $valorForm['email']; } ?>" required>
+                                                    id="yourUsername" placeholder="Seu e-mail" value="<?=$dados['email']?>" required>
                                                 <div class="invalid-feedback">Por favor, digite seu e-mail.</div>
                                             </div>
                                         </div>
@@ -100,20 +97,12 @@ if (isset($this->dados['form'])) {
                                             <label for="yourPassword" class="form-label">Senha</label>
                                             <div class="input-group has-validation">
                                                 <input type="password" name="senha" class="form-control"
-                                                    id="senha" placeholder="Sua senha" required>
+                                                    id="senha" placeholder="Sua senha" value="" required>
                                                         <span id="icone-olho" class="bi bi-eye-fill input-group-text" id="inputGroupPrepend" onclick="alternarVisibilidadeSenha()"></span>
                                                 <div class="invalid-feedback">Por favor, digite sua senha!</div>
                                             </div>
                                         </div>
 
-                                        <div class="col-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="remember"
-                                                    value="true" id="rememberMe">
-                                                <label class="form-check-label" for="rememberMe">Lembrar da
-                                                    conta</label>
-                                            </div>
-                                        </div>
                                         <div class="col-12">
                                             <input name="SendLogin" id="botaoAcesso" class="w-100" type="submit" value="Acessar">
                                         </div>

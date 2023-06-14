@@ -217,7 +217,7 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="<?php echo URL . '/public/images/equipe/'.$_SESSION['foto_user']; ?>" alt="Profile"
+                        <img src="<?php echo URL . '/public/uploads/adms/'.$_SESSION['foto_user']; ?>" alt="Profile"
                             class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['nome_user']; ?></span>
                     </a><!-- End Profile Iamge Icon -->
