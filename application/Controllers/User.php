@@ -83,4 +83,7 @@ class User extends Controller{
         header('Location:'.URL);
 
     }
+    public function erros(){
+        $this->view('user/erros/erro');
+    }
 }

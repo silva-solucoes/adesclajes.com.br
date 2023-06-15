@@ -24,19 +24,29 @@ class Rota {
             unset($url[0]);
        endif;
 
-       //requere o controlador
-       require_once '../application/Controllers/'.$this->controlador.'.php';
-       //instancia o controlador
-       $this->controlador = new $this->controlador;
+       //verifica se a veriavel $url foi destruida e se é vazia
+       if(empty($url[0])):
+            //requere o controlador
+            require_once '../application/Controllers/'.$this->controlador.'.php';
+            //instancia o controlador
+            $this->controlador = new $this->controlador;
+                //checa se o método existe, segunda parte da url
+            if(isset($url[1])):
+                    //method_exists — Checa se o método da classe existe
+                    if(method_exists($this->controlador, $url[1])):
+                    $this->metodo = $url[1];
+                    unset($url[1]);     
+                    endif;
+                endif;
+        //caso a variavel $url não tenha sido destruida e não seja vazia        
+        else:
+            $this->metodo = 'erros';
+            //requere o controlador User
+            require_once '../application/Controllers/User.php';
+            //instancia o controlador
+            $this->controlador = new User();
 
-       //checa se o método existe, segunda parte da url
-       if(isset($url[1])):
-            //method_exists — Checa se o método da classe existe
-            if(method_exists($this->controlador, $url[1])):
-               $this->metodo = $url[1];
-               unset($url[1]);     
-            endif;
-       endif;
+        endif; 
 
         //Se existir retorna um array com os valores se não retorna um array vazio
         //array_values — Retorna todos os valores de um array
