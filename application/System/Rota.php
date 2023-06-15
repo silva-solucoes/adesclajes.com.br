@@ -41,10 +41,11 @@ class Rota {
         //caso a variavel $url não tenha sido destruida e não seja vazia        
         else:
             $this->metodo = 'erros';
-            //requere o controlador User
-            require_once '../application/Controllers/User.php';
+            $this->controlador = 'User';
+            //requere o controlador
+            require_once '../application/Controllers/'.$this->controlador.'.php';
             //instancia o controlador
-            $this->controlador = new User();
+            $this->controlador = new $this->controlador;
 
         endif; 
 
