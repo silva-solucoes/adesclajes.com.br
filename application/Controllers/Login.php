@@ -84,7 +84,7 @@ class Login extends Controller{
                 endif;
             endif;
         else :
-
+            header("Location:".URL."/paginas/recuperar");
         endif;
     }
 

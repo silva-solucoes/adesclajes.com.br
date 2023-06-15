@@ -8,13 +8,13 @@ class Admin extends Controller{
     public function __construct(){
 
         if(!Sessao::logado()):
-            #header("Location:".URL."/paginas/login");
+            header("Location:".URL."/paginas/login");
         endif;
 
         $this->usuarioModel = $this->model('Usuario');
         $this->confirmacaoEmail = $this->model('modelo');
     }
-
+    //Chamada Principal Painel de Controle
     public function index(){
 
         $dados=[
@@ -23,7 +23,7 @@ class Admin extends Controller{
         $this->view('admin/painel', $dados);
 
     }
-
+    //Chamada para o Gerenciamento de Usuários
     public function usuario(){
         
         $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -92,7 +92,39 @@ class Admin extends Controller{
         $this->view('admin/usuarios', $dados);
 
     }
-
+    //Chamada para página de Configurações do Site
+    public function config(){
+        $this->view('admin/config_site');
+    }
+    //Chamada para página de Patrocinadores
+    public function patrocinio(){
+        $this->view('admin/patrocinadores');
+    }
+    //Chamada para página de Notícia
+    public function noticia(){
+        $this->view('admin/noticias');
+    }
+    //Chamada para página de Sobre-nós
+    public function sobre(){
+        $this->view('admin/sobre');
+    }
+    //Chamada para página de BID
+    public function BID(){
+        $this->view('admin/BID');
+    }
+    //Chamada para página de Fotos
+    public function fotos(){
+        $this->view('admin/galeria_foto');
+    }
+    //Chamada para página de Categoria de Esportes
+    public function esportes(){
+        $this->view('admin/categoria_esportiva');
+    }
+    //Chamada para página de Diretoria
+    public function diretoria(){
+        $this->view('admin/diretoria');
+    }
+    //Cadastro de Novos usuários (ADM)
     public function cadastrarUser(){
 
         $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -179,7 +211,9 @@ class Admin extends Controller{
             
             endif;
         else:
-            $dados = [
+            $dados=[
+                'user' => $this->usuarioModel->lerUsuario(),
+                'funcao' => $this->usuarioModel->lerFuncoes(),
                 'nomeUser' => '',
                 'cpfUser' => '',
                 'telUser' => '',
@@ -196,101 +230,9 @@ class Admin extends Controller{
             ];
         endif;
 
-        /*
-        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        
-        
-        if (isset($formulario)) {
-            $dados = [
-                'nomeUser' => trim($formulario['nomeUser']),
-                'fotoUser' => trim($formulario['fotoUser']),
-                'cpfUser' => trim($formulario['cpfUser']),
-                'telUser' => trim($formulario['telUser']),
-                'funcaoUser' => trim($formulario['funcaoUser']),
-                'emailUser' => trim($formulario['emailUser']),
-                'senhaUser' => trim($formulario['senhaUser']),
-                'upload_erro' => '',
-            ];
-    
-            if (in_array("", $formulario)) {
-                if (empty($formulario['nomeUser'])) {
-                    $dados['nomeUser_erro'] = 'Preencha o campo Nome Completo';
-                }
-    
-                if (empty($formulario['telUser'])) {
-                    $dados['telUser_erro'] = 'Preencha o campo Telefone';
-                }
-    
-                if (empty($formulario['funcaoUser'])) {
-                    $dados['funcaoUser_erro'] = 'Preencha o campo Função';
-                }
-    
-                if (empty($formulario['emailUser'])) {
-                    $dados['emailUser_erro'] = 'Preencha o campo E-mail';
-                }
-    
-                if (empty($formulario['senhaUser'])) {
-                    $dados['senhaUser_erro'] = 'Preencha o campo Senha';
-                }
-            } else {
-                if (Checa::checarNome($formulario['nomeUser'])) {
-                    $dados['nomeUser_erro'] = 'O nome informado é inválido';
-                } elseif (Checa::checarEmail($formulario['emailUser'])) {
-                    $dados['emailUser_erro'] = 'O e-mail informado é inválido';
-                } elseif ($this->usuarioModel->checarEmail($formulario['emailUser'])) {
-                    $dados['emailUser_erro'] = 'O e-mail informado já está cadastrado';
-                } elseif (strlen($formulario['senhaUser']) < 6) {
-                    $dados['senhaUser_erro'] = 'A senha deve ter no mínimo 6 caracteres';
-                } else {
-                    $dados['senhaUser'] = password_hash($formulario['senhaUser'], PASSWORD_DEFAULT);
-                    $dados['chave_ativar'] = password_hash(date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
-                    if ($this->usuarioModel->armazenar($dados)) {
-                        Sessao::mensagem('usuario', 'Cadastro realizado com sucesso');
-                        #URL::redirecionar('');
-                    } else {
-                        die('Erro ao cadastrar usuário!');
-                    }
-                }
-            }
-        } else {
-            $dados = [
-                'nomeUser' => '',
-                'cpfUser' => '',
-                'telUser' => '',
-                'funcaoUser' => '',
-                'emailUser' => '',
-                'senhaUser' => '',
-                'upload_erro' => '',
-                'nomeUser_erro' => '',
-                'telUser_erro' => '',
-                'funcaoUser_erro' => '',
-                'emailUser_erro' => '',
-                'senhaUser_erro' => '',
-            ];
-        }
-    */
-        $dados=[
-            'user' => $this->usuarioModel->lerUsuario(),
-            'funcao' => $this->usuarioModel->lerFuncoes(),
-            'nomeUser' => '',
-            'cpfUser' => '',
-            'telUser' => '',
-            'funcaoUser' => '',
-            'emailUser' => '',
-            'senhaUser' => '',
-            'upload_erro' => '',
-            'nomeUser_erro' => '',
-            'cpfUser_erro' => '',
-            'telUser_erro' => '',
-            'funcaoUser_erro' => '',
-            'emailUser_erro' => '',
-            'senhaUser_erro' => '',
-        ];
         $this->view('admin/usuarios', $dados);
-        
-        #header('Location: '.URL.DIRECTORY_SEPARATOR.'admin/usuario');
     }
-
+    //Ativação da Conta do Novo usuário
     public function ativarConta(){
         $this->chave = filter_input(INPUT_GET, "chave", FILTER_DEFAULT);
         if (!empty($this->chave)):
