@@ -217,7 +217,7 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="<?php echo URL . '/public/images/equipe/'.$_SESSION['foto_user']; ?>" alt="Profile"
+                        <img src="<?php echo URL . '/public/uploads/adms/'.$_SESSION['foto_user']; ?>" alt="Profile"
                             class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['nome_user']; ?></span>
                     </a><!-- End Profile Iamge Icon -->
@@ -274,99 +274,101 @@
         </nav><!-- End Icons Navigation -->
 
     </header><!-- End Header -->
+    <?php
+        $uri =$_SERVER['REQUEST_URI'];
+        // Verifica se a URL atual corresponde a cada guia de navegação
+        $paginaInicialAtiva = (strpos($uri, '/admin/painel') !== false);
+        $configAtiva = (strpos($uri, '/admin/config') !== false);
+        $patroAtivo = (strpos($uri, '/admin/patrocinio') !== false);
+        $noticiaAtivo = (strpos($uri, '/admin/noticia') !== false);
+        $sobreAtivo = (strpos($uri, '/admin/sobre') !== false);
+        $bidAtivo = (strpos($uri, '/admin/BID') !== false);
+        $fotosAtivo = (strpos($uri, '/admin/fotos') !== false);
+        $esportesAtivo = (strpos($uri, '/admin/esportes') !== false);
+        $diretoriaAtivo = (strpos($uri, '/admin/diretoria') !== false);
+        $usuariosAtivo = (strpos($uri, '/admin/usuario') !== false);
 
+        // Função auxiliar para adicionar a classe ativa à guia de navegação
+        function ativarGuia($ativa){
+            if ($ativa == false):
+                echo 'collapsed';
+            else:
+                echo '';
+            endif;
+        }
+    ?>
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="<?php echo URL . '/admin/painel'; ?>">
+                <a class="nav-link <?php ativarGuia($paginaInicialAtiva); ?>" href="<?php echo URL . '/admin/painel'; ?>">
                     <i class="bi bi-grid"></i>
                     <span>Painel de Controle</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
-
-            <li class="nav-item">
-
-            </li><!-- End Components Nav -->
-
-            <li class="nav-item">
-
-            </li><!-- End Forms Nav -->
-
-            <li class="nav-item">
-
-            </li><!-- End Tables Nav -->
-
-            <li class="nav-item">
-
-            </li><!-- End Charts Nav -->
-
-            <li class="nav-item">
-
-            </li><!-- End Icons Nav -->
+            </li>
 
             <li class="nav-heading">Paginas</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo URL . '/config'; ?>">
+                <a class="nav-link <?php ativarGuia($configAtiva); ?>" href="<?php echo URL . '/admin/config'; ?>">
                     <i class="bi bi-gear"></i>
                     <span>Configurações do Site</span>
                 </a>
             </li><!-- End Navegação na página de Configuração de Site -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo URL . '/patrocinadores'; ?>">
+                <a class="nav-link <?php ativarGuia($patroAtivo); ?>" href="<?php echo URL . '/admin/patrocinio'; ?>">
                     <i class="fas fa-handshake"></i>
                     <span>Gerenciar Patrocinadores</span>
                 </a>
             </li><!-- End Página de Patrocinador -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo URL . '/admNoticias'; ?>">
+                <a class="nav-link <?php ativarGuia($noticiaAtivo); ?>" href="<?php echo URL . '/admin/noticia'; ?>">
                     <i class="bi bi-newspaper"></i>
                     <span>Gerenciar Notícias</span>
                 </a>
             </li><!-- End Página de Notícias -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo URL . '/admSobre'; ?>">
+                <a class="nav-link <?php ativarGuia($sobreAtivo); ?>" href="<?php echo URL . '/admin/sobre'; ?>">
                     <i class="bi bi-info-circle"></i>
                     <span>Gerenciar Sobre-nós</span>
                 </a>
             </li><!-- End Página Sobre -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo URL . '/admBID'; ?>">
+                <a class="nav-link <?php ativarGuia($bidAtivo); ?>" href="<?php echo URL . '/admin/BID'; ?>">
                     <i class="bi bi-people"></i>
                     <span>Gerenciar BID</span>
                 </a>
             </li><!-- End Página BID -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo URL . '/admFotos'; ?>">
+                <a class="nav-link <?php ativarGuia($fotosAtivo); ?>" href="<?php echo URL . '/admin/fotos'; ?>">
                     <i class="bi bi-images"></i>
                     <span>Gerenciar Fotos</span>
                 </a>
             </li><!-- End Página Fotos -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo URL . '/admCategoriaEsportiva'; ?>">
+                <a class="nav-link <?php ativarGuia($esportesAtivo); ?>" href="<?php echo URL . '/admin/esportes'; ?>">
                     <i class="bi bi-dribbble"></i>
                     <span>Gerenciar Esportes</span>
                 </a>
             </li><!-- End Página Esportes -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo URL . '/admDiretoria'; ?>">
+                <a class="nav-link <?php ativarGuia($diretoriaAtivo); ?>" href="<?php echo URL . '/admin/diretoria'; ?>">
                     <i class="bi bi-diagram-3"></i>
                     <span>Gerenciar Diretoria</span>
                 </a>
             </li><!-- End Página Diretoria -->
             
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo URL . '/admin/usuario'; ?>">
+                <a class="nav-link <?php ativarGuia($usuariosAtivo); ?>" href="<?php echo URL . '/admin/usuario'; ?>">
                     <i class="bi bi-person-plus"></i>
                     <span>Gerenciar Administradores</span>
                 </a>

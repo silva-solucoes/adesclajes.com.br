@@ -2,6 +2,7 @@
 <?php include_once 'header.php'; ?>
 <?php
     setlocale(LC_TIME, 'portuguese');
+    $dataAtual = date('Y-m-d');
 ?>
 <!-- ======= Seção de Destaque ======= -->
 <section id="hero" class="d-flex align-items-center">
@@ -13,8 +14,10 @@
                 <h1><?=$dados['info']->titulo?></h1>
                 <h2><?=$dados['info']->sub_titulo?></h2>
                 <div class="d-flex justify-content-center justify-content-lg-start">
+                <?php if($dataAtual >= $dados['info']->dt_abe_inscricao && $dataAtual <= $dados['info']->dt_enc_Inscricao): ?>
                     <a href="#" class="btn-get-started scrollto" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">Área de Inscrição</a>
+                <?php endif; ?>
                     <a href="<?=$dados['info']->incorporarVideo?>" class="glightbox btn-watch-video"><i
                             class="bi bi-play-circle"></i><span>Assistir Vídeo</span></a>
                 </div>
@@ -176,6 +179,7 @@
         <div class="container" data-aos="zoom-in">
 
             <div class="row">
+            <?php if($dataAtual >= $dados['info']->dt_abe_inscricao && $dataAtual <= $dados['info']->dt_enc_Inscricao): ?>
                 <div class="col-lg-9 text-center text-lg-start">
                     <h3>Junte-se a nós e faça parte da família ADESC!</h3>
                     <p> Inscreva-se agora mesmo em nosso site oficial e tenha a oportunidade de desenvolver suas
@@ -186,6 +190,12 @@
                     <a class="cta-btn align-middle" href="#" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">Área de Inscrição</a>
                 </div>
+            <?php else: ?>
+                <div class="col-lg-12 text-center">
+                    <h3>Junte-se a nós e faça parte da família ADESC!</h3>
+                    <p> As inscrições ainda não estão abertas. Fique atento(a) ao nosso período de novas inscrições em nosso site.</p>
+                </div>
+            <?php endif;?>
             </div>
 
         </div>

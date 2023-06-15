@@ -31,7 +31,7 @@
                                         <i class="bi bi-person-check"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1</h6>
+                                        <h6><?=$dados['totalUser']->quantidade?></h6>
                                         <span
                                             class="text-muted small pt-2 ps-1">administrador</span>
 

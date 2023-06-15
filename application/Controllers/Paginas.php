@@ -9,7 +9,20 @@ class Paginas extends Controller{
 
     }
     public function login(){
-        $this->view('login');
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if(isset($formulario)):
+            $dados = [
+                'email' => trim($formulario['email']),
+            ];
+            if(empty($formulario['email'])):
+                $dados['nome_erro'] = "Preencha o campo com seu e-mail";
+            endif;
+        else:
+            $dados=[
+                'email' => '',
+            ];
+        endif;
+        $this->view('login', $dados);
     }
     public function recuperar(){
         $this->view('recuperar');
@@ -41,6 +54,10 @@ class Paginas extends Controller{
         $dados=[
             'info' => $this->info->lerInformacao()
         ];
+        //exibir notícia
+        $dados['noticias']=$this->info->listar4Noticias();
+        //Exibir categorias
+        $dados['categorias']=$this->info->exibirCategorias();
         //Exibir todos os patrocinadores
         $dados['patrocinadores']=$this->info->todasPatrocinadores();
         //Exibir as três últimas notícias
@@ -52,14 +69,26 @@ class Paginas extends Controller{
     }
     public function detalheNoticias($idNoticia){
         $dados=[
-            'info' => $this->info->lerInformacao()
+            'info' => $this->info->lerInformacao(),
         ];
         //exibir notícia
         $dados['noticia']=$this->info->exibirNoticia($idNoticia);
+        //exibir até 5 comentários
+        $dados['comentarios']=$this->info->exibir5ComentariosNoticia($idNoticia);
+        //exibir Todos os comentários
+        $dados['todosComentarios']=$this->info->exibirTodosComentariosNoticia($idNoticia);
+        //Controle dos Comentários
+        $dados['controleComentarios']=$this->info->resultadoTodosComentarios($idNoticia);
+        //Contagem de comentários
+        $dados['contagemComentarios']=$this->info->contagemComentarios($idNoticia);
+        //Exibir categorias
+        $dados['categorias']=$this->info->exibirCategorias();
         //Exibir todos os patrocinadores
         $dados['patrocinadores']=$this->info->todasPatrocinadores();
         //Exibir as três últimas notícias
         $dados['ultimasNoticias']=$this->info->listarUltimasNoticias();
+        //Exibir todas as redes sociais de um membro
+        $dados['rsMembros']=$this->info->lerRedesSociaisMembro($dados['info']->id_membro);
         //Exibir todas as redes sociais da ADESC
         $dados['redesSociais']=$this->info->todasRedesSociais();
 

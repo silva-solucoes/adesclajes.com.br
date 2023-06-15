@@ -32,7 +32,7 @@
                     <h4>Últimas Notícias</h4>
                     <ul>
                         <?php foreach($dados['ultimasNoticias'] as $listar): ?>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#"><?=$listar->tl_noticia?></a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?php echo URL . '/paginas/detalheNoticias/'.$listar->id_noticia; ?>"><?=$listar->tl_noticia?></a></li>
                         <?php endforeach;?>
                     </ul>
                 </div>
