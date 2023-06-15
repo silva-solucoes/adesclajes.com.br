@@ -15,7 +15,7 @@
 
   <!-- Favicons -->
   <link href="<?php echo URL . '/public/images/favicon.png'; ?>" rel="icon">
-  <link href="<?php echo URL . '/public/images/apple-touch-icon.php'; ?>" rel="apple-touch-icon">
+  <link href="<?php echo URL . '/public/images/apple-touch-icon.webp'; ?>" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link
@@ -106,7 +106,7 @@
 
             <div class="col-lg-5">
               <div class="about-img">
-                <img src="<?php echo URL; ?>/public/images/campeao.png" class="img-fluid" alt="">
+                <img src="<?php echo URL; ?>/public/images/campeao.webp" class="img-fluid" alt="">
               </div>
             </div>
 
