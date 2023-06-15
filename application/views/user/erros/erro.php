@@ -1,4 +1,4 @@
-<?php include_once 'application/Views/user/header.php'; ?>
+<?php include_once '../application/Views/user/header.php'; ?>
 
 <main id="main">
 
@@ -67,4 +67,4 @@
 
 </main><!-- End #main -->
 
-<?php include_once 'application/Views/user/footer.php'; ?>
+<?php include_once '../application/Views/user/footer.php'; ?>

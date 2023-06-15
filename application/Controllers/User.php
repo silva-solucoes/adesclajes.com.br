@@ -83,6 +83,9 @@ class User extends Controller{
         header('Location:'.URL);
 
     }
+    public function erros(){
+        $this->view('user/erros/erro');
+    }
 
     public function enviarComentarioNoticia($idNoticia){
         $dataHora = date('Y-m-d H:i:s');
