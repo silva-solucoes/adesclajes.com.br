@@ -83,6 +83,15 @@ class Conn {
         return $this->dbh->lastInsertId();
     }
 
+    public function totalRegistros($tabela) {
+        $query = "SELECT COUNT(*) AS total FROM " . $tabela;
+        $stmt = $this->dbh->prepare($query);
+        $stmt->execute();
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'];
+    }
+    
+
 }
 
 

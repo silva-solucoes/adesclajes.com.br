@@ -133,5 +133,19 @@ class Paginas extends Controller{
 
         $this->view('user/galeria_fotos', $dados);
     }
+
+    public function erro(){
+        $dados=[
+            'info' => $this->info->lerInformacao()
+        ];
+        //Exibir todos os patrocinadores
+        $dados['patrocinadores']=$this->info->todasPatrocinadores();
+        //Exibir as três últimas notícias
+        $dados['ultimasNoticias']=$this->info->listarUltimasNoticias();
+        //Exibir todas as redes sociais da ADESC
+        $dados['redesSociais']=$this->info->todasRedesSociais();
+
+        $this->view('user/erros/erro', $dados);
+    }
     
 }

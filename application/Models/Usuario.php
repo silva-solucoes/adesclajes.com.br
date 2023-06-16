@@ -27,6 +27,14 @@ class Usuario{
         WHERE tbl_funcao.nome_status = 'Admin'");
         return $this->bd->resultado();
     }
+    public function totalFuncionarios($tabela){
+        return $this->bd->totalRegistros($tabela);
+    }
+    public function totalAtletas(){
+        $this->bd->query('SELECT COUNT(*) AS total FROM tbl_incricao WHERE tbl_incricao.situacao_atleta = 1');
+        
+        return $this->bd->resultado()->total;
+    }
     public function lerFuncoes(){
         $this->bd->query('SELECT * FROM tbl_funcao');
         return $this->bd->resultados();
@@ -170,5 +178,19 @@ class Usuario{
 		}
 		
 	}
+
+    public function lerInscricao(){
+        $this->bd->query('SELECT *
+        FROM tbl_atleta
+        INNER JOIN tbl_detalheescolar ON tbl_atleta.id_escola = tbl_detalheescolar.id_escolar
+        INNER JOIN tbl_detalhefiliacao ON tbl_atleta.id_filiacao = tbl_detalhefiliacao.id_filiacao
+        INNER JOIN tbl_detalhesaude ON tbl_detalhesaude.id_saude = tbl_atleta.id_saude
+        INNER JOIN tbl_detalhesresponsavel ON tbl_atleta.id_responsavel = tbl_detalhesresponsavel.id_responsavel
+        INNER JOIN tbl_detalhetecnicos ON tbl_atleta.id_detalheTec = tbl_detalhetecnicos.id_tecnico
+        INNER JOIN tbl_incricao ON tbl_atleta.id_atleta = tbl_incricao.id_atleta
+        INNER JOIN categorianoticia ON tbl_detalhetecnicos.categoriaEsportiva=categorianoticia.id_categoria
+        ORDER BY tbl_atleta.id_atleta DESC');
+        return $this->bd->resultados();
+    }
 
 }

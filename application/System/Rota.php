@@ -40,19 +40,25 @@ class Rota {
                 endif;
         //caso a variavel $url não tenha sido destruida e não seja vazia        
         else:
-            $this->metodo = 'erros';
-            //requere o controlador User
-            require_once '../application/Controllers/User.php';
-            //instancia o controlador
-            $this->controlador = new User();
+            #$this->metodo = 'erros';
+            // Redireciona o usuário para a página de erro
+            header('Location: '.URL.'/paginas/erro');
+            exit();
 
         endif; 
 
         //Se existir retorna um array com os valores se não retorna um array vazio
         //array_values — Retorna todos os valores de um array
-       $this->parametros = $url ? array_values($url) : [];
-       //call_user_func_array — Chama uma dada função de usuário com um array de parâmetros
-       call_user_func_array([$this->controlador, $this->metodo], $this->parametros);
+        $this->parametros = $url ? array_values($url) : [];
+
+        // Chama o método do controlador ou redireciona para a página de erro
+        if (method_exists($this->controlador, $this->metodo)) {
+            call_user_func_array([$this->controlador, $this->metodo], $this->parametros);
+        } else {
+            // Redireciona o usuário para a página de erro
+            header('Location: '.URL.'/paginas/erro');
+            exit();
+        }
 
     }
 

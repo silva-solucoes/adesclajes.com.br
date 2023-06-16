@@ -33,7 +33,7 @@ class User extends Controller{
     }
 
     public function enviarInscricao(){
-        $dataHora = date('Y-m-d H:i:s');
+
         //Capta os dados do formulário
         $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         if(isset($formulario)):
@@ -50,7 +50,6 @@ class User extends Controller{
                 'posicao' => trim($formulario['posicao']),
                 'altura' => trim($formulario['altura']),
                 'message' => trim($formulario['message']),
-                'dtRegistro' => $dataHora,
             ];
             
             if(empty($formulario['nome'])):
@@ -78,13 +77,10 @@ class User extends Controller{
         $modelo = new Modelo();
 
         
-        $modelo->enviarInscricao($dados['nome'], $dados['dataNascimento'], $dados['sexo'], $dados['nivel_ensino'], $dados['nomeEscola'], $dados['nomeMae'], $dados['nomePai'], $dados['telRespon'], $dados['categoria_esportiva'], $dados['posicao'], $dados['altura'], $dados['message'], $dados['dtRegistro']);
+        $modelo->cadastrarInscricao($dados['nivel_ensino'], $dados['nomeEscola'], $dados['nomeMae'], $dados['nomePai'], $dados['altura'], $dados['telRespon'], $dados['categoria_esportiva'], $dados['posicao'], $dados['nome'], $dados['dataNascimento'], $dados['sexo'], $dados['message']);
 
         header('Location:'.URL);
 
-    }
-    public function erros(){
-        $this->view('user/erros/erro');
     }
 
     public function enviarComentarioNoticia($idNoticia){

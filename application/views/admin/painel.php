@@ -55,7 +55,7 @@
                                         <i class="bi bi-person-check"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>2</h6>
+                                        <h6><?=$dados['totalFunc']?></h6>
                                         <span
                                             class="text-muted small pt-2 ps-1">funcionários</span>
 
@@ -80,7 +80,7 @@
                                         <i class="bi bi-people"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
+                                        <h6><?=$dados['totalAtletas']?></h6>
                                         <span
                                             class="text-muted small pt-2 ps-1">atletas</span>
 
@@ -165,105 +165,45 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr data-index="0">
-                                            <td><a href="#">#2457</a></td>
+                                    <?php $i = 0; ?>
+                                    <?php foreach($dados['infoInscricao'] as $listar):?>
+                                        <?php $i += 1;?>
+                                        <?php $numeroFormatado = str_pad($listar->id_inscricao, 4, '0', STR_PAD_LEFT); ?>
+                                        <tr data-index="<?=$i?>">
+                                            <td><a href="#">#<?=$numeroFormatado?></a></td>
                                             <td>
                                                 <font style="vertical-align: inherit;">
-                                                    <font style="vertical-align: inherit;">José Mateus Benjamin</font>
+                                                    <font style="vertical-align: inherit;"><?=$listar->nome_atleta?></font>
                                                 </font>
                                             </td>
                                             <td><a href="#" class="text-primary">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Futebol</font>
+                                                        <font style="vertical-align: inherit;"><?=$listar->nome?></font>
                                                     </font>
                                                 </a></td>
-                                            <td>Goleiro</td>
-                                            <td><span class="badge bg-warning">
-                                                    <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Pendente</font>
-                                                    </font>
-                                                </span></td>
-                                        </tr>
-                                        <tr data-index="1">
-                                            <td><a href="#">#2147</a></td>
-                                            <td>
-                                                <font style="vertical-align: inherit;">
-                                                    <font style="vertical-align: inherit;">Fátima Ayla Tânia Duarte</font>
-                                                </font>
-                                            </td>
-                                            <td><a href="#" class="text-primary">
-                                                    <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Fut7</font>
-                                                    </font>
-                                                </a></td>
-                                            <td>Zagueiro/a</td>
-                                            <td><span class="badge bg-warning">
-                                                    <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Pendente</font>
-                                                    </font>
-                                                </span></td>
-                                        </tr>
-                                        <tr data-index="2">
-                                            <td><a href="#">#2049</a></td>
-                                            <td>
-                                                <font style="vertical-align: inherit;">
-                                                    <font style="vertical-align: inherit;">Sophia Regina Isadora Alves</font>
-                                                </font>
-                                            </td>
-                                            <td><a href="#" class="text-primary">
-                                                    <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Futsal</font>
-                                                    </font>
-                                                </a></td>
-                                            <td>Ala Direita</td>
-                                            <td><span class="badge bg-success">
-                                                    <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">aprovado</font>
-                                                    </font>
-                                                </span></td>
-                                        </tr>
-                                        <tr data-index="3">
-                                            <td><a href="#">#2644</a></td>
-                                            <td>
-                                                <font style="vertical-align: inherit;">
-                                                    <font style="vertical-align: inherit;">Edson Pietro Manuel</font>
-                                                </font>
-                                            </td>
-                                            <td><a href="#" class="text-primar">
-                                                    <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Fut7</font>
-                                                    </font>
-                                                </a></td>
-                                            <td>Goleiro</td>
+                                            <td><?=$listar->posicaoPrincipal?></td>
+                                            <?php if($listar->situacao_atleta == 3):?>
                                             <td><span class="badge bg-danger">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">rejeitado</font>
+                                                        <font style="vertical-align: inherit;">Rejeitado</font>
                                                     </font>
                                                 </span></td>
-                                        </tr>
-                                        <tr data-index="4">
-                                            <td><a href="#">
+                                            <?php elseif($listar->situacao_atleta == 2):?>
+                                            <td><span class="badge bg-warning">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">#2644</font>
+                                                        <font style="vertical-align: inherit;">Pendente</font>
                                                     </font>
-                                                </a></td>
-                                            <td>
-                                                <font style="vertical-align: inherit;">
-                                                    <font style="vertical-align: inherit;">Rafael Joaquim Yago</font>
-                                                </font>
-                                            </td>
-                                            <td><a href="#" class="text-primary">
-                                                    <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Fut7</font>
-                                                    </font>
-                                                </a></td>
-                                            <td>Lateral Direita</td>
+                                                </span></td>
+                                            <?php elseif($listar->situacao_atleta == 1):?>
                                             <td><span class="badge bg-success">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">aprovado</font>
+                                                        <font style="vertical-align: inherit;">Ativo</font>
                                                     </font>
                                                 </span></td>
+                                            <?php endif; ?>
                                         </tr>
+                                    <?php endforeach; ?>
+            
                                     </tbody>
                                 </table>
                             </div>

@@ -7,6 +7,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+setlocale(LC_ALL, "pt_BR", "pt_BR.utf-8", "portuguese");
+date_default_timezone_set('America/Sao_Paulo');
+
 class Modelo {
 
 	private $bd;
@@ -339,4 +342,113 @@ class Modelo {
 
 		return $bd->resultado();
     }
+
+	public function cadastrarInscricao($ensino, $nomeEscola, $nomeMae, $nomePai, $altura, $telefone, $categoria, $posicao, $nomeAtleta, $dataNascimento, $sexo, $frase){
+
+		//Inserir dados na tabela tbl_detalheescolar
+		$this->bd->query("INSERT INTO tbl_detalheescolar (nivelEnsino, nomeEscolar) 
+		VALUES (:nivelEnsino, :nomeEscola)");
+		$this->bd->bind(':nivelEnsino', $ensino);
+		$this->bd->bind(':nomeEscola', $nomeEscola);
+
+		if($this->bd->executa()):
+
+			//Obter o último ID inserido na tabela tbl_detalheescolar
+			$this->bd->query('SELECT * FROM tbl_detalheescolar ORDER BY tbl_detalheescolar.id_escolar DESC LIMIT 1');
+			$idEscola = $this->bd->resultado()->id_escolar;
+
+			//Inserir dados na tabela tbl_detalhefiliacao
+			$this->bd->query("INSERT INTO tbl_detalhefiliacao (nomeMae_atleta, nomePai_atleta) 
+			VALUES (:nomeMae, :nomePai)");
+			$this->bd->bind(':nomeMae', $nomeMae);
+			$this->bd->bind(':nomePai', $nomePai);
+
+			if($this->bd->executa()):
+
+				//Obter o último ID inserido na tabela tbl_detalhefiliacao
+				$this->bd->query('SELECT * FROM tbl_detalhefiliacao ORDER BY tbl_detalhefiliacao.id_filiacao DESC LIMIT 1');
+				$idFiliacao = $this->bd->resultado()->id_filiacao;
+
+				//Inserir dados na tabela tbl_detalhesaude
+				$this->bd->query("INSERT INTO tbl_detalhesaude (altura_atleta) 
+				VALUES (:altura)");
+				$this->bd->bind(':altura', $altura);
+
+				if($this->bd->executa()):
+
+					//Obter o último ID inserido na tabela tbl_detalhesaude
+					$this->bd->query('SELECT * FROM tbl_detalhesaude ORDER BY tbl_detalhesaude.id_saude  DESC LIMIT 1');
+					$idSaude = $this->bd->resultado()->id_saude;
+
+					//Inserir dados na tabela tbl_detalhesresponsavel
+					$this->bd->query("INSERT INTO tbl_detalhesresponsavel (celularResponsavel) 
+					VALUES (:telefone)");
+					$this->bd->bind(':telefone', $telefone);
+
+					if($this->bd->executa()):
+
+						//Obter o último ID inserido na tabela tbl_detalhesresponsavel
+						$this->bd->query('SELECT * FROM tbl_detalhesresponsavel ORDER BY tbl_detalhesresponsavel.id_responsavel  DESC LIMIT 1');
+						$idResponsavel = $this->bd->resultado()->id_responsavel;
+
+						//Inserir dados na tabela tbl_detalhetecnicos
+						$this->bd->query("INSERT INTO tbl_detalhetecnicos (categoriaEsportiva, posicaoPrincipal) 
+						VALUES (:categoria, :posicao)");
+						$this->bd->bind(':categoria', $categoria);
+						$this->bd->bind(':posicao', $posicao);
+
+						if($this->bd->executa()):
+
+							//Obter o último ID inserido na tabela tbl_detalhetecnicos
+							$this->bd->query('SELECT * FROM tbl_detalhetecnicos ORDER BY tbl_detalhetecnicos.id_tecnico  DESC LIMIT 1');
+							$idTecnico = $this->bd->resultado()->id_tecnico;
+
+							//Inserir dados na tabela tbl_atleta
+							$this->bd->query("INSERT INTO tbl_atleta (nome_atleta, dtNascimento_atleta, sexo_atleta, id_escola, id_filiacao, id_saude, id_responsavel, id_detalheTec) 
+							VALUES (:nomeAtleta, :dtNascimento, :sexo, :id_escola, :id_filiacao, :id_saude, :id_responsavel, :id_detalheTec)");
+							$this->bd->bind(':nomeAtleta', $nomeAtleta);
+							$this->bd->bind(':dtNascimento', $dataNascimento);
+							$this->bd->bind(':sexo', $sexo);
+							$this->bd->bind(':id_escola', $idEscola);
+							$this->bd->bind(':id_filiacao', $idFiliacao);
+							$this->bd->bind(':id_saude', $idSaude);
+							$this->bd->bind(':id_responsavel', $idResponsavel);
+							$this->bd->bind(':id_detalheTec', $idTecnico);
+
+							if($this->bd->executa()):
+
+								//Obter o último ID inserido na tabela tbl_atleta
+								$this->bd->query('SELECT * FROM tbl_atleta ORDER BY tbl_atleta.id_atleta  DESC LIMIT 1');
+								$idAtleta = $this->bd->resultado()->id_atleta;
+
+								$dataAtual = date('Y-m-d H:i:s');
+
+								//Inserir dados na tabela tbl_incricao
+								$this->bd->query("INSERT INTO tbl_incricao (id_atleta, frase, dtRegistro, dt_edicao) 
+								VALUES (:id_atleta, :frase, :dtRegistro, :dt_edicao)");
+								$this->bd->bind(':id_atleta', $idAtleta);
+								$this->bd->bind(':frase', $frase);
+								$this->bd->bind(':dtRegistro', $dataAtual);
+								$this->bd->bind(':dt_edicao', $dataAtual);
+
+								if($this->bd->executa()):
+									return true;
+								else:
+									return false;
+								endif;
+
+							endif;
+
+						endif;
+
+					endif;;
+
+				endif;
+
+			endif;
+
+		endif;
+
+	}
+
 }

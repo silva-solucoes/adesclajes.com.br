@@ -177,17 +177,17 @@
                         <label for="name">Posição:</label>
                         <select name = "posicao" class="form-select" aria-label="Default select example" required>
                           <option  selected>Selecione</option>
-                          <option value="1">Goleiro</option>
-                          <option value="2">Zagueiro</option>
-                          <option value="3">Lateral</option>
-                          <option value="4">Volante</option>
-                          <option value="5">Meia</option>
-                          <option value="6">Ponta</option>
-                          <option value="7">Atacante</option>
-                          <option value="8">Pivô</option>
-                          <option value="9">Fixo</option>
-                          <option value="10">Ala Esquerda</option>
-                          <option value="11">Ala Direita</option>
+                          <option value="Goleiro">Goleiro</option>
+                          <option value="Zagueiro">Zagueiro</option>
+                          <option value="Lateral">Lateral</option>
+                          <option value="Volante">Volante</option>
+                          <option value="Meia">Meia</option>
+                          <option value="Ponta">Ponta</option>
+                          <option value="Atacante">Atacante</option>
+                          <option value="Pivô">Pivô</option>
+                          <option value="Fixo">Fixo</option>
+                          <option value="Ala Esquerda">Ala Esquerda</option>
+                          <option value="Ala Direita">Ala Direita</option>
                         </select>
                       </div>
                       <div class="form-group col-md-6">

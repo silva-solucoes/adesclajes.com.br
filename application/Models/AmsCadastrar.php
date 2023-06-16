@@ -18,7 +18,7 @@ class AdmsCadastrar extends Conn{
 		$this->dados = $dados;
 		$this->conn = $this->connect();
 
-		$query_cad_usuario = "INSERT INTO tbl_incricao (nome, dtNascimento, genero, ensino, nome_escola, nome_mae, nome_pai, telefoneR, categoriaE, posicao, altura, frase, dtRegistro) VALUES (:nome, :dtNascimento, :genero, :ensino, :nome_escola, :nome_mae, :nome_pai, :telefoneR, :categoriaE, :posicao, :altura, :frase, :dtRegistro)";
+		$query_cad_usuario = "INSERT INTO tbl_incricao (nomeNovat, dtNascimento, genero, ensino, nome_escola, nome_mae, nome_pai, telefoneR, categoriaE, posicao, altura, frase, dtRegistro) VALUES (:nome, :dtNascimento, :genero, :ensino, :nome_escola, :nome_mae, :nome_pai, :telefoneR, :categoriaE, :posicao, :altura, :frase, :dtRegistro)";
 
 		$cad_usuario = $this->conn->prepare($query_cad_usuario);
 		$cad_usuario->bindParam(':nome', $this->dados['name']);

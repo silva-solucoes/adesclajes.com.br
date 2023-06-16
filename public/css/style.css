@@ -989,7 +989,7 @@ section {
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: linear-gradient(rgba(106, 106, 106, 0.9), rgba(106, 106, 106, 0.9)), url("../images/cta-bg.jpg") fixed center center;
+  background: linear-gradient(rgba(106, 106, 106, 0.9), rgba(106, 106, 106, 0.9)), url("../images/cta-bg.webp") fixed center center;
   background-size: cover;
   padding: 120px 0;
 }
@@ -2779,7 +2779,7 @@ section {
   inset: -60px 0 0 -60px;
   z-index: -1;
   content: "";
-  background: url(../images/about-bg.png) top left;
+  background: url(../images/about-bg.webp) top left;
   background-repeat: no-repeat;
 }
 

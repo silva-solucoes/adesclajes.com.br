@@ -19,6 +19,9 @@ class Admin extends Controller{
 
         $dados=[
             'totalUser' => $this->usuarioModel->totalAdms(),
+            'totalFunc' => $this->usuarioModel->totalFuncionarios('tbl_membro'),
+            'totalAtletas' => $this->usuarioModel->totalAtletas(),
+            'infoInscricao' => $this->usuarioModel->lerInscricao(),
         ];
         $this->view('admin/painel', $dados);
 
