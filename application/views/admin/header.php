@@ -12,8 +12,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?php echo URL . '/public/images/favicon.png'; ?>" rel="icon">
-    <link href="<?php echo URL . '/public/images/apple-touch-icon.php'; ?>" rel="apple-touch-icon">
+    <link href="<?php echo URL . '/public/images/favicon.webp'; ?>" rel="icon">
+    <link href="<?php echo URL . '/public/images/apple-touch-icon.webp'; ?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -51,7 +51,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="<?php echo URL . 'painel'; ?>" class="logo d-flex align-items-center">
-                <img src="<?php echo URL . '/public/images/logo-d.png'; ?>" alt="">
+                <img src="<?php echo URL . '/public/images/logo-d.webp'; ?>" alt="">
                 <!--<span class="d-none d-lg-block">NiceAdmin</span>-->
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
