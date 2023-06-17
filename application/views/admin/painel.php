@@ -129,7 +129,7 @@
                                 </div>
                                 <div class="datatable-search">
                                     <input class="datatable-input" placeholder="Buscar por..." type="search"
-                                        title="Pesquisar na tabela">
+                                        title="Pesquisar na tabela" id="search-input">
                                 </div>
                             </div>
                             <div class="datatable-container">
@@ -160,6 +160,12 @@
                                                     class="datatable-sorter">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;">Status</font>
+                                                    </font>
+                                                </a></th>
+                                            <th data-sortable="true" style="width: 17.5%;"><a href="#"
+                                                    class="datatable-sorter">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Ação</font>
                                                     </font>
                                                 </a></th>
                                         </tr>
