@@ -3267,3 +3267,11 @@ section {
   color: #470ba2;
   background: #ffecdf;
 }
+
+
+/**/
+.slick-docs{
+  display: none;
+  visibility: hidden;
+}
+
