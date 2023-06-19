@@ -147,5 +147,9 @@ class Paginas extends Controller{
 
         $this->view('user/erros/erro', $dados);
     }
+    public function erro404(){
+
+        $this->view('erro');
+    }
     
 }

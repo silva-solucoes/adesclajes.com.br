@@ -109,7 +109,10 @@ class Admin extends Controller{
     }
     //Chamada para página de Sobre-nós
     public function sobre(){
-        $this->view('admin/sobre');
+        $dados=[
+            'infoSobre' => $this->usuarioModel->listarSobre(),
+        ];
+        $this->view('admin/sobre', $dados);
     }
     //Chamada para página de BID
     public function BID(){
@@ -126,6 +129,31 @@ class Admin extends Controller{
     //Chamada para página de Diretoria
     public function diretoria(){
         $this->view('admin/diretoria');
+    }
+    //Chamada para página de Inscrições
+    public function inscricao(){
+        $dados=[
+            'infoInscricao' => $this->usuarioModel->lerInscricao(),
+            'nomeUser_erro' => '',
+            'cpfUser_erro' => '',
+            'telUser_erro' => '',
+            'funcaoUser_erro' => '',
+            'emailUser_erro' => '',
+            'senhaUser_erro' => '',
+        ];
+        $this->view('admin/inscricoes', $dados);
+    }
+    public function exibirInscricao($idInscricao){
+        $dados=[
+            'individualInsc' => $this->usuarioModel->exibirInscricao($idInscricao),
+            'nomeUser_erro' => '',
+            'cpfUser_erro' => '',
+            'telUser_erro' => '',
+            'funcaoUser_erro' => '',
+            'emailUser_erro' => '',
+            'senhaUser_erro' => '',
+        ];
+        $this->view('admin/inscricoes', $dados);
     }
     //Cadastro de Novos usuários (ADM)
     public function cadastrarUser(){
@@ -247,6 +275,11 @@ class Admin extends Controller{
             $urlDestino = URL . "/paginas/login";
             header("Location: ".$urlDestino);
         endif;
+    }
+    //Página de erro 404
+    public function erro(){
+
+        $this->view('admin/erros/Admerro');
     }
     
 }

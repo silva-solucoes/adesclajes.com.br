@@ -40,10 +40,16 @@ class Rota {
                 endif;
         //caso a variavel $url não tenha sido destruida e não seja vazia        
         else:
-            #$this->metodo = 'erros';
-            // Redireciona o usuário para a página de erro
-            header('Location: '.URL.'/paginas/erro');
-            exit();
+            
+            if ($this->controlador != 'admin') {
+                // Redireciona o admin para a página de erro
+                header('Location: '.URL.'/admin/erro');
+                exit();
+            } elseif($this->controlador != 'paginas') {
+                // Redireciona o usuário para a página de erro
+                header('Location: '.URL.'/paginas/erro');
+                exit();
+            }
 
         endif; 
 
@@ -55,9 +61,9 @@ class Rota {
         if (method_exists($this->controlador, $this->metodo)) {
             call_user_func_array([$this->controlador, $this->metodo], $this->parametros);
         } else {
-            // Redireciona o usuário para a página de erro
-            header('Location: '.URL.'/paginas/erro');
-            exit();
+                // Redireciona o usuário para a página de erro
+                header('Location: '.URL.'/paginas/erro');
+                exit();
         }
 
     }

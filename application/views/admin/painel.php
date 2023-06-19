@@ -207,6 +207,20 @@
                                                     </font>
                                                 </span></td>
                                             <?php endif; ?>
+                                            <td>
+                                                <span class="badge">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;"><a
+                                                                class="btn btn-success rounded-pill" href="<?=$listar->id_inscricao?>"
+                                                                title="Visualizar Inscrição"><i class="bi bi-eye"></i></a></font>
+                                                        <font style="vertical-align: inherit;"><a
+                                                                class="btn btn-warning rounded-pill" href="<?=$listar->id_inscricao?>"
+                                                                title="Editar Situação"><i
+                                                                    class="bi bi-pencil-square"></i></a></font>
+                                                        </font>
+                                                    </font>
+                                                </span>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
             

@@ -3,11 +3,11 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Gerenciar Administradores</h1>
+        <h1>Gerenciar Inscrições</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo URL . 'admin/painel'; ?>">Painel de Controle</a></li>
-                <li class="breadcrumb-item active">Lista de Usuários</li>
+                <li class="breadcrumb-item active">Lista de Solicitação de Inscrição</li>
             </ol>
         </nav>
         <?php
@@ -23,12 +23,12 @@
                 <div class="card recent-sales overflow-auto">
                     <div class="filter">
                         <a class="btn btn-primary rounded-pill espaco" href="#" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle"></i> Novo Usuário</a>
+                            data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle"></i> Novo Inscrição</a>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">
                             <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">Usuários </font>
+                                <font style="vertical-align: inherit;">Inscrições </font>
                             </font><span>
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">| </font>
@@ -64,67 +64,94 @@
                                     <thead>
                                         <tr>
                                             <th data-sortable="true" style="width: 12.708333333333332%;"><a href="#"
-                                                    class="datatable-sorter">ID</a></th>
+                                                    class="datatable-sorter">Nº Inscrição</a></th>
                                             <th data-sortable="true" style="width: 22.083333333333332%;"><a href="#"
                                                     class="datatable-sorter">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Foto</font>
+                                                        <font style="vertical-align: inherit;">Atleta</font>
                                                     </font>
                                                 </a></th>
                                             <th data-sortable="true" style="width: 35.41666666666667%;"><a href="#"
                                                     class="datatable-sorter">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Nome
-                                                        </font>
+                                                        <font style="vertical-align: inherit;">Categoria Esportiva</font>
                                                     </font>
                                                 </a></th>
                                             <th data-sortable="true" style="width: 12.291666666666666%;"><a href="#"
                                                     class="datatable-sorter">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Função</font>
+                                                        <font style="vertical-align: inherit;">Posição</font>
                                                     </font>
                                                 </a></th>
                                             <th data-sortable="true" style="width: 17.5%;"><a href="#"
                                                     class="datatable-sorter">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Ações</font>
+                                                        <font style="vertical-align: inherit;">Status</font>
+                                                    </font>
+                                                </a></th>
+                                            <th data-sortable="true" style="width: 17.5%;"><a href="#"
+                                                    class="datatable-sorter">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Ação</font>
                                                     </font>
                                                 </a></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($dados['user'] as $ler): ?>
-                                        <tr data-index="0">
-                                            
-                                            <td><a href="#">#<?=$ler->id_usuario?></a></td>
+                                    <?php $i = 0; ?>
+                                    <?php foreach($dados['infoInscricao'] as $listar):?>
+                                        <?php $i += 1;?>
+                                        <?php $numeroFormatado = str_pad($listar->id_inscricao, 4, '0', STR_PAD_LEFT); ?>
+                                        <tr data-index="<?=$i?>">
+                                            <td><a href="#">#<?=$numeroFormatado?></a></td>
                                             <td>
                                                 <font style="vertical-align: inherit;">
-                                                    <font style="vertical-align: inherit;"><img
-                                                            src="<?php echo URL . '/public/uploads/adms/'.$ler->foto_user; ?>"
-                                                            alt="Patrocinador 1" style="width:120px;"></font>
+                                                    <font style="vertical-align: inherit;"><?=$listar->nome_atleta?></font>
                                                 </font>
                                             </td>
                                             <td><a href="#" class="text-primary">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;"><?=$ler->nome_usuario?></font>
+                                                        <font style="vertical-align: inherit;"><?=$listar->nome?></font>
                                                     </font>
                                                 </a></td>
-                                            <td><?=$ler->nome_status?></td>
-                                            <td><span class="badge">
+                                            <td><?=$listar->posicaoPrincipal?></td>
+                                            <?php if($listar->situacao_atleta == 3):?>
+                                            <td><span class="badge bg-danger">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-warning rounded-pill" href="<?=$ler->id_usuario?>"
-                                                                title="Editar Atleta"><i
-                                                                    class="bi bi-pencil-square"></i></a></font>
-                                                        <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-danger rounded-pill" href="<?=$ler->id_usuario?>"
-                                                                title="Excluir Atleta"><i class="bi bi-trash3"></i></a>
-                                                        </font>
+                                                        <font style="vertical-align: inherit;">Rejeitado</font>
                                                     </font>
                                                 </span></td>
-                                            
+                                            <?php elseif($listar->situacao_atleta == 2):?>
+                                            <td><span class="badge bg-warning">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Pendente</font>
+                                                    </font>
+                                                </span></td>
+                                            <?php elseif($listar->situacao_atleta == 1):?>
+                                            <td><span class="badge bg-success">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Ativo</font>
+                                                    </font>
+                                                </span></td>
+                                            <?php endif; ?>
+                                            <td>
+                                                <span class="badge">
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;"><a
+                                                                class="btn btn-success rounded-pill open" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop" data-id="<?=$listar->id_inscricao?>" href="<?php echo URL . '/admin/exibirInscricao/'.$listar->id_inscricao; ?>"
+                                                                title="Visualizar Inscrição"><i class="bi bi-eye"></i></a></font>
+                                                        <font style="vertical-align: inherit;"><a
+                                                                class="btn btn-warning rounded-pill" href="<?=$listar->id_inscricao?>"
+                                                                title="Editar Situação"><i
+                                                                    class="bi bi-pencil-square"></i></a></font>
+                                                        </font>
+                                                    </font>
+                                                </span>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
+            
                                     </tbody>
                                 </table>
                             </div>
@@ -147,23 +174,22 @@
 
         </div>
     </section>
-
-    <!-- ======= Inserindo Modal CADASTRO DE PATROCINADOR ======= -->
+   
+    <!-- ======= Model de Edição de Inscrição ======= -->
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Novo Usuário</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edição de  Situação de Inscrição</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Formulário de Usuário</h5>
-                            <p class="mb-3 bt-5 text-center">Preencha o formulário abaixo para adicionar novos Usuários
-                                à nossa Escolinha!</p>
+                            <h5 class="card-title">Visualização de Dados</h5>
+                            <p class="mb-3 bt-5 text-center">Analise cuidadosamente todos os dados dos novos inscritos para a validação das inscrições e inclusão ao quadro de atletas da ADESC Lajes.</p>
                             <!-- Floating Labels Form -->
                             <form class="row g-3" action="<?=URL?>/admin/cadastrarUser" method="post" enctype="multipart/form-data">
                                 <div class="col-md-12 text-left">
@@ -173,18 +199,11 @@
                                             style="width:120px; height: 120px;">
                                     </div>
                                 </div>
-                                <div class="col-md-12 text-center">
-                                    <div class="col-md-4 text-center">
-                                        <div class="form-floating <?=$dados['upload_erro'] ? 'is-invalid' : '' ?>">
-                                            <input class="form-control" type="file" name="fotoPerfil" id="formFile">
-                                        </div>
-                                        <div class="invalid-feedback"><?=$dados['upload_erro']?></div>
-                                    </div>
-                                </div>
+                                <p id="modal-content"></p>
                                 <div class="col-md-8">
                                     <div class="form-floating">
                                         <input type="text" class="form-control <?= $dados['nomeUser_erro'] ? 'is-invalid' : '' ?>" name="nomeUser" id="floatingName"
-                                            placeholder="Nome Completo">
+                                            placeholder="Nome Completo" value="<?=$dados['individualInsc']->nome_atleta?>" disabled>
                                         <label for="floatingName">Nome Completo*:</label>
                                     </div>
                                     <div class="invalid-feedback">

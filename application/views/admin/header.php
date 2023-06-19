@@ -286,6 +286,7 @@
         $fotosAtivo = (strpos($uri, '/admin/fotos') !== false);
         $esportesAtivo = (strpos($uri, '/admin/esportes') !== false);
         $diretoriaAtivo = (strpos($uri, '/admin/diretoria') !== false);
+        $inscricaoAtivo = (strpos($uri, '/admin/inscricao') !== false);
         $usuariosAtivo = (strpos($uri, '/admin/usuario') !== false);
 
         // Função auxiliar para adicionar a classe ativa à guia de navegação
@@ -366,6 +367,13 @@
                     <span>Gerenciar Diretoria</span>
                 </a>
             </li><!-- End Página Diretoria -->
+
+            <li class="nav-item">
+                <a class="nav-link <?php ativarGuia($inscricaoAtivo); ?>" href="<?php echo URL . '/admin/inscricao'; ?>">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span>Gerenciar Inscrições</span>
+                </a>
+            </li><!-- End Página Inscrição -->
             
             <li class="nav-item">
                 <a class="nav-link <?php ativarGuia($usuariosAtivo); ?>" href="<?php echo URL . '/admin/usuario'; ?>">

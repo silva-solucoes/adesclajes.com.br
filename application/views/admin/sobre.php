@@ -27,7 +27,8 @@
                             </font><span>
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">| </font>
-                                    <font style="vertical-align: inherit;">01/06/2023</font>
+                                    <?php $dataFormatada = date('d/m/Y', strtotime($dados['infoSobre']->dt_sobre)); ?>
+                                    <font style="vertical-align: inherit;"><?=$dataFormatada?></font>
                                 </font>
                             </span>
                         </h5>
@@ -42,7 +43,7 @@
                                         <label for="floatingPassword">Conteúdo da 1 Coluna*:</label>
                                         <div class="form-floating">
 
-                                            <textarea name="editor1"></textarea>
+                                            <textarea name="editor1"><?=$dados['infoSobre']->resumo?></textarea>
                                             <script>
                                                 CKEDITOR.replace('editor1');
                                             </script>
@@ -52,7 +53,7 @@
                                         <label for="floatingPassword">Conteúdo da 2 Coluna*:</label>
                                         <div class="form-floating">
 
-                                            <textarea name="editor2"></textarea>
+                                            <textarea name="editor2"><?=$dados['infoSobre']->historia?></textarea>
                                             <script>
                                                 CKEDITOR.replace('editor2');
                                             </script>

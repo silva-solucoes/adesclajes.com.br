@@ -193,4 +193,26 @@ class Usuario{
         return $this->bd->resultados();
     }
 
+    public function exibirInscricao($idInscricao){
+        $this->bd->query('SELECT *
+        FROM tbl_atleta
+        INNER JOIN tbl_detalheescolar ON tbl_atleta.id_escola = tbl_detalheescolar.id_escolar
+        INNER JOIN tbl_detalhefiliacao ON tbl_atleta.id_filiacao = tbl_detalhefiliacao.id_filiacao
+        INNER JOIN tbl_detalhesaude ON tbl_detalhesaude.id_saude = tbl_atleta.id_saude
+        INNER JOIN tbl_detalhesresponsavel ON tbl_atleta.id_responsavel = tbl_detalhesresponsavel.id_responsavel
+        INNER JOIN tbl_detalhetecnicos ON tbl_atleta.id_detalheTec = tbl_detalhetecnicos.id_tecnico
+        INNER JOIN tbl_incricao ON tbl_atleta.id_atleta = tbl_incricao.id_atleta
+        INNER JOIN categorianoticia ON tbl_detalhetecnicos.categoriaEsportiva=categorianoticia.id_categoria
+        WHERE tbl_incricao.id_inscricao = :idInscricao
+        ORDER BY tbl_atleta.id_atleta DESC');
+        $this->bd->bind('idInscricao', $idInscricao);
+        return $this->bd->resultado();
+    }
+
+    public function listarSobre(){
+		$this->bd->query("SELECT * FROM tbl_sobre");
+
+		return $this->bd->resultado();
+	}
+
 }
