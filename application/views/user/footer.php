@@ -84,28 +84,6 @@
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>
 
-<script type="text/javascript">
-    $(document).on('ready', function() {
-     
-      $(".center").slick({
-        dots: true,
-        infinite: true,
-        centerMode: true,
-        slidesToShow: 6,
-        slidesToScroll: 3
-      });
-      
-      function avancarSlide() {
-    $('.slider').slick('slickNext');
-  }
-
-      var intervalo = 3000;
-
-  // Inicie o temporizador para avançar o slide automaticamente
-  setInterval(avancarSlide, intervalo);
-    });
-</script>
-
 
 <!-- Template Main JS File -->
 <script src="<?php echo URL . '/public/js/main.js'; ?>"></script>
