@@ -115,7 +115,7 @@
             <div class="col-lg-7">
               <h3 class="pt-0 pt-lg-5" id="tituloForm">Formulário de Pré-Inscrição</h3>
 
-              <form action= "<?= URL ?>/user/enviarInscricao" method = "POST" class="needs-validation borda-form php-inscricao-form" novalidate>
+              <form id="myForm" method = "POST" class="needs-validation borda-form php-inscricao-form" novalidate>
                 <!-- Tab Content -->
                 <div class="tab-content">
                   <!-- Informações do Atleta -->
@@ -209,11 +209,18 @@
             </div>
 
           </div>
-        </div><div class="my-3">
-                            <div class="loading">Carregando</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Sua mensagem foi enviada. Obrigado!</div>
-                        </div>
+        </div>
+                <!-- POP-UP -->
+                <div class="popup-wrapper">
+                  <div class="popup">
+                    <div class="popup-close bi bi-x"></div>
+                    <div clas="popup-content">
+                      <h2>Pré-inscrição solicitada com Sucesso</h2>
+                      <p><div id="result"></div></p>
+                      <a class = "popup-link" href="#">Estou ciente</a>
+                    </div>
+                  </div>
+                </div>
         <div class="modal-footer">
           <button id="botao-inscricao" name="CadUsuario" type="submit"value = "cadastrar" class="">Finalizar Inscrição</button>
           </form>

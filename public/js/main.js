@@ -257,6 +257,51 @@
 
 })()
 
+  // POP-UP
+  const button = document.getElementById('botao-inscricao')
+const popup = document.querySelector(".popup-wrapper")
+
+/*
+button.addEventListener('click', () =>{
+	popup.style.display = 'block'
+})
+*/
+popup.addEventListener('click', event =>{
+	const classNameOfClickElement = event.target.classList[0]
+	const classNames = ['popup-close', 'popup-link', 'popup-wrapper']
+	const shouldClosePopup = classNames.some(classNames => classNames === classNameOfClickElement)
+
+	if(shouldClosePopup){
+		popup.style.display = 'none'
+		console.log(classNameOfClickElement)
+    // Obtenha uma referência para o formulário
+    var form = document.getElementById('myForm');
+
+    // Limpe todos os campos do formulário
+    form.reset();
+	}
+})
+
+$(document).ready(function() {
+  $('#myForm').submit(function(e) {
+    e.preventDefault(); // Impede o envio do formulário padrão
+
+    // Obter os dados do formulário
+    var formData = $(this).serialize();
+
+    // Enviar a solicitação AJAX
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost/adesclajes/User/enviarInscricao', // O arquivo PHP que processará o formulário
+      data: formData,
+      success: function(response) {
+        $('#result').html(response); // Atualizar a div com a resposta do PHP
+        popup.style.display = 'block'
+      }
+    });
+  });
+});
+
 /**
    * Edição de Pontuação nos campos CPF, RG e Telefone
    */
