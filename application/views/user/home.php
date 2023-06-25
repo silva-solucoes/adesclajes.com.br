@@ -11,8 +11,8 @@
         <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
                 data-aos="fade-up" data-aos-delay="200">
-                <h1><?=$dados['info']->titulo?></h1>
-                <h2><?=$dados['info']->sub_titulo?></h2>
+                <h1><?=$dados['info']->titulo_destaque?></h1>
+                <h2><?=$dados['info']->sub_titulo_destaque?></h2>
                 <div class="d-flex justify-content-center justify-content-lg-start">
                 <?php if($dataAtual >= $dados['info']->dt_abe_inscricao && $dataAtual <= $dados['info']->dt_enc_Inscricao): ?>
                     <a href="#" class="btn-get-started scrollto" data-bs-toggle="modal"
@@ -39,44 +39,8 @@
             <div class="row center slider" data-aos="zoom-in">
                 <?php foreach($dados['patrocinadores'] as $listar):?>
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
+                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>" target="_blank">
+                        <img width="200" height="87" src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
                         alt="<?=$listar->nomePatrocinador?>">
                     </a>
                 </div>
@@ -395,47 +359,11 @@
     <section id="clients" class="clients section-bg">
         <div class="container">
 
-        <div class="row center slider" data-aos="zoom-in">
+            <div class="row center slider" data-aos="zoom-in">
                 <?php foreach($dados['patrocinadores'] as $listar):?>
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
-                        alt="<?=$listar->nomePatrocinador?>">
-                    </a>
-                </div>
-                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
+                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>" target="_blank">
+                        <img width="200" height="87" src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
                         alt="<?=$listar->nomePatrocinador?>">
                     </a>
                 </div>

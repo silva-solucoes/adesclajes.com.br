@@ -336,12 +336,32 @@ class Modelo {
         
 		$bd = new Conn;
 
-		$bd->query('SELECT * FROM tbl_config ORDER BY tbl_config.id_config DESC LIMIT 1;');
+		$bd->query('SELECT *
+		FROM tbl_config
+		LEFT JOIN tbl_incricao ON tbl_config.id_inscricao = tbl_incricao.id_inscricao
+		LEFT JOIN tbl_infoheader ON tbl_config.id_infoHeader = tbl_infoheader.id_infoHeader
+		LEFT JOIN tbl_secaodestaque ON tbl_config.id_secaoDestaque = tbl_secaodestaque.id_secaoDestaque
+		LEFT JOIN tbl_secaopatrocinadores ON tbl_config.id_secaoPatrocinio = tbl_secaopatrocinadores.id_secaoPatrocinio
+		LEFT JOIN tbl_secaoescolher ON tbl_config.id_escolher = tbl_secaoescolher.id_escolher
+		LEFT JOIN tbl_contatos ON tbl_config.id_contato = tbl_contatos.id_contato
+		LEFT JOIN tbl_infofooter ON tbl_config.id_infoFooter = tbl_infofooter.id_infoFooter
+		LEFT JOIN tbl_perguntas ON tbl_config.id_perguntas = tbl_perguntas.id_perguntas
+		LEFT JOIN tbl_diretoria ON tbl_config.id_equipe = tbl_diretoria.id_equipe
+		LEFT JOIN tbl_sobre ON tbl_config.id_sobre = tbl_sobre.id_sobre
+		LEFT JOIN tbl_ultimasnoticias ON tbl_config.id_ultimas = tbl_ultimasnoticias.id_ultimas
+		LEFT JOIN tbl_redessociais ON tbl_config.id_config = tbl_redessociais.id_config
+		ORDER BY tbl_config.id_config DESC
+		LIMIT 1');
 
 		$bd->resultado();
 
 		return $bd->resultado();
     }
+
+	public function nossasRedes(){
+		$this->bd->query('SELECT * FROM tbl_redessociais');
+		return $this->bd->resultados();
+	}
 
 	public function cadastrarInscricao($ensino, $nomeEscola, $nomeMae, $nomePai, $altura, $telefone, $categoria, $posicao, $nomeAtleta, $dataNascimento, $sexo, $frase){
 

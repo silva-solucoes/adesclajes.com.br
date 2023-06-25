@@ -32,8 +32,8 @@ Class Upload{
 
         $extensao = pathinfo($this->arquivo['name'], PATHINFO_EXTENSION);
 
-        $extensoesValidas = ['png', 'jpg', 'jpeg'];
-        $tiposValidos = ['image/png', 'image/jpg', 'image/jpeg'];
+        $extensoesValidas = ['png', 'jpg', 'jpeg', 'webp'];
+        $tiposValidos = ['image/png', 'image/jpg', 'image/jpeg', 'image/webp'];
 
         if(!in_array($extensao, $extensoesValidas)):
             $this->erro = 'A extensão não é permitida';

@@ -28,6 +28,7 @@
 <script src="<?php echo URL . '/public/vendor/simple-datatables/simple-datatables.js'; ?>"></script>
 <script src="<?php echo URL . '/public/vendor/tinymce/tinymce.min.js'; ?>"></script>
 <script src="<?php echo URL . '/public/vendor/php-email-form/validate.js'; ?>"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="<?php echo URL . '/public/js/mainAdm.js'; ?>"></script>

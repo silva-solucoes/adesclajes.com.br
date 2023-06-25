@@ -860,3 +860,57 @@ h6 {
     background-color: #024198;
 }
 
+/*--------------------------------------------------------------
+# Botão do Formulário de Situação de Inscrição
+--------------------------------------------------------------*/
+#botao-aceitar{
+    background-color: #008000;
+    border: none;
+    padding: 12px 34px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+}
+#botao-aceitar:hover{
+    background-color: #019a01;
+    border: none;
+    padding: 12px 34px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+  
+  #botao-rejeitar{
+    background-color: #ff0000;
+    border: none;
+    padding: 12px 34px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+  
+  #botao-rejeitar:hover{
+    background-color: #ca1c1c;
+    border: none;
+    padding: 12px 34px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+
+  #botao-editar{
+    background-color: #1a0afe;
+    border: none;
+    padding: 12px 34px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+  #botao-editar:hover{
+    background-color: #0c3be4;
+    border: none;
+    padding: 12px 34px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+  }

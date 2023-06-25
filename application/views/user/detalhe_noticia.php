@@ -238,11 +238,11 @@
     <section id="clients" class="clients section-bg">
         <div class="container">
 
-            <div class="row" data-aos="zoom-in">
+            <div class="row center slider" data-aos="zoom-in">
                 <?php foreach($dados['patrocinadores'] as $listar):?>
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>">
-                        <img src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
+                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>" target="_blank">
+                        <img width="200" height="87" src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
                         alt="<?=$listar->nomePatrocinador?>">
                     </a>
                 </div>

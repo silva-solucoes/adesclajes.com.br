@@ -6,7 +6,7 @@
         <h1>Configurações do Site</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo URL . 'painel'; ?>">Painel de Controle</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo URL . '/admin/painel'; ?>">Painel de Controle</a></li>
                 <li class="breadcrumb-item active">Configurações do Site</li>
             </ol>
         </nav>
@@ -55,13 +55,15 @@
                                     <div class="card-body">
                                         <div class="row g-0">
                                             <div class="col-md-6 col-lg-6 pt-2">
-                                                <img src="<?php echo URL . 'public/images/logo-d.png'; ?>"
+                                                <img src="<?php echo URL . '/public/images/'.$dados['info']->logoSite; ?>"
                                                     alt="Logo do Site" width="50%">
                                             </div>
                                             <div class="col-md-6 col-lg-6">
                                                 <div class="pt-2">
-                                                    <a href="#" class="btn btn-primary btn-sm" title="Atualizar Logo"><i
-                                                            class="bi bi-upload"></i> Atualizar Logo</a>
+                                                    <label for="logoInput" class="btn btn-primary btn-sm" title="Atualizar Logo">
+                                                        <i class="bi bi-upload"></i> Atualizar Logo
+                                                    </label>
+                                                    <input type="file" id="logoInput" accept=".jpg, .jpeg, .png, .webp" style="display: none">
                                                 </div>
                                             </div>
                                         </div>
@@ -77,7 +79,7 @@
                                     <div class="card-body">
                                         <div class="row g-0">
                                             <div class="col-md-6 col-lg-6 pt-2">
-                                                <img src="<?php echo URL . 'public/images/logo-01.png'; ?>"
+                                                <img src="<?php echo URL . '/public/images/'.$dados['info']->favicon; ?>"
                                                     alt="Logo do Site" width="15%">
                                             </div>
                                             <div class="col-md-6 col-lg-6">
@@ -110,7 +112,7 @@
                                                 <label for="profileImage"
                                                     class="col-md-4 col-lg-3 col-form-label">Imagem de Destaque:</label>
                                                 <div class="col-md-8 col-lg-9">
-                                                    <img src="<?php echo URL . 'public/images/logo-01.png'; ?>"
+                                                    <img src="<?php echo URL . '/public/images/'.$dados['info']->imgDestaque; ?>"
                                                         alt="Imagem Destaque" width="35%">
                                                     <div class="pt-2 pb-2">
                                                         <a href="#" class="btn btn-primary btn-sm"
@@ -129,21 +131,21 @@
                                                     Destaque:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->titulo_destaque?>">
                                                 </div>
                                                 <label for="fullName"
                                                     class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Sub-Título do
                                                     Destaque:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->sub_titulo_destaque?>">
                                                 </div>
                                                 <label for="fullName"
                                                     class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Link do Vídeo de
                                                     Destaque:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->incorporarVideo?>">
                                                 </div>
                                                 <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Botão
                                                     de Incrição:</label>
@@ -194,14 +196,14 @@
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->tl_pgUltimas?>">
                                                 </div>
                                                 <label for="fullName"
                                                     class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Descrição da
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->sub_tlPgUltimas?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -220,14 +222,14 @@
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->tl_pgSobre?>">
                                                 </div>
                                                 <label for="fullName"
                                                     class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Descrição da
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->sub_tlSobre?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -246,14 +248,14 @@
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->tituloEscolha?>">
                                                 </div>
                                                 <label for="fullName"
                                                     class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Descrição da
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->subTituloEscolha?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -270,7 +272,7 @@
                                                 <label for="profileImage"
                                                     class="col-md-4 col-lg-3 col-form-label">Imagem de Fundo:</label>
                                                 <div class="col-md-8 col-lg-9">
-                                                    <img src="<?php echo URL . 'public/images/cta-bg.jpg'; ?>"
+                                                    <img src="<?php echo URL . '/public/images/'.$dados['info']->logoAcao; ?>"
                                                         alt="Imagem Destaque" width="35%">
                                                     <div class="pt-2 pb-2">
                                                         <a href="#" class="btn btn-primary btn-sm"
@@ -283,20 +285,6 @@
                                                                 for="flexSwitchCheckChecked">Desativar Imagem</label>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <label for="fullName"
-                                                    class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Título da
-                                                    Seção:</label>
-                                                <div class="col-md-8 col-lg-9">
-                                                    <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
-                                                </div>
-                                                <label for="fullName"
-                                                    class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Descrição da
-                                                    Seção:</label>
-                                                <div class="col-md-8 col-lg-9">
-                                                    <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
                                                 </div>
                                                 <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Botão
                                                     de Incrição:</label>
@@ -325,14 +313,14 @@
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->tl_pgEquipe?>">
                                                 </div>
                                                 <label for="fullName"
                                                     class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Descrição da
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->sub_tlEquipe?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -351,14 +339,14 @@
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->tl_pagPerguntas?>">
                                                 </div>
                                                 <label for="fullName"
                                                     class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Descrição da
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->sub_tlPerguntas?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -377,14 +365,14 @@
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->tl_contato?>">
                                                 </div>
                                                 <label for="fullName"
                                                     class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Descrição da
                                                     Seção:</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="fullName" type="text" class="form-control"
-                                                        id="fullName" value="Kevin Anderson">
+                                                        id="fullName" value="<?=$dados['info']->sub_tlContato?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -408,65 +396,118 @@
                                             <div class="card-body">
                                                 <div class="row g-0 mb-3 mt-3">
                                                     <label for="fullName"
-                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Localização da
-                                                        ADESC:</label>
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Endereço:</label>
                                                     <div class="col-md-8 col-lg-9">
                                                         <input name="fullName" type="text" class="form-control"
-                                                            id="fullName" value="Rua Riacho Madeira, s.n. Centro, Lajes/RN, CEP: 59535-000, Brasil">
+                                                            id="fullName" value="<?=$dados['info']->logradouro?>">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Número:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="<?=$dados['info']->numero?>">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Bairro:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="<?=$dados['info']->bairro?>">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Cidade:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="<?=$dados['info']->cidade?>">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">UF:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="<?=$dados['info']->uf?>">
+                                                    </div>
+                                                    <label for="fullName"
+                                                        class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">CEP:</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="fullName" type="text" class="form-control"
+                                                            id="fullName" value="<?=$dados['info']->cep?>">
                                                     </div>
                                                     <label for="fullName"
                                                         class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Telefone:</label>
                                                     <div class="col-md-8 col-lg-9">
                                                         <input name="fullName" type="tel" class="form-control"
-                                                            id="fullName" value="+55 (84)99620-2499">
+                                                            id="fullName" value="<?=$dados['info']->telefone?>">
                                                     </div>
                                                     <label for="fullName"
                                                         class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - Facebook:</label>
                                                     <div class="col-md-8 col-lg-9">
+                                                    <?php foreach($dados['redes'] as $rede): ?>
+                                                        <?php if($rede->nomeRede == 'Facebook'): ?>
                                                         <input name="fullName" type="text" class="form-control"
-                                                            id="fullName" value="#">
+                                                            id="fullName" value="<?=$rede->link_acesso?>">
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
                                                     </div>
                                                     <label for="fullName"
                                                         class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - Instagram:</label>
                                                     <div class="col-md-8 col-lg-9">
+                                                    <?php foreach($dados['redes'] as $rede): ?>
+                                                        <?php if($rede->nomeRede == 'Instagram'): ?>
                                                         <input name="fullName" type="text" class="form-control"
-                                                            id="fullName" value="#">
+                                                            id="fullName" value="<?=$rede->link_acesso?>">
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
                                                     </div>
                                                     <label for="fullName"
                                                         class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - Linkedin:</label>
                                                     <div class="col-md-8 col-lg-9">
+                                                    <?php foreach($dados['redes'] as $rede): ?>
+                                                        <?php if($rede->nomeRede == 'Linkedin'): ?>
                                                         <input name="fullName" type="text" class="form-control"
-                                                            id="fullName" value="#">
+                                                            id="fullName" value="<?=$rede->link_acesso?>">
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
                                                     </div>
                                                     <label for="fullName"
                                                         class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - TikTok:</label>
                                                     <div class="col-md-8 col-lg-9">
+                                                    <?php foreach($dados['redes'] as $rede): ?>
+                                                        <?php if($rede->nomeRede == 'TikTok'): ?>
                                                         <input name="fullName" type="text" class="form-control"
-                                                            id="fullName" value="#">
+                                                            id="fullName" value="<?=$rede->link_acesso?>">
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
                                                     </div>
                                                     <label for="fullName"
                                                         class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - Twitter:</label>
                                                     <div class="col-md-8 col-lg-9">
+                                                    <?php foreach($dados['redes'] as $rede): ?>
+                                                        <?php if($rede->nomeRede == 'Twitter'): ?>
                                                         <input name="fullName" type="text" class="form-control"
-                                                            id="fullName" value="#">
+                                                            id="fullName" value="<?=$rede->link_acesso?>">
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
                                                     </div>
                                                     <label for="fullName"
                                                         class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Rede Social - YouTube:</label>
                                                     <div class="col-md-8 col-lg-9">
+                                                    <?php foreach($dados['redes'] as $rede): ?>
+                                                        <?php if($rede->nomeRede == 'YouTube'): ?>
                                                         <input name="fullName" type="text" class="form-control"
-                                                            id="fullName" value="#">
+                                                            id="fullName" value="<?=$rede->link_acesso?>">
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
                                                     </div>
                                                     <label for="fullName"
                                                         class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">E-mail:</label>
                                                     <div class="col-md-8 col-lg-9">
                                                         <input name="fullName" type="email" class="form-control"
-                                                            id="fullName" value="adesclajes1997@gmail.com">
+                                                            id="fullName" value="<?=$dados['info']->email?>">
                                                     </div>                                                    
                                                     <label for="fullName"
                                                         class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">Incorporar um
                                                         mapa - Código Google Maps(iFrame):</label>
                                                     <div class="col-md-8 col-lg-9">
-                                                        <textarea class="form-control" style="height: 100px"></textarea>
+                                                        <textarea class="form-control" style="height: 100px"><?=$dados['info']->localizaçãoIFRAM?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -496,7 +537,7 @@
                                                         class="col-md-4 col-lg-3 col-form-label mt-2 mb-2">E-mail:</label>
                                                     <div class="col-md-8 col-lg-9">
                                                         <input name="fullName" type="email" class="form-control"
-                                                            id="fullName" value="adesclajes1997@gmail.com">
+                                                            id="fullName" value="<?=$dados['info']->email?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -519,7 +560,81 @@
             </div>
         </div>
     </section>
+<script>
+    // Variável global para manter o controle do número
+var logoCount = 1;
 
+document.getElementById('logoInput').addEventListener('change', function(event) {
+    var file = event.target.files[0];
+    var imageType = /image.*/;
+
+    // Verificar se o arquivo é uma imagem
+    if (file && file.type.match(imageType)) {
+        var img = new Image();
+        img.src = URL.createObjectURL(file);
+
+        img.onload = function() {
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            var maxWidth = 200;
+            var maxHeight = 87;
+
+            // Calcular as novas dimensões da imagem
+            var ratio = Math.min(maxWidth / img.width, maxHeight / img.height);
+            var newWidth = img.width * ratio;
+            var newHeight = img.height * ratio;
+
+            // Redimensionar a imagem usando o canvas
+            canvas.width = newWidth;
+            canvas.height = newHeight;
+            ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+            // Converter o canvas para o formato webp
+            var dataURL = canvas.toDataURL('image/webp');
+
+            // Gerar o novo nome da imagem no padrão "logo-XX"
+            var newFilename = 'logo-' + pad(logoCount, 2) + '.webp';
+
+            // Incrementar o contador
+            logoCount++;
+
+            // Criar um novo objeto File com a imagem convertida para webp
+            var convertedFile = dataURLtoFile(dataURL, newFilename);
+
+            // Realizar o processamento necessário com a imagem redimensionada e convertida
+            console.log('Imagem selecionada: ' + convertedFile.name);
+            console.log('Nova largura: ' + newWidth);
+            console.log('Nova altura: ' + newHeight);
+            console.log('Nova extensão: ' + convertedFile.type);
+        };
+    }
+});
+
+// Função auxiliar para converter um data URL em um objeto File
+function dataURLtoFile(dataURL, filename) {
+    var arr = dataURL.split(',');
+    var mime = arr[0].match(/:(.*?);/)[1];
+    var bstr = atob(arr[1]);
+    var n = bstr.length;
+    var u8arr = new Uint8Array(n);
+
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], filename, { type: mime });
+}
+
+// Função auxiliar para adicionar zeros à esquerda do número
+function pad(number, length) {
+    var str = '' + number;
+    while (str.length < length) {
+        str = '0' + str;
+    }
+    return str;
+}
+
+</script>
 </main><!-- End #main -->
 
 <?php include_once 'footer.php'; ?>

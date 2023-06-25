@@ -6,8 +6,8 @@
         <h1>Gerenciar Inscrições</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo URL . 'admin/painel'; ?>">Painel de Controle</a></li>
-                <li class="breadcrumb-item active">Lista de Solicitação de Inscrição</li>
+                <li class="breadcrumb-item"><a href="<?php echo URL . '/admin/painel'; ?>">Painel de Controle</a></li>
+                <li class="breadcrumb-item active">Lista de Inscrições</li>
             </ol>
         </nav>
         <?php
@@ -21,10 +21,6 @@
             <!-- Tabela dos Pré-Inscritos -->
             <div class="col-12">
                 <div class="card recent-sales overflow-auto">
-                    <div class="filter">
-                        <a class="btn btn-primary rounded-pill espaco" href="#" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle"></i> Novo Inscrição</a>
-                    </div>
                     <div class="card-body">
                         <h5 class="card-title">
                             <font style="vertical-align: inherit;">
@@ -138,13 +134,8 @@
                                                 <span class="badge">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-success rounded-pill open" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop" data-id="<?=$listar->id_inscricao?>" href="<?php echo URL . '/admin/exibirInscricao/'.$listar->id_inscricao; ?>"
-                                                                title="Visualizar Inscrição"><i class="bi bi-eye"></i></a></font>
-                                                        <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-warning rounded-pill" href="<?=$listar->id_inscricao?>"
-                                                                title="Editar Situação"><i
-                                                                    class="bi bi-pencil-square"></i></a></font>
+                                                                class="btn btn-success rounded-pill open" href="<?php echo URL . '/admin/detalheInscricao/'.$listar->id_inscricao; ?>"
+                                                                title="Detalhe de Inscrição"><i class="bi bi-eye"></i></a></font>
                                                         </font>
                                                     </font>
                                                 </span>

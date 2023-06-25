@@ -30,11 +30,13 @@
     <link href="<?php echo URL . '/public/vendor/remixicon/remixicon.css'; ?>" rel="stylesheet">
     <link href="<?php echo URL . '/public/vendor/simple-datatables/style.css'; ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <!-- Template Main CSS File -->
     <link href="<?php echo URL . '/public/css/styleAdm.css'; ?>" rel="stylesheet">
     
-
     <!-- =======================================================
   * Nome do site: Silva Soluções Tech
   * Atualizado: 02 maio 2023 com Bootstrap v5.2.3
@@ -286,7 +288,11 @@
         $fotosAtivo = (strpos($uri, '/admin/fotos') !== false);
         $esportesAtivo = (strpos($uri, '/admin/esportes') !== false);
         $diretoriaAtivo = (strpos($uri, '/admin/diretoria') !== false);
+        if((strpos($uri, '/admin/inscricao') !== false)):
         $inscricaoAtivo = (strpos($uri, '/admin/inscricao') !== false);
+        elseif((strpos($uri, '/admin/detalheInscricao') !== false)):
+        $inscricaoAtivo = (strpos($uri, '/admin/detalheInscricao') !== false);
+        endif;
         $usuariosAtivo = (strpos($uri, '/admin/usuario') !== false);
 
         // Função auxiliar para adicionar a classe ativa à guia de navegação

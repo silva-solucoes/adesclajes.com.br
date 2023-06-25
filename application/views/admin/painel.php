@@ -101,7 +101,7 @@
                     <div class="card-body">
                         <h5 class="card-title">
                             <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">Pré-Inscritos </font>
+                                <font style="vertical-align: inherit;">Pré-Inscritos Pendentes </font>
                             </font><span>
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">| </font>
@@ -112,26 +112,23 @@
 
                         <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
                             <div class="datatable-top">
-                                <div class="datatable-dropdown">
-                                    <label>
-                                        <select class="datatable-selector">
-                                            <option value="5">5</option>
-                                            <option value="10" selected="">10</option>
-                                            <option value="15">15</option>
-                                            <option value="20">20</option>
-                                            <option value="25">25</option>
-                                        </select>
-                                        <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">entradas por página
+                                    <div class="datatable-dropdown">
+                                        <label>
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;"><b><?=$dados['totalInscri']->total_inscricoes?></b> solicitações de Inscrição
+                                                </font>
                                             </font>
-                                        </font>
-                                    </label>
-                                </div>
-                                <div class="datatable-search">
-                                    <input class="datatable-input" placeholder="Buscar por..." type="search"
-                                        title="Pesquisar na tabela" id="search-input">
-                                </div>
+                                        </label>
+                                    </div>
+                        
+                                    <div class="datatable-search">
+                                        <form method="POST" action="<?=URL?>/admin/buscar">
+                                            <input class="datatable-input" placeholder="Buscar por..." type="search"
+                                               aria-label="Buscar por..." title="Pesquisar na tabela" name="pesquisa" id="pesquisa">
+                                        </form>
+                                    </div>
                             </div>
+                            <?php Sessao::mensagem('Busca'); ?>
                             <div class="datatable-container">
                                 <table class="table table-borderless datatable datatable-table">
                                     <thead>
@@ -170,19 +167,19 @@
                                                 </a></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="resultado">
                                     <?php $i = 0; ?>
-                                    <?php foreach($dados['infoInscricao'] as $listar):?>
+                                    <?php foreach($dados['buscar'] as $listar):?>
                                         <?php $i += 1;?>
                                         <?php $numeroFormatado = str_pad($listar->id_inscricao, 4, '0', STR_PAD_LEFT); ?>
                                         <tr data-index="<?=$i?>">
-                                            <td><a href="#">#<?=$numeroFormatado?></a></td>
+                                            <td><a href="<?php echo URL . '/admin/detalheInscricao/'.$listar->id_inscricao; ?>">#<?=$numeroFormatado?></a></td>
                                             <td>
                                                 <font style="vertical-align: inherit;">
                                                     <font style="vertical-align: inherit;"><?=$listar->nome_atleta?></font>
                                                 </font>
                                             </td>
-                                            <td><a href="#" class="text-primary">
+                                            <td><a href="<?php echo URL . '/admin/detalheInscricao/'.$listar->id_inscricao; ?>" class="text-primary">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;"><?=$listar->nome?></font>
                                                     </font>
@@ -211,12 +208,8 @@
                                                 <span class="badge">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-success rounded-pill" href="<?=$listar->id_inscricao?>"
-                                                                title="Visualizar Inscrição"><i class="bi bi-eye"></i></a></font>
-                                                        <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-warning rounded-pill" href="<?=$listar->id_inscricao?>"
-                                                                title="Editar Situação"><i
-                                                                    class="bi bi-pencil-square"></i></a></font>
+                                                                class="btn btn-success rounded-pill" href="<?php echo URL . '/admin/detalheInscricao/'.$listar->id_inscricao; ?>"
+                                                                title="Detalhe de Inscrição"><i class="bi bi-eye"></i></a></font>
                                                         </font>
                                                     </font>
                                                 </span>
@@ -230,7 +223,8 @@
                             <div class="datatable-bottom">
                                 <div class="datatable-info">
                                     <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">Mostrando 1 a 5 de 5 entradas</font>
+                                        <font style="vertical-align: inherit;">Analise as <b><?=$dados['totalInscri']->total_inscricoes?></b> solicitações.
+                                        </font>
                                     </font>
                                 </div>
                                 <nav class="datatable-pagination">

@@ -480,3 +480,5 @@ function formatarTelefone(telefone) {
     // Atualiza o valor do input com o telefone formatado
     document.getElementById('telefone-input').value = telefone;
 }
+
+

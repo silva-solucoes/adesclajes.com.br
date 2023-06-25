@@ -189,10 +189,33 @@ class Usuario{
         INNER JOIN tbl_detalhetecnicos ON tbl_atleta.id_detalheTec = tbl_detalhetecnicos.id_tecnico
         INNER JOIN tbl_incricao ON tbl_atleta.id_atleta = tbl_incricao.id_atleta
         INNER JOIN categorianoticia ON tbl_detalhetecnicos.categoriaEsportiva=categorianoticia.id_categoria
-        ORDER BY tbl_atleta.id_atleta DESC');
+        ORDER BY tbl_atleta.id_atleta DESC LIMIT 5');
         return $this->bd->resultados();
     }
 
+    public function busInscNome($nome){
+        $this->bd->query("SELECT *
+        FROM tbl_atleta
+        INNER JOIN tbl_detalheescolar ON tbl_atleta.id_escola = tbl_detalheescolar.id_escolar
+        INNER JOIN tbl_detalhefiliacao ON tbl_atleta.id_filiacao = tbl_detalhefiliacao.id_filiacao
+        INNER JOIN tbl_detalhesaude ON tbl_detalhesaude.id_saude = tbl_atleta.id_saude
+        INNER JOIN tbl_detalhesresponsavel ON tbl_atleta.id_responsavel = tbl_detalhesresponsavel.id_responsavel
+        INNER JOIN tbl_detalhetecnicos ON tbl_atleta.id_detalheTec = tbl_detalhetecnicos.id_tecnico
+        INNER JOIN tbl_incricao ON tbl_atleta.id_atleta = tbl_incricao.id_atleta
+        INNER JOIN categorianoticia ON tbl_detalhetecnicos.categoriaEsportiva = categorianoticia.id_categoria
+        WHERE (tbl_atleta.nome_atleta LIKE CONCAT('%', :nome, '%'))
+        AND tbl_incricao.situacao_atleta = 2
+        GROUP BY tbl_atleta.id_atleta
+        ORDER BY tbl_atleta.id_atleta DESC");
+        $this->bd->bind('nome', $nome);
+
+        return $this->bd->resultados();
+    }
+
+    public function contagemInscri(){
+        $this->bd->query('SELECT COUNT(tbl_incricao.id_atleta) AS total_inscricoes FROM tbl_incricao WHERE tbl_incricao.situacao_atleta=2');
+        return $this->bd->resultado();
+    }
     public function exibirInscricao($idInscricao){
         $this->bd->query('SELECT *
         FROM tbl_atleta
@@ -214,5 +237,106 @@ class Usuario{
 
 		return $this->bd->resultado();
 	}
+
+    public function statusAtivo($idInscricao){
+        $statusAceito = 1;
+        $this->bd->query('UPDATE tbl_incricao SET tbl_incricao.situacao_atleta=:statusAceito, tbl_incricao.dt_edicao = NOW() WHERE tbl_incricao.id_inscricao = :id');
+        $this->bd->bind(':statusAceito', $statusAceito);
+        $this->bd->bind(':id', $idInscricao);
+        if ($this->bd->executa()):
+            Sessao::mensagem('situacao','<b>Status foi alterado!</b><br> Entre em contato com o novo atleta para marcar o primeiro encontro e finalizar informações no BID.');
+            return true;
+        else:
+            Sessao::mensagem('situacao','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function statusRejeitado($idInscricao){
+        $statusAceito = 3;
+        $this->bd->query('UPDATE tbl_incricao SET tbl_incricao.situacao_atleta=:statusAceito, tbl_incricao.dt_edicao = NOW() WHERE tbl_incricao.id_inscricao = :id');
+        $this->bd->bind(':statusAceito', $statusAceito);
+        $this->bd->bind(':id', $idInscricao);
+        if ($this->bd->executa()):
+            Sessao::mensagem('situacao','<b>Status foi alterado!</b><br> Entre em contato com o responsável do atleta e explicar o motivo dessa decisão.', 'alert alert-danger');
+            return true;
+        else:
+            Sessao::mensagem('situacao','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function exibirPatrocinadores(){
+        $this->bd->query("SELECT * FROM tbl_secaopatrocinadores ORDER BY tbl_secaopatrocinadores.id_secaoPatrocinio DESC");
+
+		return $this->bd->resultados();
+    }
+
+    public function lerPatrocinador($idPatro){
+        $this->bd->query('SELECT * FROM tbl_secaopatrocinadores WHERE tbl_secaopatrocinadores.id_secaoPatrocinio = :idPatro');
+        $this->bd->bind('idPatro', $idPatro);
+
+        return $this->bd->resultado();
+    }
+
+    public function cadastrarPatrocinador($dados){
+        
+        $this->bd->query('INSERT INTO tbl_secaopatrocinadores (nomePatrocinador, img_patrocinio, link_acesso)
+        VALUES (:nome, :imagem, :link)');
+
+        $this->bd->bind(':nome', $dados['nomePatro']);
+        $this->bd->bind(':imagem', $dados['fotoPatrocinador']);
+        $this->bd->bind(':link', $dados['linkPatro']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('patrocinador','<b>Patrocinador foi Cadastrado!</b>');
+            return true;
+        else:
+            Sessao::mensagem('patrocinador','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarPatrocinador($dados){
+        
+        $this->bd->query('UPDATE tbl_secaopatrocinadores 
+        SET tbl_secaopatrocinadores.nomePatrocinador = :nome, 
+        tbl_secaopatrocinadores.img_patrocinio = :imagem,
+        tbl_secaopatrocinadores.link_acesso = :link 
+        WHERE tbl_secaopatrocinadores.id_secaoPatrocinio = :id');
+
+        $this->bd->bind(':nome', $dados['nomePatro']);
+        $this->bd->bind(':imagem', $dados['fotoPatrocinador']);
+        $this->bd->bind(':link', $dados['linkPatro']);
+        $this->bd->bind(':id', $dados['idPatro']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('patrocinador','<b>Patrocinador foi alterado!</b>');
+            return true;
+        else:
+            Sessao::mensagem('patrocinador','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function excluirPatrocinador($nomeFoto, $idPatro){
+        // Excluir a imagem do diretório
+        $caminhoImagem = 'images/patrocinadores/' . $nomeFoto; // Substitua pelo caminho correto da imagem
+        if (file_exists($caminhoImagem)) {
+            unlink($caminhoImagem);
+        }
+
+        $this->bd->query('DELETE FROM tbl_secaopatrocinadores WHERE tbl_secaopatrocinadores.id_secaoPatrocinio = :id');
+
+        $this->bd->bind(':id', $idPatro);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('patrocinador','<b>Patrocinador foi excluido!</b>');
+            return true;
+        else:
+            Sessao::mensagem('patrocinador','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
 
 }
