@@ -53,7 +53,8 @@ class User extends Controller{
             ];
             
             if(empty($formulario['nome'])):
-                $dados['nome_erro'] = "Preencha o campo Seu nome";
+                //$dados['nome_erro'] = "Preencha o campo Seu nome";
+                echo "Preencha o campo Seu nome";
             endif;
         else:
             $dados = [
@@ -79,7 +80,9 @@ class User extends Controller{
         
         $modelo->cadastrarInscricao($dados['nivel_ensino'], $dados['nomeEscola'], $dados['nomeMae'], $dados['nomePai'], $dados['altura'], $dados['telRespon'], $dados['categoria_esportiva'], $dados['posicao'], $dados['nome'], $dados['dataNascimento'], $dados['sexo'], $dados['message']);
 
-        header('Location:'.URL);
+        echo 'Caro(a) '.$dados['nome'].' interessado(a) em se juntar à equipe da ADESC Lajes, agradecemos seu interesse em se tornar parte do nosso time. Dentro de 1 a 5 dias, nossa equipe diretiva entrará em contato com o responsável do atleta, caso seja menor de idade, para agendar um primeiro contato. Durante essa conversa, forneceremos orientações adicionais e discutiremos detalhes importantes sobre sua participação. Estamos ansiosos para receber você em nossa equipe e compartilhar uma jornada de sucesso no esporte.';
+
+       // header('Location:'.URL);
 
     }
 

@@ -3009,3 +3009,23 @@
     };
 
 }));
+
+$(document).on('ready', function() {
+     
+    $(".center").slick({
+      dots: true,
+      infinite: true,
+      centerMode: true,
+      slidesToShow: 6,
+      slidesToScroll: 3
+    });
+    
+    function avancarSlide() {
+  $('.slider').slick('slickNext');
+}
+
+    var intervalo = 3000;
+
+// Inicie o temporizador para avançar o slide automaticamente
+setInterval(avancarSlide, intervalo);
+  });
