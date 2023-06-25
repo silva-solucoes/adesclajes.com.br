@@ -50,12 +50,17 @@ class Paginas extends Controller{
         $this->view('user/home', $dados);
 
     }
-    public function noticias(){
+    public function noticias($pagina){
+
         $dados=[
             'info' => $this->info->lerInformacao()
         ];
+        //paginas atual notícia
+        $dados['pagina']= $pagina;
+        //quantidade de paginas de notícia
+        $dados['totalPagina']=$this->info->numeroDePaginas();
         //exibir notícia
-        $dados['noticias']=$this->info->listar4Noticias();
+        $dados['noticias']=$this->info->listar4Noticias($pagina);
         //Exibir categorias
         $dados['categorias']=$this->info->exibirCategorias();
         //Exibir todos os patrocinadores

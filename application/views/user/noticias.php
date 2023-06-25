@@ -67,9 +67,34 @@
 
                     <div class="blog-pagination">
                         <ul class="justify-content-center">
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
+                            <li><a href="<?php echo URL . '/paginas/noticias/1' ?>">PRIMEIRA</a></li>
+                            <?php       
+                            if($dados['pagina'] != 1 && $dados['pagina'] != $dados['totalPagina']): 
+                                $pg_ant = $dados['pagina']-1;
+                                $pg_pos = $dados['pagina']+1;
+                               echo "<li><a href='".URL."/paginas/noticias/".$pg_ant."'>".$pg_ant."</a></li>";
+                               echo "<li class='active'><a href='#'>".$dados['pagina']."</a></li>";
+                               echo "<li><a href='".URL."/paginas/noticias/".$pg_pos."'>".$pg_pos."</a></li>";
+                               elseif($dados['pagina'] == 1): 
+                                $pg_pos_mais = $dados['pagina']+2;
+                                $pg_pos = $dados['pagina']+1;
+                               echo "<li class='active'><a href='#'>".$dados['pagina']."</a></li>";
+                               echo "<li><a href='".URL."/paginas/noticias/".$pg_pos."'>".$pg_pos."</a></li>";
+                               echo "<li><a href='".URL."/paginas/noticias/".$pg_pos_mais."'>".$pg_pos_mais."</a></li>";
+                               
+                                else: 
+                                    $pg_ant_menos = $dados['pagina']-2;
+                                    $pg_ant = $dados['pagina']-1;
+                                    echo "<li><a href='".URL."/paginas/noticias/".$pg_ant_menos."'>".$pg_ant_menos."</a></li>";
+                                    echo "<li><a href='".URL."/paginas/noticias/".$pg_ant."'>".$pg_ant."</a></li>";
+                                    echo "<li class='active'><a href='#'>".$dados['pagina']."</a></li>";
+                                                                
+                                endif
+
+
+                               
+                            ?>
+                            <li><a href="<?php echo URL . '/paginas/noticias/'.$dados['totalPagina'] ?>">ULTIMA</a></li>
                         </ul>
                     </div><!-- End blog pagination -->
 

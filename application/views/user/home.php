@@ -127,7 +127,7 @@
             <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 text-center" data-aos="zoom-in"
                 data-aos-delay="500">
                 <div class="d-flex justify-content-center justify-content-lg-start">
-                    <a href="<?php echo URL . '/paginas/noticias' ?>" class="btn-get-started">Ver Mais Notícias</a>
+                    <a href="<?php echo URL . '/paginas/noticias/1' ?>" class="btn-get-started">Ver Mais Notícias</a>
                 </div>
             </div>
         </div>

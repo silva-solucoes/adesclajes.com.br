@@ -47,17 +47,33 @@ class Modelo {
 		return $this->bd->resultados();
 	}
 
-	public function listar4Noticias(){
-		$this->bd->query('SELECT *
+	public function listar4Noticias($pagina){
+
+		$qnt_result_pg = 2;
+        $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
+
+		$this->bd->query("SELECT *
 		FROM tbl_noticias
 		INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor
 		INNER JOIN categorianoticia ON categorianoticia.id_categoria = tbl_noticias.id_categoria
 		INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas = tbl_noticias.id_ultimas
 		INNER JOIN tbl_coment_tecnico ON tbl_coment_tecnico.id_coment_tec = tbl_noticias.id_coment_tec
 		ORDER BY tbl_noticias.dtAtualizacao DESC
-		LIMIT 4');
+		LIMIT $inicio, $qnt_result_pg");
 
 		return $this->bd->resultados();
+	}
+
+	public function numeroDePaginas(){
+		$qnt_result_pg = 2;
+
+		$this->bd->query("SELECT COUNT(id_noticia) AS num_result FROM tbl_noticias");
+
+		 $row_pg = $this->bd->resultados()[0]->num_result;
+
+		$quantidade_pg = ceil($row_pg/$qnt_result_pg);
+
+		return $quantidade_pg;
 	}
 
 	public function listarUltimasNoticias(){
