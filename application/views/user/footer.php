@@ -42,7 +42,9 @@
                     <p>Siga-nos nas redes sociais e fique por dentro de todas as novidades!</p>
                     <div class="social-links mt-3">
                         <?php foreach($dados['redesSociais'] as $listar):?>
+                        <?php if($listar->link_acesso !== '#'):?>
                         <a href="<?=$listar->link_acesso?>" target="_blank" class="twitter"><?=$listar->iconeRede?></i></a>
+                        <?php endif;?>
                         <?php endforeach;?>
                     </div>
                 </div>

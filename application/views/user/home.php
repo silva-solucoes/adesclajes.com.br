@@ -314,7 +314,7 @@
                         </div>
 
                         <iframe
-                            src="<?=$dados['info']->localizaçãoIFRAM?>"
+                            src="<?=$dados['info']->localizacaoIFRAM?>"
                             width="600" height="450" style="border:0; width: 100%; height: 290px;" allowfullscreen=""
                             loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>

@@ -52,6 +52,79 @@ class Upload_Patro {
         }
     }
 
+    private function redimensionarImagem($caminhoImagem) {
+        // Carregar a imagem original
+        $imagemOriginal = imagecreatefromstring(file_get_contents($caminhoImagem));
+
+        // Obter as dimensões da imagem original
+        $larguraOriginal = imagesx($imagemOriginal);
+        $alturaOriginal = imagesy($imagemOriginal);
+
+        // Calcular as novas dimensões
+        $novaLargura = 200;
+        $novaAltura = 87;
+
+        // Criar uma nova imagem vazia com as dimensões desejadas
+        $imagemRedimensionada = imagecreatetruecolor($novaLargura, $novaAltura);
+
+        // Redimensionar a imagem original para a nova imagem
+        imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, $novaLargura, $novaAltura, $larguraOriginal, $alturaOriginal);
+
+        // Salvar a imagem redimensionada
+        imagepng($imagemRedimensionada, $caminhoImagem);
+
+        // Liberar a memória utilizada pelas imagens
+        imagedestroy($imagemOriginal);
+        imagedestroy($imagemRedimensionada);
+    }
+
+    public function converterParaWebP() {
+        $caminhoImagem = $this->diretorio . DIRECTORY_SEPARATOR . $this->nome;
+
+        // Verificar se o arquivo existe e é uma imagem
+        if (file_exists($caminhoImagem) && $this->isImagem($caminhoImagem)) {
+            // Criar uma nova imagem a partir do arquivo existente
+            $imagem = imagecreatefromstring(file_get_contents($caminhoImagem));
+
+            // Definir a qualidade da imagem webp (opcional)
+            $qualidade = 80;
+
+            // Gerar o novo nome da imagem com a extensão webp
+            $novoNome = $this->trocarExtensao($this->nome, 'webp');
+
+            // Caminho para salvar a nova imagem
+            $caminhoWebp = $this->diretorio . DIRECTORY_SEPARATOR . $novoNome;
+
+            // Converter e salvar a imagem como webp
+            imagewebp($imagem, $caminhoWebp, $qualidade);
+
+            // Atualizar o nome do arquivo com a extensão webp
+            $this->nome = $novoNome;
+
+            // Liberar a memória da imagem
+            imagedestroy($imagem);
+
+            // Remover o arquivo original
+            unlink($caminhoImagem);
+
+            // Atualizar o resultado
+            $this->resultado = $this->nome;
+        } else {
+            $this->erro = 'Arquivo de imagem inválido';
+            $this->resultado = false;
+        }
+    }
+
+    private function isImagem($caminho) {
+        $mime = mime_content_type($caminho);
+        return strpos($mime, 'image') === 0;
+    }
+
+    private function trocarExtensao($nomeArquivo, $novaExtensao) {
+        $nomeSemExtensao = pathinfo($nomeArquivo, PATHINFO_FILENAME);
+        return $nomeSemExtensao . '.' . $novaExtensao;
+    }
+
     private function renomearArquivo() {
         $extensao = pathinfo($this->arquivo['name'], PATHINFO_EXTENSION);
         $nomeArquivo = 'client-' . $this->pad($this->logoCount, 2) . '.' . $extensao;
@@ -66,7 +139,10 @@ class Upload_Patro {
     }
 
     private function moverArquivo() {
+        $caminhoImagem = $this->diretorio . DIRECTORY_SEPARATOR . $this->nome;
         if (move_uploaded_file($this->arquivo['tmp_name'], $this->diretorio . DIRECTORY_SEPARATOR . $this->nome)) {
+            $this->redimensionarImagem($caminhoImagem);
+            $this->converterParaWebP(); // Adicionado para converter para webp após o redimensionamento
             $this->resultado = $this->nome;
         } else {
             $this->resultado = false;

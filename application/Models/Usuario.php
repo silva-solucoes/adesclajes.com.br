@@ -318,7 +318,6 @@ class Usuario{
             return false;
         endif;
     }
-
     public function excluirPatrocinador($nomeFoto, $idPatro){
         // Excluir a imagem do diretório
         $caminhoImagem = 'images/patrocinadores/' . $nomeFoto; // Substitua pelo caminho correto da imagem
@@ -335,6 +334,284 @@ class Usuario{
             return true;
         else:
             Sessao::mensagem('patrocinador','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarLogoSite($foto){
+        $this->bd->query('UPDATE tbl_infoheader
+        SET logoHeaderFooter = :foto 
+        WHERE tbl_infoheader.id_infoHeader = 1');
+
+        $this->bd->bind(':foto', 'logo-'.$foto);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarFavicon($foto){
+        $this->bd->query('UPDATE tbl_infoheader
+        SET favicon = :foto 
+        WHERE tbl_infoheader.id_infoHeader = 1');
+
+        $this->bd->bind(':foto', 'fav'.$foto);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarDetalhes($dados){
+        $this->bd->query('UPDATE tbl_secaodestaque
+        SET titulo_destaque = :titulo, sub_titulo_destaque = :subTitulo, incorporarVideo = :link, imgDestaque = :foto 
+        WHERE tbl_secaodestaque.id_secaoDestaque = 1');
+
+        $this->bd->bind(':titulo', $dados['titulo']);
+        $this->bd->bind(':subTitulo', $dados['subTitulo']);
+        $this->bd->bind(':link', $dados['linkVideo']);
+        $this->bd->bind(':foto', $dados['fotoDestaque']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarUltima($dados){
+        $this->bd->query('UPDATE tbl_ultimasnoticias
+        SET tl_pgUltimas = :titulo, sub_tlPgUltimas = :descricao 
+        WHERE tbl_ultimasnoticias.id_ultimas = 1');
+
+        $this->bd->bind(':titulo', $dados['titulo']);
+        $this->bd->bind(':descricao', $dados['descricao']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarSobre($dados){
+        $this->bd->query('UPDATE tbl_sobre
+        SET tl_pgSobre = :titulo, sub_tlSobre = :descricao 
+        WHERE tbl_sobre.id_sobre = 1');
+
+        $this->bd->bind(':titulo', $dados['titulo']);
+        $this->bd->bind(':descricao', $dados['descricao']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarEscolha($dados){
+        $this->bd->query('UPDATE tbl_secaoescolher
+        SET tituloEscolha = :titulo, subTituloEscolha = :descricao 
+        WHERE tbl_secaoescolher.id_escolher = 1');
+
+        $this->bd->bind(':titulo', $dados['titulo']);
+        $this->bd->bind(':descricao', $dados['descricao']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarAcao($dados){
+        $this->bd->query('UPDATE tbl_config
+        SET logoAcao = :foto
+        WHERE tbl_config.id_config = 1');
+
+        $this->bd->bind(':foto', $dados['fotoAcao']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarDiretoria($dados){
+        $this->bd->query('UPDATE tbl_diretoria
+        SET tl_pgEquipe = :titulo, sub_tlEquipe = :descricao
+        WHERE tbl_diretoria.id_equipe = 1');
+
+        $this->bd->bind(':titulo', $dados['titulo']);
+        $this->bd->bind(':descricao', $dados['descricao']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarPF($dados){
+        $this->bd->query('UPDATE tbl_perguntas
+        SET tl_pagPerguntas = :titulo, sub_tlPerguntas = :descricao
+        WHERE tbl_perguntas.id_perguntas = 1');
+
+        $this->bd->bind(':titulo', $dados['titulo']);
+        $this->bd->bind(':descricao', $dados['descricao']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarContato($dados){
+        $this->bd->query('UPDATE tbl_contatos
+        SET tl_contato = :titulo, sub_tlContato = :descricao
+        WHERE tbl_contatos.id_contato = 1');
+
+        $this->bd->bind(':titulo', $dados['titulo']);
+        $this->bd->bind(':descricao', $dados['descricao']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarRodape($dados){
+        $this->bd->query('UPDATE tbl_config
+        SET logradouro = :logradouro, numero = :numero, bairro = :bairro, cidade = :cidade, uf = :uf, cep = :cep, telefone = :telefone, email = :email, localizacaoIFRAM = :localizacaoIFRAM
+        WHERE tbl_config.id_config = 1');
+
+        $this->bd->bind(':logradouro', $dados['endereco']);
+        $this->bd->bind(':numero', $dados['numero']);
+        $this->bd->bind(':bairro', $dados['bairro']);
+        $this->bd->bind(':cidade', $dados['cidade']);
+        $this->bd->bind(':uf', $dados['uf']);
+        $this->bd->bind(':cep', $dados['cep']);
+        $this->bd->bind(':telefone', $dados['telefone']);
+        $this->bd->bind(':email', $dados['email']);
+        $this->bd->bind(':localizacaoIFRAM', $dados['mapa']);
+
+        if ($this->bd->executa()):
+            $this->bd->query('SELECT * FROM tbl_redessociais WHERE id_config = 1');
+        
+            foreach ($this->bd->resultados() as $rede) {
+                if($rede->nomeRede == 'Facebook'):
+                    $this->bd->query('UPDATE tbl_redessociais
+                    SET link_acesso = :linkAcesso
+                    WHERE nomeRede = :nomeRede');
+
+                    $this->bd->bind(':linkAcesso', $dados['facebook']);
+                    $this->bd->bind(':nomeRede', 'Facebook');
+                    $this->bd->executa();
+                endif;
+                if($rede->nomeRede == 'Instagram'):
+                    $this->bd->query('UPDATE tbl_redessociais
+                    SET link_acesso = :linkAcesso
+                    WHERE nomeRede = :nomeRede');
+
+                    $this->bd->bind(':linkAcesso', $dados['instagram']);
+                    $this->bd->bind(':nomeRede', 'Instagram');
+                    $this->bd->executa();
+                endif;
+                if($rede->nomeRede == 'Youtube'):
+                    $this->bd->query('UPDATE tbl_redessociais
+                    SET link_acesso = :linkAcesso
+                    WHERE nomeRede = :nomeRede');
+
+                    $this->bd->bind(':linkAcesso', $dados['youtube']);
+                    $this->bd->bind(':nomeRede', 'Youtube');
+                    $this->bd->executa();
+                endif;
+                if($rede->nomeRede == 'Whatsapp'):
+                    $this->bd->query('UPDATE tbl_redessociais
+                    SET link_acesso = :linkAcesso
+                    WHERE nomeRede = :nomeRede');
+
+                    $this->bd->bind(':linkAcesso', $dados['whatsapp']);
+                    $this->bd->bind(':nomeRede', 'Whatsapp');
+                    $this->bd->executa();
+                endif;
+                if($rede->nomeRede == 'Linkedin'):
+                    $this->bd->query('UPDATE tbl_redessociais
+                    SET link_acesso = :linkAcesso
+                    WHERE nomeRede = :nomeRede');
+
+                    $this->bd->bind(':linkAcesso', $dados['linkedin']);
+                    $this->bd->bind(':nomeRede', 'Linkedin');
+                    $this->bd->executa();
+                endif;
+                if($rede->nomeRede == 'TikToke'):
+                    $this->bd->query('UPDATE tbl_redessociais
+                    SET link_acesso = :linkAcesso
+                    WHERE nomeRede = :nomeRede');
+
+                    $this->bd->bind(':linkAcesso', $dados['tiktok']);
+                    $this->bd->bind(':nomeRede', 'TikTok');
+                    $this->bd->executa();
+                endif;
+                if($rede->nomeRede == 'Twitter'):
+                    $this->bd->query('UPDATE tbl_redessociais
+                    SET link_acesso = :linkAcesso
+                    WHERE nomeRede = :nomeRede');
+
+                    $this->bd->bind(':linkAcesso', $dados['twitter']);
+                    $this->bd->bind(':nomeRede', 'Twitter');
+                    $this->bd->executa();
+                endif;
+                
+                }
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function editarInfoInscricao($dados){
+        $this->bd->query('UPDATE tbl_config
+        SET dt_abe_inscricao = :dataInicio, dt_enc_Inscricao = :dataFim
+        WHERE tbl_config.id_config = 1');
+
+        $this->bd->bind(':dataInicio', $dados['dataInicio']);
+        $this->bd->bind(':dataFim', $dados['dataEncerramento']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
             return false;
         endif;
     }

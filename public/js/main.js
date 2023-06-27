@@ -292,7 +292,7 @@ $(document).ready(function() {
     // Enviar a solicitação AJAX
     $.ajax({
       type: 'POST',
-      url: 'http://localhost/adesclajes/User/enviarInscricao', // O arquivo PHP que processará o formulário
+      url: 'http://localhost/backup/adesclajes.com.br/User/enviarInscricao', // O arquivo PHP que processará o formulário
       data: formData,
       success: function(response) {
         $('#result').html(response); // Atualizar a div com a resposta do PHP
