@@ -6,6 +6,7 @@ class Admin extends Controller{
     private $confirmacaoEmail;
     private $info;
     private $chave;
+    private $logoCount;
     public function __construct(){
 
         if(!Sessao::logado()):
@@ -195,16 +196,17 @@ class Admin extends Controller{
             }
 
             // Nome do arquivo
-            $nomeArquivo = 'icon.webp';
+            $nomeArquivo = $_FILES['favicon']['name'];
 
             // Mover a foto para o diretório especificado
             move_uploaded_file($foto, $diretorio . $nomeArquivo);
 
             // Caminho completo da imagem original
             $caminhoOriginal = $diretorio . $nomeArquivo;
+            $novoNome = 'favicon.webp';
 
             // Caminho completo da imagem redimensionada
-            $caminhoRedimensionado = $diretorio . 'fav' . $nomeArquivo;
+            $caminhoRedimensionado = $diretorio . $novoNome;
 
             // Criar uma nova imagem com as dimensões desejadas e fundo transparente
             $imagemRedimensionada = imagecreatetruecolor(113, 108);
@@ -227,7 +229,6 @@ class Admin extends Controller{
                     break;
                 default:
                     // Tipo de imagem não suportado
-                    header('Location: ' . URL . '/admin/config');
                     exit;
             }
 
@@ -241,10 +242,17 @@ class Admin extends Controller{
             imagedestroy($imagemOriginal);
             imagedestroy($imagemRedimensionada);
 
-            // Atualizar o nome da foto redimensionada no banco de dados
-            $this->usuarioModel->editarFavicon($nomeArquivo);
-        }
+            // Remover a imagem antiga do diretório
+            if (file_exists($caminhoOriginal)) {
+                unlink($caminhoOriginal);
+            }
 
+            // Atualizar o nome da foto redimensionada no banco de dados
+            $dados['fotoFavicon'] = $novoNome;
+        }else{
+            $dados['fotoFavicon'] = $this->info->informacoes()->favicon;
+        }
+        $this->usuarioModel->editarFavicon($dados);
         header('Location: ' . URL . '/admin/config');
     }
     public function editarDestaques(){
@@ -333,6 +341,10 @@ class Admin extends Controller{
                     imagedestroy($imagemOriginal);
                     imagedestroy($imagemRedimensionada);
 
+                    // Remover a imagem antiga do diretório
+                    if (file_exists($caminhoOriginal)) {
+                        unlink($caminhoOriginal);
+                    }
                     // Atualizar o nome da foto redimensionada no banco de dados
                     $dados['fotoDestaque'] = $novoNome;
                 else:
@@ -835,10 +847,170 @@ class Admin extends Controller{
             ];
         }
     }    
+    public function editarContSobre(){
+        
+        $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
+        if (isset($formulario)):
+            $dados = [
+                'conteudo1' => trim($formulario['conteudo1']),
+                'conteudo2' => trim($formulario['conteudo2']),
+            ];
+            
+        else:
+            $dados = [
+                'conteudo1' => $this->info->informacoes()->resumo,
+                'conteudo2' => $this->info->informacoes()->historia,
+            ];
+        endif;
+        
+        $this->usuarioModel->editarContSobre($dados);
+        header('Location: ' . URL . '/admin/sobre');
+
+    }
+    public function cadastrarNoticias(){
+        $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+        if (isset($formulario)):
+
+            $foto = $_FILES['fotoDestaque']['tmp_name'] ? $_FILES['fotoDestaque'] : null;
+            
+            $dados = [
+                'titulo' => trim($formulario['tituloNoticia']),
+                'conteudo' => trim($formulario['editor1']),
+                'descricao' => trim($formulario['descricao']),
+                'autor' => trim($_SESSION['id_user']),
+                'dataPublic' => trim($formulario['dataPublica']),
+                'categoria' => trim($formulario['categoria']),
+                'metaTitulo' => trim($formulario['tituloNoticia']),
+                'metaDescricao' => trim($formulario['descricao']),
+                'metaChave' => trim($formulario['metaChave']),
+                'membro' => trim($formulario['membro']),
+                'comentarioTec' => trim($formulario['comentarioTec']),
+                'upload_erro' => '',
+            ];
+
+            if (in_array("", $formulario)):
+                if (empty($formulario['nomePatrocinador'])):
+                    $dados['nomeUser_erro'] = 'Preencha o campo Nome Completo';
+                endif;
+
+                if (empty($formulario['linkPatrocinador'])):
+                    $dados['telUser_erro'] = 'Preencha o campo Telefone';
+                endif;
+            else:
+                if (!empty($foto)):
+                    $foto = $_FILES['fotoDestaque']['tmp_name'];
+                    // Diretório onde as fotos são armazenadas
+                    $diretorio = 'uploads/noticias/';
+
+                    // Nome do arquivo
+                    $nomeArquivo = $_FILES['fotoDestaque']['name'];
+                    // Mover a foto para o diretório especificado
+                    move_uploaded_file($foto, $diretorio . $nomeArquivo);
+                    
+                    // Caminho completo da imagem original
+                    $caminhoOriginal = $diretorio . $nomeArquivo;
+                    $novoNome = 'noticia.webp';
+                    
+                    $extensao = strtolower(pathinfo($novoNome, PATHINFO_EXTENSION));
+                    // Verificar se a extensão é suportada (por exemplo, 'webp')
+                    if ($extensao == 'webp') :
+                        // Obter o número da sequência
+                        $sequencia = 1;
+                        
+                        // Verificar se já existem arquivos com a sequência atual
+                        while (file_exists($diretorio . 'noticia-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp')) {
+                            // Incrementar a sequência
+                            $sequencia++;
+                        }
+
+                        // Criar o novo nome de arquivo com base na sequência
+                        $novoNome = 'noticia-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp';
+                    endif;
+                    // Caminho completo da imagem redimensionada
+                    $caminhoRedimensionado = $diretorio . $novoNome;
+                    // Criar uma nova imagem com as dimensões desejadas e fundo transparente
+                    $imagemRedimensionada = imagecreatetruecolor(600, 400);
+                    imagesavealpha($imagemRedimensionada, true);
+                    $transparente = imagecolorallocatealpha($imagemRedimensionada, 0, 0, 0, 127);
+                    imagefill($imagemRedimensionada, 0, 0, $transparente);
+
+                    // Carregar a imagem original com base na sua extensão
+                    $extensao = strtolower(pathinfo($caminhoOriginal, PATHINFO_EXTENSION));
+                    
+                    switch ($extensao):
+                        case 'png':
+                            $imagemOriginal = imagecreatefrompng($caminhoOriginal);
+                            break;
+                        case 'jpg':
+                        case 'jpeg':
+                            $imagemOriginal = imagecreatefromjpeg($caminhoOriginal);
+                            break;
+                        case 'webp':
+                            $imagemOriginal = imagecreatefromwebp($caminhoOriginal);
+                            break;
+                        default:
+                            // Tipo de imagem não suportado
+                            exit;
+                    endswitch;
+                    
+                    // Redimensionar a imagem original para a nova imagem mantendo o fundo transparente
+                    imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 600, 400, imagesx($imagemOriginal), imagesy($imagemOriginal));
+
+                    // Salvar a imagem redimensionada no diretório preservando a transparência
+                    imagewebp($imagemRedimensionada, $caminhoRedimensionado);
+
+                    // Liberar a memória
+                    imagedestroy($imagemOriginal);
+                    imagedestroy($imagemRedimensionada);
+
+                    // Remover a imagem antiga do diretório
+                    if (file_exists($caminhoOriginal)):
+                        unlink($caminhoOriginal);
+                    endif;
+
+                    // Atualizar o nome da foto redimensionada no banco de dados
+                    $dados['fotoDestaque'] = $novoNome;
+                else:
+                    $dados['fotoDestaque'] = $this->info->informacoes()->img_Noticia;
+                endif;
+            endif;
+            $this->usuarioModel->cadastrarNoticias($dados);
+            header('Location: ' . URL . '/admin/noticia');
+        else:
+            $dados = [
+                'titulo' => '',
+                'conteudo' => '',
+                'descricao' => '',
+                'autor' => '',
+                'dataPublic' => '',
+                'categoria' => '',
+                'metaTitulo' => '',
+                'metaDescricao' => '',
+                'metaChave' => '',
+                'membro' => '',
+                'comentarioTec' => '',
+                'upload_erro' => '',
+            ];
+        endif;
+
+    }
+    private function pad($number, $length) {
+        $str = '' . $number;
+        while (strlen($str) < $length) {
+            $str = '0' . $str;
+        }
+        return $str;
+    }
     //Chamada para página de Notícia
     public function noticia(){
-        $this->view('admin/noticias');
+        $dados = [
+            'exibirNoticias' => $this->usuarioModel->exibirNoticias(),
+            'exibirCategorias' => $this->usuarioModel->exibirCategorias(),
+            'exibirDirecao' => $this->usuarioModel->exibirDirecao(),
+        ];
+        $this->view('admin/noticias', $dados);
     }
     //Chamada para página de Sobre-nós
     public function sobre(){

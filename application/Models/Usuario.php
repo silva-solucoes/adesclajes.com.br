@@ -354,12 +354,12 @@ class Usuario{
         endif;
     }
 
-    public function editarFavicon($foto){
+    public function editarFavicon($dados){
         $this->bd->query('UPDATE tbl_infoheader
         SET favicon = :foto 
         WHERE tbl_infoheader.id_infoHeader = 1');
 
-        $this->bd->bind(':foto', 'fav'.$foto);
+        $this->bd->bind(':foto', $dados['fotoFavicon']);
 
         if ($this->bd->executa()):
             Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
@@ -614,6 +614,89 @@ class Usuario{
             Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
             return false;
         endif;
+    }
+    
+    public function editarContSobre($dados){
+        $this->bd->query('UPDATE tbl_sobre
+        SET resumo = :conteudo1, historia = :conteudo2
+        WHERE tbl_sobre.id_sobre = 1');
+
+        $this->bd->bind(':conteudo1', $dados['conteudo1']);
+        $this->bd->bind(':conteudo2', $dados['conteudo2']);
+
+        if ($this->bd->executa()):
+            Sessao::mensagem('config','<b>Logo do site foi atualizada!</b>');
+            return true;
+        else:
+            Sessao::mensagem('config','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function exibirNoticias(){
+        $this->bd->query('SELECT n.*, u.*, un.*, cn.*, ct.*
+        FROM tbl_noticias AS n
+        JOIN tbl_usuario AS u ON n.id_autor = u.id_usuario
+        JOIN tbl_ultimasnoticias AS un ON n.id_ultimas = un.id_ultimas
+        JOIN categorianoticia AS cn ON n.id_categoria = cn.id_categoria
+        JOIN tbl_coment_tecnico AS ct ON n.id_coment_tec = ct.id_coment_tec
+        ORDER BY n.id_noticia DESC');
+        return $this->bd->resultados();
+    }
+
+    public function exibirCategorias(){
+        $this->bd->query('SELECT * FROM categorianoticia');
+        return $this->bd->resultados();
+    }
+
+    public function cadastrarNoticias($dados){
+
+        $this->bd->query('INSERT INTO tbl_coment_tecnico (comentario, id_membro)
+        VALUES (:comentario, :idMembro)');
+        $this->bd->bind(':comentario', $dados['comentarioTec']);
+        $this->bd->bind(':idMembro', $dados['membro']);
+
+        if ($this->bd->executa()):
+            $this->bd->query('SELECT tbl_coment_tecnico.id_coment_tec FROM tbl_coment_tecnico');
+            $id_ComentarioTec = $this->bd->ultimoIdInserido();
+
+            $this->bd->query('INSERT INTO tbl_noticias (tl_noticia, img_Noticia, descricao, conteudo, dtAtualizacao, dtCadastro, id_autor, id_ultimas, id_categoria, id_coment_tec, metaTitulo, metaDescricao, metaKey)
+            VALUES (:titulo, :imagem, :descricao, :conteudo, :dtAtualizacao, :dtCadastro, :autor, :idUltimas, :categoria, :idComentTec, :metaTitulo, :metaDescricao, :metaKey)');
+
+            $this->bd->bind(':titulo', $dados['titulo']);
+            $this->bd->bind(':imagem', $dados['fotoDestaque']);
+            $this->bd->bind(':descricao', $dados['descricao']);
+            $this->bd->bind(':conteudo', $dados['conteudo']);
+            $this->bd->bind(':dtAtualizacao', $dados['dataPublic']);
+            $this->bd->bind(':dtCadastro', $dados['dataPublic']);
+            $this->bd->bind(':autor', $dados['autor']);
+            $this->bd->bind(':idUltimas', 1);
+            $this->bd->bind(':categoria', $dados['categoria']);
+            $this->bd->bind(':idComentTec', $id_ComentarioTec);
+            $this->bd->bind(':metaTitulo', $dados['metaTitulo']);
+            $this->bd->bind(':metaDescricao', $dados['metaDescricao']);
+            $this->bd->bind(':metaKey', $dados['metaChave']);
+
+            if ($this->bd->executa()):
+                Sessao::mensagem('cadastroNoticia','<b>Patrocinador foi Cadastrado!</b>');
+                return true;
+            else:
+                Sessao::mensagem('cadastroNoticia','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+                return false;
+            endif;
+        else:
+            Sessao::mensagem('cadastroNoticia','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+
+    public function exibirDirecao(){
+        $this->bd->query('SELECT *
+        FROM tbl_membro
+        JOIN tbl_redesocialmembro AS rsm ON rsm.id_rede = tbl_membro.id_membro
+        JOIN tbl_diretoria AS d ON d.id_equipe = tbl_membro.id_equipe
+        ORDER BY tbl_membro.id_membro DESC');
+        return $this->bd->resultados();
     }
 
 }

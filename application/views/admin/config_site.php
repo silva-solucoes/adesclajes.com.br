@@ -88,7 +88,7 @@
                                                         <label for="faviconInput" class="btn btn-primary btn-sm" title="Atualizar Logo">
                                                             <i class="bi bi-upload"></i> Atualizar Icone
                                                         </label>
-                                                        <input type="file" id="faviconInput" name="favicon" accept=".jpg, .jpeg, .png, .webp" style="display: none">
+                                                        <input type="file" id="faviconInput" name="favicon" accept=".jpg, .jpeg, .png" style="display: none">
                                                     </div>
                                                 </div>
                                             </div>

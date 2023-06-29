@@ -28,8 +28,71 @@
 <script src="<?php echo URL . '/public/vendor/simple-datatables/simple-datatables.js'; ?>"></script>
 <script src="<?php echo URL . '/public/vendor/tinymce/tinymce.min.js'; ?>"></script>
 <script src="<?php echo URL . '/public/vendor/php-email-form/validate.js'; ?>"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script src="<?php echo URL . '/public/css/dist/trumbowyg.min.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo URL . '/public/css/dist/langs/pt_br.min.js'; ?>"></script>
+<script src="<?php echo URL . '/public/css/dist/plugins/emoji/trumbowyg.emoji.min.js'; ?>"></script>
+<script>
+    $('#editor1').trumbowyg({
+            lang: 'pt_br',
+            btns: [
+                ['viewHTML'],
+                ['undo', 'redo'], // Only supported in Blink browsers
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['superscript', 'subscript'],
+                ['link'],
+                ['insertImage'],
+                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                ['unorderedList', 'orderedList'],
+                ['horizontalRule'],
+                ['removeformat'],
+                ['fullscreen'],
+                ['emoji']
+            ],
+            autogrow: true
+        });
+        $('#editor2').trumbowyg({
+            lang: 'pt_br',
+            btns: [
+                ['viewHTML'],
+                ['undo', 'redo'], // Only supported in Blink browsers
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['superscript', 'subscript'],
+                ['link'],
+                ['insertImage'],
+                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                ['unorderedList', 'orderedList'],
+                ['horizontalRule'],
+                ['removeformat'],
+                ['fullscreen'],
+                ['emoji']
+            ],
+            autogrow: true
+        });
+        $('#conteudoNoticia').trumbowyg({
+            lang: 'pt_br',
+            btns: [
+                ['viewHTML'],
+                ['undo', 'redo'], // Only supported in Blink browsers
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['superscript', 'subscript'],
+                ['link'],
+                ['insertImage'],
+                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                ['unorderedList', 'orderedList'],
+                ['horizontalRule'],
+                ['removeformat'],
+                ['fullscreen'],
+                ['emoji']
+            ],
+            autogrow: true
+        });
+</script>
 <!-- Template Main JS File -->
 <script src="<?php echo URL . '/public/js/mainAdm.js'; ?>"></script>
 

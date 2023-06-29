@@ -6,7 +6,7 @@
         <h1>Gerenciar de Notícias</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo URL . 'painel'; ?>">Painel de Controle</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo URL . '/admin/painel'; ?>">Painel de Controle</a></li>
                 <li class="breadcrumb-item active">Lista de Notícias</li>
             </ol>
         </nav>
@@ -90,34 +90,39 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr data-index="0">
-                                            <td><a href="#">#2457</a></td>
+                                    <?php $i = 0; ?>
+                                    <?php foreach($dados['exibirNoticias'] as $listar):?>
+                                        <?php $numeroFormatado = str_pad($listar->id_noticia, 4, '0', STR_PAD_LEFT); ?>
+                                        <?php $i += 1;?>
+                                        <tr data-index="<?=$i?>">
+                                            <td><a href="#">#<?=$numeroFormatado?></a></td>
                                             <td>
                                                 <font style="vertical-align: inherit;">
                                                     <font style="vertical-align: inherit;"><img
-                                                            src="<?php echo URL . 'public/uploads/noticia-08.jpg'; ?>"
-                                                            alt="Patrocinador 1" style="width:120px;"></font>
+                                                            src="<?php echo URL . '/public/uploads/noticias/'.$listar->img_Noticia; ?>"
+                                                            alt="<?=$listar->tl_noticia?>" style="width:120px;"></font>
                                                 </font>
                                             </td>
                                             <td><a href="#" class="text-primary">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">ADESC Lajes</font>
+                                                        <font style="vertical-align: inherit;"><?=$listar->tl_noticia?></font>
                                                     </font>
                                                 </a></td>
-                                            <td>Futebol</td>
+                                            <td><?=$listar->nome?></td>
                                             <td><span class="badge">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-warning rounded-pill" href="#"
+                                                                class="btn btn-warning rounded-pill" href="<?=$listar->id_noticia?>"
                                                                 title="Editar Patrocinador"><i
                                                                     class="bi bi-pencil-square"></i></a></font>
                                                         <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-danger rounded-pill" href="#"
+                                                                class="btn btn-danger rounded-pill" href="<?=$listar->id_noticia?>"
                                                                 title="Excluir Patrocinador"><i
                                                                     class="bi bi-trash3"></i></a></font>
                                                     </font>
                                                 </span></td>
                                         </tr>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -158,11 +163,11 @@
                             <p class="mb-3 bt-5 text-center">Preencha o formulário abaixo e adicione novidades, eventos e informações
                                 relevantes para manter nossa comunidade atualizada.</p>
                             <!-- Floating Labels Form -->
-                            <form class="row g-3">
+                            <form class="row g-3" action="<?php echo URL.'/admin/cadastrarNoticias';?>" method="post" enctype="multipart/form-data">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="floatingName"
-                                            placeholder="Your Name">
+                                        <input type="text" name="tituloNoticia" class="form-control" id="titulo"
+                                            placeholder="Título da Notícia" required>
                                         <label for="floatingName">Título da Notícia*:</label>
                                     </div>
                                 </div>
@@ -170,16 +175,14 @@
                                     <label for="floatingPassword">Conteúdo da Notícia*:</label>
                                     <div class="form-floating">
 
-                                        <textarea name="editor1"></textarea>
-                                        <script>
-                                            CKEDITOR.replace('editor1');
-                                        </script>
+                                        <textarea id="conteudoNoticia" name="editor1" required></textarea>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Address" id="floatingTextarea"
-                                            style="height: 100px;"></textarea>
+                                        <textarea class="form-control" name="descricao" placeholder="Address" id="descricao"
+                                            style="height: 100px;" required></textarea>
                                         <label for="floatingTextarea">Conteúdo curto da Notícia (Breve
                                             descrição)*:</label>
                                     </div>
@@ -187,8 +190,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="floatingCity"
-                                                placeholder="Autor">
+                                            <input type="text" name="autor" class="form-control" id="floatingCity"
+                                                placeholder="Autor" value="<?=$_SESSION['nome_user']?>" disabled required>
                                             <label for="floatingCity">Autor*:</label>
                                         </div>
                                     </div>
@@ -196,23 +199,24 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="date" class="form-control" id="floatingCity"
-                                                placeholder="Data e Hora">
+                                            <input type="datetime-local" name="dataPublica" class="form-control" id="floatingCity"
+                                                placeholder="Data e Hora" required>
                                             <label for="floatingCity">Data de Publicação*:</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <select class="form-select" id="floatingSelect" aria-label="State">
-                                            <option selected>Selecione</option>
-                                            <option value="1">Futebol</option>
-                                            <option value="2">Futesal</option>
-                                            <option value="3">Fut7</option>
+                                        <select class="form-select" id="floatingSelect" aria-label="State" name="categoria" required>
+                                            <option value="" selected disabled>Selecione</option>
+                                        <?php foreach($dados['exibirCategorias'] as $lerCategoria): ?>
+                                            <option value="<?=$lerCategoria->id_categoria?>"><?=$lerCategoria->nome?></option>
+                                        <?php endforeach; ?>
                                         </select>
                                         <label for="floatingSelect">Categoria da Notícia*:</label>
                                     </div>
                                 </div>
+                                <!--
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
                                         <select class="form-select" id="floatingSelect" aria-label="State">
@@ -223,18 +227,46 @@
                                         <label for="floatingSelect">Ativar Comentários na Notícia?*:</label>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                -->
+                                <hr>
+                                <div class="col-6">
                                     <label for="floatingSelect">Foto de Destaque*:</label>
                                     <div class="form-floating">
-                                        <input class="form-control" type="file" id="formFile">
+                                        <input class="form-control" type="file" name="fotoDestaque" accept=".jpg, .jpeg, .png" id="destaqueInput" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <img id="destaqueImg" src="" alt="Imagem Destaque" width="50%" style="display: none;">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="floatingSelect" aria-label="State" name="membro" required>
+                                            <option value="" selected disabled>Selecione</option>
+                                        <?php foreach($dados['exibirDirecao'] as $lerMembro): ?>
+                                            <option value="<?=$lerMembro->id_membro?>"><?=$lerMembro->nome_membro?></option>
+                                        <?php endforeach; ?>
+                                        </select>
+                                        <label for="floatingSelect">Membro de Direção*:</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Meta-Título" style="height: 100px;" name="comentarioTec" required></textarea>
+                                            <label for="floatingCity">Comentário Técnico*:</label>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Meta-Título"
-                                                id="floatingTextarea" style="height: 100px;"></textarea>
+                                            <textarea class="form-control" placeholder="Meta-Título" id="meta-titulo" style="height: 100px;" name="metaTitulo" disabled></textarea>
                                             <label for="floatingCity">Meta-Título*:</label>
                                         </div>
                                     </div>
@@ -242,24 +274,26 @@
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Meta-Keywords" id="floatingTextarea"
-                                            style="height: 100px;"></textarea>
+                                            style="height: 100px;" name="metaChave" required></textarea>
                                         <label for="floatingZip">Meta-Keywords (palavras-chave)*:</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Meta-Decrição" id="floatingTextarea"
-                                            style="height: 100px;"></textarea>
+                                        <textarea class="form-control" placeholder="Meta-Decrição" id="meta-descricao"
+                                            style="height: 100px;" name="metaDescricao" disabled></textarea>
                                         <label for="floatingZip">Meta-Descrição*:</label>
                                     </div>
                                 </div>
-
+                                <div class="alert alert-warning" role="alert">
+                                    As <strong>palavras-chave</strong> devem ser separadas por ",". Exemplo: notícia,Adesc,online
+                                </div>
                         </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button id="botao-inscricao" name="CadUsuario" type="submit" value="cadastrar" class="">Cadastrar
+                    <button id="botao-inscricao" name="CadUsuario" type="submit" value="cadastrar" class="btn btn-primary">Cadastrar
                         Notícia</button>
                     </form>
                     <button id="botao-cancelar" type="button" class="btn btn-secondary"
@@ -270,5 +304,40 @@
     </div>
 
 </main><!-- End #main -->
+<script>
+    document.getElementById('destaqueInput').addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        var imageType = /image.*/;
 
+        // Verificar se o arquivo é uma imagem
+        if (file && file.type.match(imageType)) {
+            var img = new Image();
+            img.src = URL.createObjectURL(file);
+
+            img.onload = function() {
+                // Atualizar a imagem exibida com a foto selecionada
+                document.getElementById('destaqueImg').style.display = 'block';
+                document.getElementById('destaqueImg').src = img.src;
+            };
+        }
+    });
+    // Obtém referências para os elementos
+    var inputTitulo = document.getElementById("titulo");
+    var inputMetaTitulo = document.getElementById("meta-titulo");
+
+    // Adiciona o evento de keyup ao campo "título"
+    inputTitulo.addEventListener("keyup", function() {
+        // Copia o valor do campo "título" para o campo "meta-título"
+        inputMetaTitulo.value = inputTitulo.value;
+    });
+    // Obtém referências para os elementos
+    var inputDescricao = document.getElementById("descricao");
+    var inputMetaDescricao = document.getElementById("meta-descricao");
+
+    // Adiciona o evento de keyup ao campo "título"
+    inputDescricao.addEventListener("keyup", function() {
+        // Copia o valor do campo "título" para o campo "meta-título"
+        inputMetaDescricao.value = inputDescricao.value;
+    });
+</script>
 <?php include_once 'footer.php'; ?>

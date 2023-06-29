@@ -68,7 +68,7 @@
 
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?$i?>">
                     <div class="post-box">
-                        <div class="post-img"><img src="<?php echo URL . '/public/uploads/'.$listar->img_Noticia; ?>"
+                        <div class="post-img"><img src="<?php echo URL . '/public/uploads/noticias/'.$listar->img_Noticia; ?>"
                                 class="img-fluid" alt="Imagem Destaque"></div>
                         <div class="meta">
                             <span class="post-date"><i class="bi bi-calendar-event"></i> <?=$dataPostagem?></span>
@@ -108,10 +108,10 @@
             </div>
 
             <div class="row content">
-                <div class="col-lg-6">
+                <div class="col-lg-6 text-justify">
                     <?=$dados['info']->resumo?>
                 </div>
-                <div class="col-lg-6 pt-4 pt-lg-0">
+                <div class="col-lg-6 pt-4 pt-lg-0 text-justify">
                     <?=$dados['info']->historia?>
                 </div>
             </div>

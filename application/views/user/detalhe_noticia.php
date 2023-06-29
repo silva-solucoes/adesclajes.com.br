@@ -29,7 +29,7 @@
                     <article class="blog-details">
 
                         <div class="post-img">
-                            <img src="<?php echo URL . '/public/uploads/'.$dados['noticia']->img_Noticia; ?>" alt="Imagem Destaque" class="img-fluid">
+                            <img src="<?php echo URL . '/public/uploads/noticias/'.$dados['noticia']->img_Noticia; ?>" alt="Imagem Destaque" class="img-fluid">
                         </div>
 
                         <h2 class="title"><?=$dados['noticia']->tl_noticia?></h2>
@@ -198,7 +198,7 @@
                             <?php foreach($dados['ultimasNoticias'] as $listar): ?>
                             <?php $dataPostagem = strftime('%d de %B de %Y', strtotime($listar->dtAtualizacao));?>
                                 <div class="post-item mt-3">
-                                    <img src="<?php echo URL . '/public/uploads/'.$listar->img_Noticia; ?>" alt=""
+                                    <img src="<?php echo URL . '/public/uploads/noticias/'.$listar->img_Noticia; ?>" alt=""
                                         class="flex-shrink-0">
                                     <div>
                                         <h4><a href="<?php echo URL . '/paginas/detalheNoticias/'.$listar->id_noticia; ?>">

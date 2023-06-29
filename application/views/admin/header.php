@@ -6,7 +6,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>Painel de Controle - ADESC Lajes</title>
-    <script src="<?php echo URL . '/public/js/ckeditor/ckeditor.js'; ?>"></script>
+    <link href="<?php echo URL . '/public/css/dist/ui/trumbowyg.min.css'; ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo URL . '/public/css/dist/plugins/emoji/ui/trumbowyg.emoji.min.css'; ?>">
     
     <meta content="" name="description">
     <meta content="" name="keywords">
