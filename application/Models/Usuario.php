@@ -833,7 +833,7 @@ class Usuario{
         INNER JOIN tbl_detalhesresponsavel ON tbl_detalhesresponsavel.id_responsavel = tbl_atleta.id_responsavel
         INNER JOIN tbl_detalhetecnicos ON tbl_detalhetecnicos.id_tecnico = tbl_atleta.id_detalheTec
         INNER JOIN tbl_incricao ON tbl_incricao.id_atleta = tbl_atleta.id_atleta
-        WHERE tbl_incricao.situacao_atleta = 1 ORDER BY  tbl_incricao.id_incricao DESC');
+        WHERE tbl_incricao.situacao_atleta = 1 ORDER BY  tbl_incricao.id_inscricao DESC');
         return $this->bd->resultados();
     }
 
