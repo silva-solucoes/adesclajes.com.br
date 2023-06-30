@@ -836,5 +836,9 @@ class Usuario{
         WHERE tbl_incricao.situacao_atleta = 1 ORDER BY  tbl_incricao.id_inscricao DESC');
         return $this->bd->resultados();
     }
+    public function exibirFotos(){
+        $this->bd->query('SELECT * FROM tbl_pagfotos ORDER BY  tbl_pagfotos.id_pagfotos DESC');
+        return $this->bd->resultados();
+    }
 
 }

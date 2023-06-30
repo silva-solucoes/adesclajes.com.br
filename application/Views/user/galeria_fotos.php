@@ -7,10 +7,10 @@
         <div class="container">
 
             <ol>
-                <li><a href="<?php echo URL . 'index' ?>">Início</a></li>
-                <li>Política de Privacidade</li>
+                <li><a href="<?php echo URL; ?>">Início</a></li>
+                <li>Galeria de Fotos</li>
             </ol>
-            <h2>Política de Privacidade</h2>
+            <h2>Galeria de Fotos</h2>
 
         </div>
     </section><!-- End Breadcrumbs -->
@@ -28,7 +28,7 @@
                         <ul>
                             <li><strong>Galeria de Fotos</strong></li>
                             <li><strong>Autor</strong>: ADESC Lajes</li>
-                            <li><strong>Atualizado em</strong>: 17 Abr 2023</li>
+                            <li><strong>Atualizado em</strong>: 04 Jul 2023</li>
                         </ul>
                     </div>
                 </div>
@@ -50,99 +50,20 @@
                     <!-- ======= Seção de Fotos ======= -->
                     <section id="gallery" class="gallery">
                         <div class="container-fluid">
-
                             <div class="row gy-4 justify-content-center">
+                            <?php foreach($dados['exibirFotos'] as $listar):?>
+                            
                                 <div class="col-xl-3 col-lg-4 col-md-6">
                                     <div class="gallery-item h-100">
-                                        <img src="<?php echo URL . '/public/uploads/noticia-13.webp'; ?>" class="img-fluid" alt="">
+                                        <img src="<?php echo URL . '/public/uploads/fotos/'.$listar->foto_galeria; ?>" class="img-fluid" alt="">
                                         <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="<?php echo URL . '/public/uploads/noticia-13.webp'; ?>" title="Gallery 1" class="glightbox preview-link">
+                                            <a href="<?php echo URL . '/public/uploads/fotos/'.$listar->foto_galeria; ?>" title="<?='<b>'.$listar->tl_pagFotos.'</b>: '.$listar->descricao_pagFotos?>" class="glightbox preview-link">
                                             <i class="bi bi-arrows-angle-expand"></i></a>
                                         </div>
                                     </div>
                                 </div><!-- End Gallery Item -->
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gallery-item h-100">
-                                        <img src="<?php echo URL . '/public/uploads/noticia-08.webp'; ?>" class="img-fluid" alt="">
-                                        <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="<?php echo URL . '/public/uploads/noticia-08.webp'; ?>" title="Gallery 2" class="glightbox preview-link">
-                                            <i class="bi bi-arrows-angle-expand"></i></a>
-                                        </div>
-                                    </div>
-                                </div><!-- End Gallery Item -->
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gallery-item h-100">
-                                        <img src="<?php echo URL . '/public/uploads/noticia-09.webp'; ?>" class="img-fluid" alt="">
-                                        <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="<?php echo URL . '/public/uploads/noticia-09.webp'; ?>" title="Gallery 3" class="glightbox preview-link">
-                                            <i class="bi bi-arrows-angle-expand"></i></a>
-                                        </div>
-                                    </div>
-                                </div><!-- End Gallery Item -->
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gallery-item h-100">
-                                        <img src="<?php echo URL . '/public/uploads/noticia-05.webp'; ?>" class="img-fluid" alt="">
-                                        <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="<?php echo URL . '/public/uploads/noticia-05.webp'; ?>" title="Gallery 4" class="glightbox preview-link">
-                                            <i class="bi bi-arrows-angle-expand"></i></a>
-                                        </div>
-                                    </div>
-                                </div><!-- End Gallery Item -->
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gallery-item h-100">
-                                        <img src="<?php echo URL . '/public/uploads/noticia-06.webp'; ?>" class="img-fluid" alt="">
-                                        <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="<?php echo URL . '/public/uploads/noticia-06.webp'; ?>" title="Gallery 5" class="glightbox preview-link">
-                                            <i class="bi bi-arrows-angle-expand"></i></a>
-                                        </div>
-                                    </div>
-                                </div><!-- End Gallery Item -->
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gallery-item h-100">
-                                        <img src="<?php echo URL . '/public/uploads/noticia-10.webp'; ?>" class="img-fluid" alt="">
-                                        <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="<?php echo URL . '/public/uploads/noticia-10.webp'; ?>" title="Gallery 6" class="glightbox preview-link">
-                                            <i class="bi bi-arrows-angle-expand"></i></a>
-                                        </div>
-                                    </div>
-                                </div><!-- End Gallery Item -->
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gallery-item h-100">
-                                        <img src="<?php echo URL . '/public/uploads/noticia-11.webp'; ?>"class="img-fluid" alt="">
-                                        <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="<?php echo URL . '/public/uploads/noticia-11.webp'; ?>" title="Gallery 7" class="glightbox preview-link">
-                                            <i class="bi bi-arrows-angle-expand"></i></a>
-                                        </div>
-                                    </div>
-                                </div><!-- End Gallery Item -->
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gallery-item h-100">
-                                        <img src="<?php echo URL . '/public/uploads/noticia-12.webp'; ?>" class="img-fluid" alt="">
-                                        <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="<?php echo URL . '/public/uploads/noticia-12.webp'; ?>" title="Gallery 8" class="glightbox preview-link">
-                                            <i class="bi bi-arrows-angle-expand"></i></a>
-                                        </div>
-                                    </div>
-                                </div><!-- End Gallery Item -->
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gallery-item h-100">
-                                        <img src="<?php echo URL . '/public/uploads/noticia-20.webp'; ?>" class="img-fluid" alt="">
-                                        <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="<?php echo URL . '/public/uploads/noticia-20.webp'; ?>" title="Gallery 9" class="glightbox preview-link">
-                                            <i class="bi bi-arrows-angle-expand"></i></a>
-                                        </div>
-                                    </div>
-                                </div><!-- End Gallery Item -->
-                                <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gallery-item h-100">
-                                        <img src="<?php echo URL . '/public/uploads/noticia-21.webp'; ?>" class="img-fluid" alt="">
-                                        <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="<?php echo URL . '/public/uploads/noticia-21.webp'; ?>" title="Gallery 10" class="glightbox preview-link">
-                                            <i class="bi bi-arrows-angle-expand"></i></a>
-                                        </div>
-                                    </div>
-                                </div><!-- End Gallery Item -->
-
+                            <?php endforeach; ?>
+                                
                             </div>
 
                         </div>
@@ -154,6 +75,24 @@
             </div>
         </div>
     </section><!-- End Seção de Detalhes de Esporte -->
+
+    <!-- ======= Seção de Patrocinadores ======= -->
+    <section id="clients" class="clients section-bg">
+        <div class="container">
+
+            <div class="row center slider" data-aos="zoom-in">
+                <?php foreach($dados['patrocinadores'] as $listar):?>
+                <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                    <a href="<?=$listar->link_acesso?>" title="<?=$listar->nomePatrocinador?>" target="_blank">
+                        <img width="200" height="87" src="<?php echo URL . '/public/images/patrocinadores/'.$listar->img_patrocinio; ?>" class="img-fluid"
+                        alt="<?=$listar->nomePatrocinador?>">
+                    </a>
+                </div>
+                <?php endforeach;?>
+            </div>
+
+        </div>
+    </section><!-- Fim Patrocinadores -->
 
 </main><!-- End #main -->
 

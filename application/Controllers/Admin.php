@@ -1315,15 +1315,24 @@ class Admin extends Controller{
     }
     //Chamada para página de Fotos
     public function fotos(){
-        $this->view('admin/galeria_foto');
+        $dados=[
+            'exibirFotos' => $this->usuarioModel->exibirFotos(),
+        ];
+        $this->view('admin/galeria_foto', $dados);
     }
     //Chamada para página de Categoria de Esportes
     public function esportes(){
-        $this->view('admin/categoria_esportiva');
+        $dados=[
+            'exibirCategorias' => $this->usuarioModel->exibirCategorias(),
+        ];
+        $this->view('admin/categoria_esportiva', $dados);
     }
     //Chamada para página de Diretoria
     public function diretoria(){
-        $this->view('admin/diretoria');
+        $dados=[
+            'exibirDirecao' => $this->info->todosMembros(),
+        ];
+        $this->view('admin/diretoria', $dados);
     }
     //Chamada para página de Inscrições
     public function inscricao(){

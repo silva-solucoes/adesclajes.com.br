@@ -200,7 +200,8 @@ class Paginas extends Controller{
     }
     public function galeriaFoto(){
         $dados=[
-            'info' => $this->info->lerInformacao()
+            'info' => $this->info->lerInformacao(),
+            'exibirFotos' => $this->usuarioModel->exibirFotos(),
         ];
         //Exibir todos os patrocinadores
         $dados['patrocinadores']=$this->info->todasPatrocinadores();
