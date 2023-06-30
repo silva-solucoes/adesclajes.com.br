@@ -7,11 +7,11 @@
         <div class="container">
 
             <ol>
-                <li><a href="<?php echo URL . 'index' ?>">Início</a></li>
+                <li><a href="<?php echo URL; ?>">Início</a></li>
                 <li>Esportes</li>
-                <li>Título do tipo de esporte</li>
+                <li><?=$dados['titulo']?></li>
             </ol>
-            <h2>Título do tipo de esporte</h2>
+            <h2><?=$dados['titulo']?></h2>
 
         </div>
     </section><!-- End Breadcrumbs -->
@@ -26,43 +26,33 @@
                     <div class="portfolio-info">
                         <h3>Informações</h3>
                         <ul>
-                            <li><strong>Categoria</strong>: Futsal</li>
-                            <li><strong>Autor</strong>: ADESC Lajes</li>
-                            <li><strong>Postado em</strong>: 17 Abr 2023</li>
+                            <li><strong>Categoria</strong>: <?=$dados['categoria']?></li>
+                            <li><strong>Autor</strong>: <?=$dados['autor']?></li>
+                            <li><strong>Postado em</strong>: <?=$dados['data']?></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-lg-8">
                     <div class="portfolio-info portfolio-description">
-                        <h2>Sobre a categoria esportiva Futsal</h2>
-                        <p>
-                            Esta categoria é dividida em níveis esportivos, como o sub-11, sub-12 e assim
-                            sucessivamente, até o sub-16. O Futsal é um esporte que desenvolve habilidades físicas
-                            e mentais, como coordenação motora, agilidade, reflexos rápidos e trabalho em equipe. É uma
-                            ótima oportunidade para os jovens atletas que desejam melhorar suas habilidades e jogar em
-                            uma equipe competitiva.
+                        <h2>Sobre a categoria esportiva <?=$dados['categoria']?></h2>
+                        <p class="text-justify">
+                            <?=$dados['descricao']?>
                         </p>
                     </div>
                 </div>
 
                 <div class="col-lg-12">
                     <div class="portfolio-description">
-                        <p>
-                            A escolinha ADESC tem uma equipe dedicada de treinadores experientes que trabalham para
-                            desenvolver as habilidades de cada atleta individualmente, além de promover um ambiente de
-                            trabalho em equipe e aprendizado mútuo.
-
-                            Convido todos os interessados em experimentar o esporte ou melhorar suas habilidades no
-                            Futsal a se juntarem à escolinha ADESC e fazer parte de uma equipe de sucesso. Não perca
-                            esta oportunidade única de experimentar um esporte emocionante e competitivo!
+                        <p class="text-justify">
+                            <?=$dados['conteudo']?>
                         </p>
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <!--<div class="col-lg-12">
 
-                    <!-- ======= Seção de Atletas ======= -->
+                    ======= Seção de Atletas =======
                     <section id="faq" class="faq section-bg">
                         <div class="container" data-aos="fade-up">
 
@@ -370,178 +360,9 @@
                             </div>
 
                         </div>
-                    </section><!-- Fim Perguntas Frequentes -->
+                    </section> Fim Perguntas Frequentes
 
-                </div>
-
-                <!-- GALERIA DE FOTOS -->
-                <section id="portfolio-details" class="portfolio-details">
-                    <div class="container">
-
-                        <div class="row gy-4">
-
-                            <div class="col-lg-4">
-                                <div class="portfolio-info">
-                                    <h3>Informações</h3>
-                                    <ul>
-                                        <li><strong>Galeria de Fotos</strong></li>
-                                        <li><strong>Autor</strong>: ADESC Lajes</li>
-                                        <li><strong>Atualizado em</strong>: 17 Abr 2023</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8">
-                                <div class="portfolio-info portfolio-description">
-                                    <h2>Sobre a Galeria de Fotos</h2>
-                                    <p>
-                                        Explore a nossa galeria de imagens e confira momentos incríveis da ADESC Lajes!
-                                        Veja fotos dos nossos jogadores, das partidas emocionantes e dos bastidores do
-                                        nosso time. Não perca mais tempo, acesse agora mesmo o nosso site e confira as
-                                        melhores imagens da ADESC Lajes!
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-
-                                <!-- ======= Seção de Fotos ======= -->
-                                <section id="gallery" class="gallery">
-                                    <div class="container-fluid">
-
-                                        <div class="row gy-4 justify-content-center">
-                                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                                <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-13.jpg'; ?>"
-                                                        class="img-fluid" alt="">
-                                                    <div
-                                                        class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-13.jpg'; ?>"
-                                                            title="Gallery 1" class="glightbox preview-link"><i
-                                                                class="bi bi-arrows-angle-expand"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div><!-- End Gallery Item -->
-                                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                                <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-08.jpg'; ?>"
-                                                        class="img-fluid" alt="">
-                                                    <div
-                                                        class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-08.jpg'; ?>"
-                                                            title="Gallery 2" class="glightbox preview-link"><i
-                                                                class="bi bi-arrows-angle-expand"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div><!-- End Gallery Item -->
-                                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                                <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-09.jpg'; ?>"
-                                                        class="img-fluid" alt="">
-                                                    <div
-                                                        class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-09.jpg'; ?>"
-                                                            title="Gallery 3" class="glightbox preview-link"><i
-                                                                class="bi bi-arrows-angle-expand"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div><!-- End Gallery Item -->
-                                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                                <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-05.jpg'; ?>"
-                                                        class="img-fluid" alt="">
-                                                    <div
-                                                        class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-05.jpg'; ?>"
-                                                            title="Gallery 4" class="glightbox preview-link"><i
-                                                                class="bi bi-arrows-angle-expand"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div><!-- End Gallery Item -->
-                                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                                <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-06.jpg'; ?>"
-                                                        class="img-fluid" alt="">
-                                                    <div
-                                                        class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-06.jpg'; ?>"
-                                                            title="Gallery 5" class="glightbox preview-link"><i
-                                                                class="bi bi-arrows-angle-expand"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div><!-- End Gallery Item -->
-                                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                                <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-10.jpg'; ?>"
-                                                        class="img-fluid" alt="">
-                                                    <div
-                                                        class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-10.jpg'; ?>"
-                                                            title="Gallery 6" class="glightbox preview-link"><i
-                                                                class="bi bi-arrows-angle-expand"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div><!-- End Gallery Item -->
-                                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                                <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-11.jpg'; ?>"
-                                                        class="img-fluid" alt="">
-                                                    <div
-                                                        class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-11.jpg'; ?>"
-                                                            title="Gallery 7" class="glightbox preview-link"><i
-                                                                class="bi bi-arrows-angle-expand"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div><!-- End Gallery Item -->
-                                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                                <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-12.jpg'; ?>"
-                                                        class="img-fluid" alt="">
-                                                    <div
-                                                        class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-12.jpg'; ?>"
-                                                            title="Gallery 8" class="glightbox preview-link"><i
-                                                                class="bi bi-arrows-angle-expand"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div><!-- End Gallery Item -->
-                                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                                <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-20.jpg'; ?>"
-                                                        class="img-fluid" alt="">
-                                                    <div
-                                                        class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-20.jpg'; ?>"
-                                                            title="Gallery 9" class="glightbox preview-link"><i
-                                                                class="bi bi-arrows-angle-expand"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div><!-- End Gallery Item -->
-                                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                                <div class="gallery-item h-100">
-                                                    <img src="<?php echo URL . 'public/uploads/noticia-21.jpg'; ?>"
-                                                        class="img-fluid" alt="">
-                                                    <div
-                                                        class="gallery-links d-flex align-items-center justify-content-center">
-                                                        <a href="<?php echo URL . 'public/uploads/noticia-21.jpg'; ?>"
-                                                            title="Gallery 10" class="glightbox preview-link"><i
-                                                                class="bi bi-arrows-angle-expand"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div><!-- End Gallery Item -->
-
-                                        </div>
-
-                                    </div>
-                                </section><!-- End Gallery Section -->
-
-                            </div>
-                            <!-- FIM GALERIA DE FOTOS -->
-
-                        </div>
-                    </div>
-                </section><!-- End Seção de Detalhes de Esporte -->
+                </div>-->
 
                 <!-- ======= Seção de Patrocinadores ======= -->
                 <section id="clients" class="clients section-bg">
@@ -583,49 +404,6 @@
 
                     </div>
                 </section><!-- Fim Patrocinadores -->
-
-                <!-- Modal de Atletas -->
-                <!-- Botão para abrir o modal -->
-                <div class="modal fade" id="detalhesAtletaModal" tabindex="-1"
-                    aria-labelledby="detalhesAtletaModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="detalhesAtletaModalLabel">Detalhes Técnicos do Atleta</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Fechar"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <p><b>Nome:</b> João da Silva</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <p><b>Idade:</b> 25 anos</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <p><b>Altura:</b> 1,80m</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <p><b>Peso:</b> 75kg</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <p><b>Posição:</b> Atacante</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <p><b>Habilidades:</b> Chute potente, velocidade, drible</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <p><b>Experiência:</b> 5 anos</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Fim Modal de Atletas -->
             </div>
