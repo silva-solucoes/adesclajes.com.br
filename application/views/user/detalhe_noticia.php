@@ -10,7 +10,7 @@
 
             <ol>
                 <li><a href="<?php echo URL ?>">Início</a></li>
-                <li><a href="<?php echo URL . '/paginas/noticias' ?>">Notícia</a></li>
+                <li><a href="<?php echo URL . '/paginas/noticias/1' ?>">Notícia</a></li>
                 <li><?=$dados['noticia']->tl_noticia?></li>
             </ol>
             <h2><?=$dados['noticia']->tl_noticia?></h2>
@@ -29,7 +29,7 @@
                     <article class="blog-details">
 
                         <div class="post-img">
-                            <img src="<?php echo URL . '/public/uploads/noticias/'.$dados['noticia']->img_Noticia; ?>" alt="Imagem Destaque" class="img-fluid">
+                            <img src="<?php echo URL . '/public/uploads/noticias/'.$dados['noticia']->img_Noticia; ?>" width="1200" alt="Imagem Destaque" class="img-fluid">
                         </div>
 
                         <h2 class="title"><?=$dados['noticia']->tl_noticia?></h2>

@@ -92,6 +92,25 @@
             ],
             autogrow: true
         });
+        $('#editarConteudoNoticia').trumbowyg({
+            lang: 'pt_br',
+            btns: [
+                ['viewHTML'],
+                ['undo', 'redo'], // Only supported in Blink browsers
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['superscript', 'subscript'],
+                ['link'],
+                ['insertImage'],
+                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                ['unorderedList', 'orderedList'],
+                ['horizontalRule'],
+                ['removeformat'],
+                ['fullscreen'],
+                ['emoji']
+            ],
+            autogrow: true
+        });
 </script>
 <!-- Template Main JS File -->
 <script src="<?php echo URL . '/public/js/mainAdm.js'; ?>"></script>

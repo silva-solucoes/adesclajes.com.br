@@ -319,17 +319,17 @@ class Usuario{
         endif;
     }
     public function excluirPatrocinador($nomeFoto, $idPatro){
-        // Excluir a imagem do diretório
-        $caminhoImagem = 'images/patrocinadores/' . $nomeFoto; // Substitua pelo caminho correto da imagem
-        if (file_exists($caminhoImagem)) {
-            unlink($caminhoImagem);
-        }
 
         $this->bd->query('DELETE FROM tbl_secaopatrocinadores WHERE tbl_secaopatrocinadores.id_secaoPatrocinio = :id');
 
         $this->bd->bind(':id', $idPatro);
 
         if ($this->bd->executa()):
+            // Excluir a imagem do diretório
+            $caminhoImagem = 'images/patrocinadores/' . $nomeFoto; // Substitua pelo caminho correto da imagem
+            if (file_exists($caminhoImagem)) {
+                unlink($caminhoImagem);
+            }
             Sessao::mensagem('patrocinador','<b>Patrocinador foi excluido!</b>');
             return true;
         else:
@@ -650,52 +650,190 @@ class Usuario{
     }
 
     public function cadastrarNoticias($dados){
-
-        $this->bd->query('INSERT INTO tbl_coment_tecnico (comentario, id_membro)
-        VALUES (:comentario, :idMembro)');
-        $this->bd->bind(':comentario', $dados['comentarioTec']);
-        $this->bd->bind(':idMembro', $dados['membro']);
-
-        if ($this->bd->executa()):
-            $this->bd->query('SELECT tbl_coment_tecnico.id_coment_tec FROM tbl_coment_tecnico');
-            $id_ComentarioTec = $this->bd->ultimoIdInserido();
-
-            $this->bd->query('INSERT INTO tbl_noticias (tl_noticia, img_Noticia, descricao, conteudo, dtAtualizacao, dtCadastro, id_autor, id_ultimas, id_categoria, id_coment_tec, metaTitulo, metaDescricao, metaKey)
-            VALUES (:titulo, :imagem, :descricao, :conteudo, :dtAtualizacao, :dtCadastro, :autor, :idUltimas, :categoria, :idComentTec, :metaTitulo, :metaDescricao, :metaKey)');
-
-            $this->bd->bind(':titulo', $dados['titulo']);
-            $this->bd->bind(':imagem', $dados['fotoDestaque']);
-            $this->bd->bind(':descricao', $dados['descricao']);
-            $this->bd->bind(':conteudo', $dados['conteudo']);
-            $this->bd->bind(':dtAtualizacao', $dados['dataPublic']);
-            $this->bd->bind(':dtCadastro', $dados['dataPublic']);
-            $this->bd->bind(':autor', $dados['autor']);
-            $this->bd->bind(':idUltimas', 1);
-            $this->bd->bind(':categoria', $dados['categoria']);
-            $this->bd->bind(':idComentTec', $id_ComentarioTec);
-            $this->bd->bind(':metaTitulo', $dados['metaTitulo']);
-            $this->bd->bind(':metaDescricao', $dados['metaDescricao']);
-            $this->bd->bind(':metaKey', $dados['metaChave']);
-
+        //Destroi o relacionamento
+        $this->bd->query('ALTER TABLE tbl_noticias
+        DROP FOREIGN KEY tbl_noticias_ibfk_3');
+        if($this->bd->executa()):
+            //Cria um novo relacionamento com retrição de delete em retrict
+            $this->bd->query('ALTER TABLE tbl_noticias
+            ADD CONSTRAINT tbl_noticias_ibfk_3
+            FOREIGN KEY (id_coment_tec)
+            REFERENCES tbl_coment_tecnico(id_coment_tec)
+            ON DELETE RESTRICT');
             if ($this->bd->executa()):
-                Sessao::mensagem('cadastroNoticia','<b>Patrocinador foi Cadastrado!</b>');
-                return true;
-            else:
-                Sessao::mensagem('cadastroNoticia','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
-                return false;
-            endif;
-        else:
-            Sessao::mensagem('cadastroNoticia','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
-            return false;
-        endif;
-    }
+                $this->bd->query('INSERT INTO tbl_coment_tecnico (comentario, id_membro)
+                VALUES (:comentario, :idMembro)');
+                $this->bd->bind(':comentario', $dados['comentarioTec']);
+                $this->bd->bind(':idMembro', $dados['membro']);
 
+                if ($this->bd->executa()):
+                    $this->bd->query('SELECT tbl_coment_tecnico.id_coment_tec FROM tbl_coment_tecnico');
+                    $id_ComentarioTec = $this->bd->ultimoIdInserido();
+
+                    $this->bd->query('INSERT INTO tbl_noticias (tl_noticia, img_Noticia, descricao, conteudo, dtAtualizacao, dtCadastro, id_autor, id_ultimas, id_categoria, id_coment_tec, metaTitulo, metaDescricao, metaKey)
+                    VALUES (:titulo, :imagem, :descricao, :conteudo, :dtAtualizacao, :dtCadastro, :autor, :idUltimas, :categoria, :idComentTec, :metaTitulo, :metaDescricao, :metaKey)');
+
+                    $this->bd->bind(':titulo', $dados['titulo']);
+                    $this->bd->bind(':imagem', $dados['fotoDestaque']);
+                    $this->bd->bind(':descricao', $dados['descricao']);
+                    $this->bd->bind(':conteudo', $dados['conteudo']);
+                    $this->bd->bind(':dtAtualizacao', $dados['dataPublic']);
+                    $this->bd->bind(':dtCadastro', $dados['dataPublic']);
+                    $this->bd->bind(':autor', $dados['autor']);
+                    $this->bd->bind(':idUltimas', 1);
+                    $this->bd->bind(':categoria', $dados['categoria']);
+                    $this->bd->bind(':idComentTec', $id_ComentarioTec);
+                    $this->bd->bind(':metaTitulo', $dados['metaTitulo']);
+                    $this->bd->bind(':metaDescricao', $dados['metaDescricao']);
+                    $this->bd->bind(':metaKey', $dados['metaChave']);
+
+                    if ($this->bd->executa()):
+                        Sessao::mensagem('cadastroNoticia','<b>Patrocinador foi Cadastrado!</b>');
+                        return true;
+                    else:
+                        Sessao::mensagem('cadastroNoticia','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+                        return false;
+                    endif;
+                else:
+                    Sessao::mensagem('cadastroNoticia','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+                    return false;
+                endif;
+            endif;
+        endif;
+
+    }
+    public function editarNoticias($noticiaId, $dados){
+        //Destroi o relacionamento
+        $this->bd->query('ALTER TABLE tbl_noticias
+        DROP FOREIGN KEY tbl_noticias_ibfk_3');
+        if($this->bd->executa()):
+            //Cria um novo relacionamento com retrição de delete em retrict
+            $this->bd->query('ALTER TABLE tbl_noticias
+            ADD CONSTRAINT tbl_noticias_ibfk_3
+            FOREIGN KEY (id_coment_tec)
+            REFERENCES tbl_coment_tecnico(id_coment_tec)
+            ON DELETE RESTRICT');
+            if ($this->bd->executa()):
+                $this->bd->query('UPDATE tbl_coment_tecnico SET comentario = :comentario WHERE id_membro = :idMembro');
+                $this->bd->bind(':comentario', $dados['comentarioTec']);
+                $this->bd->bind(':idMembro', $dados['membro']);
+
+                if ($this->bd->executa()):
+                    $this->bd->query('SELECT tbl_coment_tecnico.id_coment_tec FROM tbl_coment_tecnico WHERE id_membro = :id');
+                    $this->bd->bind(':id', $dados['membro']);
+
+                    $id_ComentarioTec = $this->bd->resultado();;
+
+                    $this->bd->query('UPDATE tbl_noticias SET
+                        tl_noticia = :titulo,
+                        img_Noticia = :imagem,
+                        descricao = :descricao,
+                        conteudo = :conteudo,
+                        dtAtualizacao = :dtAtualizacao,
+                        id_autor = :autor,
+                        id_ultimas = :idUltimas,
+                        id_categoria = :categoria,
+                        id_coment_tec = :idComentTec,
+                        metaTitulo = :metaTitulo,
+                        metaDescricao = :metaDescricao,
+                        metaKey = :metaKey
+                        WHERE id = :idNoticia');
+
+                    $this->bd->bind(':idNoticia', $noticiaId);
+                    $this->bd->bind(':titulo', $dados['titulo']);
+                    $this->bd->bind(':imagem', $dados['fotoDestaque']);
+                    $this->bd->bind(':descricao', $dados['descricao']);
+                    $this->bd->bind(':conteudo', $dados['conteudo']);
+                    $this->bd->bind(':dtAtualizacao', $dados['dataPublic']);
+                    $this->bd->bind(':autor', $dados['autor']);
+                    $this->bd->bind(':idUltimas', 1);
+                    $this->bd->bind(':categoria', $dados['categoria']);
+                    $this->bd->bind(':idComentTec', $id_ComentarioTec);
+                    $this->bd->bind(':metaTitulo', $dados['metaTitulo']);
+                    $this->bd->bind(':metaDescricao', $dados['metaDescricao']);
+                    $this->bd->bind(':metaKey', $dados['metaChave']);
+
+                    if ($this->bd->executa()):
+                        Sessao::mensagem('cadastroNoticia','<b>Patrocinador foi Cadastrado!</b>');
+                        return true;
+                    else:
+                        Sessao::mensagem('cadastroNoticia','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+                        return false;
+                    endif;
+                else:
+                    Sessao::mensagem('cadastroNoticia','<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+                    return false;
+                endif;
+            endif;
+        endif;
+
+    }
+    public function excluirNoticia($nomeFoto, $idNoticia){
+        //Destroi o relacionamento
+        $this->bd->query('ALTER TABLE tbl_noticias
+        DROP FOREIGN KEY tbl_noticias_ibfk_3');
+        if($this->bd->executa()):
+            //Cria um novo relacionamento com retrição de delete em Cascata
+            $this->bd->query('ALTER TABLE tbl_noticias
+            ADD CONSTRAINT tbl_noticias_ibfk_3
+            FOREIGN KEY (id_coment_tec)
+            REFERENCES tbl_coment_tecnico(id_coment_tec)
+            ON DELETE CASCADE');
+            if($this->bd->executa()):
+                $this->bd->query('DELETE FROM tbl_noticias WHERE id_noticia = :id');
+                $this->bd->bind(':id', $idNoticia);
+
+                if ($this->bd->executa()):
+                    
+                    // Excluir a imagem do diretório
+                    $caminhoImagem = 'uploads/noticias/' . $nomeFoto; // Substitua pelo caminho correto da imagem
+
+                    if (file_exists($caminhoImagem)):
+                        unlink($caminhoImagem);
+                    endif;
+
+                    Sessao::mensagem('noticiaExcluida', '<b>Notícia foi excluída!</b>');
+                    return true;
+                else:
+                    Sessao::mensagem('noticiaExcluida', '<b>Erro:</b> Não foi possível excluir a notícia!', 'alert alert-danger');
+                    return false;
+                endif;
+            endif;
+        endif;
+        
+    }
+    public function exibirNoticia($idNoticia){
+
+        $this->bd->query('SELECT n.*, u.*, un.*, cn.*, ct.*, m.* 
+        FROM tbl_noticias AS n 
+        JOIN tbl_usuario AS u ON n.id_autor = u.id_usuario 
+        JOIN tbl_ultimasnoticias AS un ON n.id_ultimas = un.id_ultimas 
+        JOIN categorianoticia AS cn ON n.id_categoria = cn.id_categoria 
+        JOIN tbl_coment_tecnico AS ct ON n.id_coment_tec = ct.id_coment_tec 
+        JOIN tbl_membro AS m ON m.id_membro = ct.id_membro 
+        WHERE n.id_noticia = :id ORDER BY n.id_noticia DESC');
+
+        $this->bd->bind(':id', $idNoticia);
+        return $this->bd->resultado();
+
+    }
     public function exibirDirecao(){
         $this->bd->query('SELECT *
         FROM tbl_membro
         JOIN tbl_redesocialmembro AS rsm ON rsm.id_rede = tbl_membro.id_membro
         JOIN tbl_diretoria AS d ON d.id_equipe = tbl_membro.id_equipe
         ORDER BY tbl_membro.id_membro DESC');
+        return $this->bd->resultados();
+    }
+    public function exibirAtletas(){
+        $this->bd->query('SELECT * FROM tbl_atleta
+        INNER JOIN tbl_detalheescolar ON tbl_detalheescolar.id_escolar = tbl_atleta.id_escola
+        INNER JOIN tbl_detalhefiliacao ON tbl_detalhefiliacao.id_filiacao = tbl_atleta.id_filiacao
+        INNER JOIN tbl_detalhesaude ON tbl_detalhesaude.id_saude = tbl_atleta.id_saude
+        INNER JOIN tbl_detalhesresponsavel ON tbl_detalhesresponsavel.id_responsavel = tbl_atleta.id_responsavel
+        INNER JOIN tbl_detalhetecnicos ON tbl_detalhetecnicos.id_tecnico = tbl_atleta.id_detalheTec
+        INNER JOIN tbl_incricao ON tbl_incricao.id_atleta = tbl_atleta.id_atleta
+        WHERE tbl_incricao.situacao_atleta = 1');
         return $this->bd->resultados();
     }
 

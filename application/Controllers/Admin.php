@@ -996,12 +996,298 @@ class Admin extends Controller{
         endif;
 
     }
-    private function pad($number, $length) {
-        $str = '' . $number;
-        while (strlen($str) < $length) {
-            $str = '0' . $str;
+    public function editarNoticia(){
+        // Verificar se a requisição é do tipo POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') :
+            // Obter o ID do patrocinador a ser excluído
+            $noticiaId = $_POST['user_id'];
+            $nomeFoto = $_POST['user_name'];
+
+            $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+            if (isset($formulario)):
+
+                $foto = $_FILES['fotoDestaque']['tmp_name'] ? $_FILES['fotoDestaque'] : null;
+                
+                $dados = [
+                    'titulo' => trim($formulario['tituloNoticia']),
+                    'conteudo' => trim($formulario['editor1']),
+                    'descricao' => trim($formulario['descricao']),
+                    'autor' => trim($_SESSION['id_user']),
+                    'dataPublic' => trim($formulario['dataAtualiza']),
+                    'categoria' => trim($formulario['categoria']),
+                    'metaTitulo' => trim($formulario['tituloNoticia']),
+                    'metaDescricao' => trim($formulario['descricao']),
+                    'metaChave' => trim($formulario['metaChave']),
+                    'membro' => trim($formulario['membro']),
+                    'comentarioTec' => trim($formulario['comentarioTec']),
+                    'upload_erro' => '',
+                ];
+                if (in_array("", $formulario)):
+                    if (empty($formulario['nomePatrocinador'])):
+                        $dados['nomeUser_erro'] = 'Preencha o campo Nome Completo';
+                    endif;
+    
+                    if (empty($formulario['linkPatrocinador'])):
+                        $dados['telUser_erro'] = 'Preencha o campo Telefone';
+                    endif;
+                else:
+                    if (!empty($foto)):
+                        $foto = $_FILES['fotoDestaque']['tmp_name'];
+                        // Diretório onde as fotos são armazenadas
+                        $diretorio = 'uploads/noticias/';
+    
+                        // Nome do arquivo
+                        $nomeArquivo = $_FILES['fotoDestaque']['name'];
+                        // Mover a foto para o diretório especificado
+                        move_uploaded_file($foto, $diretorio . $nomeArquivo);
+                        
+                        // Caminho completo da imagem original
+                        $caminhoOriginal = $diretorio . $nomeArquivo;
+                        $novoNome = 'noticia.webp';
+                        
+                        $extensao = strtolower(pathinfo($novoNome, PATHINFO_EXTENSION));
+                        // Verificar se a extensão é suportada (por exemplo, 'webp')
+                        if ($extensao == 'webp') :
+                            // Obter o número da sequência
+                            $sequencia = 1;
+                            
+                            // Verificar se já existem arquivos com a sequência atual
+                            while (file_exists($diretorio . 'noticia-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp')) {
+                                // Incrementar a sequência
+                                $sequencia++;
+                            }
+    
+                            // Criar o novo nome de arquivo com base na sequência
+                            $novoNome = 'noticia-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp';
+                        endif;
+                        // Caminho completo da imagem redimensionada
+                        $caminhoRedimensionado = $diretorio . $novoNome;
+                        // Criar uma nova imagem com as dimensões desejadas e fundo transparente
+                        $imagemRedimensionada = imagecreatetruecolor(600, 400);
+                        imagesavealpha($imagemRedimensionada, true);
+                        $transparente = imagecolorallocatealpha($imagemRedimensionada, 0, 0, 0, 127);
+                        imagefill($imagemRedimensionada, 0, 0, $transparente);
+    
+                        // Carregar a imagem original com base na sua extensão
+                        $extensao = strtolower(pathinfo($caminhoOriginal, PATHINFO_EXTENSION));
+                        switch ($extensao):
+                            case 'png':
+                                $imagemOriginal = imagecreatefrompng($caminhoOriginal);
+                                break;
+                            case 'jpg':
+                            case 'jpeg':
+                                $imagemOriginal = imagecreatefromjpeg($caminhoOriginal);
+                                break;
+                            case 'webp':
+                                $imagemOriginal = imagecreatefromwebp($caminhoOriginal);
+                                break;
+                            default:
+                                // Tipo de imagem não suportado
+                                exit;
+                        endswitch;
+                        
+                        // Redimensionar a imagem original para a nova imagem mantendo o fundo transparente
+                        imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 600, 400, imagesx($imagemOriginal), imagesy($imagemOriginal));
+    
+                        // Salvar a imagem redimensionada no diretório preservando a transparência
+                        imagewebp($imagemRedimensionada, $caminhoRedimensionado);
+    
+                        // Liberar a memória
+                        imagedestroy($imagemOriginal);
+                        imagedestroy($imagemRedimensionada);
+    
+                        // Remover a imagem antiga do diretório
+                        if (file_exists($caminhoOriginal)):
+                            unlink($caminhoOriginal);
+                        endif;
+    
+                        // Atualizar o nome da foto redimensionada no banco de dados
+                        $dados['fotoDestaque'] = $novoNome;
+                    else:
+                        $dados['fotoDestaque'] = $this->info->informacoes()->img_Noticia;
+                    endif;
+                endif;
+                // Realizar as operações necessárias para excluir o patrocinador com o ID fornecido
+                //$this->usuarioModel->editarNoticia($noticiaId, $dados);
+            else:
+                $dados = [
+                    'titulo' => '',
+                    'conteudo' => '',
+                    'descricao' => '',
+                    'autor' => '',
+                    'dataPublic' => '',
+                    'categoria' => '',
+                    'metaTitulo' => '',
+                    'metaDescricao' => '',
+                    'metaChave' => '',
+                    'membro' => '',
+                    'comentarioTec' => '',
+                    'upload_erro' => '',
+                ];
+            endif;
+
+            // Simular uma resposta de sucesso (você deve ajustar isso de acordo com a sua lógica de exclusão)
+            $response = array(
+                'success' => true
+            );
+
+            // Enviar a resposta como JSON
+            //header('Content-Type: application/json');
+            echo json_encode($response);
+        else:
+            // Responder com um erro se a requisição não for do tipo POST
+            //header('HTTP/1.1 405 Method Not Allowed');
+            //header('Content-Type: application/json');
+            echo json_encode(array('error' => 'Método não permitido'));
+        endif;
+    }
+    public function excluirNoticia(){
+        // Verificar se a requisição é do tipo POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Obter o ID do patrocinador a ser excluído
+            $noticiaId = $_POST['user_id'];
+            $nomeFoto = $_POST['user_name'];
+            
+            // Realizar as operações necessárias para excluir notícia com o ID fornecido
+            $this->usuarioModel->excluirNoticia($nomeFoto, $noticiaId);
+            
+            // Simular uma resposta de sucesso (você deve ajustar isso de acordo com a sua lógica de exclusão)
+            $response = array(
+                'success' => true
+            );
+
+            // Enviar a resposta como JSON
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } else {
+            // Responder com um erro se a requisição não for do tipo POST
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Content-Type: application/json');
+            echo json_encode(array('error' => 'Método não permitido'));
         }
-        return $str;
+    }
+    public function exibirNoticia(){
+        // Verificar se a requisição é do tipo POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $resultado = '';
+            // Obter o ID do patrocinador a ser excluído
+            $noticiaId = $_POST['user_id'];
+            $noticia = $this->usuarioModel->exibirNoticia($noticiaId);
+            $dados = $this->usuarioModel->exibirCategorias();
+            $membros = $this->usuarioModel->exibirDirecao();
+
+            $resultado .= '<div class="col-md-12 mb-3">';
+            $resultado .= '<div class="form-floating">';
+            $resultado .= '<input type="text" name="tituloNoticia" class="form-control" id="editarTitulo" placeholder="Título da Notícia" value="'.$noticia->tl_noticia.'" required>';
+            $resultado .= '<label for="floatingName">Título da Notícia*:</label>';
+            $resultado .= '</div>';
+            $resultado .= '</div>';
+            $resultado .= '<div class="col-md-12 mb-3">';
+            $resultado .= '<label for="floatingPassword">Conteúdo da Notícia*:</label>';
+            $resultado .= '<div class="form-floating">';
+            $resultado .= '<textarea id="editarConteudoNoticia" name="editor1" required>'.$noticia->conteudo.'</textarea>';
+            $resultado .= '</div>';
+            $resultado .= '</div>';
+            $resultado .= '<div class="col-md-12 mb-3">';
+            $resultado .= '<div class="form-floating">';
+            $resultado .= '<textarea class="form-control" name="descricao" placeholder="Address" id="descricao" style="height: 100px;" required>'.$noticia->descricao.'</textarea>';
+            $resultado .= '<label for="floatingTextarea">Conteúdo curto da Notícia (Breve descrição)*:</label>';
+            $resultado .= '</div>';
+            $resultado .= '</div>';
+            $resultado .= '<div class="row mb-3">';
+            $resultado .= '<div class="col-md-6">';
+            $resultado .= '<div class="form-floating">';
+            $resultado .= '<input type="text" name="autor" class="form-control" id="floatingCity" placeholder="Autor" value="'.$noticia->nome_usuario.'" disabled required>';
+            $resultado .= '<label for="floatingCity">Autor*:</label>';
+            $resultado .= '</div>';
+            $resultado .= '</div>';
+            $resultado .= '<div class="col-md-6">';
+            $resultado .= '<div class="form-floating">';
+            $resultado .= '<input type="datetime-local" name="dataAtualiza" class="form-control" id="floatingCity" placeholder="Data e Hora" value="'.$noticia->dtCadastro.'" required>';
+            $resultado .= '<label for="floatingCity">Data de Atualização*:</label>';
+            $resultado .= '</div>';
+            $resultado .= '</div>';
+            $resultado .= '</div>';
+            $resultado .= '<div class="row mb-3">';
+            $resultado .= '<div class="col-md-6">';
+            $resultado .= '<div class="form-floating">';
+            $resultado .= '<select class="form-select" id="floatingSelect" aria-label="State" name="categoria" required>';
+            $resultado .= '<option value="'.$noticia->id_categoria.'" selected disabled>'.$noticia->nome.'</option>';
+            foreach($dados as $lerCategoria):
+                $resultado .= '<option value="'.$lerCategoria->id_categoria.'">'.$lerCategoria->nome.'</option>';
+            endforeach;
+            $resultado .= '</select>';
+            $resultado .= '<label for="floatingSelect">Categoria da Notícia*:</label>';
+            $resultado .= '</div>';
+            $resultado .= '</div>';
+            $resultado .= '</div>';
+            $resultado .= '<hr>';
+            $resultado .= '<div class="row">
+                            <div class="col-6">
+                                <label for="floatingSelect">Foto de Destaque*:</label>
+                                <div class="form-floating">
+                                    <input class="form-control" type="file" name="fotoDestaque" accept=".jpg, .jpeg, .png" id="destaqueInput" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <img id="destaqueImg" src="'.URL.'/public/uploads/noticias/'.$noticia->img_Noticia.'" alt="Imagem Destaque" width="50%">
+                                </div>
+                            </div>
+                            </div>';
+            $resultado .= '<hr>';
+            $resultado .= '<div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="floatingSelect" aria-label="State" name="membro" required>
+                                        <option value="'.$noticia->id_membro.'" selected disabled>'.$noticia->nome_membro.'</option>';
+                                        foreach($membros as $lerMembro):
+                                            $resultado .= '<option value="'.$lerMembro->id_membro.'">'.$lerMembro->nome_membro.'</option>';
+                                        endforeach;
+            $resultado .= '     </select>
+                            <label for="floatingSelect">Membro da Direção*:</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Meta-Título" style="height: 100px;" name="comentarioTec" required>'.$noticia->comentario.'</textarea>
+                                        <label for="floatingCity">Comentário Técnico*:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Meta-Título" id="meta-titulo" style="height: 100px;" name="metaTitulo" disabled></textarea>
+                                        <label for="floatingCity">Meta-Título*:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Meta-Keywords" id="floatingTextarea"
+                                            style="height: 100px;" name="metaChave" required>'.$noticia->metaKey.'</textarea>
+                                    <label for="floatingZip">Meta-Keywords (palavras-chave)*:</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Meta-Decrição" id="meta-descricao"
+                                            style="height: 100px;" name="metaDescricao" disabled></textarea>
+                                    <label for="floatingZip">Meta-Descrição*:</label>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="alert alert-warning mb-3" role="alert">
+                                As <strong>palavras-chave</strong> devem ser separadas por ",". Exemplo: notícia,Adesc,online
+                            </div>';
+
+            echo $resultado;
+        }
     }
     //Chamada para página de Notícia
     public function noticia(){
@@ -1021,7 +1307,11 @@ class Admin extends Controller{
     }
     //Chamada para página de BID
     public function BID(){
-        $this->view('admin/BID');
+        $dados = [
+            'exibirJogadores' => $this->usuarioModel->exibirAtletas(),
+            'exibirCategorias' => $this->usuarioModel->exibirCategorias(),
+        ];
+        $this->view('admin/BID', $dados);
     }
     //Chamada para página de Fotos
     public function fotos(){

@@ -3,9 +3,11 @@
 class Paginas extends Controller{
 
     private $info;
+    private $usuarioModel;
     public function __construct(){
 
         $this->info = $this->model('modelo');
+        $this->usuarioModel = $this->model('Usuario');
 
     }
     public function login(){
@@ -101,7 +103,9 @@ class Paginas extends Controller{
     }
     public function bid(){
         $dados=[
-            'info' => $this->info->lerInformacao()
+            'info' => $this->info->lerInformacao(),
+            'exibirJogadores' => $this->usuarioModel->exibirAtletas(),
+            'exibirCategorias' => $this->usuarioModel->exibirCategorias(),
         ];
         //Exibir todos os patrocinadores
         $dados['patrocinadores']=$this->info->todasPatrocinadores();
