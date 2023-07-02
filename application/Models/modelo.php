@@ -49,7 +49,7 @@ class Modelo {
 
 	public function listar4Noticias($pagina){
 
-		$qnt_result_pg = 2;
+		$qnt_result_pg = 3;
         $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
 		$this->bd->query("SELECT *
@@ -64,8 +64,60 @@ class Modelo {
 		return $this->bd->resultados();
 	}
 
+	public function pesquisarNoticias($valor){
+		
+		if(!empty($valor)){
+				
+			$this->bd->query('SELECT id_noticia, tl_noticia FROM tbl_noticias WHERE  MATCH(tl_noticia) AGAINST (:valor IN NATURAL LANGUAGE MODE) LIMIT 10');
+			$this->bd->bind('valor', $valor);
+			$this->resultado = $resultado = $this->bd->resultado();
+				
+				
+			$numResult = $this->bd->totalResultados();
+			if ( ($resultado) and ($numResult != 0)) {
+				$dados = $this->bd->resultados();
+									
+				$retorna = ['status' => true, 'dados' => $dados];
+				
+			}else{
+				$retorna = ['status' => false , 'msg' =>'Nennhuma notícia encontrada'];
+			}
+
+		}else{
+			$retorna = ['status' => false, 'msg' =>"Erro: nenhum Item encontrato"];
+		}
+		return $retorna;
+	}
+
+	public function listarNoticiaPesquisa($titulo){
+		
+		if(!empty($titulo)){
+
+			$titulo = "%".$titulo."%";
+				
+			$this->bd->query('SELECT id_noticia, tl_noticia, img_Noticia FROM tbl_noticias WHERE  MATCH(tl_noticia) AGAINST (:titulo IN NATURAL LANGUAGE MODE) LIMIT 4');
+			$this->bd->bind('titulo', $titulo);
+			$this->resultado = $resultado = $this->bd->resultado();
+				
+				
+			$numResult = $this->bd->totalResultados();
+			if ( ($resultado) and ($numResult != 0)) {
+				$dados = $this->bd->resultados();
+									
+				$retorna = ['status' => true, 'dados' => $dados];
+				
+			}else{
+				$retorna = ['status' => false , 'msg' =>'Nennhuma notícia encontrada'];
+			}
+
+		}else{
+			$retorna = ['status' => false, 'msg' =>"Erro: nenhum Item encontrato"];
+		}
+		return $retorna;
+	}
+
 	public function numeroDePaginas(){
-		$qnt_result_pg = 2;
+		$qnt_result_pg = 3;
 
 		$this->bd->query("SELECT COUNT(id_noticia) AS num_result FROM tbl_noticias");
 

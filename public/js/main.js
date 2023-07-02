@@ -292,7 +292,7 @@ $(document).ready(function() {
     // Enviar a solicitação AJAX
     $.ajax({
       type: 'POST',
-      url: 'http://localhost/backup/adesclajes.com.br/User/enviarInscricao', // O arquivo PHP que processará o formulário
+      url: 'http://localhost/adesclajes/User/enviarInscricao', // O arquivo PHP que processará o formulário
       data: formData,
       success: function(response) {
         $('#result').html(response); // Atualizar a div com a resposta do PHP
@@ -300,6 +300,98 @@ $(document).ready(function() {
       }
     });
   });
+});
+/**
+   * Buscador de noticias
+   */
+
+async function carregar_noticias(valor){
+	if (valor.length >= 3) {
+    
+		const dados = await fetch ('http://localhost/adesclajes/Paginas/searchNews/pesquisarNoticias?value='+valor);
+
+    const respost = await dados.json();
+		console.log(respost);
+    var resultado = "<ul class='list-group position-fixed'>";
+
+		if (respost['pesquisarNoticias']['status']) {
+
+			for (i = 0; i < respost['pesquisarNoticias']['dados'].length; i++) {
+				resultado += "<li class='list-group-item list-group-item-action' onclick='listar_noticia("+JSON.stringify(respost['pesquisarNoticias']['dados'][i].tl_noticia)+")' >"+ respost['pesquisarNoticias']['dados'][i].tl_noticia+"</li>";				
+			}
+
+		}else{
+
+			resultado = "<li class = 'list-group-item disabled'>"+ respost['pesquisarNoticias']['msg']+"</li>";
+		}
+
+		resultado +="</ul>";
+
+		document.getElementById("resultado_pesquisa").innerHTML = resultado;
+	}
+}
+
+const fechar = document.getElementById('noticia');
+
+document.addEventListener('click', function(even){
+	const validar_clique = fechar.contains(event.target);
+	if(!validar_clique){
+		document.getElementById('resultado_pesquisa').innerHTML = '';
+	}
+});
+
+async function listar_noticia(tl_noticia){
+
+
+	console.log(tl_noticia);
+
+  let tl_noticiaDez = tl_noticia.substring(0, 25);
+  document.getElementById("noticia").value = tl_noticiaDez+" ...";
+
+  const dados = await fetch ('http://localhost/adesclajes/Paginas/searchNews/listarNoticiaPesquisa?titulo='+tl_noticia);
+  const resposta = await dados.json();
+
+  var noticia = "";
+
+  if (resposta['listarNoticiaPesquisa']['status']) {
+
+    noticia +=  "              <h3 class='sidebar-title mt-3'>RESULTADOS</h3>"
+
+    for (i = 0; i < resposta['listarNoticiaPesquisa']['dados'].length; i++) {
+
+      noticia +=  "<div class='sidebar-item recent-posts'>"
+      noticia +=  "              <div class='mt-3'>"
+      noticia +=  "                  <div class='post-item mt-3'>"
+      noticia +=  "                      <img src='http://localhost/adesclajes/public/uploads/noticias/"+resposta['listarNoticiaPesquisa']['dados'][i].img_Noticia+"' alt='' class='flex-shrink-0'>"
+      noticia +=  "                      <div>"
+      noticia +=  "                          <h4><a href='http://localhost/adesclajes/paginas/detalheNoticias/"+resposta['listarNoticiaPesquisa']['dados'][i].id_noticia+"'>"
+      noticia +=  resposta['listarNoticiaPesquisa']['dados'][i].tl_noticia
+      noticia +=  "                          </a></h4>"
+      noticia +=  "                      </div>"
+      noticia +=  "                  </div><!-- End recent post item-->"
+
+      noticia +=  "              </div>"
+
+      noticia +=  "          </div>"				
+
+    }
+	}else{
+		noticia += "<div class='alert alert-danger' role='alert'> "+resposta['listarNoticiaPesquisa']['msg']+" </div>"
+	}
+
+	document.getElementById('listar_noticia').innerHTML = noticia;
+ 
+
+}
+
+const pesqNoticiaForm = document.getElementById('pesq-noticia-form');
+
+pesqNoticiaForm.addEventListener("submit", (e) =>{
+	e.preventDefault();
+
+	const tl_noticia = document.getElementById("noticia").value;
+	listar_noticia(tl_noticia);
+
 });
 
 /**

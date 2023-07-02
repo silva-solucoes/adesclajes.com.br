@@ -50,6 +50,23 @@ class Paginas extends Controller{
         $this->view('user/home', $dados);
 
     }
+
+    public function searchNews(){
+
+        $value = filter_input(INPUT_GET, "value", FILTER_DEFAULT);
+        $titulo = filter_input(INPUT_GET, "titulo", FILTER_DEFAULT);
+
+        $dados=[
+            'info' => $this->info->lerInformacao()
+        ];
+        //pesquisar noticias
+        $dados['pesquisarNoticias']=$this->info->pesquisarNoticias($value);
+        //listar notícias pesquisadas
+        $dados['listarNoticiaPesquisa']=$this->info->listarNoticiaPesquisa($titulo);
+
+        echo json_encode($dados);
+    }
+
     public function noticias($pagina){
 
         $dados=[

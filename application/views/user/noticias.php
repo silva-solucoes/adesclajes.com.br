@@ -67,34 +67,35 @@
 
                     <div class="blog-pagination">
                         <ul class="justify-content-center">
-                            <li><a href="<?php echo URL . '/paginas/noticias/1' ?>">PRIMEIRA</a></li>
+                            <li class="blog-button"><a href="<?php echo URL . '/paginas/noticias/1' ?>">PRIMEIRA</a></li>
                             <?php       
-                            if($dados['pagina'] != 1 && $dados['pagina'] != $dados['totalPagina']): 
-                                $pg_ant = $dados['pagina']-1;
-                                $pg_pos = $dados['pagina']+1;
-                               echo "<li><a href='".URL."/paginas/noticias/".$pg_ant."'>".$pg_ant."</a></li>";
-                               echo "<li class='active'><a href='#'>".$dados['pagina']."</a></li>";
-                               echo "<li><a href='".URL."/paginas/noticias/".$pg_pos."'>".$pg_pos."</a></li>";
-                               elseif($dados['pagina'] == 1): 
-                                $pg_pos_mais = $dados['pagina']+2;
-                                $pg_pos = $dados['pagina']+1;
-                               echo "<li class='active'><a href='#'>".$dados['pagina']."</a></li>";
-                               echo "<li><a href='".URL."/paginas/noticias/".$pg_pos."'>".$pg_pos."</a></li>";
-                               echo "<li><a href='".URL."/paginas/noticias/".$pg_pos_mais."'>".$pg_pos_mais."</a></li>";
-                               
-                                else: 
-                                    $pg_ant_menos = $dados['pagina']-2;
+                                if($dados['pagina'] != 1 && $dados['pagina'] != $dados['totalPagina']): 
+
                                     $pg_ant = $dados['pagina']-1;
-                                    echo "<li><a href='".URL."/paginas/noticias/".$pg_ant_menos."'>".$pg_ant_menos."</a></li>";
+                                    $pg_pos = $dados['pagina']+1;
                                     echo "<li><a href='".URL."/paginas/noticias/".$pg_ant."'>".$pg_ant."</a></li>";
                                     echo "<li class='active'><a href='#'>".$dados['pagina']."</a></li>";
-                                                                
-                                endif
+                                    echo "<li><a href='".URL."/paginas/noticias/".$pg_pos."'>".$pg_pos."</a></li>";
 
+                                    elseif($dados['pagina'] == 1): 
+        
+                                        $pg_pos_mais = $dados['pagina']+2;  
+                                        $pg_pos = $dados['pagina']+1;
+                                        echo "<li class='active'><a href='#'>".$dados['pagina']."</a></li>";
+                                        echo "<li><a href='".URL."/paginas/noticias/".$pg_pos."'>".$pg_pos."</a></li>";
+                                        echo "<li><a href='".URL."/paginas/noticias/".$pg_pos_mais."'>".$pg_pos_mais."</a></li>";
+                                
+                                    else: 
 
-                               
+                                        $pg_ant_menos = $dados['pagina']-2;
+                                        $pg_ant = $dados['pagina']-1;
+                                        echo "<li><a href='".URL."/paginas/noticias/".$pg_ant_menos."'>".$pg_ant_menos."</a></li>";
+                                        echo "<li><a href='".URL."/paginas/noticias/".$pg_ant."'>".$pg_ant."</a></li>";
+                                        echo "<li class='active'><a href='#'>".$dados['pagina']."</a></li>";
+                                                                    
+                                    endif   
                             ?>
-                            <li><a href="<?php echo URL . '/paginas/noticias/'.$dados['totalPagina'] ?>">ULTIMA</a></li>
+                            <li class="blog-button"><a href="<?php echo URL . '/paginas/noticias/'.$dados['totalPagina'] ?>">ULTIMA</a></li>
                         </ul>
                     </div><!-- End blog pagination -->
 
@@ -104,12 +105,18 @@
 
                     <div class="sidebar">
 
-                        <div class="sidebar-item search-form">
+                    <div class="sidebar-item search-form">
                             <h3 class="sidebar-title">Burcar por</h3>
-                            <form action="" class="mt-3">
-                                <input type="text">
+                            <form action="" class="mt-3" id="pesq-noticia-form" method="POST">
+
+                                <input type="text" name="noticia" autocomplete="off" class="form-control" id="noticia" placeholder="Pesquisar noticia" onkeyup="carregar_noticias(this.value)">
+
                                 <button type="submit"><i class="bi bi-search"></i></button>
                             </form>
+
+                            <span id="resultado_pesquisa"></span>
+                            <span id= "listar_noticia"></span>
+
                         </div><!-- End sidebar search formn-->
 
                         <div class="sidebar-item categories">

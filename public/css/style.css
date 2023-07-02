@@ -2700,6 +2700,16 @@ section {
   transition: 0.3s;
   border-radius: 80%;
 }
+.blog .blog-pagination .blog-button{
+  background: #47B5E9;
+  margin:0%;
+  font-size: 14px;
+  border-radius: 30px;
+} 
+
+.blog .blog-pagination .blog-button a{
+  color: white;
+} 
 
 .blog .blog-pagination li a {
   color: var(--color-secondary);
