@@ -6,7 +6,7 @@
         <h1>Gerenciar BID</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo URL . 'painel'; ?>">Painel de Controle</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo URL . '/admin/painel'; ?>">Painel de Controle</a></li>
                 <li class="breadcrumb-item active">Lista BID</li>
             </ol>
         </nav>
@@ -90,21 +90,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr data-index="0">
-                                            <td><a href="#">#2457</a></td>
+                                    <?php $i = 0; ?>
+                                    <?php foreach($dados['exibirJogadores'] as $listar):?>
+                                        <?php $numeroFormatado = str_pad($listar->id_inscricao, 4, '0', STR_PAD_LEFT); ?>
+                                        <?php $i += 1;?>
+                                        <tr data-index="<?=$i?>">
+                                            <td><a href="#">#<?=$numeroFormatado?></a></td>
                                             <td>
                                                 <font style="vertical-align: inherit;">
                                                     <font style="vertical-align: inherit;"><img
-                                                            src="<?php echo URL . 'public/uploads/atletaA.jpg'; ?>"
+                                                            src="<?php echo URL . '/public/uploads/atletas/'.$listar->foto_atleta; ?>"
                                                             alt="Patrocinador 1" style="width:120px;"></font>
                                                 </font>
                                             </td>
                                             <td><a href="#" class="text-primary">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Fulano de Tal</font>
+                                                        <font style="vertical-align: inherit;"><?=$listar->nome_atleta?></font>
                                                     </font>
                                                 </a></td>
-                                            <td>Futebol</td>
+                                            <?php foreach($dados['exibirCategorias'] as $list): ?>
+                                            <?php if($listar->categoriaEsportiva == $list->id_categoria): ?>
+                                            <td><?=$list->nome?></td>
+                                            <?php endif; ?>
+                                            <?php endforeach; ?>
                                             <td><span class="badge">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;"><a
@@ -121,6 +129,7 @@
                                                     </font>
                                                 </span></td>
                                         </tr>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

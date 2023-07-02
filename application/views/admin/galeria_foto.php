@@ -6,7 +6,7 @@
         <h1>Gerenciar Fotos</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo URL . 'painel'; ?>">Painel de Controle</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo URL . '/admin/painel'; ?>">Painel de Controle</a></li>
                 <li class="breadcrumb-item active">Lista de fotos</li>
             </ol>
         </nav>
@@ -90,21 +90,30 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr data-index="0">
-                                            <td><a href="#">#2457</a></td>
+                                    <?php $i = 0; ?>
+                                    <?php if(!empty($dados['exibirFotos']) || !is_null($dados['exibirFotos'])): ?>
+                                    <?php foreach($dados['exibirFotos'] as $listar):?>
+                                        <?php $i += 1;?>
+                                        <?php $numeroFormatado = str_pad($listar->id_pagFotos, 4, '0', STR_PAD_LEFT); ?>
+                                        <tr data-index="<?=$i?>">
+                                            <td><a href="#">#<?=$numeroFormatado?></a></td>
                                             <td>
                                                 <font style="vertical-align: inherit;">
                                                     <font style="vertical-align: inherit;"><img
-                                                            src="<?php echo URL . 'public/uploads/noticia-03.jpg'; ?>"
+                                                            src="<?php echo URL . '/public/uploads/fotos/'.$listar->foto_galeria; ?>"
                                                             alt="Patrocinador 1" style="width:120px;"></font>
                                                 </font>
                                             </td>
                                             <td><a href="#" class="text-primary">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Entrega de Materiais</font>
+                                                        <font style="vertical-align: inherit;"><?=$listar->tl_pagFotos?></font>
                                                     </font>
                                                 </a></td>
+                                            <?php if($listar->exibir == 1): ?>
                                             <td>Sim</td>
+                                            <?php elseif($listar->exibir == 2): ?>
+                                            <td>Não</td>
+                                            <?php endif; ?>
                                             <td><span class="badge">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;"><a
@@ -118,6 +127,17 @@
                                                     </font>
                                                 </span></td>
                                         </tr>
+                                    
+                                    <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr data-index="<?=$i?>">
+                                            <td colspan="5">
+                                                <div class="alert alert-danger" role="alert">
+                                                    Não há registros!
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
                                     </tbody>
                                 </table>
                             </div>

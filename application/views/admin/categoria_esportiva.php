@@ -6,7 +6,7 @@
         <h1>Gerenciar Esportes</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo URL . 'painel'; ?>">Painel de Controle</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo URL . '/admin/painel'; ?>">Painel de Controle</a></li>
                 <li class="breadcrumb-item active">Lista de Categorias Esportivas</li>
             </ol>
         </nav>
@@ -77,11 +77,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr data-index="0">
-                                            <td><a href="#">#2457</a></td>
+                                    <?php $i = 0; ?>
+                                    <?php foreach($dados['exibirCategorias'] as $listar):?>
+                                        <?php $i += 1;?>
+                                        <?php $numeroFormatado = str_pad($listar->id_categoria, 4, '0', STR_PAD_LEFT); ?>
+                                        <tr data-index="<?=$i?>">
+                                            <td><a href="#">#<?=$numeroFormatado?></a></td>
                                             <td><a href="#" class="text-primary">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Futebol</font>
+                                                        <font style="vertical-align: inherit;"><?=$listar->nome?></font>
                                                     </font>
                                                 </a></td>
                                             <td><span class="badge">
@@ -97,6 +101,7 @@
                                                     </font>
                                                 </span></td>
                                         </tr>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

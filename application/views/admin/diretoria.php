@@ -6,7 +6,7 @@
         <h1>Gerenciar Diretoria</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo URL . 'painel'; ?>">Painel de Controle</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo URL . '/admin/painel'; ?>">Painel de Controle</a></li>
                 <li class="breadcrumb-item active">Lista de membros</li>
             </ol>
         </nav>
@@ -90,21 +90,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr data-index="0">
-                                            <td><a href="#">#2457</a></td>
+                                    <?php $i = 0; ?>
+                                    <?php foreach($dados['exibirDirecao'] as $listar):?>
+                                        <?php $i += 1;?>
+                                        <?php $numeroFormatado = str_pad($listar->id_membro, 4, '0', STR_PAD_LEFT); ?>
+                                        <tr data-index="<?=$i?>">
+                                            <td><a href="#">#<?=$numeroFormatado?></a></td>
                                             <td>
                                                 <font style="vertical-align: inherit;">
                                                     <font style="vertical-align: inherit;"><img
-                                                            src="<?php echo URL . 'public/images/equipe/adeilson.jpg'; ?>"
+                                                            src="<?php echo URL . '/public/images/equipe/'.$listar->fotoMembro; ?>"
                                                             alt="Patrocinador 1" style="width:120px;"></font>
                                                 </font>
                                             </td>
                                             <td><a href="#" class="text-primary">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Adeilson Fernandes</font>
+                                                        <font style="vertical-align: inherit;"><?=$listar->nome_membro?></font>
                                                     </font>
                                                 </a></td>
-                                            <td>Presidente</td>
+                                            <td><?=$listar->funcao?></td>
                                             <td><span class="badge">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;"><a
@@ -118,6 +122,7 @@
                                                     </font>
                                                 </span></td>
                                         </tr>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

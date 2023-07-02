@@ -989,7 +989,7 @@ section {
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: linear-gradient(rgba(106, 106, 106, 0.9), rgba(106, 106, 106, 0.9)), url("../images/cta-bg.webp") fixed center center;
+  background: linear-gradient(rgba(106, 106, 106, 0.9), rgba(106, 106, 106, 0.9)), url("../images/foto-chamada-acao.webp") fixed center center;
   background-size: cover;
   padding: 120px 0;
 }

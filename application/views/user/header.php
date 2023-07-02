@@ -68,9 +68,9 @@
               <li class="dropdown"><a href="#"><span>Categorias Esportivas</span> <i
                     class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="<?=URL?><?=$dados['info']->tl_link5?>">Futebol</a></li>
-                  <li><a href="<?=URL?><?=$dados['info']->tl_link5?>">Futsal</a></li>
-                  <li><a href="<?=URL?><?=$dados['info']->tl_link5?>">Fut7</a></li>
+                  <li><a href="<?=URL?><?=$dados['info']->tl_link5?>/1">Futebol</a></li>
+                  <li><a href="<?=URL?><?=$dados['info']->tl_link5?>/2">Futsal</a></li>
+                  <li><a href="<?=URL?><?=$dados['info']->tl_link5?>/3">Fut7</a></li>
                 </ul>
               </li>
               <li><a href="<?=URL?><?=$dados['info']->tl_link6?>">Galeria de Fotos</a></li>

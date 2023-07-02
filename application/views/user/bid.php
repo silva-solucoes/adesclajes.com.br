@@ -7,7 +7,7 @@
         <div class="container">
 
             <ol>
-                <li><a href="<?php echo URL . 'index' ?>">Início</a></li>
+                <li><a href="<?php echo URL; ?>">Início</a></li>
                 <li>BID</li>
             </ol>
             <h2>BID</h2>
@@ -35,9 +35,9 @@
                                 <label for="name">Categória Esportiva:</label>
                                 <select class="form-select" aria-label="Default select example" required>
                                     <option selected>Selecione</option>
-                                    <option value="1">Futebol</option>
-                                    <option value="2">Futsal</option>
-                                    <option value="3">Fut7</option>
+                                    <?php foreach($dados['exibirCategorias'] as $list): ?>
+                                    <option value="<?=$list->id_categoria?>"><?=$list->nome?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group col-md-5">
@@ -54,10 +54,14 @@
 
             <div class="row">
                 <br><br>
+                <?php $i = 0; ?>
+                <?php foreach($dados['exibirJogadores'] as $listar):?>
+                <?php $numeroFormatado = str_pad($listar->id_inscricao, 4, '0', STR_PAD_LEFT); ?>
+                <?php $i += 100;?>
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member" data-aos="fade-up" data-aos-delay="<?=$i?>">
                         <div class="member-img">
-                            <img src="<?php echo URL . 'public/uploads/atletaA.jpg'; ?>" class="img-fluid" alt="">
+                            <img src="<?php echo URL . '/public/uploads/atletas/'.$listar->foto_atleta; ?>" class="img-fluid" alt="">
                             <div class="social">
                                 <a href=""><i class="bi bi-twitter"></i></a>
                                 <a href=""><i class="bi bi-facebook"></i></a>
@@ -67,72 +71,13 @@
                         </div>
                         <div class="member-info">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#BID">
-                                <h4>Fulano de Tal</h4>
-                                <span>Posição do jogador</span>
+                                <h4><?=$listar->nome_atleta?></h4>
+                                <span><?=$listar->posicaoPrincipal?></span>
                             </a>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                    <div class="member" data-aos="fade-up" data-aos-delay="200">
-                        <div class="member-img">
-                            <img src="<?php echo URL . 'public/uploads/atletaA.jpg'; ?>" class="img-fluid" alt="">
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
-                            </div>
-                        </div>
-                        <div class="member-info">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#BID">
-                                <h4>Fulano de Tal</h4>
-                                <span>Posição do jogador</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                    <div class="member" data-aos="fade-up" data-aos-delay="300">
-                        <div class="member-img">
-                            <img src="<?php echo URL . 'public/uploads/atletaA.jpg'; ?>" class="img-fluid" alt="">
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
-                            </div>
-                        </div>
-                        <div class="member-info">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#BID">
-                                <h4>Fulano de Tal</h4>
-                                <span>Posição do jogador</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                    <div class="member" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member-img">
-                            <img src="<?php echo URL . 'public/uploads/atletaA.jpg'; ?>" class="img-fluid" alt="">
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
-                            </div>
-                        </div>
-                        <div class="member-info">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#BID">
-                                <h4>Fulano de Tal</h4>
-                                <span>Posição do jogador</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
 
             </div>
         </div>
@@ -163,7 +108,7 @@
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header"
-                    style="background-image: url('<?php echo URL; ?>public/images/fundoBID.jpg'); background-size: cover; width: 100% relative; height: 100px; color: #D98E04;">
+                    style="background-image: url('<?php echo URL; ?>/public/images/fundoBID.webp'); background-size: cover; width: 100% relative; height: 100px; color: #D98E04;">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel"><b>ATLETA DA ADESC LAJES</b></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -173,7 +118,7 @@
                         demais aspectos relacionados ao futebol e outras modalidades esportivas.</p>
                     <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
                         <div class="col-lg-4 text-center" data-aos="fade-right">
-                            <img src="<?php echo URL . 'public/uploads/atletaA.jpg'; ?>"
+                            <img src="<?php echo URL . '/public/uploads/atletaA.webp'; ?>"
                                 class="img-fluid rounded-circle custom-border" alt="Imagem Arredondada" width="60%">
                         </div>
                         <div class="col-lg-7 pt-4 pt-lg-0 content text-justify" data-aos="fade-left">
@@ -467,7 +412,7 @@
                                 <div class="card-body text-center">
                                     <div class="row g-0">
                                         <div class="col-md-5 text-center">
-                                            <img src="<?php echo URL . 'public/uploads/equipeA.jpg'; ?>"
+                                            <img src="<?php echo URL . '/public/uploads/equipeA.webp'; ?>"
                                                 class="img-fluid rounded-circle custom-border-escudo mt-3"
                                                 alt="Imagem Arredondada">
                                         </div>
