@@ -175,12 +175,18 @@
 
                     <div class="sidebar">
 
-                        <div class="sidebar-item search-form">
+                    <div class="sidebar-item search-form">
                             <h3 class="sidebar-title">Burcar por</h3>
-                            <form action="" class="mt-3">
-                                <input type="text">
+                            <form action="" class="mt-3" id="pesq-noticia-form" method="POST">
+
+                                <input type="text" name="noticia" autocomplete="off" class="form-control" id="noticia" placeholder="Pesquisar noticia" onkeyup="carregar_noticias(this.value)">
+
                                 <button type="submit"><i class="bi bi-search"></i></button>
                             </form>
+
+                            <span id="resultado_pesquisa"></span>
+                            <span id= "listar_noticia"></span>
+
                         </div><!-- End sidebar search formn-->
 
                         <div class="sidebar-item categories">
