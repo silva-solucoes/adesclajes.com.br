@@ -528,9 +528,10 @@ class Modelo {
 							$idTecnico = $this->bd->resultado()->id_tecnico;
 
 							//Inserir dados na tabela tbl_atleta
-							$this->bd->query("INSERT INTO tbl_atleta (nome_atleta, dtNascimento_atleta, sexo_atleta, id_escola, id_filiacao, id_saude, id_responsavel, id_detalheTec) 
-							VALUES (:nomeAtleta, :dtNascimento, :sexo, :id_escola, :id_filiacao, :id_saude, :id_responsavel, :id_detalheTec)");
+							$this->bd->query("INSERT INTO tbl_atleta (nome_atleta, foto_atleta, dtNascimento_atleta, sexo_atleta, id_escola, id_filiacao, id_saude, id_responsavel, id_detalheTec) 
+							VALUES (:nomeAtleta, :foto, :dtNascimento, :sexo, :id_escola, :id_filiacao, :id_saude, :id_responsavel, :id_detalheTec)");
 							$this->bd->bind(':nomeAtleta', $nomeAtleta);
+							$this->bd->bind(':foto', $foto);
 							$this->bd->bind(':dtNascimento', $dataNascimento);
 							$this->bd->bind(':sexo', $sexo);
 							$this->bd->bind(':id_escola', $idEscola);
@@ -545,13 +546,30 @@ class Modelo {
 								$this->bd->query('SELECT * FROM tbl_atleta ORDER BY tbl_atleta.id_atleta  DESC LIMIT 1');
 								$idAtleta = $this->bd->resultado()->id_atleta;
 
+								$anoAtual = date('Y-m-d');
+								//Inserir dados na tabela tbl_estatistica
+								$this->bd->query("INSERT INTO tbl_estatisticas (quantJogos, quantGols, quantVitorias, quantEmpates, quantDerrotas, quantFaltas, quantCartAmarelo, quantCartVermelho, quantTorneio, quantAmistosos, anoAtual, id_atleta) 
+								VALUES (:quantJogos, :quantGols, :quantVitorias, :quantEmpates, :quantDerrotas, :quantFaltas, :quantCartAmarelo, :quantCartVermelho, :quantTorneio, :quantAmistosos, :anoAtual, :id_atleta)");
+								$this->bd->bind(':quantJogos', 0);
+								$this->bd->bind(':quantGols', 0);
+								$this->bd->bind(':quantVitorias', 0);
+								$this->bd->bind(':quantEmpates', 0);
+								$this->bd->bind(':quantDerrotas', 0);
+								$this->bd->bind(':quantFaltas', 0);
+								$this->bd->bind(':quantCartAmarelo', 0);
+								$this->bd->bind(':quantCartVermelho', 0);
+								$this->bd->bind(':quantTorneio', 0);
+								$this->bd->bind(':quantAmistosos', 0);
+								$this->bd->bind(':anoAtual', $anoAtual);
+								$this->bd->bind(':id_atleta', $idAtleta);
+								$this->bd->executa();
+
 								$dataAtual = date('Y-m-d H:i:s');
 
 								//Inserir dados na tabela tbl_incricao
-								$this->bd->query("INSERT INTO tbl_incricao (id_atleta, foto_atleta, frase, dtRegistro, dt_edicao) 
-								VALUES (:id_atleta, :foto, :frase, :dtRegistro, :dt_edicao)");
+								$this->bd->query("INSERT INTO tbl_incricao (id_atleta, frase, dtRegistro, dt_edicao) 
+								VALUES (:id_atleta, :frase, :dtRegistro, :dt_edicao)");
 								$this->bd->bind(':id_atleta', $idAtleta);
-								$this->bd->bind(':foto', $foto);
 								$this->bd->bind(':frase', $frase);
 								$this->bd->bind(':dtRegistro', $dataAtual);
 								$this->bd->bind(':dt_edicao', $dataAtual);

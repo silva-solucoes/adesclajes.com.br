@@ -56,7 +56,7 @@
                                     <form method="POST" action="<?= URL ?>/admin/buscarBID">
                                         <input class="datatable-input" placeholder="Buscar por..." type="search" title="Pesquisar na tabela" name="pesquisa" id="pesquisa">
                                     </form>
-                                    </div>
+                                </div>
                             </div>
                             <div class="datatable-container">
                                 <table class="table table-borderless datatable datatable-table">
@@ -94,9 +94,15 @@
                                             <tr data-index="<?= $i ?>">
                                                 <td><a href="#">#<?= $numeroFormatado ?></a></td>
                                                 <td>
-                                                    <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;"><img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" alt="Patrocinador 1" style="width:120px;"></font>
-                                                    </font>
+                                                    <?php if ($listar->foto_atleta == 'semfoto.webp') : ?>
+                                                        <font style="vertical-align: inherit;">
+                                                            <font style="vertical-align: inherit;"><img src="<?php echo URL . '/public/images/' . $listar->foto_atleta; ?>" alt="Patrocinador 1" style="width:120px;"></font>
+                                                        </font>
+                                                    <?php else : ?>
+                                                        <font style="vertical-align: inherit;">
+                                                            <font style="vertical-align: inherit;"><img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" alt="Patrocinador 1" style="width:120px;"></font>
+                                                        </font>
+                                                    <?php endif; ?>
                                                 </td>
                                                 <td><a href="#" class="text-primary">
                                                         <font style="vertical-align: inherit;">
@@ -110,8 +116,8 @@
                                                 <?php endforeach; ?>
                                                 <td><span class="badge">
                                                         <font style="vertical-align: inherit;">
-                                                            <font style="vertical-align: inherit;"><a class="btn btn-success rounded-pill" href="<?= URL ?>/admin/detalheAtleta/<?=$listar->id_inscricao?>" title="Visualizar Atleta"><i class="bi bi-eye"></i></a></font>
-                                                            <font style="vertical-align: inherit;"><a class="btn btn-warning rounded-pill" href="<?= URL ?>/admin/editarAtleta/<?=$listar->id_inscricao?>" title="Editar Atleta"><i class="bi bi-pencil-square"></i></a></font>
+                                                            <font style="vertical-align: inherit;"><a class="btn btn-success rounded-pill" href="<?= URL ?>/admin/detalheAtleta/<?= $listar->id_inscricao ?>" title="Visualizar Atleta"><i class="bi bi-eye"></i></a></font>
+                                                            <font style="vertical-align: inherit;"><a class="btn btn-warning rounded-pill" href="<?= URL ?>/admin/editarAtleta/<?= $listar->id_inscricao ?>" title="Editar Atleta"><i class="bi bi-pencil-square"></i></a></font>
                                                             <font style="vertical-align: inherit;"><a class="btn btn-danger rounded-pill" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2" title="Desligar Atleta"><i class="fas fa-power-off"></i></i></a>
                                                             </font>
                                                         </font>

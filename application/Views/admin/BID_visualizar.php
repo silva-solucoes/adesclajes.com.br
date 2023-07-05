@@ -67,7 +67,11 @@
 
                                                         <div class="col-md-12 text-left">
                                                             <div class="form-floating">
-                                                                <img class="rounded-circle img-fluid" id="imagemPreview" src="<?php echo URL . '/public/uploads/atletas/' . $dados['exibirJogador']->foto_atleta ?>" alt="Imagem de Perfil" style="width:120px; height: 120px;">
+                                                                <?php if ($dados['exibirJogador']->foto_atleta == 'semfoto.webp') : ?>
+                                                                    <img class="rounded-circle img-fluid" id="imagemPreview" src="<?php echo URL . '/public/images/' . $dados['exibirJogador']->foto_atleta ?>" alt="Imagem de Perfil" style="width:120px; height: 120px;">
+                                                                <?php else : ?>
+                                                                    <img class="rounded-circle img-fluid" id="imagemPreview" src="<?php echo URL . '/public/uploads/atletas/' . $dados['exibirJogador']->foto_atleta ?>" alt="Imagem de Perfil" style="width:120px; height: 120px;">
+                                                                <?php endif; ?>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-8">
@@ -415,7 +419,7 @@
                                                                                 <i class="fas fa-futbol"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
-                                                                                <h2><?=$dados['exibirJogador']->quantJogos?></h2>
+                                                                                <h2><?= $dados['exibirJogador']->quantJogos ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Jogos</span>
                                                                             </div>
                                                                         </div>
@@ -435,7 +439,7 @@
                                                                                 <i class="fas fa-futbol"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
-                                                                                <h2><?=$dados['exibirJogador']->quantGols?></h2>
+                                                                                <h2><?= $dados['exibirJogador']->quantGols ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Gols Marcados</span>
 
                                                                             </div>
@@ -456,16 +460,16 @@
                                                                                 <i class="fas fa-futbol"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
-                                                                                <?php 
-                                                                                    $r1 = $dados['exibirJogador']->quantGols;
-                                                                                    $r2 = $dados['exibirJogador']->quantJogos;
-                                                                                    $golsPartida = 0;
-                                                                                    
-                                                                                    if ($r2 != 0):
-                                                                                        $golsPartida = $r1 / $r2;
-                                                                                    endif;
+                                                                                <?php
+                                                                                $r1 = $dados['exibirJogador']->quantGols;
+                                                                                $r2 = $dados['exibirJogador']->quantJogos;
+                                                                                $golsPartida = 0;
+
+                                                                                if ($r2 != 0) :
+                                                                                    $golsPartida = $r1 / $r2;
+                                                                                endif;
                                                                                 ?>
-                                                                                <h2><?=$golsPartida?></h2>
+                                                                                <h2><?= $golsPartida ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Gols por partida</span>
 
                                                                             </div>
@@ -487,7 +491,7 @@
                                                                                 <i class="bi bi-trophy-fill"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
-                                                                                <h2><?=$dados['exibirJogador']->quantVitorias;?></h2>
+                                                                                <h2><?= $dados['exibirJogador']->quantVitorias; ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Vitórias</span>
 
                                                                             </div>
@@ -509,7 +513,7 @@
                                                                                 <i class="fas fa-equals"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
-                                                                                <h2><?=$dados['exibirJogador']->quantEmpates;?></h2>
+                                                                                <h2><?= $dados['exibirJogador']->quantEmpates; ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Empates</span>
 
                                                                             </div>
@@ -531,7 +535,7 @@
                                                                                 <i class="fas fa-times"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
-                                                                                <h2><?=$dados['exibirJogador']->quantDerrotas;?></h2>
+                                                                                <h2><?= $dados['exibirJogador']->quantDerrotas; ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Derrotas</span>
 
                                                                             </div>
@@ -553,7 +557,7 @@
                                                                                 <i class="fas fa-times-circle"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
-                                                                                <h2><?=$dados['exibirJogador']->quantFaltas;?></h2>
+                                                                                <h2><?= $dados['exibirJogador']->quantFaltas; ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Faltas</span>
 
                                                                             </div>
@@ -575,7 +579,7 @@
                                                                                 <i class="bi bi-file-fill"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
-                                                                                <h2><?=$dados['exibirJogador']->quantCartVermelho;?></h2>
+                                                                                <h2><?= $dados['exibirJogador']->quantCartVermelho; ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Cartões Vermelho</span>
 
                                                                             </div>
@@ -597,7 +601,7 @@
                                                                                 <i class="bi bi-file-fill"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
-                                                                                <h2><?=$dados['exibirJogador']->quantCartAmarelo;?></h2>
+                                                                                <h2><?= $dados['exibirJogador']->quantCartAmarelo; ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Cartões Amarelo</span>
 
                                                                             </div>
@@ -619,7 +623,7 @@
                                                                                 <i class="fas fa-trophy"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
-                                                                                <h2><?=$dados['exibirJogador']->quantTorneio;?></h2>
+                                                                                <h2><?= $dados['exibirJogador']->quantTorneio; ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Torneios</span>
 
                                                                             </div>
@@ -641,7 +645,7 @@
                                                                                 <i class="fas fa-handshake"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
-                                                                                <h2><?=$dados['exibirJogador']->quantAmistosos;?></h2>
+                                                                                <h2><?= $dados['exibirJogador']->quantAmistosos; ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Amistosos</span>
 
                                                                             </div>
@@ -664,14 +668,14 @@
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
                                                                                 <?php
-                                                                                    $nV = $dados['exibirJogador']->quantVitorias;
-                                                                                    $nE = $dados['exibirJogador']->quantEmpates;
-                                                                                    $nT = $dados['exibirJogador']->quantJogos;
+                                                                                $nV = $dados['exibirJogador']->quantVitorias;
+                                                                                $nE = $dados['exibirJogador']->quantEmpates;
+                                                                                $nT = $dados['exibirJogador']->quantJogos;
 
-                                                                                    $aproveitamento = $nV+(0.5*$nE)*($nT*100);
-                                                                                    $aproveitamentoFormatado = number_format($aproveitamento, 2, ',', '.');
+                                                                                $aproveitamento = $nV + (0.5 * $nE) * ($nT * 100);
+                                                                                $aproveitamentoFormatado = number_format($aproveitamento, 2, ',', '.');
                                                                                 ?>
-                                                                                <h2><?=$aproveitamentoFormatado.'%'?></h2>
+                                                                                <h2><?= $aproveitamentoFormatado . '%' ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Aproveitamento</span>
 
                                                                             </div>

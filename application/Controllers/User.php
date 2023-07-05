@@ -1,22 +1,24 @@
 <?php
 setlocale(LC_ALL, "pt_BR", "pt_BR.utf-8", "portuguese");
 date_default_timezone_set('America/Sao_Paulo');
-class User extends Controller{
+class User extends Controller
+{
 
-    public function enviarContato(){
+    public function enviarContato()
+    {
         //Capta os dados do formulário
         $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        if(isset($formulario)):
+        if (isset($formulario)) :
             $dados = [
                 'name' => trim($formulario['name']),
                 'email' => trim($formulario['email']),
                 'subject' => trim($formulario['subject']),
                 'message' => trim($formulario['message']),
             ];
-            if(empty($formulario['name'])):
+            if (empty($formulario['name'])) :
                 $dados['nome_erro'] = "Preencha o campo Seu nome";
             endif;
-        else:
+        else :
             $dados = [
                 'name' => '',
                 'email' => '',
@@ -26,19 +28,21 @@ class User extends Controller{
         endif;
 
         $this->model('modelo');
-        
+
         $modelo = new Modelo();
 
         $modelo->enviarEmail($dados['name'], $dados['email'], $dados['subject'], $dados['message']);
     }
 
-    public function enviarInscricao(){
+    public function enviarInscricao()
+    {
 
         //Capta os dados do formulário
         $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        if(isset($formulario)):
+        if (isset($formulario)) :
             $dados = [
                 'nome' => trim($formulario['nome']),
+                'foto' => 'semfoto.webp',
                 'dataNascimento' => trim($formulario['dataNascimento']),
                 'sexo' => trim($formulario['sexo']),
                 'nivel_ensino' => trim($formulario['nivel_ensino']),
@@ -51,14 +55,15 @@ class User extends Controller{
                 'altura' => trim($formulario['altura']),
                 'message' => trim($formulario['message']),
             ];
-            
-            if(empty($formulario['nome'])):
+
+            if (empty($formulario['nome'])) :
                 //$dados['nome_erro'] = "Preencha o campo Seu nome";
                 echo "Preencha o campo Seu nome";
             endif;
-        else:
+        else :
             $dados = [
                 'nome' => '',
+                'foto' => '',
                 'dataNascimento' => '',
                 'sexo' => '',
                 'nivel_ensino' => '',
@@ -77,20 +82,34 @@ class User extends Controller{
 
         $modelo = new Modelo();
 
-        
-        $modelo->cadastrarInscricao($dados['nivel_ensino'], $dados['nomeEscola'], $dados['nomeMae'], $dados['nomePai'], $dados['altura'], $dados['telRespon'], $dados['categoria_esportiva'], $dados['posicao'], $dados['nome'], $dados['dataNascimento'], $dados['sexo'], $dados['message']);
 
-        echo 'Caro(a) '.$dados['nome'].' interessado(a) em se juntar à equipe da ADESC Lajes, agradecemos seu interesse em se tornar parte do nosso time. Dentro de 1 a 5 dias, nossa equipe diretiva entrará em contato com o responsável do atleta, caso seja menor de idade, para agendar um primeiro contato. Durante essa conversa, forneceremos orientações adicionais e discutiremos detalhes importantes sobre sua participação. Estamos ansiosos para receber você em nossa equipe e compartilhar uma jornada de sucesso no esporte.';
+        $modelo->cadastrarInscricao($dados['nivel_ensino'], $dados['foto'], $dados['nomeEscola'], $dados['nomeMae'], $dados['nomePai'], $dados['altura'], $dados['telRespon'], $dados['categoria_esportiva'], $dados['posicao'], $dados['nome'], $dados['dataNascimento'], $dados['sexo'], $dados['message']);
 
-       // header('Location:'.URL);
+        $dataAtual = date('Y-m-d'); // Obtém a data atual no formato 'YYYY-MM-DD'
+
+        // Adiciona 1 dia à data atual
+        $primeiroDia = date('d/m/Y', strtotime('+1 day', strtotime($dataAtual)));
+
+        // Adiciona 5 dias à data atual
+        $quintoDia = date('d/m/Y', strtotime('+5 days', strtotime($dataAtual)));
+
+        echo '  <div class="alert alert-primary" role="alert">
+                    <h4 class="alert-heading">Parabéns ' . $dados['nome'] . '!</h4>
+                    <p><i class="bi bi-exclamation-triangle"></i> : Entre <b>'.$primeiroDia.'</b> a <b>'.$quintoDia.'</b>, nossa equipe diretiva entrará em contato com o responsável do atleta, caso seja menor de idade, para agendar um primeiro contato.</p>
+                    <hr>
+                    <p class="mb-0">Agradecemos seu interesse em se tornar parte do nosso time.</p>
+                </div>';
+
+        // header('Location:'.URL);
 
     }
 
-    public function enviarComentarioNoticia($idNoticia){
+    public function enviarComentarioNoticia($idNoticia)
+    {
         $dataHora = date('Y-m-d H:i:s');
         //Capta os dados do formulário
         $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        if(isset($formulario)):
+        if (isset($formulario)) :
             $dados = [
                 'nameVisitante' => trim($formulario['nameVisitante']),
                 'foto' => 'semfoto.jpg',
@@ -99,11 +118,11 @@ class User extends Controller{
                 'idNoticia' => trim($idNoticia),
                 'dtCadastroComent' => $dataHora,
             ];
-            
-            if(empty($formulario['nome'])):
+
+            if (empty($formulario['nome'])) :
                 $dados['nome_erro'] = "Preencha o campo Seu nome";
             endif;
-        else:
+        else :
             $dados = [
                 'nameVisitante' => '',
                 'emailVisitante' => '',
@@ -116,10 +135,8 @@ class User extends Controller{
 
         $modelo = new Modelo();
 
-        $modelo->cadastrarComentarioNoticia($dados['nameVisitante'],$dados['foto'],$dados['dtCadastroComent'],$dados['comentarioVisitante'],$dados['emailVisitante'],$dados['idNoticia']);
-        
-        header('Location:'.URL.'/paginas/detalheNoticias/'.$idNoticia);
+        $modelo->cadastrarComentarioNoticia($dados['nameVisitante'], $dados['foto'], $dados['dtCadastroComent'], $dados['comentarioVisitante'], $dados['emailVisitante'], $dados['idNoticia']);
 
+        header('Location:' . URL . '/paginas/detalheNoticias/' . $idNoticia);
     }
-
 }

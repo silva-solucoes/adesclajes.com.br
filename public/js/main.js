@@ -292,7 +292,7 @@ $(document).ready(function() {
     // Enviar a solicitação AJAX
     $.ajax({
       type: 'POST',
-      url: 'http://localhost/adesclajes/User/enviarInscricao', // O arquivo PHP que processará o formulário
+      url: 'http://localhost/adesclajes.com.br/user/enviarInscricao', // O arquivo PHP que processará o formulário
       data: formData,
       success: function(response) {
         $('#result').html(response); // Atualizar a div com a resposta do PHP
@@ -308,7 +308,7 @@ $(document).ready(function() {
 async function carregar_noticias(valor){
 	if (valor.length >= 3) {
     
-		const dados = await fetch ('http://localhost/adesclajes/Paginas/searchNews/pesquisarNoticias?value='+valor);
+		const dados = await fetch ('http://localhost/adesclajes.com.br/Paginas/searchNews/pesquisarNoticias?value='+valor);
 
     const respost = await dados.json();
 		console.log(respost);
@@ -348,7 +348,7 @@ async function listar_noticia(tl_noticia){
   let tl_noticiaDez = tl_noticia.substring(0, 25);
   document.getElementById("noticia").value = tl_noticiaDez+" ...";
 
-  const dados = await fetch ('http://localhost/adesclajes/Paginas/searchNews/listarNoticiaPesquisa?titulo='+tl_noticia);
+  const dados = await fetch ('http://localhost/adesclajes.com.br/Paginas/searchNews/listarNoticiaPesquisa?titulo='+tl_noticia);
   const resposta = await dados.json();
 
   var noticia = "";
@@ -362,9 +362,9 @@ async function listar_noticia(tl_noticia){
       noticia +=  "<div class='sidebar-item recent-posts'>"
       noticia +=  "              <div class='mt-3'>"
       noticia +=  "                  <div class='post-item mt-3'>"
-      noticia +=  "                      <img src='http://localhost/adesclajes/public/uploads/noticias/"+resposta['listarNoticiaPesquisa']['dados'][i].img_Noticia+"' alt='' class='flex-shrink-0'>"
+      noticia +=  "                      <img src='http://localhost/adesclajes.com.br/public/uploads/noticias/"+resposta['listarNoticiaPesquisa']['dados'][i].img_Noticia+"' alt='' class='flex-shrink-0'>"
       noticia +=  "                      <div>"
-      noticia +=  "                          <h4><a href='http://localhost/adesclajes/paginas/detalheNoticias/"+resposta['listarNoticiaPesquisa']['dados'][i].id_noticia+"'>"
+      noticia +=  "                          <h4><a href='http://localhost/adesclajes.com.br/paginas/detalheNoticias/"+resposta['listarNoticiaPesquisa']['dados'][i].id_noticia+"'>"
       noticia +=  resposta['listarNoticiaPesquisa']['dados'][i].tl_noticia
       noticia +=  "                          </a></h4>"
       noticia +=  "                      </div>"

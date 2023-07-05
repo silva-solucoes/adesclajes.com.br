@@ -37,9 +37,15 @@
                         <form class="row g-3" action="" method="post" enctype="multipart/form-data">
                             <div class="col-md-12 text-left">
                                 <div class="form-floating">
-                                    <img class="rounded-circle img-fluid" id="imagemPreview"
+                                    <?php if($dados['individualInsc']->foto_atleta == 'semfoto.webp'):?>
+                                        <img class="rounded-circle img-fluid" id="imagemPreview"
+                                            src="<?php echo URL . '/public/images/'.$dados['individualInsc']->foto_atleta ?>" alt="Imagem de Perfil"
+                                            style="width:120px; height: 120px;">
+                                    <?php else: ?>
+                                        <img class="rounded-circle img-fluid" id="imagemPreview"
                                             src="<?php echo URL . '/public/uploads/atletas/'.$dados['individualInsc']->foto_atleta ?>" alt="Imagem de Perfil"
                                             style="width:120px; height: 120px;">
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="col-md-8">
