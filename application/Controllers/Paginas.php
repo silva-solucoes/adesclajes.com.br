@@ -69,17 +69,18 @@ class Paginas extends Controller{
         echo json_encode($dados);
     }
 
-    public function noticias($pagina){
+    public function noticias($pagina = null, $categoria = null){
+
 
         $dados=[
             'info' => $this->info->lerInformacao()
         ];
         //paginas atual notícia
-        $dados['pagina']= $pagina;
+        $dados['pagina']= $this->info->paginaAtual($pagina, $categoria);
         //quantidade de paginas de notícia
-        $dados['totalPagina']=$this->info->numeroDePaginas();
+        $dados['totalPagina']=$this->info->numeroDePaginas($categoria);
         //exibir notícia
-        $dados['noticias']=$this->info->listar4Noticias($pagina);
+        $dados['noticias']=$this->info->listar4Noticias($pagina, $categoria);
         //Exibir categorias
         $dados['categorias']=$this->info->exibirCategorias();
         //Exibir todos os patrocinadores
