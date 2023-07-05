@@ -47,28 +47,116 @@ class Modelo {
 		return $this->bd->resultados();
 	}
 
-	public function listar4Noticias($pagina){
-
-		$qnt_result_pg = 2;
+	public function listar4Noticias($pagina, $categoria){
+		
+		$qnt_result_pg = 3;
         $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-		$this->bd->query("SELECT *
-		FROM tbl_noticias
-		INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor
-		INNER JOIN categorianoticia ON categorianoticia.id_categoria = tbl_noticias.id_categoria
-		INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas = tbl_noticias.id_ultimas
-		INNER JOIN tbl_coment_tecnico ON tbl_coment_tecnico.id_coment_tec = tbl_noticias.id_coment_tec
-		ORDER BY tbl_noticias.dtAtualizacao DESC
-		LIMIT $inicio, $qnt_result_pg");
+		if($categoria == null){
+			$this->bd->query("SELECT *
+			FROM tbl_noticias
+			INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor
+			INNER JOIN categorianoticia ON categorianoticia.id_categoria = tbl_noticias.id_categoria
+			INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas = tbl_noticias.id_ultimas
+			INNER JOIN tbl_coment_tecnico ON tbl_coment_tecnico.id_coment_tec = tbl_noticias.id_coment_tec
+			ORDER BY tbl_noticias.dtAtualizacao DESC
+			LIMIT $inicio, $qnt_result_pg");
+		}else{
+			$this->bd->query("SELECT *
+			FROM tbl_noticias
+			INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor
+			INNER JOIN categorianoticia ON categorianoticia.id_categoria = tbl_noticias.id_categoria
+			INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas = tbl_noticias.id_ultimas
+			INNER JOIN tbl_coment_tecnico ON tbl_coment_tecnico.id_coment_tec = tbl_noticias.id_coment_tec
+			WHERE tbl_noticias.id_categoria = $categoria
+			ORDER BY tbl_noticias.dtAtualizacao DESC
+			LIMIT $inicio, $qnt_result_pg");
+			
+		}
 
 		return $this->bd->resultados();
 	}
 
-	public function numeroDePaginas(){
-		$qnt_result_pg = 2;
+	public function pesquisarNoticias($valor){
+		
+		if(!empty($valor)){
+				
+			$this->bd->query('SELECT id_noticia, tl_noticia FROM tbl_noticias WHERE  MATCH(tl_noticia) AGAINST (:valor IN NATURAL LANGUAGE MODE) LIMIT 10');
+			$this->bd->bind('valor', $valor);
+			$this->resultado = $resultado = $this->bd->resultado();
+				
+				
+			$numResult = $this->bd->totalResultados();
+			if ( ($resultado) and ($numResult != 0)) {
+				$dados = $this->bd->resultados();
+									
+				$retorna = ['status' => true, 'dados' => $dados];
+				
+			}else{
+				$retorna = ['status' => false , 'msg' =>'Nennhuma notícia encontrada'];
+			}
 
-		$this->bd->query("SELECT COUNT(id_noticia) AS num_result FROM tbl_noticias");
+		}else{
+			$retorna = ['status' => false, 'msg' =>"Erro: nenhum Item encontrato"];
+		}
+		return $retorna;
+	}
 
+	public function listarNoticiaPesquisa($titulo){
+		
+		if(!empty($titulo)){
+
+			$titulo = "%".$titulo."%";
+				
+			$this->bd->query('SELECT id_noticia, tl_noticia, img_Noticia FROM tbl_noticias WHERE  MATCH(tl_noticia) AGAINST (:titulo IN NATURAL LANGUAGE MODE) LIMIT 4');
+			$this->bd->bind('titulo', $titulo);
+			$this->resultado = $resultado = $this->bd->resultado();
+				
+				
+			$numResult = $this->bd->totalResultados();
+			if ( ($resultado) and ($numResult != 0)) {
+				$dados = $this->bd->resultados();
+									
+				$retorna = ['status' => true, 'dados' => $dados];
+				
+			}else{
+				$retorna = ['status' => false , 'msg' =>'Nennhuma notícia encontrada'];
+			}
+
+		}else{
+			$retorna = ['status' => false, 'msg' =>"Erro: nenhum Item encontrato"];
+		}
+		return $retorna;
+	}
+
+	public function paginaAtual($pagina, $categoria){
+		// As variaveis a seguir farão o controle das paginas anteriores e posteriores a pagina atual
+		$pg_ant = $pagina-1;
+		$pg_pos = $pagina+1;
+		$pg_ant_menos = $pagina-2;
+		$pg_pos_mais = $pagina+2;
+		$idcategoria = $categoria;
+
+		// Caso o usuario tenha escolhido uma categoria ele irá colocar a '/' antes da categoria
+		if($categoria != null){
+			$categoria = "/".$categoria;
+		}
+		
+		// Aqui são colocados em um array as variaveis para que elas possam ser usadas detro da pagina
+		$paginaArray = ["atual"=>$pagina, "ant"=>$pg_ant, "pos"=>$pg_pos, "antA"=>$pg_ant_menos, "posP"=>$pg_pos_mais, "cate"=>$categoria, "id_cate"=>$idcategoria];
+
+		return $paginaArray;
+	}
+
+	public function numeroDePaginas($categoria){
+
+		$qnt_result_pg = 3;
+
+		if($categoria == null){
+			$this->bd->query("SELECT COUNT(id_noticia) AS num_result FROM tbl_noticias");
+		}else{
+			$this->bd->query("SELECT COUNT(id_noticia) AS num_result FROM tbl_noticias WHERE id_categoria = $categoria");
+		}
 		 $row_pg = $this->bd->resultados()[0]->num_result;
 
 		$quantidade_pg = ceil($row_pg/$qnt_result_pg);
@@ -139,7 +227,7 @@ class Modelo {
 	}
 
 	public function exibirCategorias(){
-		$this->bd->query("SELECT categorianoticia.nome AS nome_categoria, COUNT(*) AS quantidade_registros FROM tbl_noticias INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor INNER JOIN categorianoticia ON categorianoticia.id_categoria = tbl_noticias.id_categoria INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas = tbl_noticias.id_ultimas INNER JOIN tbl_coment_tecnico ON tbl_coment_tecnico.id_coment_tec = tbl_noticias.id_coment_tec INNER JOIN tbl_membro ON tbl_coment_tecnico.id_membro = tbl_membro.id_membro WHERE categorianoticia.nome IN ('Futebol', 'Futsal', 'Fut7') GROUP BY categorianoticia.nome ORDER BY categorianoticia.nome DESC;
+		$this->bd->query("SELECT categorianoticia.id_categoria AS id_categoria, categorianoticia.nome AS nome_categoria, COUNT(*) AS quantidade_registros FROM tbl_noticias INNER JOIN tbl_usuario ON tbl_usuario.id_usuario = tbl_noticias.id_autor INNER JOIN categorianoticia ON categorianoticia.id_categoria = tbl_noticias.id_categoria INNER JOIN tbl_ultimasnoticias ON tbl_ultimasnoticias.id_ultimas = tbl_noticias.id_ultimas INNER JOIN tbl_coment_tecnico ON tbl_coment_tecnico.id_coment_tec = tbl_noticias.id_coment_tec INNER JOIN tbl_membro ON tbl_coment_tecnico.id_membro = tbl_membro.id_membro WHERE categorianoticia.nome IN ('Futebol', 'Futsal', 'Fut7') GROUP BY categorianoticia.nome ORDER BY categorianoticia.nome DESC;
 		");
 
 		return $this->bd->resultados();

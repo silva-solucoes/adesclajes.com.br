@@ -8,7 +8,18 @@
 
             <ol>
                 <li><a href="<?php echo URL ?>">Início</a></li>
-                <li>Notícias</li>
+                <?php
+                if($dados['pagina']['cate'] == null){
+                   echo "<li>Notícias</li>";
+                }else{
+                    
+                    foreach($dados['categorias'] as $listar):                       
+                        if($listar->id_categoria == $dados['pagina']['id_cate']){
+                            echo "<li><a href= '". URL . "/paginas/noticias/1'>Notícias</a> / ".$listar->nome_categoria."</li>";
+                        }                    
+                     endforeach; 
+                }                   
+                ?>
             </ol>
             <h2>Notícias</h2>
 
@@ -67,34 +78,29 @@
 
                     <div class="blog-pagination">
                         <ul class="justify-content-center">
-                            <li><a href="<?php echo URL . '/paginas/noticias/1' ?>">PRIMEIRA</a></li>
+                            <li class="blog-button"><a href="<?php echo URL . '/paginas/noticias/1'. $dados['pagina']['cate'] ?>">PRIMEIRA</a></li>
                             <?php       
-                            if($dados['pagina'] != 1 && $dados['pagina'] != $dados['totalPagina']): 
-                                $pg_ant = $dados['pagina']-1;
-                                $pg_pos = $dados['pagina']+1;
-                               echo "<li><a href='".URL."/paginas/noticias/".$pg_ant."'>".$pg_ant."</a></li>";
-                               echo "<li class='active'><a href='#'>".$dados['pagina']."</a></li>";
-                               echo "<li><a href='".URL."/paginas/noticias/".$pg_pos."'>".$pg_pos."</a></li>";
-                               elseif($dados['pagina'] == 1): 
-                                $pg_pos_mais = $dados['pagina']+2;
-                                $pg_pos = $dados['pagina']+1;
-                               echo "<li class='active'><a href='#'>".$dados['pagina']."</a></li>";
-                               echo "<li><a href='".URL."/paginas/noticias/".$pg_pos."'>".$pg_pos."</a></li>";
-                               echo "<li><a href='".URL."/paginas/noticias/".$pg_pos_mais."'>".$pg_pos_mais."</a></li>";
-                               
-                                else: 
-                                    $pg_ant_menos = $dados['pagina']-2;
-                                    $pg_ant = $dados['pagina']-1;
-                                    echo "<li><a href='".URL."/paginas/noticias/".$pg_ant_menos."'>".$pg_ant_menos."</a></li>";
-                                    echo "<li><a href='".URL."/paginas/noticias/".$pg_ant."'>".$pg_ant."</a></li>";
-                                    echo "<li class='active'><a href='#'>".$dados['pagina']."</a></li>";
-                                                                
-                                endif
+                                if($dados['pagina']['atual'] >= 3 && $dados['pagina']['atual'] == $dados['totalPagina']): 
+                                    
+                                    echo "<li><a href='".URL."/paginas/noticias/".$dados['pagina']['antA'], $dados['pagina']['cate']."'>".$dados['pagina']['antA']."</a></li>";
+                                    echo "<li><a href='".URL."/paginas/noticias/".$dados['pagina']['ant'], $dados['pagina']['cate']."'>".$dados['pagina']['ant']."</a></li>";
+                                elseif($dados['pagina']['atual'] >= 2):   
+                                        echo "<li><a href='".URL."/paginas/noticias/".$dados['pagina']['ant'], $dados['pagina']['cate']."'>".$dados['pagina']['ant']."</a></li>";  
 
+                                endif;
 
-                               
+                                    echo "<li class='active'><a href='#'>".$dados['pagina']['atual']."</a></li>";
+
+                                if($dados['pagina']['atual'] == 1 && $dados['totalPagina'] >= 3): 
+        
+                                        echo "<li><a href='".URL."/paginas/noticias/".$dados['pagina']['pos'], $dados['pagina']['cate']."'>".$dados['pagina']['pos']."</a></li>";
+                                        echo "<li><a href='".URL."/paginas/noticias/".$dados['pagina']['posP'], $dados['pagina']['cate']."'>".$dados['pagina']['posP']."</a></li>";
+                                
+                                elseif($dados['pagina']['atual'] != $dados['totalPagina']): 
+                                    echo "<li><a href='".URL."/paginas/noticias/".$dados['pagina']['pos'], $dados['pagina']['cate']."'>".$dados['pagina']['pos']."</a></li>";                                                                   
+                                endif  
                             ?>
-                            <li><a href="<?php echo URL . '/paginas/noticias/'.$dados['totalPagina'] ?>">ULTIMA</a></li>
+                            <li class="blog-button"><a href="<?php echo URL . '/paginas/noticias/'.$dados['totalPagina'], $dados['pagina']['cate'] ?>">ULTIMA</a></li>
                         </ul>
                     </div><!-- End blog pagination -->
 
@@ -104,19 +110,25 @@
 
                     <div class="sidebar">
 
-                        <div class="sidebar-item search-form">
+                    <div class="sidebar-item search-form">
                             <h3 class="sidebar-title">Burcar por</h3>
-                            <form action="" class="mt-3">
-                                <input type="text">
+                            <form action="" class="mt-3" id="pesq-noticia-form" method="POST">
+
+                                <input type="text" name="noticia" autocomplete="off" class="form-control" id="noticia" placeholder="Pesquisar noticia" onkeyup="carregar_noticias(this.value)">
+
                                 <button type="submit"><i class="bi bi-search"></i></button>
                             </form>
+
+                            <span id="resultado_pesquisa"></span>
+                            <span id= "listar_noticia"></span>
+
                         </div><!-- End sidebar search formn-->
 
                         <div class="sidebar-item categories">
                             <h3 class="sidebar-title">Categoria</h3>
                             <ul class="mt-3">
                             <?php foreach($dados['categorias'] as $listar): ?>
-                                <li><a href="#"><?=$listar->nome_categoria?> <span>(<?=$listar->quantidade_registros?>)</span></a></li>
+                                <li><a href="<?php echo URL . '/paginas/noticias/1/'. $listar->id_categoria ?>"><?=$listar->nome_categoria?> <span>(<?=$listar->quantidade_registros?>)</span></a></li>
                             <?php endforeach; ?>
                             </ul>
                         </div><!-- End sidebar categories-->

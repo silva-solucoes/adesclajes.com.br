@@ -52,17 +52,35 @@ class Paginas extends Controller{
         $this->view('user/home', $dados);
 
     }
-    public function noticias($pagina){
+
+    public function searchNews(){
+
+        $value = filter_input(INPUT_GET, "value", FILTER_DEFAULT);
+        $titulo = filter_input(INPUT_GET, "titulo", FILTER_DEFAULT);
+
+        $dados=[
+            'info' => $this->info->lerInformacao()
+        ];
+        //pesquisar noticias
+        $dados['pesquisarNoticias']=$this->info->pesquisarNoticias($value);
+        //listar notícias pesquisadas
+        $dados['listarNoticiaPesquisa']=$this->info->listarNoticiaPesquisa($titulo);
+
+        echo json_encode($dados);
+    }
+
+    public function noticias($pagina = null, $categoria = null){
+
 
         $dados=[
             'info' => $this->info->lerInformacao()
         ];
         //paginas atual notícia
-        $dados['pagina']= $pagina;
+        $dados['pagina']= $this->info->paginaAtual($pagina, $categoria);
         //quantidade de paginas de notícia
-        $dados['totalPagina']=$this->info->numeroDePaginas();
+        $dados['totalPagina']=$this->info->numeroDePaginas($categoria);
         //exibir notícia
-        $dados['noticias']=$this->info->listar4Noticias($pagina);
+        $dados['noticias']=$this->info->listar4Noticias($pagina, $categoria);
         //Exibir categorias
         $dados['categorias']=$this->info->exibirCategorias();
         //Exibir todos os patrocinadores
