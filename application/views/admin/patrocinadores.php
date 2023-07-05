@@ -21,8 +21,8 @@
             <div class="col-12">
                 <div class="card recent-sales overflow-auto">
                     <div class="filter">
-                        <a class="btn btn-primary rounded-pill espaco" href="#" data-bs-toggle="modal" data-bs-target="#modalCadastrarPatrocinador"><i class="bi bi-plus-circle"></i> Novo
-                            Patrocinador</a>
+                        <a class="btn btn-primary rounded-pill espaco" href="#" data-bs-toggle="modal" data-bs-target="#modalCadastrarPatrocinador"><i class="fas fa-handshake"></i> Registrar
+                            Patrocínio</a>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">
@@ -196,9 +196,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="botao-cadastrar-patrocinador" type="submit" class="btn btn-primary">Cadastrar Patrocinador</button>
+                    <button id="botao-editar" type="submit" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Cadastrar Patrocinador</button>
                     </form>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="botao-cancelar" type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
                 </div>
             </div>
         </div>
@@ -216,8 +216,8 @@
 					<span id="visul_usuario"></span>
 				</div>
 				<div class="modal-footer">
-                    <a class="btn btn-primary" id="dataComfirmOK">Excluir</a>
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <a id="dataComfirmOK" class="btn botao-editar"><i class="bi bi-trash3-fill"></i> Excluir</a>
+					<button type="button" id="botao-cancelar" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
 				</div>
 			</div>
 		</div>

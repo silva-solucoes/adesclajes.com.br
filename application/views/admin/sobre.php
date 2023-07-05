@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="mt-5 text-center">
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-check-circle"></i> Atualizar Informções</button>
+                            <button type="submit" class="btn botao-editar"><i class="bi bi-repeat"></i> Atualizar Informções</button>
                         </div>
                         </form>
 

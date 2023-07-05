@@ -379,7 +379,7 @@ class Modelo {
 		return $this->bd->resultados();
 	}
 
-	public function cadastrarInscricao($ensino, $nomeEscola, $nomeMae, $nomePai, $altura, $telefone, $categoria, $posicao, $nomeAtleta, $dataNascimento, $sexo, $frase){
+	public function cadastrarInscricao($ensino, $foto, $nomeEscola, $nomeMae, $nomePai, $altura, $telefone, $categoria, $posicao, $nomeAtleta, $dataNascimento, $sexo, $frase){
 
 		//Inserir dados na tabela tbl_detalheescolar
 		$this->bd->query("INSERT INTO tbl_detalheescolar (nivelEnsino, nomeEscolar) 
@@ -460,9 +460,10 @@ class Modelo {
 								$dataAtual = date('Y-m-d H:i:s');
 
 								//Inserir dados na tabela tbl_incricao
-								$this->bd->query("INSERT INTO tbl_incricao (id_atleta, frase, dtRegistro, dt_edicao) 
-								VALUES (:id_atleta, :frase, :dtRegistro, :dt_edicao)");
+								$this->bd->query("INSERT INTO tbl_incricao (id_atleta, foto_atleta, frase, dtRegistro, dt_edicao) 
+								VALUES (:id_atleta, :foto, :frase, :dtRegistro, :dt_edicao)");
 								$this->bd->bind(':id_atleta', $idAtleta);
+								$this->bd->bind(':foto', $foto);
 								$this->bd->bind(':frase', $frase);
 								$this->bd->bind(':dtRegistro', $dataAtual);
 								$this->bd->bind(':dt_edicao', $dataAtual);

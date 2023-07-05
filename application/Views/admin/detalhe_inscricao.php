@@ -34,7 +34,7 @@
                             </span>
                         </h5>
 
-                        <form class="row g-3" action="<?=URL?>/admin/cadastrarUser" method="post" enctype="multipart/form-data">
+                        <form class="row g-3" action="" method="post" enctype="multipart/form-data">
                             <div class="col-md-12 text-left">
                                 <div class="form-floating">
                                     <img class="rounded-circle img-fluid" id="imagemPreview"
@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="col-md-6 mt-5 mb-4">
                                     <div class="col-md-12 text-center">
-                                        <?php if($dados['individualInsc']->situacao_atleta != 2 AND $dados['individualInsc']->situacao_atleta != 3): ?>
+                                        <?php if($dados['individualInsc']->situacao_atleta != 2 AND $dados['individualInsc']->situacao_atleta != 3 AND $dados['individualInsc']->situacao_atleta != 4): ?>
                                             <div class="alert alert-success" role="alert">
                                                 <h4 class="alert-heading">O atleta já foi analisado e aceito!</h4>
                                                 <p>Pedimos que entre em contato com o número do responsável para agendar o primeiro contato com o atleta e fornecer as primeiras orientações. Além disso, solicitamos que preencha o restante dos dados do atleta na guia Gerenciar BID para que o cadastro fique completo.</p>
@@ -179,7 +179,7 @@
                                 </div>
                                 <div class="col-md-6 mt-5 mb-4">
                                     <div class="col-md-12 text-center">
-                                        <?php if($dados['individualInsc']->situacao_atleta != 2 AND $dados['individualInsc']->situacao_atleta != 1): ?>
+                                        <?php if($dados['individualInsc']->situacao_atleta != 4 AND $dados['individualInsc']->situacao_atleta != 2 AND $dados['individualInsc']->situacao_atleta != 1): ?>
                                             <div class="alert alert-danger" role="alert">
                                                 <h4 class="alert-heading">O atleta já foi analisado e rejeitado/a!</h4>
                                                 <p>Solicitamos que entre em contato com o número do responsável para comunicar a rejeição da inscrição do atleta e explicar o motivo dessa decisão. Caso o motivo que levou à rejeição seja resolvido dentro do prazo de inscrição, pedimos ao responsável que faça uma nova inscrição por meio do site oficial da ADESC Lajes.</p>
@@ -189,6 +189,18 @@
                                         <?php elseif($dados['individualInsc']->situacao_atleta == 1): ?>
                                         <?php else: ?>
                                         <button id="botao-rejeitar" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="bi bi-person-fill-x"></i> Rejeitar Solicitação</button>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-5 mb-4">
+                                    <div class="col-md-12 text-center">
+                                        <?php if($dados['individualInsc']->situacao_atleta != 3 AND $dados['individualInsc']->situacao_atleta != 2 AND $dados['individualInsc']->situacao_atleta != 1): ?>
+                                            <div class="alert alert-danger" role="alert">
+                                                <h4 class="alert-heading">O atleta foi desligado da ADESC!</h4>
+                                                <p>Caso o mesmo deseje retornar a ADESC, clique no botão <b>Aceitar Solicitação</b> para restabelecer vínculo.</p>
+                                                <hr>
+                                                <p class="mb-0">Muito obrigado por contribuir para o crescimento e sucesso da nossa equipe.</p>
+                                            </div>
                                         <?php endif; ?>
                                     </div>
                                 </div>

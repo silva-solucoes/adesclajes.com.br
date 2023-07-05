@@ -23,7 +23,7 @@
                 <div class="card recent-sales overflow-auto">
                     <div class="filter">
                         <a class="btn btn-primary rounded-pill espaco" href="#" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle"></i> Novo Usuário</a>
+                            data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle"></i> Registrar Usuário</a>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">

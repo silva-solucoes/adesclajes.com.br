@@ -19,8 +19,7 @@
             <div class="col-12">
                 <div class="card recent-sales overflow-auto">
                     <div class="filter">
-                        <a class="btn btn-primary rounded-pill espaco" href="#" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle"></i> Nova Notícia</a>
+                        <a class="btn btn-primary rounded-pill espaco" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-file-earmark-plus"></i> Registrar Notícia</a>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">
@@ -51,38 +50,36 @@
                                         </font>
                                     </label>
                                 </div>
+
                                 <div class="datatable-search">
-                                    <input class="datatable-input" placeholder="Buscar por..." type="search"
-                                        title="Pesquisar na tabela">
+                                    <form method="POST" action="<?= URL ?>/admin/buscarNoticias">
+                                        <input class="datatable-input" placeholder="Buscar por título" type="search" title="Pesquisar na tabela" name="pesquisa" id="pesquisa">
+                                    </form>
                                 </div>
+
                             </div>
                             <div class="datatable-container">
                                 <table class="table table-borderless datatable datatable-table">
                                     <thead>
                                         <tr>
-                                            <th data-sortable="true" style="width: 12.708333333333332%;"><a href="#"
-                                                    class="datatable-sorter">ID</a></th>
-                                            <th data-sortable="true" style="width: 22.083333333333332%;"><a href="#"
-                                                    class="datatable-sorter">
+                                            <th data-sortable="true" style="width: 12.708333333333332%;"><a href="#" class="datatable-sorter">ID</a></th>
+                                            <th data-sortable="true" style="width: 22.083333333333332%;"><a href="#" class="datatable-sorter">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;">Foto</font>
                                                     </font>
                                                 </a></th>
-                                            <th data-sortable="true" style="width: 35.41666666666667%;"><a href="#"
-                                                    class="datatable-sorter">
+                                            <th data-sortable="true" style="width: 35.41666666666667%;"><a href="#" class="datatable-sorter">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;">Título
                                                         </font>
                                                     </font>
                                                 </a></th>
-                                            <th data-sortable="true" style="width: 12.291666666666666%;"><a href="#"
-                                                    class="datatable-sorter">
+                                            <th data-sortable="true" style="width: 12.291666666666666%;"><a href="#" class="datatable-sorter">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;">Categória</font>
                                                     </font>
                                                 </a></th>
-                                            <th data-sortable="true" style="width: 17.5%;"><a href="#"
-                                                    class="datatable-sorter">
+                                            <th data-sortable="true" style="width: 17.5%;"><a href="#" class="datatable-sorter">
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;">Ações</font>
                                                     </font>
@@ -90,39 +87,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $i = 0; ?>
-                                    <?php foreach($dados['exibirNoticias'] as $listar):?>
-                                        <?php $numeroFormatado = str_pad($listar->id_noticia, 4, '0', STR_PAD_LEFT); ?>
-                                        <?php $i += 1;?>
-                                        <tr data-index="<?=$i?>">
-                                            <td><a href="#">#<?=$numeroFormatado?></a></td>
-                                            <td>
-                                                <font style="vertical-align: inherit;">
-                                                    <font style="vertical-align: inherit;"><img
-                                                            src="<?php echo URL . '/public/uploads/noticias/'.$listar->img_Noticia; ?>"
-                                                            alt="<?=$listar->tl_noticia?>" style="width:120px;"></font>
-                                                </font>
-                                            </td>
-                                            <td><a href="#" class="text-primary">
+                                        <?php $i = 0; ?>
+                                        <?php foreach ($dados['buscar'] as $listar) : ?>
+                                            <?php $numeroFormatado = str_pad($listar->id_noticia, 4, '0', STR_PAD_LEFT); ?>
+                                            <?php $i += 1; ?>
+                                            <tr data-index="<?= $i ?>">
+                                                <td><a href="<?= URL ?>/admin/editarDadosNoticia/<?php echo $listar->id_noticia; ?>">#<?= $numeroFormatado ?></a></td>
+                                                <td>
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;"><?=$listar->tl_noticia?></font>
+                                                        <font style="vertical-align: inherit;"><img src="<?php echo URL . '/public/uploads/noticias/' . $listar->img_Noticia; ?>" alt="<?= $listar->tl_noticia ?>" style="width:120px;"></font>
                                                     </font>
-                                                </a></td>
-                                            <td><?=$listar->nome?></td>
-                                            <td><span class="badge">
-                                                    <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-warning rounded-pill view_editar" nome="<?php echo $listar->img_Noticia; ?>"
-                                                                title="Editar Patrocinador" id="<?php echo $listar->id_noticia; ?>"><i
-                                                                    class="bi bi-pencil-square"></i></a></font>
-                                                        <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-danger rounded-pill view_data" title="Excluir Notícia"
-                                                                nome="<?php echo $listar->img_Noticia; ?>" coment="<?php echo $listar->id_coment_tec; ?>" id="<?php echo $listar->id_noticia; ?>">
-                                                                <i class="bi bi-trash3"></i></a></font>
-                                                    </font>
-                                                </span></td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                                </td>
+                                                <td><a href="<?= URL ?>/admin/editarDadosNoticia/<?php echo $listar->id_noticia; ?>" class="text-primary">
+                                                        <font style="vertical-align: inherit;">
+                                                            <font style="vertical-align: inherit;"><?= $listar->tl_noticia ?></font>
+                                                        </font>
+                                                    </a></td>
+                                                <td><?= $listar->nome ?></td>
+                                                <td><span class="badge">
+                                                        <font style="vertical-align: inherit;">
+                                                            <font style="vertical-align: inherit;"><a class="btn btn-warning rounded-pill view_editar" href="<?= URL ?>/admin/editarDadosNoticia/<?php echo $listar->id_noticia; ?>" title="Editar Patrocinador">
+                                                                    <i class="bi bi-pencil-square"></i></a></font>
+                                                            <font style="vertical-align: inherit;"><a class="btn btn-danger rounded-pill view_data" title="Excluir Notícia" nome="<?php echo $listar->img_Noticia; ?>" coment="<?php echo $listar->id_coment_tec; ?>" id="<?php echo $listar->id_noticia; ?>">
+                                                                    <i class="bi bi-trash3"></i></a></font>
+                                                        </font>
+                                                    </span></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -148,8 +139,7 @@
 
     <!-- ======= Inserindo Modal CADASTRO DE PATROCINADOR ======= -->
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -163,11 +153,10 @@
                             <p class="mb-3 bt-5 text-center">Preencha o formulário abaixo e adicione novidades, eventos e informações
                                 relevantes para manter nossa comunidade atualizada.</p>
                             <!-- Floating Labels Form -->
-                            <form class="row g-3" action="<?php echo URL.'/admin/cadastrarNoticias';?>" method="post" enctype="multipart/form-data">
+                            <form class="row g-3" action="<?php echo URL . '/admin/cadastrarNoticias'; ?>" method="post" enctype="multipart/form-data">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input type="text" name="tituloNoticia" class="form-control" id="titulo"
-                                            placeholder="Título da Notícia" required>
+                                        <input type="text" name="tituloNoticia" class="form-control" id="titulo" placeholder="Título da Notícia" required>
                                         <label for="floatingName">Título da Notícia*:</label>
                                     </div>
                                 </div>
@@ -176,13 +165,12 @@
                                     <div class="form-floating">
 
                                         <textarea id="conteudoNoticia" name="editor1" required></textarea>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" name="descricao" placeholder="Address" id="descricao"
-                                            style="height: 100px;" required></textarea>
+                                        <textarea class="form-control" name="descricao" placeholder="Address" id="descricao" style="height: 100px;" required></textarea>
                                         <label for="floatingTextarea">Conteúdo curto da Notícia (Breve
                                             descrição)*:</label>
                                     </div>
@@ -190,8 +178,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="text" name="autor" class="form-control" id="floatingCity"
-                                                placeholder="Autor" value="<?=$_SESSION['nome_user']?>" disabled required>
+                                            <input type="text" name="autor" class="form-control" id="floatingCity" placeholder="Autor" value="<?= $_SESSION['nome_user'] ?>" disabled required>
                                             <label for="floatingCity">Autor*:</label>
                                         </div>
                                     </div>
@@ -199,8 +186,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="datetime-local" name="dataPublica" class="form-control" id="floatingCity"
-                                                placeholder="Data e Hora" required>
+                                            <input type="datetime-local" name="dataPublica" class="form-control" id="floatingCity" placeholder="Data e Hora" required>
                                             <label for="floatingCity">Data de Publicação*:</label>
                                         </div>
                                     </div>
@@ -209,9 +195,9 @@
                                     <div class="form-floating mb-3">
                                         <select class="form-select" id="floatingSelect" aria-label="State" name="categoria" required>
                                             <option value="" selected disabled>Selecione</option>
-                                        <?php foreach($dados['exibirCategorias'] as $lerCategoria): ?>
-                                            <option value="<?=$lerCategoria->id_categoria?>"><?=$lerCategoria->nome?></option>
-                                        <?php endforeach; ?>
+                                            <?php foreach ($dados['exibirCategorias'] as $lerCategoria) : ?>
+                                                <option value="<?= $lerCategoria->id_categoria ?>"><?= $lerCategoria->nome ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <label for="floatingSelect">Categoria da Notícia*:</label>
                                     </div>
@@ -246,9 +232,9 @@
                                     <div class="form-floating mb-3">
                                         <select class="form-select" id="floatingSelect" aria-label="State" name="membro" required>
                                             <option value="" selected disabled>Selecione</option>
-                                        <?php foreach($dados['exibirDirecao'] as $lerMembro): ?>
-                                            <option value="<?=$lerMembro->id_membro?>"><?=$lerMembro->nome_membro?></option>
-                                        <?php endforeach; ?>
+                                            <?php foreach ($dados['exibirDirecao'] as $lerMembro) : ?>
+                                                <option value="<?= $lerMembro->id_membro ?>"><?= $lerMembro->nome_membro ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <label for="floatingSelect">Membro de Direção*:</label>
                                     </div>
@@ -273,15 +259,13 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Meta-Keywords" id="floatingTextarea"
-                                            style="height: 100px;" name="metaChave" required></textarea>
+                                        <textarea class="form-control" placeholder="Meta-Keywords" id="floatingTextarea" style="height: 100px;" name="metaChave" required></textarea>
                                         <label for="floatingZip">Meta-Keywords (palavras-chave)*:</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Meta-Decrição" id="meta-descricao"
-                                            style="height: 100px;" name="metaDescricao" disabled></textarea>
+                                        <textarea class="form-control" placeholder="Meta-Decrição" id="meta-descricao" style="height: 100px;" name="metaDescricao" disabled></textarea>
                                         <label for="floatingZip">Meta-Descrição*:</label>
                                     </div>
                                 </div>
@@ -293,40 +277,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button id="botao-inscricao" name="CadUsuario" type="submit" value="cadastrar" class="btn btn-primary">Cadastrar
+                    <button id="botao-editar" name="CadUsuario" type="submit" value="cadastrar" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Cadastrar
                         Notícia</button>
                     </form>
-                    <button id="botao-cancelar" type="button" class="btn btn-secondary"
-                        data-bs-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Edição de Notícia -->
-    <div class="modal fade" id="editarNoticiaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editarNoticiaModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editarNoticiaModalLabel">Editar Notícia</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Formulário de Edição de Notícia</h5>
-                            <p class="mb-3 bt-5 text-center">Edite os campos abaixo para atualizar a notícia.</p>
-                            <!-- Formulário de Edição de Notícia -->
-                            <form class="row g-3"  method="post" enctype="multipart/form-data" novalidate>
-                                <span id="visul_usuario"></span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button id="AtualizarComfirmOK" type="" class="btn btn-primary">Atualizar Notícia</button>
-                    </form>
-                    <button id="botao-cancelar-edicao" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="botao-cancelar" type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
                 </div>
             </div>
         </div>
@@ -334,23 +288,23 @@
 
     <!--MODAL EXCLUIR-->
     <div id="visulUsuarioModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="visulUsuarioModalLabel">Excluir Notícia</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="visulUsuarioModalLabel">Excluir Notícia</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
                     Tem certeza que deseja excluir a notícia selecionado?
-					<span id="visul_usuario"></span>
-				</div>
-				<div class="modal-footer">
-                    <a class="btn btn-primary" id="dataComfirmOK">Excluir</a>
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <span id="visul_usuario"></span>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn botao-editar" id="dataComfirmOK"><i class="bi bi-trash3-fill"></i> Excluir</a>
+                    <button type="button" id="botao-cancelar" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </main><!-- End #main -->
 <script>
     document.getElementById('destaqueInput').addEventListener('change', function(event) {
@@ -389,68 +343,68 @@
     });
 
     $(document).ready(function() {
-            $(document).on('click', '.view_data', function() {
-                var user_id = $(this).attr("id");
-                var user_name = $(this).attr("nome");
-                // Verificar se há valor na variável "user_id".
-                if (user_id !== '') {
-                    var dados = {
-                        user_id: user_id,
-                        user_name: user_name,
-                    };
-                    // Exibir o modal de confirmação
-                    $('#visulUsuarioModal').modal('show');
+        $(document).on('click', '.view_data', function() {
+            var user_id = $(this).attr("id");
+            var user_name = $(this).attr("nome");
+            // Verificar se há valor na variável "user_id".
+            if (user_id !== '') {
+                var dados = {
+                    user_id: user_id,
+                    user_name: user_name,
+                };
+                // Exibir o modal de confirmação
+                $('#visulUsuarioModal').modal('show');
 
-                    // Ação ao clicar no botão "Apagar"
-                    $('#dataComfirmOK').click(function() {
-                        $.post('<?php echo URL; ?>/admin/excluirNoticia', dados, function(retorna) {
-                            // Carregar o conteúdo para o usuário
-                            $("#visul_usuario").html(retorna);
-                            // Fechar o modal após a exclusão
-                            $('#visulUsuarioModal').modal('hide');
-                            window.location.reload();
-                        });
-                    });
-                }
-            });
-        });
-
-        $(document).ready(function() {
-            $(document).on('click', '.view_editar', function() {
-                var user_id = $(this).attr("id");
-                var user_name = $(this).attr("nome");
-                // Verificar se há valor na variável "user_id".
-                if (user_id !== '') {
-                    var dados = {
-                        user_id: user_id,
-                        user_name: user_name,
-                    };
-                    
-                    // Enviar uma solicitação AJAX para buscar as informações do banco de dados
-                    $.post('<?php echo URL; ?>/admin/exibirNoticia', dados, function(retorna) {
+                // Ação ao clicar no botão "Apagar"
+                $('#dataComfirmOK').click(function() {
+                    $.post('<?php echo URL; ?>/admin/excluirNoticia', dados, function(retorna) {
                         // Carregar o conteúdo para o usuário
-						$("#visul_usuario").html(retorna);
-                        // Chamar o plugin Trumbowyg no elemento #editarConteudoNoticia
-                        $('#editarConteudoNoticia').trumbowyg();
-                        // Aplicar estilos e funcionalidades do Bootstrap ao formulário
-                        $("#editarNoticiaModal form").removeClass("row g-3").addClass("row g-3");
-                        // Obtém referências para os elementos
-                        
-                        // Exibir o modal de confirmação
-                        $('#editarNoticiaModal').modal('show');
+                        $("#visul_usuario").html(retorna);
+                        // Fechar o modal após a exclusão
+                        $('#visulUsuarioModal').modal('hide');
+                        window.location.reload();
                     });
-                    // Ação ao clicar no botão "Apagar"
-                    $('#AtualizarComfirmOK').click(function() {
-                        $.post('<?php echo URL; ?>/admin/editarNoticia', dados, function(retorna) {
-                            // Carregar o conteúdo para o usuário
-                            $("#visul_usuario").html(retorna);
-                            // Fechar o modal após a exclusão
-                            //$('#editarNoticiaModal').modal('hide');
-                            //window.location.reload();
-                        });
-                    });
-                }
-            });
+                });
+            }
         });
+    });
+
+    $(document).ready(function() {
+        $(document).on('click', '.view_editar', function() {
+            var user_id = $(this).attr("id");
+            var user_name = $(this).attr("nome");
+            // Verificar se há valor na variável "user_id".
+            if (user_id !== '') {
+                var dados = {
+                    user_id: user_id,
+                    user_name: user_name,
+                };
+
+                // Enviar uma solicitação AJAX para buscar as informações do banco de dados
+                $.post('<?php echo URL; ?>/admin/exibirNoticia', dados, function(retorna) {
+                    // Carregar o conteúdo para o usuário
+                    $("#visul_usuario").html(retorna);
+                    // Chamar o plugin Trumbowyg no elemento #editarConteudoNoticia
+                    $('#editarConteudoNoticia').trumbowyg();
+                    // Aplicar estilos e funcionalidades do Bootstrap ao formulário
+                    $("#editarNoticiaModal form").removeClass("row g-3").addClass("row g-3");
+                    // Obtém referências para os elementos
+
+                    // Exibir o modal de confirmação
+                    $('#editarNoticiaModal').modal('show');
+                });
+                // Ação ao clicar no botão "Apagar"
+                $('#AtualizarComfirmOK').click(function() {
+                    $.post('<?php echo URL; ?>/admin/editarNoticia', dados, function(retorna) {
+                        // Carregar o conteúdo para o usuário
+                        $("#visul_usuario").html(retorna);
+                        // Fechar o modal após a exclusão
+                        //$('#editarNoticiaModal').modal('hide');
+                        //window.location.reload();
+                    });
+                });
+            }
+        });
+    });
 </script>
 <?php include_once 'footer.php'; ?>

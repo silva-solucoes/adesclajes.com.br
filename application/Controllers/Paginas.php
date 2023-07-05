@@ -104,7 +104,7 @@ class Paginas extends Controller{
     public function bid(){
         $dados=[
             'info' => $this->info->lerInformacao(),
-            'exibirJogadores' => $this->usuarioModel->exibirAtletas(),
+            'exibirJogadores' => $this->usuarioModel->mostrarAtleta(),
             'exibirCategorias' => $this->usuarioModel->exibirCategorias(),
         ];
         //Exibir todos os patrocinadores

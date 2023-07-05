@@ -94,7 +94,8 @@ class Login extends Controller{
         $_SESSION['email_user'] = $autenticarLogin->email_usuario;
         $_SESSION['foto_user'] = $autenticarLogin->foto_user;
         $_SESSION['funcao_user'] = $autenticarLogin->nome_status;
-        header("Location:".URL."/admin/painel");
+        header("Location:".URL."/admin/index");
+        //$this->view('admin/painel');
     }
 
     public function sair(){

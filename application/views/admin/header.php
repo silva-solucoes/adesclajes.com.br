@@ -283,12 +283,19 @@
         $paginaInicialAtiva = (strpos($uri, '/admin/painel') !== false);
         $configAtiva = (strpos($uri, '/admin/config') !== false);
         $patroAtivo = (strpos($uri, '/admin/patrocinio') !== false);
+
+        if((strpos($uri, '/admin/noticia') !== false)):
         $noticiaAtivo = (strpos($uri, '/admin/noticia') !== false);
+        elseif((strpos($uri, 'admin/buscarNoticias') !== false)):
+        $noticiaAtivo = (strpos($uri, 'admin/buscarNoticias') !== false);
+        endif;
+        
         $sobreAtivo = (strpos($uri, '/admin/sobre') !== false);
         $bidAtivo = (strpos($uri, '/admin/BID') !== false);
         $fotosAtivo = (strpos($uri, '/admin/fotos') !== false);
         $esportesAtivo = (strpos($uri, '/admin/esportes') !== false);
         $diretoriaAtivo = (strpos($uri, '/admin/diretoria') !== false);
+
         if((strpos($uri, '/admin/inscricao') !== false)):
         $inscricaoAtivo = (strpos($uri, '/admin/inscricao') !== false);
         elseif((strpos($uri, '/admin/detalheInscricao') !== false)):

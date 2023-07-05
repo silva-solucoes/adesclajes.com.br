@@ -899,7 +899,7 @@ h6 {
   }
 
   #botao-editar{
-    background-color: #1a0afe;
+    background-color: #003680;
     border: none;
     padding: 12px 34px;
     color: #fff;
@@ -907,7 +907,41 @@ h6 {
     border-radius: 50px;
   }
   #botao-editar:hover{
-    background-color: #0c3be4;
+    background-color: #1138c4;
+    border: none;
+    padding: 12px 34px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+
+  .botao-editar{
+    background-color: #003680;
+    border: none;
+    padding: 12px 34px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+  .botao-editar:hover{
+    background-color: #1138c4;
+    border: none;
+    padding: 12px 34px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+
+  #botao-cancelar{
+    background-color: #6c757d;
+    border: none;
+    padding: 12px 34px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+  #botao-cancelar:hover{
+    background-color: #5e646a;
     border: none;
     padding: 12px 34px;
     color: #fff;
