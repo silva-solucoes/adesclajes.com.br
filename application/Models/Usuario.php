@@ -701,8 +701,15 @@ class Usuario
 
     public function exibirCategorias()
     {
-        $this->bd->query('SELECT * FROM categorianoticia');
+        $this->bd->query('SELECT * FROM categorianoticia ORDER BY id_categoria DESC');
         return $this->bd->resultados();
+    }
+
+    public function exibirCategoria($idCat)
+    {
+        $this->bd->query('SELECT * FROM categorianoticia WHERE id_categoria = :id ORDER BY id_categoria DESC');
+        $this->bd->bind('id', $idCat);
+        return $this->bd->resultado();
     }
 
     public function cadastrarNoticias($dados)
@@ -1189,6 +1196,49 @@ class Usuario
             return true;
         else :
             Sessao::mensagem('patrocinador', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+    public function cadastrarCategoria($dados){
+
+        $this->bd->query('INSERT INTO categorianoticia (nome) VALUES (:categoria)');
+
+        $this->bd->bind(':categoria', $dados['categoria']);
+
+        if ($this->bd->executa()) :
+            Sessao::mensagem('cadastroCategoria', '<b>Patrocinador foi Cadastrado!</b>');
+            return true;
+        else :
+            Sessao::mensagem('cadastroCategoria', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+
+    }
+    public function editarCategoria($dados){
+
+        $this->bd->query('UPDATE categorianoticia SET nome = :categoria WHERE id_categoria = :id');
+
+        $this->bd->bind(':categoria', $dados['categoria']);
+        $this->bd->bind(':id', $dados['id']);
+
+        if ($this->bd->executa()) :
+            Sessao::mensagem('editarCategoria', '<b>Patrocinador foi Cadastrado!</b>');
+            return true;
+        else :
+            Sessao::mensagem('editarCategoria', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+    public function excluirCategoria($idCat){
+        
+        $this->bd->query('DELETE FROM categorianoticia WHERE categorianoticia.id_categoria = :id');
+        $this->bd->bind(':id', $idCat);
+
+        if ($this->bd->executa()) :
+            Sessao::mensagem('excluirCat', '<b>Patrocinador foi excluido!</b>');
+            return true;
+        else :
+            Sessao::mensagem('excluirCat', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
             return false;
         endif;
     }

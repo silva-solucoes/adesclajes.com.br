@@ -36,21 +36,6 @@
 
                         <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
                             <div class="datatable-top">
-                                <div class="datatable-dropdown">
-                                    <label>
-                                        <select class="datatable-selector">
-                                            <option value="5">5</option>
-                                            <option value="10" selected="">10</option>
-                                            <option value="15">15</option>
-                                            <option value="20">20</option>
-                                            <option value="25">25</option>
-                                        </select>
-                                        <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">entradas por página
-                                            </font>
-                                        </font>
-                                    </label>
-                                </div>
                                 <div class="datatable-search">
                                     <input class="datatable-input" placeholder="Buscar por..." type="search"
                                         title="Pesquisar na tabela">

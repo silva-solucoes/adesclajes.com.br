@@ -20,7 +20,7 @@
                 <div class="card recent-sales overflow-auto">
                     <div class="filter">
                         <a class="btn btn-primary rounded-pill espaco" href="#" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle"></i> Registrar Categoria</a>
+                            data-bs-target="#staticBackdrop"><i class="bi bi-bar-chart-steps"></i> Registrar Categoria</a>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">
@@ -35,27 +35,7 @@
                         </h5>
 
                         <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
-                            <div class="datatable-top">
-                                <div class="datatable-dropdown">
-                                    <label>
-                                        <select class="datatable-selector">
-                                            <option value="5">5</option>
-                                            <option value="10" selected="">10</option>
-                                            <option value="15">15</option>
-                                            <option value="20">20</option>
-                                            <option value="25">25</option>
-                                        </select>
-                                        <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">entradas por página
-                                            </font>
-                                        </font>
-                                    </label>
-                                </div>
-                                <div class="datatable-search">
-                                    <input class="datatable-input" placeholder="Buscar por..." type="search"
-                                        title="Pesquisar na tabela">
-                                </div>
-                            </div>
+                            
                             <div class="datatable-container">
                                 <table class="table table-borderless datatable datatable-table">
                                     <thead>
@@ -90,13 +70,9 @@
                                                 </a></td>
                                             <td><span class="badge">
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-warning rounded-pill" href="#"
-                                                                title="Editar Atleta"><i
-                                                                    class="bi bi-pencil-square"></i></a></font>
-                                                        <font style="vertical-align: inherit;"><a
-                                                                class="btn btn-danger rounded-pill" href="#"
-                                                                title="Excluir Atleta"><i class="bi bi-trash3"></i></a>
+                                                        <font style="vertical-align: inherit;"><a class="btn btn-warning rounded-pill" href="<?= URL ?>/admin/editCategoria/<?= $listar->id_categoria ?>" title="Editar Categoria"><i class="bi bi-pencil-square"></i></a></font>
+                                                        <font style="vertical-align: inherit;"><a class="btn btn-danger rounded-pill view_data" title="Excluir Categoria" id="<?php echo $listar->id_categoria; ?>">
+                                                            <i class="bi bi-trash3"></i></a>
                                                         </font>
                                                     </font>
                                                 </span></td>
@@ -142,11 +118,11 @@
                             <p class="mb-3 bt-5 text-center">Preencha o formulário abaixo para adicionar novas categorias esportivas
                                 à nossa Escolinha!</p>
                             <!-- Floating Labels Form -->
-                            <form class="row g-3">
+                            <form class="row g-3" action="<?php echo URL . '/admin/cadastrarCategoria'; ?>" method="post">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="floatingName"
-                                            placeholder="Your Name">
+                                        <input type="text" class="form-control" id="floatingName" name="categoria"
+                                            placeholder="Your Name" required>
                                         <label for="floatingName">Nome da Categoria*:</label>
                                     </div>
                                 </div>
@@ -156,16 +132,60 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button id="botao-inscricao" name="CadUsuario" type="submit" value="cadastrar" class="">Cadastrar
+                    <button id="botao-inscricao" type="submit" class="botao-editar"><i class="bi bi-plus-circle"></i> Cadastrar
                         Categoria</button>
                     </form>
                     <button id="botao-cancelar" type="button" class="btn btn-secondary"
-                        data-bs-dismiss="modal">Cancelar</button>
+                        data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
 
-</main><!-- End #main -->
+    <div id="visulUsuarioModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="visulUsuarioModalLabel">Excluir Categoria</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+                    Tem certeza que deseja excluir a categoria selecionada?
+					<span id="visul_usuario"></span>
+				</div>
+				<div class="modal-footer">
+                    <a id="dataComfirmOK" class="btn botao-editar"><i class="bi bi-trash3-fill"></i> Excluir</a>
+					<button type="button" id="botao-cancelar" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
+</main><!-- End #main -->
+<script>
+    $(document).ready(function() {
+            $(document).on('click', '.view_data', function() {
+                var user_id = $(this).attr("id");
+                // Verificar se há valor na variável "user_id".
+                if (user_id !== '') {
+                    var dados = {
+                        user_id: user_id,
+                    };
+                    // Exibir o modal de confirmação
+                    $('#visulUsuarioModal').modal('show');
+
+                    // Ação ao clicar no botão "Apagar"
+                    $('#dataComfirmOK').click(function() {
+                        $.post('<?php echo URL; ?>/admin/excluirCategoria', dados, function(retorna) {
+                            // Carregar o conteúdo para o usuário
+                            $("#visul_usuario").html(retorna);
+                            // Fechar o modal após a exclusão
+                            $('#visulUsuarioModal').modal('hide');
+                            window.location.reload();
+                        });
+                    });
+                }
+            });
+        });
+</script>
 <?php include_once 'footer.php'; ?>

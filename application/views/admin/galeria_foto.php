@@ -94,7 +94,7 @@
                                                     <?php endif; ?>
                                                     <td><span class="badge">
                                                             <font style="vertical-align: inherit;">
-                                                                <font style="vertical-align: inherit;"><a class="btn btn-warning rounded-pill" href="<?= URL ?>/admin/editFoto/<?= $listar->id_pagFotos ?>" title="Editar Atleta"><i class="bi bi-pencil-square"></i></a></font>
+                                                                <font style="vertical-align: inherit;"><a class="btn btn-warning rounded-pill" href="<?= URL ?>/admin/editFoto/<?= $listar->id_pagFotos ?>" title="Editar Foto"><i class="bi bi-pencil-square"></i></a></font>
                                                                 <font style="vertical-align: inherit;"><a class="btn btn-danger rounded-pill view_data" title="Excluir Foto" nome="<?php echo $listar->foto_galeria; ?>" id="<?php echo $listar->id_pagFotos; ?>">
                                                             <i class="bi bi-trash3"></i></a>
                                                                 </font>

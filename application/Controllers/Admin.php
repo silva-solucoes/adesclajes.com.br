@@ -2077,6 +2077,87 @@ class Admin extends Controller
         ];
         $this->view('admin/categoria_esportiva', $dados);
     }
+    public function cadastrarCategoria(){
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+        if (isset($formulario)) :
+
+            $dados = [
+                'categoria' => trim($formulario['categoria']),
+            ];
+
+            if (in_array("", $formulario)) :
+                if (empty($formulario['nomePatrocinador'])) :
+                    $dados['nomeUser_erro'] = 'Preencha o campo Nome Completo';
+                endif;
+
+                if (empty($formulario['linkPatrocinador'])) :
+                    $dados['telUser_erro'] = 'Preencha o campo Telefone';
+                endif;
+            else :
+                $this->usuarioModel->cadastrarCategoria($dados);
+            endif;
+        endif;
+        $this->esportes();
+
+    }
+    public function editCategoria($id){
+        $dados = [
+            'exibirCategorias' => $this->usuarioModel->exibirCategoria($id),
+        ];
+        $this->view('admin/categoria_esportiva_editar', $dados);
+    }
+    public function editarCategoria($id){
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+        if (isset($formulario)) :
+
+            $dados = [
+                'categoria' => trim($formulario['categoria']),
+                'id' => $id,
+            ];
+
+            if (in_array("", $formulario)) :
+                if (empty($formulario['nomePatrocinador'])) :
+                    $dados['nomeUser_erro'] = 'Preencha o campo Nome Completo';
+                endif;
+
+                if (empty($formulario['linkPatrocinador'])) :
+                    $dados['telUser_erro'] = 'Preencha o campo Telefone';
+                endif;
+            else :
+                $this->usuarioModel->editarCategoria($dados);
+            endif;
+        endif;
+        $this->esportes();
+
+    }
+    public function excluirCategoria(){
+        // Verificar se a requisição é do tipo POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Obter o ID do patrocinador a ser excluído
+            $fotoId = $_POST['user_id'];
+
+            // Realizar as operações necessárias para excluir o patrocinador com o ID fornecido
+            $this->usuarioModel->excluirCategoria($fotoId);
+
+            // Simular uma resposta de sucesso (você deve ajustar isso de acordo com a sua lógica de exclusão)
+            $response = array(
+                'success' => true
+            );
+
+            // Enviar a resposta como JSON
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } else {
+            // Responder com um erro se a requisição não for do tipo POST
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Content-Type: application/json');
+            echo json_encode(array('error' => 'Método não permitido'));
+        }
+    }
     //Chamada para página de Diretoria
     public function diretoria()
     {
