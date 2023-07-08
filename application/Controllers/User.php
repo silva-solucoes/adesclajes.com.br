@@ -95,7 +95,7 @@ class User extends Controller
 
         echo '  <div class="alert alert-primary" role="alert">
                     <h4 class="alert-heading">Parabéns ' . $dados['nome'] . '!</h4>
-                    <p><i class="bi bi-exclamation-triangle"></i> : Entre <b>'.$primeiroDia.'</b> a <b>'.$quintoDia.'</b>, nossa equipe diretiva entrará em contato com o responsável do atleta, caso seja menor de idade, para agendar um primeiro contato.</p>
+                    <p><i class="bi bi-exclamation-triangle"></i> : Entre <b>' . $primeiroDia . '</b> a <b>' . $quintoDia . '</b>, nossa equipe diretiva entrará em contato com o responsável do atleta, caso seja menor de idade, para agendar um primeiro contato.</p>
                     <hr>
                     <p class="mb-0">Agradecemos seu interesse em se tornar parte do nosso time.</p>
                 </div>';
@@ -122,6 +122,14 @@ class User extends Controller
             if (empty($formulario['nome'])) :
                 $dados['nome_erro'] = "Preencha o campo Seu nome";
             endif;
+            
+            $this->model('modelo');
+
+            $modelo = new Modelo();
+
+            $modelo->cadastrarComentarioNoticia($dados['nameVisitante'], $dados['foto'], $dados['dtCadastroComent'], $dados['comentarioVisitante'], $dados['emailVisitante'], $dados['idNoticia']);
+
+            header('Location:' . URL . '/paginas/detalheNoticias/' . $idNoticia);
         else :
             $dados = [
                 'nameVisitante' => '',
@@ -130,13 +138,5 @@ class User extends Controller
                 'dtCadastroComent' => ''
             ];
         endif;
-
-        $this->model('modelo');
-
-        $modelo = new Modelo();
-
-        $modelo->cadastrarComentarioNoticia($dados['nameVisitante'], $dados['foto'], $dados['dtCadastroComent'], $dados['comentarioVisitante'], $dados['emailVisitante'], $dados['idNoticia']);
-
-        header('Location:' . URL . '/paginas/detalheNoticias/' . $idNoticia);
     }
 }

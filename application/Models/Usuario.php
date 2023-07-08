@@ -10,26 +10,39 @@ use PHPMailer\PHPMailer\Exception;
 class Usuario
 {
     private $bd;
-
+    private $resultado;
     public function __construct()
     {
         $this->bd = new Conn();
     }
 
-    public function lerUsuario()
+    public function lerUsuario($nome)
     {
-        $this->bd->query('SELECT *
+        $this->bd->query("SELECT *
         FROM tbl_usuario
         INNER JOIN tbl_funcao ON tbl_funcao.id_funcao = tbl_usuario.id_funcao
-        ORDER BY tbl_usuario.id_usuario DESC;');
+        WHERE (tbl_usuario.nome_usuario LIKE CONCAT('%', :nome, '%'))
+        ORDER BY CASE WHEN tbl_usuario.status = 1 THEN 0 ELSE 1 END, tbl_usuario.id_usuario DESC");
+        $this->bd->bind('nome', $nome);
+
         return $this->bd->resultados();
+    }
+    public function exibirUser($id){
+        $this->bd->query("SELECT *
+        FROM tbl_usuario
+        INNER JOIN tbl_funcao ON tbl_funcao.id_funcao = tbl_usuario.id_funcao
+        WHERE tbl_usuario.id_usuario = :id
+        ORDER BY tbl_usuario.id_usuario DESC");
+        $this->bd->bind('id', $id);
+
+        return $this->bd->resultado();
     }
     public function totalAdms()
     {
         $this->bd->query("SELECT COUNT(*) AS quantidade
         FROM tbl_usuario
         INNER JOIN tbl_funcao ON tbl_funcao.id_funcao = tbl_usuario.id_funcao
-        WHERE tbl_funcao.nome_status = 'Admin'");
+        WHERE tbl_funcao.nome_status = 'Admin' AND tbl_usuario.status = 1");
         return $this->bd->resultado();
     }
     public function totalFuncionarios($tabela)
@@ -53,9 +66,9 @@ class Usuario
         $this->bd->bind(":e", $email);
 
         if ($this->bd->resultado()) :
-            return true;
-        else :
             return false;
+        else :
+            return true;
         endif;
     }
 
@@ -65,7 +78,7 @@ class Usuario
         $this->bd->query('INSERT INTO tbl_usuario (nome_usuario, foto_user, cpf_cnpj, telefone_usuario, email_usuario, senha_usuario, chave_ativae, dtexpiracao, dt_edicao, dt_criacao, id_funcao) VALUES (:nome_usuario, :foto_user, :cpf_cnpj, :telefone_usuario, :email_usuario, :senha_usuario, :chave_ativae, :dtexpiracao, :dt_edicao, :dt_criacao, :id_funcao)');
 
         $this->bd->bind('nome_usuario', $dados['nomeUser']);
-        $this->bd->bind('foto_user', $dados['foto_user']);
+        $this->bd->bind('foto_user', $dados['nomeImagem']);
         $this->bd->bind('cpf_cnpj', $dados['cpfUser']);
         $this->bd->bind('telefone_usuario', $dados['telUser']);
         $this->bd->bind('email_usuario', $dados['emailUser']);
@@ -82,7 +95,53 @@ class Usuario
             return false;
         endif;
     }
+    public function editarUser($dados)
+    {
+        $this->bd->query('UPDATE tbl_usuario
+                  SET nome_usuario = :nome_usuario, foto_user = :foto_user, cpf_cnpj = :cpf_cnpj, telefone_usuario = :telefone_usuario, email_usuario = :email_usuario, senha_usuario = :senha_usuario, dt_edicao = :dt_edicao
+                  WHERE id_usuario = :id_usuario');
 
+        $this->bd->bind(':nome_usuario', $dados['nomeUser']);
+        $this->bd->bind(':foto_user', $dados['fotoPerfil']);
+        $this->bd->bind(':cpf_cnpj', $dados['cpfUser']);
+        $this->bd->bind(':telefone_usuario', $dados['telUser']);
+        $this->bd->bind(':email_usuario', $dados['emailUser']);
+        $this->bd->bind(':senha_usuario', $dados['senhaCripto']);
+        $this->bd->bind(':dt_edicao', $dados['dtAtual']);
+        $this->bd->bind(':id_usuario', $dados['idUser']);
+
+        if ($this->bd->executa()) :
+            return true;
+        else :
+            return false;
+        endif;
+    }
+    public function ativarUser($id){
+        $this->bd->query('UPDATE tbl_usuario SET status = :st WHERE id_usuario = :idUsuario');
+        $this->bd->bind(':st', 1);
+        $this->bd->bind(':idUsuario', $id);
+
+        if ($this->bd->executa()) :
+            Sessao::mensagem('ativarUser', '<b>Usuário foi Ativado!</b>');
+            return true;
+        else :
+            Sessao::mensagem('ativarUser', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+    public function desabilitarUser($id){
+        $this->bd->query('UPDATE tbl_usuario SET status = :st WHERE id_usuario = :idUsuario');
+        $this->bd->bind(':st', 2);
+        $this->bd->bind(':idUsuario', $id);
+
+        if ($this->bd->executa()) :
+            Sessao::mensagem('desligarUser', '<b>Usuário foi desligado!</b>');
+            return true;
+        else :
+            Sessao::mensagem('desligarUser', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
     public function autenticarLogin($email, $senha)
     {
         $this->bd->query("SELECT * FROM tbl_usuario INNER JOIN tbl_funcao ON tbl_funcao.id_funcao = tbl_usuario.id_funcao WHERE email_usuario = :e LIMIT 1");
@@ -90,9 +149,9 @@ class Usuario
 
         if ($this->bd->resultado()) :
             if ($this->validarSit()) :
-                $resultado = $this->bd->resultado();
-                if (password_verify($senha, $resultado->senha_usuario)) :
-                    return $resultado;
+                $this->resultado = $this->bd->resultado();
+                if (password_verify($senha, $this->resultado->senha_usuario)) :
+                    return $this->resultado;
                 else :
                     return false;
                 endif;
@@ -104,8 +163,8 @@ class Usuario
 
     private function validarSit()
     {
-        $resultado = $this->bd->resultado();
-        if ($resultado->status != 1) {
+        $this->resultado = $this->bd->resultado();
+        if ($this->resultado->status != 1) {
             Sessao::mensagem('usuario', '<b>O usuário não foi ativado.</b><br> Caso não tenha recebido o e-mail de ativação, por favor, solicite o envio de um novo e-mail.', 'alert alert-danger');
             return false;
         } else {
@@ -190,7 +249,6 @@ class Usuario
             echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
         }
     }
-
     public function lerInscricao()
     {
         $this->bd->query('SELECT *
@@ -205,7 +263,6 @@ class Usuario
         ORDER BY tbl_atleta.id_atleta DESC');
         return $this->bd->resultados();
     }
-
     public function busInscNome($nome)
     {
         $this->bd->query("SELECT *
@@ -225,7 +282,6 @@ class Usuario
 
         return $this->bd->resultados();
     }
-
     public function contagemInscri()
     {
         $this->bd->query('SELECT COUNT(tbl_incricao.id_atleta) AS total_inscricoes FROM tbl_incricao WHERE tbl_incricao.situacao_atleta=2');
@@ -248,7 +304,6 @@ class Usuario
         $this->bd->bind('idInscricao', $idInscricao);
         return $this->bd->resultado();
     }
-
     public function listarSobre()
     {
         $this->bd->query("SELECT * FROM tbl_sobre");
@@ -270,7 +325,6 @@ class Usuario
             return false;
         endif;
     }
-
     public function statusRejeitado($idInscricao)
     {
         $statusAceito = 3;
@@ -285,7 +339,6 @@ class Usuario
             return false;
         endif;
     }
-
     public function statusDesligado($idInscricao)
     {
         $statusAceito = 4;
@@ -300,7 +353,6 @@ class Usuario
             return false;
         endif;
     }
-
     public function exibirPatrocinadores()
     {
         $this->bd->query("SELECT * FROM tbl_secaopatrocinadores ORDER BY tbl_secaopatrocinadores.id_secaoPatrocinio DESC");
@@ -377,7 +429,6 @@ class Usuario
             return false;
         endif;
     }
-
     public function editarLogoSite($foto)
     {
         $this->bd->query('UPDATE tbl_infoheader
@@ -1086,13 +1137,15 @@ class Usuario
             endif;
         endif;
     }
-    public function buscarAnoEstatistica($ano){
+    public function buscarAnoEstatistica($ano)
+    {
         $this->bd->query("SELECT anoAtual FROM tbl_atleta INNER JOIN tbl_detalheescolar ON tbl_detalheescolar.id_escolar = tbl_atleta.id_escola INNER JOIN tbl_detalhefiliacao ON tbl_detalhefiliacao.id_filiacao = tbl_atleta.id_filiacao INNER JOIN tbl_detalhesaude ON tbl_detalhesaude.id_saude = tbl_atleta.id_saude INNER JOIN tbl_detalhesresponsavel ON tbl_detalhesresponsavel.id_responsavel = tbl_atleta.id_responsavel INNER JOIN tbl_detalhetecnicos ON tbl_detalhetecnicos.id_tecnico = tbl_atleta.id_detalheTec INNER JOIN tbl_incricao ON tbl_incricao.id_atleta = tbl_atleta.id_atleta INNER JOIN tbl_estatisticas ON tbl_estatisticas.id_atleta = tbl_atleta.id_atleta WHERE (YEAR(tbl_estatisticas.anoAtual) = :ano AND tbl_incricao.situacao_atleta = 1) GROUP BY tbl_atleta.id_atleta ORDER BY tbl_incricao.id_inscricao DESC;");
         $this->bd->bind('ano', $ano);
 
         return $this->bd->resultado();
     }
-    public function dadosEstatistica($ano, $idInscricao){
+    public function dadosEstatistica($ano, $idInscricao)
+    {
         $idAtleta = $this->exibirInscricao($idInscricao);
         $this->bd->query('SELECT * FROM tbl_estatisticas INNER JOIN tbl_atleta ON tbl_atleta.id_atleta = tbl_estatisticas.id_atleta WHERE  tbl_estatisticas.anoAtual = :ano and tbl_atleta.id_atleta = :id');
         $this->bd->bind('ano', $ano);
@@ -1120,13 +1173,15 @@ class Usuario
 
         return $this->bd->resultados();
     }
-    public function exibirFoto($idFoto){
+    public function exibirFoto($idFoto)
+    {
         $this->bd->query('SELECT * FROM tbl_pagfotos WHERE tbl_pagfotos.id_pagfotos = :id');
         $this->bd->bind(':id', $idFoto);
         return $this->bd->resultado();
     }
-    public function cadastrarFoto($dados){
-        
+    public function cadastrarFoto($dados)
+    {
+
         // Definir o fuso horário para o Horário Oficial de Brasília
         date_default_timezone_set('America/Sao_Paulo');
         // Obter a data e hora atual no Horário Oficial de Brasília
@@ -1148,9 +1203,9 @@ class Usuario
             Sessao::mensagem('cadastroFoto', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
             return false;
         endif;
-
     }
-    public function editarFoto($dados){
+    public function editarFoto($dados)
+    {
         // Definir o fuso horário para o Horário Oficial de Brasília
         date_default_timezone_set('America/Sao_Paulo');
         // Obter a data e hora atual no Horário Oficial de Brasília
@@ -1199,7 +1254,8 @@ class Usuario
             return false;
         endif;
     }
-    public function cadastrarCategoria($dados){
+    public function cadastrarCategoria($dados)
+    {
 
         $this->bd->query('INSERT INTO categorianoticia (nome) VALUES (:categoria)');
 
@@ -1212,9 +1268,9 @@ class Usuario
             Sessao::mensagem('cadastroCategoria', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
             return false;
         endif;
-
     }
-    public function editarCategoria($dados){
+    public function editarCategoria($dados)
+    {
 
         $this->bd->query('UPDATE categorianoticia SET nome = :categoria WHERE id_categoria = :id');
 
@@ -1229,8 +1285,9 @@ class Usuario
             return false;
         endif;
     }
-    public function excluirCategoria($idCat){
-        
+    public function excluirCategoria($idCat)
+    {
+
         $this->bd->query('DELETE FROM categorianoticia WHERE categorianoticia.id_categoria = :id');
         $this->bd->bind(':id', $idCat);
 
@@ -1242,5 +1299,179 @@ class Usuario
             return false;
         endif;
     }
+    public function buscarMembro($nome)
+    {
+        $this->bd->query("SELECT * 
+        FROM tbl_membro 
+        INNER JOIN tbl_redesocialmembro 
+        ON tbl_redesocialmembro.id_rede=tbl_membro.id_rede
+        WHERE (tbl_membro.nome_membro LIKE CONCAT('%', :nome, '%'))
+        ORDER BY tbl_membro.id_membro DESC");
+        $this->bd->bind('nome', $nome);
 
+        return $this->bd->resultados();
+    }
+    public function exibirMembro($id)
+    {
+        $this->bd->query("SELECT * 
+        FROM tbl_membro 
+        INNER JOIN tbl_redesocialmembro 
+        ON tbl_redesocialmembro.id_rede=tbl_membro.id_rede
+        WHERE tbl_membro.id_membro = :id 
+        ORDER BY tbl_membro.id_membro DESC");
+        $this->bd->bind(':id', $id);
+        return $this->bd->resultado();
+    }
+    public function exibirDirec()
+    {
+        $this->bd->query('SELECT *
+        FROM tbl_membro
+        JOIN tbl_redesocialmembro AS rsm ON rsm.id_rede = tbl_membro.id_membro
+        JOIN tbl_diretoria AS d ON d.id_equipe = tbl_membro.id_equipe
+        ORDER BY tbl_membro.id_membro DESC');
+        return $this->bd->resultado();
+    }
+    public function cadastrarMembro($dados)
+    {
+
+        $this->bd->query('INSERT INTO tbl_redesocialmembro (nomeFacebook, link_Facebook, iconeFacebook, nomeInstagram, link_Instagram, iconeInstagram, nomeLinkedin, link_Linkedin, iconeLinkedin, nomeTikTok, link_TikTok, iconeTikTok, nomeTwitter, link_Twitter, iconeTwitter)
+             VALUES (:nomeFacebook, :linkFacebook, :iconeFacebook, :nomeInstagram, :linkInstagram, :iconeInstagram, :nomeLinkedin, :linkLinkedin, :iconeLinkedin, :nomeTikTok, :linkTikTok, :iconeTikTok, :nomeTwitter, :linkTwitter, :iconeTwitter)');
+
+        $this->bd->bind(':nomeFacebook', 'Facebook');
+        $this->bd->bind(':linkFacebook', $dados['linkFacebook']);
+        $this->bd->bind(':iconeFacebook', '<i class="bx bxl-facebook"></i>');
+
+        $this->bd->bind(':nomeInstagram', 'Instagram');
+        $this->bd->bind(':linkInstagram', $dados['linkInstagram']);
+        $this->bd->bind(':iconeInstagram', '<i class="bx bxl-instagram"></i>');
+
+        $this->bd->bind(':nomeLinkedin', 'LinkedIn');
+        $this->bd->bind(':linkLinkedin', $dados['linkLinkedin']);
+        $this->bd->bind(':iconeLinkedin', '<i class="bx bxl-linkedin"></i>');
+
+        $this->bd->bind(':nomeTikTok', 'TikTok');
+        $this->bd->bind(':linkTikTok', $dados['linkTikTok']);
+        $this->bd->bind(':iconeTikTok', '<i class="bx bxl-tiktok"></i>');
+
+        $this->bd->bind(':nomeTwitter', 'Twitter');
+        $this->bd->bind(':linkTwitter', $dados['linkTwitter']);
+        $this->bd->bind(':iconeTwitter', '<i class="bx bxl-twitter"></i>');
+
+        if ($this->bd->executa()) :
+
+            $idRede = $this->bd->ultimoIdInserido();
+
+            $this->bd->query('INSERT INTO tbl_membro (nome_membro, fotoMembro, funcao, detalhe, id_equipe, id_rede)
+             VALUES (:nome, :imagem, :funcao, :descricao, :idEquipe, :idRede)');
+
+            $this->bd->bind(':nome', $dados['nomeMembro']);
+            $this->bd->bind(':imagem', $dados['nomeImagem']);
+            $this->bd->bind(':funcao', $dados['funcao']);
+            $this->bd->bind(':descricao', $dados['descricao']);
+            $this->bd->bind(':idEquipe', 1);
+            $this->bd->bind(':idRede', $idRede);
+
+            $this->bd->executa();
+
+            Sessao::mensagem('cadastroMembro', '<b>Patrocinador foi Cadastrado!</b>');
+            return true;
+        else :
+            Sessao::mensagem('cadastroMembro', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+    public function editarMembro($dados)
+    {
+
+        $this->bd->query("SELECT * 
+        FROM tbl_membro 
+        INNER JOIN tbl_redesocialmembro 
+        ON tbl_redesocialmembro.id_rede=tbl_membro.id_rede
+        WHERE tbl_membro.id_membro = :id 
+        ORDER BY tbl_membro.id_membro DESC");
+        $this->bd->bind(':id', $dados['idMembro']);
+
+        $idRede = $this->bd->resultado()->id_rede;
+
+        if ($this->bd->executa()) :
+
+            $this->bd->query('UPDATE tbl_redesocialmembro
+            SET nomeFacebook = :nomeFacebook, link_Facebook = :linkFacebook, iconeFacebook = :iconeFacebook,
+                nomeInstagram = :nomeInstagram, link_Instagram = :linkInstagram, iconeInstagram = :iconeInstagram,
+                nomeLinkedin = :nomeLinkedin, link_Linkedin = :linkLinkedin, iconeLinkedin = :iconeLinkedin,
+                nomeTikTok = :nomeTikTok, link_TikTok = :linkTikTok, iconeTikTok = :iconeTikTok,
+                nomeTwitter = :nomeTwitter, link_Twitter = :linkTwitter, iconeTwitter = :iconeTwitter
+            WHERE id_rede = :idRede');
+
+            $this->bd->bind(':nomeFacebook', 'Facebook');
+            $this->bd->bind(':linkFacebook', $dados['linkFacebook']);
+            $this->bd->bind(':iconeFacebook', '<i class="bx bxl-facebook"></i>');
+            $this->bd->bind(':nomeInstagram', 'Instagram');
+            $this->bd->bind(':linkInstagram', $dados['linkInstagram']);
+            $this->bd->bind(':iconeInstagram', '<i class="bx bxl-instagram"></i>');
+            $this->bd->bind(':nomeLinkedin', 'Linkedin');
+            $this->bd->bind(':linkLinkedin', $dados['linkLinkedin']);
+            $this->bd->bind(':iconeLinkedin', '<i class="bx bxl-linkedin"></i>');
+            $this->bd->bind(':nomeTikTok', 'TikTok');
+            $this->bd->bind(':linkTikTok', $dados['linkTikTok']);
+            $this->bd->bind(':iconeTikTok', '<i class="bx bxl-tiktok"></i>');
+            $this->bd->bind(':nomeTwitter', 'Twitter');
+            $this->bd->bind(':linkTwitter', $dados['linkTwitter']);
+            $this->bd->bind(':iconeTwitter', '<i class="bx bxl-twitter"></i>');
+            $this->bd->bind(':idRede', $idRede);
+
+            if ($this->bd->executa()) :
+
+                $this->bd->query('UPDATE tbl_membro
+                  SET nome_membro = :nome, fotoMembro = :imagem, funcao = :funcao, detalhe = :descricao, id_equipe = :idEquipe, id_rede = :idRede
+                  WHERE id_membro = :idMembro');
+
+                $this->bd->bind(':nome', $dados['nomeMembro']);
+                $this->bd->bind(':imagem', $dados['nomeImagem']);
+                $this->bd->bind(':funcao', $dados['funcao']);
+                $this->bd->bind(':descricao', $dados['descricao']);
+                $this->bd->bind(':idEquipe', 1);
+                $this->bd->bind(':idRede', $idRede);
+                $this->bd->bind(':idMembro', $dados['idMembro']);
+
+                if ($this->bd->executa()) :
+
+                    Sessao::mensagem('editarCategoria', '<b>Patrocinador foi Cadastrado!</b>');
+                    return true;
+                else :
+                    Sessao::mensagem('editarCategoria', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+                    return false;
+                endif;
+            endif;
+        endif;
+    }
+    public function desabilitarMembro($id)
+    {
+        $this->bd->query('UPDATE tbl_membro SET statusMembro = :st WHERE id_membro = :idMembro');
+        $this->bd->bind(':st', 2);
+        $this->bd->bind(':idMembro', $id);
+
+        if ($this->bd->executa()) :
+            Sessao::mensagem('desligarMembro', '<b>Membro foi desligado!</b>');
+            return true;
+        else :
+            Sessao::mensagem('desligarMembro', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
+    public function ativarMembro($id)
+    {
+        $this->bd->query('UPDATE tbl_membro SET statusMembro = :st WHERE id_membro = :idMembro');
+        $this->bd->bind(':st', 1);
+        $this->bd->bind(':idMembro', $id);
+
+        if ($this->bd->executa()) :
+
+            Sessao::mensagem('ativarMembro', '<b>Membro foi ativado!</b>');
+            return true;
+        else :
+            Sessao::mensagem('ativarMembro', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
 }

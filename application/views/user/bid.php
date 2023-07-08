@@ -61,7 +61,11 @@
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
                     <div class="member" data-aos="fade-up" data-aos-delay="<?=$i?>">
                         <div class="member-img">
+                        <?php if ($listar->foto_atleta == 'semfoto.webp') : ?>
+                            <img src="<?php echo URL . '/public/images/'.$listar->foto_atleta; ?>" class="img-fluid" alt="">
+                        <?php else : ?>
                             <img src="<?php echo URL . '/public/uploads/atletas/'.$listar->foto_atleta; ?>" class="img-fluid" alt="">
+                        <?php endif; ?>
                             <div class="social">
                                 <a href=""><i class="bi bi-twitter"></i></a>
                                 <a href=""><i class="bi bi-facebook"></i></a>

@@ -27,14 +27,14 @@ class Modelo {
     }
 
 	public function todosMembros(){
-		$this->bd->query('SELECT * FROM tbl_membro INNER JOIN tbl_redesocialmembro ON tbl_redesocialmembro.id_membro=tbl_membro.id_membro');
+		$this->bd->query('SELECT * FROM tbl_membro INNER JOIN tbl_redesocialmembro ON tbl_redesocialmembro.id_rede=tbl_membro.id_rede WHERE statusMembro = 1');
 
 		return $this->bd->resultados();
 	}
 	public function lerRedesSociaisMembro($idMembro){
-		$this->bd->query('SELECT * FROM tbl_membro INNER JOIN tbl_redesocialmembro ON tbl_redesocialmembro.id_membro=tbl_membro.id_membro WHERE tbl_membro.id_membro = '.$idMembro);
+		$this->bd->query('SELECT * FROM tbl_membro INNER JOIN tbl_redesocialmembro ON tbl_redesocialmembro.id_rede=tbl_membro.id_rede WHERE tbl_membro.id_membro = '.$idMembro);
 
-		return $this->bd->resultados();
+		return $this->bd->resultado();
 	}
 	public function todasPerguntas(){
 		$this->bd->query('SELECT *, (SELECT MIN(id_listaPergunta) FROM tbl_listaperguntas) AS menorID FROM tbl_listaperguntas');
@@ -286,6 +286,7 @@ class Modelo {
 
 		return $this->bd->resultados();
 	}
+	//E-mail enviado pelo formulário de Contato
     public function enviarEmail($nome, $email, $titulo, $mensagem) {
 
 		$headers = "From: $nome <$email>\r\n";
@@ -294,8 +295,8 @@ class Modelo {
 
     	$host = 'sandbox.smtp.mailtrap.io';
     	$port = 2525;
-    	$username = '2d8079c52a0c00';
-    	$password = '58d5514ba5acbd';
+    	$username = '7f7189243f5541';
+    	$password = 'f86928ab051a60';
 
     	$assunto = "$titulo";
     	$corpo = "$mensagem";
@@ -332,8 +333,8 @@ class Modelo {
 			$mail->isSMTP();
 			$mail->Host = 'sandbox.smtp.mailtrap.io';
 			$mail->SMTPAuth = true;
-			$mail->Username = 'b37f9d489ed790';
-			$mail->Password = '24566e2fa66e36';
+			$mail->Username = '7f7189243f5541';
+			$mail->Password = 'f86928ab051a60';
 			$mail->Port = 587;
 
 			$mail->setFrom('adesclajes1997@gmail.com');
@@ -365,6 +366,27 @@ class Modelo {
 		}
 		
 	}
+
+	public function verificarUser($id){
+        $this->bd->query('SELECT * FROM tbl_usuario WHERE id_usuario = :idUsuario');
+        $this->bd->bind(':idUsuario', $id);
+
+        if ($this->bd->executa()) :
+            $dados=[
+                'idUser' => $this->bd->resultado()->id_usuario,
+                'nomeUser' => $this->bd->resultado()->nome_usuario,
+                'emailUser' => $this->bd->resultado()->email_usuario,
+                'senhaUser' => 'adesc@lajes1997',
+                'chave_ativar' => $this->bd->resultado()->chave_ativae
+            ];
+			$this->enviarAtivacaoConta($dados);
+            Sessao::mensagem('ativarUser', '<b>Usuário foi Ativado!</b>');
+            return true;
+        else :
+            Sessao::mensagem('ativarUser', '<b>Erro:</b> Não foi possível alterar status!', 'alert alert-danger');
+            return false;
+        endif;
+    }
 
 	public function validarChave($chave){
 		$this->chave = $chave;

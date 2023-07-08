@@ -37,7 +37,7 @@ class Paginas extends Controller{
         //Exibir todos os membros
         $dados['todosMembros']=$this->info->todosMembros();
         //Exibir todas as redes sociais de um membro
-        $dados['rsMembros']=$this->info->lerRedesSociaisMembro($dados['info']->id_membro);
+        //$dados['rsMembros']=$this->info->lerRedesSociaisMembro($dados['info']->id_membro);
         //Exibir perguntas frequentes
         $dados['perguntas']=$this->info->todasPerguntas();
         //Exibir Porque Escolher

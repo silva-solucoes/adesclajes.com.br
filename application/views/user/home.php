@@ -214,22 +214,34 @@
                 <?php foreach($dados['todosMembros'] as $listar):?>
                 <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
                     <div class="member d-flex align-items-start">
-                        <div class="pic"><img src="<?php echo URL . '/public/images/equipe/'.$listar->fotoMembro; ?>"
+                        <div class="pic"><img src="<?php echo URL . '/public/uploads/direcao/'.$listar->fotoMembro; ?>"
                                 class="img-fluid" alt=""></div>
                         <div class="member-info">
                             <h4><?=$listar->nome_membro?></h4>
                             <span><?=$listar->funcao?></span>
                             <p><?=$listar->detalhe?></p>
                             <div class="social">
-                                <?php foreach($dados['rsMembros'] as $ler):?>
-                                <a href="<?=$ler->link_acesso?>"><?=$ler->icone?></a>
+                                <?php if($listar->link_Facebook != '#'): ?>
+                                    <a href="<?=$listar->link_Facebook?>"><?=$listar->iconeFacebook?></a>
+                                <?php endif;?>
+                                <?php if($listar->link_Instagram != '#'): ?>
+                                    <a href="<?=$listar->link_Instagram?>"><?=$listar->iconeInstagram?></a>
+                                <?php endif;?>
+                                <?php if($listar->link_Linkedin != '#'): ?>
+                                    <a href="<?=$listar->link_Linkedin?>"><?=$listar->iconeLinkedin?></a>
+                                <?php endif;?>
+                                <?php if($listar->link_TikTok != '#'): ?>
+                                    <a href="<?=$listar->link_TikTok?>"><?=$listar->iconeTikTok?></a>
+                                <?php endif;?>
+                                <?php if($listar->link_Twitter != '#'): ?>
+                                    <a href="<?=$listar->link_Twitter?>"><?=$listar->iconeTwitter?></a>
+                                <?php endif;?>
                                     <!--
                                 <a href=""><i class="ri-twitter-fill"></i></a>
                                 <a href=""><i class="ri-facebook-fill"></i></a>
                                 <a href=""><i class="ri-instagram-fill"></i></a>
                                 <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
                                     -->
-                                <?php endforeach;?>
                             </div>
                         </div>
                     </div>

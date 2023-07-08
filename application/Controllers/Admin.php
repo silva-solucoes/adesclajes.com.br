@@ -42,11 +42,12 @@ class Admin extends Controller
     {
 
         $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $buscar = '';
 
         if (isset($formulario)) :
 
             $dados = [
-                'user' => $this->usuarioModel->lerUsuario(),
+                'user' => $this->usuarioModel->lerUsuario($buscar),
                 'funcao' => $this->usuarioModel->lerFuncoes(),
                 'nomeUser' => trim($formulario['nomeUser']),
                 'cpfUser' => trim($formulario['cpfUser']),
@@ -86,7 +87,7 @@ class Admin extends Controller
             endif;
         else :
             $dados = [
-                'user' => $this->usuarioModel->lerUsuario(),
+                'user' => $this->usuarioModel->lerUsuario($buscar),
                 'funcao' => $this->usuarioModel->lerFuncoes(),
                 'nomeUser' => '',
                 'cpfUser' => '',
@@ -105,6 +106,430 @@ class Admin extends Controller
         endif;
 
         $this->view('admin/usuarios', $dados);
+    }
+    public function exibirBuscaUser(){
+
+        $buscar = filter_input(INPUT_POST, 'pesquisa', FILTER_SANITIZE_STRING);
+
+        if (!empty($buscar)) :
+            $resultBusca = $this->usuarioModel->lerUsuario($buscar);
+            if ($resultBusca == Null) :
+                Sessao::mensagem('BuscaMembro', 'Nenhum registro foi encontrado para o atleta <b>' . $buscar . '</b>!', 'alert alert-danger');
+            endif;
+
+            $dados = [
+                'user' => $resultBusca,
+            ];
+            $this->view('admin/usuarios', $dados);
+        else:
+            $resultBusca = $this->usuarioModel->lerUsuario($buscar);
+            $dados = [
+                'user' => $resultBusca,
+            ];
+            $this->view('admin/usuarios', $dados);
+        endif;
+    }
+    //Cadastro de Novos usuários (ADM)
+    public function cadastrarUser()
+    {
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        if (isset($formulario)) :
+
+            $foto = $_FILES['fotoPerfil']['tmp_name'] ? $_FILES['fotoPerfil'] : null;
+
+            $dados = [
+                'nomeUser' => trim($formulario['nomeUser']),
+                'cpfUser' => trim($formulario['cpfUser']),
+                'telUser' => trim($formulario['telUser']),
+                'funcaoUser' => trim($formulario['funcaoUser']),
+                'emailUser' => trim($formulario['emailUser']),
+                'senhaUser' => trim($formulario['senhaUser']),
+                'upload_erro' => '',
+                'nomeUser_erro' => '',
+                'cpfUser_erro' => '',
+                'telUser_erro' => '',
+                'funcaoUser_erro' => '',
+                'emailUser_erro' => '',
+                'senhaUser_erro' => '',
+            ];
+
+            if (in_array("", $formulario)) :
+                if (empty($formulario['nomeUser'])) :
+                    $dados['nomeUser_erro'] = 'Preencha o campo Nome Completo';
+                endif;
+
+                if (empty($formulario['telUser'])) :
+                    $dados['telUser_erro'] = 'Preencha o campo Telefone';
+                endif;
+
+                if (empty($formulario['funcaoUser'])) :
+                    $dados['funcaoUser_erro'] = 'Preencha o campo Função';
+                endif;
+
+                if (empty($formulario['emailUser'])) :
+                    $dados['emailUser_erro'] = 'Preencha o campo E-mail';
+                endif;
+
+                if (empty($formulario['senhaUser'])) :
+                    $dados['senhaUser_erro'] = 'Preencha o campo Senha';
+                endif;
+
+            else :
+                if (!empty($foto)) :
+                    $foto = $_FILES['fotoPerfil']['tmp_name'];
+                    // Diretório onde as fotos são armazenadas
+                    $diretorio = 'uploads/adms/';
+
+                    // Nome do arquivo
+                    $nomeArquivo = $_FILES['fotoPerfil']['name'];
+                    // Mover a foto para o diretório especificado
+                    move_uploaded_file($foto, $diretorio . $nomeArquivo);
+
+                    // Caminho completo da imagem original
+                    $caminhoOriginal = $diretorio . $nomeArquivo;
+                    $novoNome = 'user.webp';
+
+                    $extensao = strtolower(pathinfo($novoNome, PATHINFO_EXTENSION));
+                    // Verificar se a extensão é suportada (por exemplo, 'webp')
+                    if ($extensao == 'webp') :
+                        // Obter o número da sequência
+                        $sequencia = 1;
+
+                        // Verificar se já existem arquivos com a sequência atual
+                        while (file_exists($diretorio . 'user-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp')) {
+                            // Incrementar a sequência
+                            $sequencia++;
+                        }
+
+                        // Criar o novo nome de arquivo com base na sequência
+                        $novoNome = 'user-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp';
+                    endif;
+                    // Caminho completo da imagem redimensionada
+                    $caminhoRedimensionado = $diretorio . $novoNome;
+                    // Criar uma nova imagem com as dimensões desejadas e fundo transparente
+                    $imagemRedimensionada = imagecreatetruecolor(300, 300);
+                    imagesavealpha($imagemRedimensionada, true);
+                    $transparente = imagecolorallocatealpha($imagemRedimensionada, 0, 0, 0, 127);
+                    imagefill($imagemRedimensionada, 0, 0, $transparente);
+
+                    // Carregar a imagem original com base na sua extensão
+                    $extensao = strtolower(pathinfo($caminhoOriginal, PATHINFO_EXTENSION));
+
+                    switch ($extensao):
+                        case 'png':
+                            $imagemOriginal = imagecreatefrompng($caminhoOriginal);
+                            break;
+                        case 'jpg':
+                        case 'jpeg':
+                            $imagemOriginal = imagecreatefromjpeg($caminhoOriginal);
+                            break;
+                        case 'webp':
+                            $imagemOriginal = imagecreatefromwebp($caminhoOriginal);
+                            break;
+                        default:
+                            // Tipo de imagem não suportado
+                            exit;
+                    endswitch;
+
+                    // Redimensionar a imagem original para a nova imagem mantendo o fundo transparente
+                    imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 300, 300, imagesx($imagemOriginal), imagesy($imagemOriginal));
+
+                    // Salvar a imagem redimensionada no diretório preservando a transparência
+                    imagewebp($imagemRedimensionada, $caminhoRedimensionado);
+
+                    // Liberar a memória
+                    imagedestroy($imagemOriginal);
+                    imagedestroy($imagemRedimensionada);
+
+                    // Remover a imagem antiga do diretório
+                    if (file_exists($caminhoOriginal)) :
+                        unlink($caminhoOriginal);
+                    endif;
+
+                    // Atualizar o nome da foto redimensionada no banco de dados
+                    $dados['nomeImagem'] = $novoNome;
+                else :
+                    $dados['nomeImagem'] = 'semfoto.webp';
+                endif;
+                $dados['senhaCripto'] = password_hash($formulario['senhaUser'], PASSWORD_DEFAULT);
+                        $dados['chave_ativar'] = password_hash(date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
+                        $dados['dtAtual'] = date('Y-m-d H:i:s');
+            endif;
+            
+            if($this->usuarioModel->checarEmail($dados['emailUser'])):
+            
+                if ($this->usuarioModel->armazenar($dados)) :
+                    
+                    $this->confirmacaoEmail->enviarAtivacaoConta($dados);
+                    Sessao::mensagem('cadastroUser', 'Cadastro realizado com sucesso. Um e-mail de ativação da conta foi enviado para <b>' . $dados['emailUser'] . '.</b>');
+                    #URL::redirecionar('');
+                            
+                else :
+                    
+                    Sessao::mensagem('cadastroUser', 'Erro ao cadastrar usuário!', 'alert alert-danger');
+                    #die('Erro ao cadastrar usuário!');
+                endif;
+            else:
+                Sessao::mensagem('cadastroUser', 'O e-mail: <b>' . $dados['emailUser'] . '</b> já é cadastrado!', 'alert alert-danger');
+            endif;
+
+            if (Checa::checarNome($formulario['nomeUser'])) :
+                $dados['nomeUser_erro'] = 'O nome informado é inválido';
+            elseif (Checa::checarEmail($formulario['emailUser'])) :
+                $dados['emailUser_erro'] = 'O e-mail informado é inválido';
+            elseif ($this->usuarioModel->checarEmail($formulario['emailUser'])) :
+                $dados['emailUser_erro'] = 'O e-mail informado já está cadastrado';
+            elseif (strlen($formulario['senhaUser']) < 6) :
+                $dados['senhaUser_erro'] = 'A senha deve ter no mínimo 6 caracteres';
+            endif;
+                    
+        else :
+
+            $dados = [
+                'user' => $this->usuarioModel->lerUsuario(),
+                'funcao' => $this->usuarioModel->lerFuncoes(),
+                'nomeUser' => '',
+                'cpfUser' => '',
+                'telUser' => '',
+                'funcaoUser' => '',
+                'emailUser' => '',
+                'senhaUser' => '',
+                'upload_erro' => '',
+                'nomeUser_erro' => '',
+                'cpfUser_erro' => '',
+                'telUser_erro' => '',
+                'funcaoUser_erro' => '',
+                'emailUser_erro' => '',
+                'senhaUser_erro' => '',
+            ];
+
+        endif;
+
+        $this->usuario();
+    }
+    public function editUser($id){
+        $dados = [
+            'exibirUser' => $this->usuarioModel->exibirUser($id),
+        ];
+        $this->view('admin/usuario_editar', $dados);
+    }
+    public function editarUser($idUser){
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        $foto = $_FILES['fotoPerfil']['tmp_name'] ?? null;
+
+        if (isset($formulario)) :
+
+            $dados = [
+                'nomeUser' => trim($formulario['nomeUser']),
+                'cpfUser' => trim($formulario['cpfUser']),
+                'telUser' => trim($formulario['telUser']),
+                'emailUser' => trim($formulario['emailUser']),
+                'senhaUser' => trim($formulario['senhaUser']),
+                'idUser' => $idUser,
+                'upload_erro' => '',
+                'nomeUser_erro' => '',
+                'cpfUser_erro' => '',
+                'telUser_erro' => '',
+                'funcaoUser_erro' => '',
+                'emailUser_erro' => '',
+                'senhaUser_erro' => '',
+            ];
+
+            if (in_array("", $formulario)) :
+
+                if (empty($formulario['nomeUser'])) :
+                    $dados['nomeUser_erro'] = 'Preencha o campo Nome Completo';
+                endif;
+
+                if (empty($formulario['telUser'])) :
+                    $dados['telUser_erro'] = 'Preencha o campo Telefone';
+                endif;
+
+                if (empty($formulario['funcaoUser'])) :
+                    $dados['funcaoUser_erro'] = 'Preencha o campo Função';
+                endif;
+
+                if (empty($formulario['emailUser'])) :
+                    $dados['emailUser_erro'] = 'Preencha o campo E-mail';
+                endif;
+
+                if (empty($formulario['senhaUser'])) :
+                    $dados['senhaUser_erro'] = 'Preencha o campo Senha';
+                endif;
+
+            else :
+                $fotoUser = $this->usuarioModel->exibirUser($idUser);
+                // Verificar se uma foto foi enviada
+                if (!empty($foto)) :
+
+                    // Diretório onde as fotos são armazenadas
+                    $diretorio = 'uploads/adms/';
+
+                    // Remover a imagem antiga do diretório
+                    $caminhoImagemAnterior = $diretorio . $fotoUser->foto_user;
+                    if (file_exists($caminhoImagemAnterior)) {
+                        unlink($caminhoImagemAnterior);
+                    }
+
+                    // Nome do arquivo
+                    $nomeArquivo = $_FILES['fotoPerfil']['name'];
+
+                    // Mover a foto para o diretório especificado
+                    move_uploaded_file($foto, $diretorio . $nomeArquivo);
+
+                    // Caminho completo da imagem original
+                    $caminhoOriginal = $diretorio . $nomeArquivo;
+                    $novoNome = 'user.webp';
+                    $extensao = strtolower(pathinfo($novoNome, PATHINFO_EXTENSION));
+                    // Verificar se a extensão é suportada (por exemplo, 'webp')
+                    if ($extensao == 'webp') :
+                        // Obter o número da sequência
+                        $sequencia = 1;
+
+                        // Verificar se já existem arquivos com a sequência atual
+                        while (file_exists($diretorio . 'user-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp')) {
+                            // Incrementar a sequência
+                            $sequencia++;
+                        }
+
+                        // Criar o novo nome de arquivo com base na sequência
+                        $novoNome = 'user-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp';
+                    endif;
+                    // Caminho completo da imagem redimensionada
+                    $caminhoRedimensionado = $diretorio . $novoNome;
+
+                    // Criar uma nova imagem com as dimensões desejadas e fundo transparente
+                    $imagemRedimensionada = imagecreatetruecolor(300, 300);
+                    imagesavealpha($imagemRedimensionada, true);
+                    $transparente = imagecolorallocatealpha($imagemRedimensionada, 0, 0, 0, 127);
+                    imagefill($imagemRedimensionada, 0, 0, $transparente);
+
+                    // Carregar a imagem original com base na sua extensão
+                    $extensao = strtolower(pathinfo($caminhoOriginal, PATHINFO_EXTENSION));
+
+                    switch ($extensao):
+                        case 'png':
+                            $imagemOriginal = imagecreatefrompng($caminhoOriginal);
+                            break;
+                        case 'jpg':
+                        case 'jpeg':
+                            $imagemOriginal = imagecreatefromjpeg($caminhoOriginal);
+                            break;
+                        case 'webp':
+                            $imagemOriginal = imagecreatefromwebp($caminhoOriginal);
+                            break;
+                        default:
+                            // Tipo de imagem não suportado
+                            exit;
+                    endswitch;
+
+                    // Redimensionar a imagem original para a nova imagem mantendo o fundo transparente
+                    imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 300, 300, imagesx($imagemOriginal), imagesy($imagemOriginal));
+
+                    // Salvar a imagem redimensionada no diretório preservando a transparência
+                    imagewebp($imagemRedimensionada, $caminhoRedimensionado);
+
+                    // Liberar a memória
+                    imagedestroy($imagemOriginal);
+                    imagedestroy($imagemRedimensionada);
+
+                    // Remover a imagem antiga do diretório
+                    if (file_exists($caminhoOriginal)) {
+                        unlink($caminhoOriginal);
+                    }
+                    // Atualizar o nome da foto redimensionada no banco de dados
+                    $dados['fotoPerfil'] = $novoNome;
+                else :
+                    $dados['fotoPerfil'] = $this->usuarioModel->exibirUser($idUser)->foto_user;
+                endif;
+                $dados['senhaCripto'] = password_hash($formulario['senhaUser'], PASSWORD_DEFAULT);
+                $dados['dtAtual'] = date('Y-m-d H:i:s');
+
+                $this->usuarioModel->editarUser($dados);
+                $this->usuario();
+                exit;
+
+            endif;
+
+        endif;
+    }
+    public function reenviarAtivacao(){
+        // Verificar se a requisição é do tipo POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Obter o ID do patrocinador a ser excluído
+            $membroId = $_POST['user_id'];
+
+            //Consultar Usuário no banco
+
+            // Realizar as operações necessárias para excluir o patrocinador com o ID fornecido
+            $this->confirmacaoEmail->verificarUser($membroId);
+
+            // Simular uma resposta de sucesso (você deve ajustar isso de acordo com a sua lógica de exclusão)
+            $response = array(
+                'success' => true
+            );
+
+            // Enviar a resposta como JSON
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } else {
+            // Responder com um erro se a requisição não for do tipo POST
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Content-Type: application/json');
+            echo json_encode(array('error' => 'Método não permitido'));
+        }
+    }
+    public function ativarUser(){
+        // Verificar se a requisição é do tipo POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Obter o ID do patrocinador a ser excluído
+            $membroId = $_POST['user_id'];
+
+            // Realizar as operações necessárias para excluir o patrocinador com o ID fornecido
+            $this->usuarioModel->ativarUser($membroId);
+
+            // Simular uma resposta de sucesso (você deve ajustar isso de acordo com a sua lógica de exclusão)
+            $response = array(
+                'success' => true
+            );
+
+            // Enviar a resposta como JSON
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } else {
+            // Responder com um erro se a requisição não for do tipo POST
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Content-Type: application/json');
+            echo json_encode(array('error' => 'Método não permitido'));
+        }
+    }
+    public function desligarUser(){
+        // Verificar se a requisição é do tipo POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Obter o ID do patrocinador a ser excluído
+            $membroId = $_POST['user_id'];
+
+            // Realizar as operações necessárias para excluir o patrocinador com o ID fornecido
+            $this->usuarioModel->desabilitarUser($membroId);
+
+            // Simular uma resposta de sucesso (você deve ajustar isso de acordo com a sua lógica de exclusão)
+            $response = array(
+                'success' => true
+            );
+
+            // Enviar a resposta como JSON
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } else {
+            // Responder com um erro se a requisição não for do tipo POST
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Content-Type: application/json');
+            echo json_encode(array('error' => 'Método não permitido'));
+        }
     }
     //Chamada para página de Configurações do Site
     public function config()
@@ -2161,10 +2586,339 @@ class Admin extends Controller
     //Chamada para página de Diretoria
     public function diretoria()
     {
+        $buscar = '';
+        $resultBusca = $this->usuarioModel->buscarMembro($buscar);
         $dados = [
-            'exibirDirecao' => $this->info->todosMembros(),
+            'exibirDirecao' => $resultBusca,
         ];
         $this->view('admin/diretoria', $dados);
+    }
+    public function exibirBuscaMembro(){
+
+        $buscar = filter_input(INPUT_POST, 'pesquisa', FILTER_SANITIZE_STRING);
+        if (!empty($buscar)) :
+            $resultBusca = $this->usuarioModel->buscarMembro($buscar);
+            if ($resultBusca == Null) :
+                Sessao::mensagem('BuscaMembro', 'Nenhum registro foi encontrado para o atleta <b>' . $buscar . '</b>!', 'alert alert-danger');
+            endif;
+
+            $dados = [
+                'exibirDirecao' => $resultBusca,
+            ];
+            $this->view('admin/diretoria', $dados);
+        else:
+            $resultBusca = $this->usuarioModel->buscarMembro($buscar);
+            $dados = [
+                'exibirDirecao' => $resultBusca,
+            ];
+            $this->view('admin/diretoria', $dados);
+        endif;
+
+    }
+    public function cadastrarMembro(){
+        $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+        if (isset($formulario)) :
+
+            $foto = $_FILES['nomeImagem']['tmp_name'] ? $_FILES['nomeImagem'] : null;
+
+            $dados = [
+                'nomeMembro' => trim($formulario['nomeMembro']),
+                'funcao' => trim($formulario['funcao']),
+                'descricao' => trim($formulario['descricao']),
+                'linkFacebook' => trim($formulario['linkFacebook']),
+                'linkInstagram' => trim($formulario['linkInstagram']),
+                'linkLinkedin' => trim($formulario['linkLinkedin']),
+                'linkTikTok' => trim($formulario['linkTikTok']),
+                'linkTwitter' => trim($formulario['linkTwitter']),
+                'upload_erro' => '',
+            ];
+
+            if (in_array("", $formulario)) :
+                if (empty($formulario['nomePatrocinador'])) :
+                    $dados['nomeUser_erro'] = 'Preencha o campo Nome Completo';
+                endif;
+
+                if (empty($formulario['linkPatrocinador'])) :
+                    $dados['telUser_erro'] = 'Preencha o campo Telefone';
+                endif;
+            else :
+                if (!empty($foto)) :
+                    $foto = $_FILES['nomeImagem']['tmp_name'];
+                    // Diretório onde as fotos são armazenadas
+                    $diretorio = 'uploads/direcao/';
+
+                    // Nome do arquivo
+                    $nomeArquivo = $_FILES['nomeImagem']['name'];
+                    // Mover a foto para o diretório especificado
+                    move_uploaded_file($foto, $diretorio . $nomeArquivo);
+
+                    // Caminho completo da imagem original
+                    $caminhoOriginal = $diretorio . $nomeArquivo;
+                    $novoNome = 'membro.webp';
+
+                    $extensao = strtolower(pathinfo($novoNome, PATHINFO_EXTENSION));
+                    // Verificar se a extensão é suportada (por exemplo, 'webp')
+                    if ($extensao == 'webp') :
+                        // Obter o número da sequência
+                        $sequencia = 1;
+
+                        // Verificar se já existem arquivos com a sequência atual
+                        while (file_exists($diretorio . 'membro-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp')) {
+                            // Incrementar a sequência
+                            $sequencia++;
+                        }
+
+                        // Criar o novo nome de arquivo com base na sequência
+                        $novoNome = 'membro-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp';
+                    endif;
+                    // Caminho completo da imagem redimensionada
+                    $caminhoRedimensionado = $diretorio . $novoNome;
+                    // Criar uma nova imagem com as dimensões desejadas e fundo transparente
+                    $imagemRedimensionada = imagecreatetruecolor(300, 300);
+                    imagesavealpha($imagemRedimensionada, true);
+                    $transparente = imagecolorallocatealpha($imagemRedimensionada, 0, 0, 0, 127);
+                    imagefill($imagemRedimensionada, 0, 0, $transparente);
+
+                    // Carregar a imagem original com base na sua extensão
+                    $extensao = strtolower(pathinfo($caminhoOriginal, PATHINFO_EXTENSION));
+
+                    switch ($extensao):
+                        case 'png':
+                            $imagemOriginal = imagecreatefrompng($caminhoOriginal);
+                            break;
+                        case 'jpg':
+                        case 'jpeg':
+                            $imagemOriginal = imagecreatefromjpeg($caminhoOriginal);
+                            break;
+                        case 'webp':
+                            $imagemOriginal = imagecreatefromwebp($caminhoOriginal);
+                            break;
+                        default:
+                            // Tipo de imagem não suportado
+                            exit;
+                    endswitch;
+
+                    // Redimensionar a imagem original para a nova imagem mantendo o fundo transparente
+                    imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 300, 300, imagesx($imagemOriginal), imagesy($imagemOriginal));
+
+                    // Salvar a imagem redimensionada no diretório preservando a transparência
+                    imagewebp($imagemRedimensionada, $caminhoRedimensionado);
+
+                    // Liberar a memória
+                    imagedestroy($imagemOriginal);
+                    imagedestroy($imagemRedimensionada);
+
+                    // Remover a imagem antiga do diretório
+                    if (file_exists($caminhoOriginal)) :
+                        unlink($caminhoOriginal);
+                    endif;
+
+                    // Atualizar o nome da foto redimensionada no banco de dados
+                    $dados['nomeImagem'] = $novoNome;
+                else :
+                    $dados['nomeImagem'] = 'semfoto.webp';
+                endif;
+            endif;
+            $this->usuarioModel->cadastrarMembro($dados);
+            $this->diretoria();
+        else :
+            $dados = [
+                'nomeMembro' => '',
+                'funcao' => '',
+                'descricao' => '',
+                'linkFacebook' => '',
+                'linkInstagram' => '',
+                'linkLinkedin' => '',
+                'linkTikTok' => '',
+                'linkTwitter' => '',
+                'upload_erro' => '',
+            ];
+        endif;
+    }
+    public function editMembro($id){
+        $dados = [
+            'exibirDirecao' => $this->usuarioModel->exibirMembro($id),
+        ];
+        $this->view('admin/diretoria_editar', $dados);
+    }
+    public function editarMembro(){
+
+        $url = $_SERVER['REQUEST_URI'];
+        $parts = explode('/', $url);
+        $id = end($parts);
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+        if (isset($formulario)) :
+
+            $foto = $_FILES['nomeImagem']['tmp_name'] ? $_FILES['nomeImagem'] : null;
+
+            $dados = [
+                'nomeMembro' => trim($formulario['nomeMembro']),
+                'funcao' => trim($formulario['funcao']),
+                'descricao' => trim($formulario['descricao']),
+                'linkFacebook' => trim($formulario['linkFacebook']),
+                'linkInstagram' => trim($formulario['linkInstagram']),
+                'linkLinkedin' => trim($formulario['linkLinkedin']),
+                'linkTikTok' => trim($formulario['linkTikTok']),
+                'linkTwitter' => trim($formulario['linkTwitter']),
+                'idMembro' => $id,
+                'upload_erro' => '',
+            ];
+
+            if (in_array("", $formulario)) :
+                if (empty($formulario['nomePatrocinador'])) :
+                    $dados['nomeUser_erro'] = 'Preencha o campo Nome Completo';
+                endif;
+
+                if (empty($formulario['linkPatrocinador'])) :
+                    $dados['telUser_erro'] = 'Preencha o campo Telefone';
+                endif;
+            else :
+                if (!empty($foto)) :
+                    
+                    $foto = $_FILES['nomeImagem']['tmp_name'];
+
+                    // Diretório onde as fotos são armazenadas
+                    $diretorio = 'uploads/direcao/';
+
+                    // Nome do arquivo
+                    $nomeArquivo = $_FILES['nomeImagem']['name'];
+                    // Mover a foto para o diretório especificado
+                    move_uploaded_file($foto, $diretorio . $nomeArquivo);
+
+                    // Caminho completo da imagem original
+                    $caminhoOriginal = $diretorio . $nomeArquivo;
+                    $novoNome = 'membro.webp';
+
+                    $extensao = strtolower(pathinfo($novoNome, PATHINFO_EXTENSION));
+                    // Verificar se a extensão é suportada (por exemplo, 'webp')
+                    if ($extensao == 'webp') :
+                        // Obter o número da sequência
+                        $sequencia = 1;
+
+                        // Verificar se já existem arquivos com a sequência atual
+                        while (file_exists($diretorio . 'membro-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp')) {
+                            // Incrementar a sequência
+                            $sequencia++;
+                        }
+
+                        // Criar o novo nome de arquivo com base na sequência
+                        $novoNome = 'membro-' . str_pad($sequencia, 2, '0', STR_PAD_LEFT) . '.webp';
+                    endif;
+                    // Caminho completo da imagem redimensionada
+                    $caminhoRedimensionado = $diretorio . $novoNome;
+                    // Criar uma nova imagem com as dimensões desejadas e fundo transparente
+                    $imagemRedimensionada = imagecreatetruecolor(225, 225);
+                    imagesavealpha($imagemRedimensionada, true);
+                    $transparente = imagecolorallocatealpha($imagemRedimensionada, 0, 0, 0, 127);
+                    imagefill($imagemRedimensionada, 0, 0, $transparente);
+
+                    // Carregar a imagem original com base na sua extensão
+                    $extensao = strtolower(pathinfo($caminhoOriginal, PATHINFO_EXTENSION));
+                    switch ($extensao):
+                        case 'png':
+                            $imagemOriginal = imagecreatefrompng($caminhoOriginal);
+                            break;
+                        case 'jpg':
+                        case 'jpeg':
+                            $imagemOriginal = imagecreatefromjpeg($caminhoOriginal);
+                            break;
+                        case 'webp':
+                            $imagemOriginal = imagecreatefromwebp($caminhoOriginal);
+                            break;
+                        default:
+                            // Tipo de imagem não suportado
+                            exit;
+                    endswitch;
+
+                    // Redimensionar a imagem original para a nova imagem mantendo o fundo transparente
+                    imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 225, 225, imagesx($imagemOriginal), imagesy($imagemOriginal));
+
+                    // Salvar a imagem redimensionada no diretório preservando a transparência
+                    imagewebp($imagemRedimensionada, $caminhoRedimensionado);
+
+                    // Liberar a memória
+                    imagedestroy($imagemOriginal);
+                    imagedestroy($imagemRedimensionada);
+
+                    // Remover a imagem antiga do diretório
+                    if (file_exists($caminhoOriginal)) :
+                        unlink($caminhoOriginal);
+                    endif;
+
+                    // Atualizar o nome da foto redimensionada no banco de dados
+                    $dados['nomeImagem'] = $novoNome;
+                else :
+                    $resultado = $this->usuarioModel->exibirMembro($id);
+                    $dados['nomeImagem'] = $resultado->fotoMembro;
+
+                endif;
+            endif;
+            $this->usuarioModel->editarMembro($dados);
+            $this->diretoria();
+        else :
+            $dados = [
+                'nomeMembro' => '',
+                'funcao' => '',
+                'descricao' => '',
+                'linkFacebook' => '',
+                'linkInstagram' => '',
+                'linkLinkedin' => '',
+                'linkTikTok' => '',
+                'linkTwitter' => '',
+                'upload_erro' => '',
+            ];
+        endif;
+    }
+    public function desligarMembro(){
+        // Verificar se a requisição é do tipo POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Obter o ID do patrocinador a ser excluído
+            $membroId = $_POST['user_id'];
+
+            // Realizar as operações necessárias para excluir o patrocinador com o ID fornecido
+            $this->usuarioModel->desabilitarMembro($membroId);
+
+            // Simular uma resposta de sucesso (você deve ajustar isso de acordo com a sua lógica de exclusão)
+            $response = array(
+                'success' => true
+            );
+
+            // Enviar a resposta como JSON
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } else {
+            // Responder com um erro se a requisição não for do tipo POST
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Content-Type: application/json');
+            echo json_encode(array('error' => 'Método não permitido'));
+        }
+    }
+    public function ativarMembro(){
+        // Verificar se a requisição é do tipo POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Obter o ID do patrocinador a ser excluído
+            $membroId = $_POST['user_id'];
+
+            // Realizar as operações necessárias para excluir o patrocinador com o ID fornecido
+            $this->usuarioModel->ativarMembro($membroId);
+
+            // Simular uma resposta de sucesso (você deve ajustar isso de acordo com a sua lógica de exclusão)
+            $response = array(
+                'success' => true
+            );
+
+            // Enviar a resposta como JSON
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } else {
+            // Responder com um erro se a requisição não for do tipo POST
+            header('HTTP/1.1 405 Method Not Allowed');
+            header('Content-Type: application/json');
+            echo json_encode(array('error' => 'Método não permitido'));
+        }
     }
     //Chamada para página de Inscrições
     public function inscricao()
@@ -2296,115 +3050,7 @@ class Admin extends Controller
         ];
         $this->view('admin/detalhe_inscricao', $dados);
     }
-    //Cadastro de Novos usuários (ADM)
-    public function cadastrarUser()
-    {
-
-        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-        if (isset($formulario)) :
-
-            $foto = $_FILES['fotoPerfil']['tmp_name'] ? $_FILES['fotoPerfil'] : null;
-
-            $dados = [
-                'nomeUser' => trim($formulario['nomeUser']),
-                'cpfUser' => trim($formulario['cpfUser']),
-                'telUser' => trim($formulario['telUser']),
-                'funcaoUser' => trim($formulario['funcaoUser']),
-                'emailUser' => trim($formulario['emailUser']),
-                'senhaUser' => trim($formulario['senhaUser']),
-                'upload_erro' => '',
-                'nomeUser_erro' => '',
-                'cpfUser_erro' => '',
-                'telUser_erro' => '',
-                'funcaoUser_erro' => '',
-                'emailUser_erro' => '',
-                'senhaUser_erro' => '',
-            ];
-
-            if (in_array("", $formulario)) :
-                if (empty($formulario['nomeUser'])) :
-                    $dados['nomeUser_erro'] = 'Preencha o campo Nome Completo';
-                endif;
-
-                if (empty($formulario['telUser'])) :
-                    $dados['telUser_erro'] = 'Preencha o campo Telefone';
-                endif;
-
-                if (empty($formulario['funcaoUser'])) :
-                    $dados['funcaoUser_erro'] = 'Preencha o campo Função';
-                endif;
-
-                if (empty($formulario['emailUser'])) :
-                    $dados['emailUser_erro'] = 'Preencha o campo E-mail';
-                endif;
-
-                if (empty($formulario['senhaUser'])) :
-                    $dados['senhaUser_erro'] = 'Preencha o campo Senha';
-                endif;
-
-            else :
-
-                if ($foto) :
-                    $upload = new Upload();
-                    $upload->imagem($foto, 'perfil');
-
-                    if ($upload->getResultado()) :
-                        $foto = $upload->getResultado();
-                        $dados['foto_user'] = $foto;
-                        $dados['senhaCripto'] = password_hash($formulario['senhaUser'], PASSWORD_DEFAULT);
-                        $dados['chave_ativar'] = password_hash(date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
-                        $dados['dtAtual'] = date('Y-m-d H:i:s');
-
-                        if (!$dados['upload_erro']) :
-                            if ($this->usuarioModel->armazenar($dados)) :
-                                $this->confirmacaoEmail->enviarAtivacaoConta($dados);
-                                Sessao::mensagem('cadastroUser', 'Cadastro realizado com sucesso. Um e-mail de ativação da conta foi enviado para <b>' . $dados['emailUser'] . '.</b>');
-                            #URL::redirecionar('');
-                            else :
-                                Sessao::mensagem('cadastroUser', 'Erro ao cadastrar usuário!');
-                            #die('Erro ao cadastrar usuário!');
-                            endif;
-                        endif;
-
-                        if (Checa::checarNome($formulario['nomeUser'])) :
-                            $dados['nomeUser_erro'] = 'O nome informado é inválido';
-                        elseif (Checa::checarEmail($formulario['emailUser'])) :
-                            $dados['emailUser_erro'] = 'O e-mail informado é inválido';
-                        elseif ($this->usuarioModel->checarEmail($formulario['emailUser'])) :
-                            $dados['emailUser_erro'] = 'O e-mail informado já está cadastrado';
-                        elseif (strlen($formulario['senhaUser']) < 6) :
-                            $dados['senhaUser_erro'] = 'A senha deve ter no mínimo 6 caracteres';
-                        endif;
-                    else :
-                        $foto = null;
-                        $dados['upload_erro'] = $upload->getErro();
-                    endif;
-                endif;
-
-            endif;
-        else :
-            $dados = [
-                'user' => $this->usuarioModel->lerUsuario(),
-                'funcao' => $this->usuarioModel->lerFuncoes(),
-                'nomeUser' => '',
-                'cpfUser' => '',
-                'telUser' => '',
-                'funcaoUser' => '',
-                'emailUser' => '',
-                'senhaUser' => '',
-                'upload_erro' => '',
-                'nomeUser_erro' => '',
-                'cpfUser_erro' => '',
-                'telUser_erro' => '',
-                'funcaoUser_erro' => '',
-                'emailUser_erro' => '',
-                'senhaUser_erro' => '',
-            ];
-        endif;
-
-        $this->view('admin/usuarios', $dados);
-    }
+    
     //Ativação da Conta do Novo usuário
     public function ativarConta()
     {
