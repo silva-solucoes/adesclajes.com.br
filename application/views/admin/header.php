@@ -8,7 +8,7 @@
     <title>Painel de Controle - ADESC Lajes</title>
     <link href="<?php echo URL . '/public/css/dist/ui/trumbowyg.min.css'; ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo URL . '/public/css/dist/plugins/emoji/ui/trumbowyg.emoji.min.css'; ?>">
-    
+
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -18,9 +18,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="<?php echo URL . '/public/vendor/bootstrap/css/bootstrap.min.css'; ?>" rel="stylesheet">
@@ -32,12 +30,12 @@
     <link href="<?php echo URL . '/public/vendor/simple-datatables/style.css'; ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <!-- Template Main CSS File -->
     <link href="<?php echo URL . '/public/css/styleAdm.css'; ?>" rel="stylesheet">
-    
+
     <!-- =======================================================
   * Nome do site: Silva Soluções Tech
   * Atualizado: 02 maio 2023 com Bootstrap v5.2.3
@@ -220,8 +218,7 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="<?php echo URL . '/public/uploads/adms/'.$_SESSION['foto_user']; ?>" alt="Profile"
-                            class="rounded-circle">
+                        <img src="<?php echo URL . '/public/uploads/adms/' . $_SESSION['foto_user']; ?>" alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['nome_user']; ?></span>
                     </a><!-- End Profile Iamge Icon -->
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -234,7 +231,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                            <a class="dropdown-item d-flex align-items-center" href="<?= URL . '/admin/perfil' ?>">
                                 <i class="bi bi-person"></i>
                                 <span>Meu perfil</span>
                             </a>
@@ -242,7 +239,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
+                        <!--
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                                 <i class="bi bi-gear"></i>
@@ -251,10 +248,10 @@
                         </li>
                         <li>
                             <hr class="dropdown-divider">
-                        </li>
+                        </li>-->
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                            <a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">
                                 <i class="bi bi-question-circle"></i>
                                 <span>Preciso de ajuda?</span>
                             </a>
@@ -278,39 +275,40 @@
 
     </header><!-- End Header -->
     <?php
-        $uri =$_SERVER['REQUEST_URI'];
-        // Verifica se a URL atual corresponde a cada guia de navegação
-        $paginaInicialAtiva = (strpos($uri, '/admin/painel') !== false);
-        $configAtiva = (strpos($uri, '/admin/config') !== false);
-        $patroAtivo = (strpos($uri, '/admin/patrocinio') !== false);
+    $uri = $_SERVER['REQUEST_URI'];
+    // Verifica se a URL atual corresponde a cada guia de navegação
+    $paginaInicialAtiva = (strpos($uri, '/admin/painel') !== false);
+    $configAtiva = (strpos($uri, '/admin/config') !== false);
+    $patroAtivo = (strpos($uri, '/admin/patrocinio') !== false);
 
-        if((strpos($uri, '/admin/noticia') !== false)):
+    if ((strpos($uri, '/admin/noticia') !== false)) :
         $noticiaAtivo = (strpos($uri, '/admin/noticia') !== false);
-        elseif((strpos($uri, 'admin/buscarNoticias') !== false)):
+    elseif ((strpos($uri, 'admin/buscarNoticias') !== false)) :
         $noticiaAtivo = (strpos($uri, 'admin/buscarNoticias') !== false);
-        endif;
-        
-        $sobreAtivo = (strpos($uri, '/admin/sobre') !== false);
-        $bidAtivo = (strpos($uri, '/admin/BID') !== false);
-        $fotosAtivo = (strpos($uri, '/admin/fotos') !== false);
-        $esportesAtivo = (strpos($uri, '/admin/esportes') !== false);
-        $diretoriaAtivo = (strpos($uri, '/admin/diretoria') !== false);
+    endif;
 
-        if((strpos($uri, '/admin/inscricao') !== false)):
+    $sobreAtivo = (strpos($uri, '/admin/sobre') !== false);
+    $bidAtivo = (strpos($uri, '/admin/BID') !== false);
+    $fotosAtivo = (strpos($uri, '/admin/fotos') !== false);
+    $esportesAtivo = (strpos($uri, '/admin/esportes') !== false);
+    $diretoriaAtivo = (strpos($uri, '/admin/diretoria') !== false);
+
+    if ((strpos($uri, '/admin/inscricao') !== false)) :
         $inscricaoAtivo = (strpos($uri, '/admin/inscricao') !== false);
-        elseif((strpos($uri, '/admin/detalheInscricao') !== false)):
+    elseif ((strpos($uri, '/admin/detalheInscricao') !== false)) :
         $inscricaoAtivo = (strpos($uri, '/admin/detalheInscricao') !== false);
-        endif;
-        $usuariosAtivo = (strpos($uri, '/admin/usuario') !== false);
+    endif;
+    $usuariosAtivo = (strpos($uri, '/admin/usuario') !== false);
 
-        // Função auxiliar para adicionar a classe ativa à guia de navegação
-        function ativarGuia($ativa){
-            if ($ativa == false):
-                echo 'collapsed';
-            else:
-                echo '';
-            endif;
-        }
+    // Função auxiliar para adicionar a classe ativa à guia de navegação
+    function ativarGuia($ativa)
+    {
+        if ($ativa == false) :
+            echo 'collapsed';
+        else :
+            echo '';
+        endif;
+    }
     ?>
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
@@ -388,7 +386,7 @@
                     <span>Gerenciar Inscrições</span>
                 </a>
             </li><!-- End Página Inscrição -->
-            
+
             <li class="nav-item">
                 <a class="nav-link <?php ativarGuia($usuariosAtivo); ?>" href="<?php echo URL . '/admin/usuario'; ?>">
                     <i class="bi bi-person-plus"></i>
@@ -399,3 +397,25 @@
         </ul>
 
     </aside><!-- End Sidebar-->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-question-circle"></i> Preciso de Ajuda?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading text-justify">Caso você esteja enfrentando algum problema com o sistema que você comprou e precise de ajuda ou suporte, siga as seguintes orientações:</h4>
+                        <p class="text-justify"><strong>Verifique a documentação:</strong> Consulte a documentação fornecida com o sistema para verificar se há instruções ou soluções para o problema que você está enfrentando. Muitas vezes, a documentação pode fornecer orientações passo a passo sobre como lidar com problemas comuns.</p>
+                        <hr>
+                        <p class="mb-0 text-justify"><strong>Entre em contato com o suporte:</strong> +55 (84)99939-7106 ou envie um e-mail para silvasolucoes2023@gmail.com</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="botao-cancelar" class="botao-cancelar" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>

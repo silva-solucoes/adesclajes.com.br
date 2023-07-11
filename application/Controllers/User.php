@@ -106,28 +106,43 @@ class User extends Controller
 
     public function enviarComentarioNoticia($idNoticia)
     {
+        function getRealIPAddress()
+        {
+            // Verificar se o cabeçalho X-Forwarded-For existe e não está vazio
+            if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] !== '') {
+                // Obter o endereço IP real do cliente a partir do cabeçalho X-Forwarded-For
+                $enderecoIPs = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+                return trim($enderecoIPs[0]);
+            } else {
+                // Caso contrário, retornar o endereço IP padrão
+                return $_SERVER['SERVER_ADDR'];
+            }
+        }
         $dataHora = date('Y-m-d H:i:s');
+        // Obtém o endereço IP do visitante
+        $enderecoIP = getRealIPAddress();
         //Capta os dados do formulário
         $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         if (isset($formulario)) :
             $dados = [
                 'nameVisitante' => trim($formulario['nameVisitante']),
-                'foto' => 'semfoto.jpg',
+                'foto' => 'semfoto.webp',
                 'emailVisitante' => trim($formulario['emailVisitante']),
                 'comentarioVisitante' => trim($formulario['comentarioVisitante']),
                 'idNoticia' => trim($idNoticia),
                 'dtCadastroComent' => $dataHora,
+                'ipUsuario' => $enderecoIP,
             ];
 
             if (empty($formulario['nome'])) :
                 $dados['nome_erro'] = "Preencha o campo Seu nome";
             endif;
-            
+
             $this->model('modelo');
 
             $modelo = new Modelo();
 
-            $modelo->cadastrarComentarioNoticia($dados['nameVisitante'], $dados['foto'], $dados['dtCadastroComent'], $dados['comentarioVisitante'], $dados['emailVisitante'], $dados['idNoticia']);
+            $modelo->cadastrarComentarioNoticia($dados['nameVisitante'], $dados['foto'], $dados['dtCadastroComent'], $dados['comentarioVisitante'], $dados['emailVisitante'], $dados['idNoticia'], $dados['ipUsuario']);
 
             header('Location:' . URL . '/paginas/detalheNoticias/' . $idNoticia);
         else :

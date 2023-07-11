@@ -232,8 +232,8 @@
                 Tem certeza que deseja <b>aceitar</b> a solicitação de inscrição?
             </div>
             <div class="modal-footer">
-            <a href="<?php echo URL . '/admin/aceitarSolicitacao/'.$dados['individualInsc']->id_inscricao; ?>" type="button" class="btn btn-primary">Sim</a>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <a href="<?php echo URL . '/admin/aceitarSolicitacao/'.$dados['individualInsc']->id_inscricao; ?>" type="button" class="botao-editar"><i class="bi bi-person-fill-x"></i> Sim</a>
+                <button type="button" class="btn btn-secondary" id="botao-cancelar" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
             </div>
             </div>
         </div>
@@ -250,8 +250,8 @@
                 Tem certeza que deseja <b>rejeitar</b> a solicitação de inscrição?
             </div>
             <div class="modal-footer">
-            <a href="<?php echo URL . '/admin/rejeitarSolicitacao/'.$dados['individualInsc']->id_inscricao; ?>" type="button" class="btn btn-primary">Sim</a>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <a href="<?php echo URL . '/admin/rejeitarSolicitacao/'.$dados['individualInsc']->id_inscricao; ?>" type="button" class="botao-editar"><i class="bi bi-person-fill-x"></i> Sim</a>
+                <button type="button" class="btn btn-secondary" id="botao-cancelar" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
             </div>
             </div>
         </div>

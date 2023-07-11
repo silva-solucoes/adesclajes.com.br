@@ -72,7 +72,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 text-left mt-5">
-                                                                <label for="fotoInput" class="btn btn-primary btn-sm" title="Atualizar Foto">
+                                                                <label for="fotoInput" class="btn btn-primary btn-sm" title="Atualizar Foto" id="botao-cancelar" >
                                                                     <i class="bi bi-upload"></i> Atualizar Foto
                                                                 </label>
                                                                 <input type="file" id="fotoInput" name="fotoPerfil" accept=".jpg, .jpeg, .png" style="display: none">
@@ -224,7 +224,7 @@
                                                 </div>
 
                                                 <div class="card-footer">
-                                                    <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i>
+                                                    <button type="submit" class="botao-editar"><i class="bi bi-check-circle"></i>
                                                         Salvar Alterações</button>
                                                 </div>
 
@@ -238,7 +238,7 @@
                                         <!-- Profile Edit Form -->
                                         <form action="<?php echo URL . '/admin/editarResponsavel/' . $dados['exibirJogador']->id_atleta; ?>" method="post" enctype="multipart/form-data">
                                             <div class="card">
-                                                <div class="card-header">Formulário de Visualização</div>
+                                                <div class="card-header">Formulário de Edição</div>
                                                 <div class="card-body">
                                                     <div class="row g-3 mb-3 mt-3">
                                                         <div class="col-md-5">
@@ -403,7 +403,7 @@
                                                 </div>
 
                                                 <div class="card-footer">
-                                                    <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i> Salvar Alterações</button>
+                                                    <button type="submit" class="botao-editar"><i class="bi bi-check-circle"></i> Salvar Alterações</button>
                                                 </div>
 
                                             </div>
@@ -418,7 +418,7 @@
                                         <div class="row mb-3">
                                             <form action="<?php echo URL . '/admin/editarTecnico/' . $dados['exibirJogador']->id_atleta; ?>" method="post" enctype="multipart/form-data">
                                                 <div class="card">
-                                                    <div class="card-header">Formulário de Visualização</div>
+                                                    <div class="card-header">Formulário de Edição</div>
                                                     <div class="card-body">
                                                         <div class="row g-3 mb-3 mt-3">
                                                             <div class="col-md-3">
@@ -656,7 +656,7 @@
                                                     </div>
 
                                                     <div class="card-footer">
-                                                        <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i> Salvar Alterações</button>
+                                                        <button type="submit" class="botao-editar"><i class="bi bi-check-circle"></i> Salvar Alterações</button>
                                                     </div>
 
                                                 </div>
@@ -777,7 +777,7 @@
                                                         });
                                                     </script>
                                                     <div class="card-footer">
-                                                        <button type="submit" class="btn btn-success botaoFim"><i class="bi bi-check-circle"></i> Salvar Alterações</button>
+                                                        <button type="submit" class="botao-editar"><i class="bi bi-check-circle"></i> Salvar Alterações</button>
                                                     </div>
 
                                                 </div>

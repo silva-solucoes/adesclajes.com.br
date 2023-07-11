@@ -956,9 +956,11 @@ class Usuario
 
         return $this->bd->resultados();
     }
-    public function mostrarAtleta()
+    
+    public function mostrarAtleta($nome, $categoria)
     {
-        $this->bd->query("SELECT * FROM tbl_atleta
+        $this->bd->query("SELECT *
+        FROM tbl_atleta
         INNER JOIN tbl_detalheescolar ON tbl_detalheescolar.id_escolar = tbl_atleta.id_escola
         INNER JOIN tbl_detalhefiliacao ON tbl_detalhefiliacao.id_filiacao = tbl_atleta.id_filiacao
         INNER JOIN tbl_detalhesaude ON tbl_detalhesaude.id_saude = tbl_atleta.id_saude
@@ -966,8 +968,17 @@ class Usuario
         INNER JOIN tbl_detalhetecnicos ON tbl_detalhetecnicos.id_tecnico = tbl_atleta.id_detalheTec
         INNER JOIN tbl_incricao ON tbl_incricao.id_atleta = tbl_atleta.id_atleta
         INNER JOIN tbl_estatisticas ON tbl_estatisticas.id_atleta = tbl_atleta.id_atleta
-        WHERE tbl_incricao.situacao_atleta = 1 GROUP BY tbl_atleta.id_atleta
-        ORDER BY  tbl_incricao.id_inscricao DESC");
+        WHERE tbl_incricao.situacao_atleta = 1
+        AND (
+            (:categoria = '' AND :nome = '') -- Exibe todos os registros se ambos os campos estiverem vazios
+            OR (:categoria <> '' AND tbl_detalhetecnicos.categoriaEsportiva = :categoria) -- Faz a busca pela categoria se o campo de categoria estiver preenchido
+            OR (:nome <> '' AND tbl_atleta.nome_atleta LIKE CONCAT('%',:nome ,'%')) -- Faz a busca pelo nome do atleta se o campo de nome estiver preenchido
+            OR (:categoria <> '' AND :nome <> '' AND tbl_detalhetecnicos.categoriaEsportiva = :categoria AND tbl_atleta.nome_atleta LIKE CONCAT('%',:nome,'%')) -- Faz a busca pelas informações inseridas se ambos os campos estiverem preenchidos
+        )
+        GROUP BY tbl_atleta.id_atleta
+        ORDER BY tbl_incricao.id_inscricao DESC");
+        $this->bd->bind(':nome',$nome);
+        $this->bd->bind(':categoria',$categoria);
 
         return $this->bd->resultados();
     }
@@ -988,6 +999,24 @@ class Usuario
         $this->bd->bind('id', $idAtleta);
 
         return $this->bd->resultado();
+    }
+    public function categoriaAtleta($idCategoria)
+    {
+        $this->bd->query("SELECT *
+        FROM tbl_atleta
+        INNER JOIN tbl_detalheescolar ON tbl_detalheescolar.id_escolar = tbl_atleta.id_escola
+        INNER JOIN tbl_detalhefiliacao ON tbl_detalhefiliacao.id_filiacao = tbl_atleta.id_filiacao
+        INNER JOIN tbl_detalhesaude ON tbl_detalhesaude.id_saude = tbl_atleta.id_saude
+        INNER JOIN tbl_detalhesresponsavel ON tbl_detalhesresponsavel.id_responsavel = tbl_atleta.id_responsavel
+        INNER JOIN tbl_detalhetecnicos ON tbl_detalhetecnicos.id_tecnico = tbl_atleta.id_detalheTec
+        INNER JOIN tbl_incricao ON tbl_incricao.id_atleta = tbl_atleta.id_atleta
+        INNER JOIN tbl_estatisticas ON tbl_estatisticas.id_atleta = tbl_atleta.id_atleta
+        WHERE (tbl_detalhetecnicos.categoriaEsportiva = :idCat AND tbl_incricao.situacao_atleta = 1)
+        GROUP BY tbl_atleta.id_atleta
+        ORDER BY tbl_incricao.id_inscricao DESC");
+        $this->bd->bind('idCat', $idCategoria);
+
+        return $this->bd->resultados();
     }
     public function editarAtleta($dados)
     {
