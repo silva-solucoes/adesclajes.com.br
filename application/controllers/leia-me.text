@@ -1,1 +1,0 @@
-O controllers ou controlador, gerencia a interação entre a views (visão) e o models (modelo), controlando o fluxo de dados e eventos na aplicação.
