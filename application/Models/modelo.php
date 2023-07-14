@@ -256,17 +256,18 @@ class Modelo {
 		return $this->bd->resultados();
 	}
 
-	public function cadastrarComentarioNoticia($nome, $foto, $dtCadastro, $comentario, $email, $idNoticia){
+	public function cadastrarComentarioNoticia($nome, $foto, $dtCadastro, $comentario, $email, $idNoticia, $ipUser ){
 		
     	$bd = new Conn;
 
-		$bd->query('INSERT INTO tbl_comentario (nomeComent, fotoComent, dtCadastroComent, comentarioInter, emailInter, id_noticia) VALUES (:nomeComent, :fotoComent, :dtCadastroComent, :comentarioInter, :emailInter, :id_noticia)');
+		$bd->query('INSERT INTO tbl_comentario (nomeComent, fotoComent, dtCadastroComent, comentarioInter, emailInter, ipComent, id_noticia) VALUES (:nomeComent, :fotoComent, :dtCadastroComent, :comentarioInter, :emailInter, :ip, :id_noticia)');
 		
 		$bd->bind(':nomeComent', $nome);
 		$bd->bind(':fotoComent', $foto);
 		$bd->bind(':dtCadastroComent', $dtCadastro);
 		$bd->bind(':comentarioInter', $comentario);
 		$bd->bind(':emailInter', $email);
+		$bd->bind(':ip', $ipUser);
 		$bd->bind(':id_noticia', $idNoticia);
 
 		if($bd->executa()):

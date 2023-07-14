@@ -60,7 +60,7 @@
                                                 </div>
                                                 <div class="col-md-6 col-lg-6">
                                                     <div class="pt-2">
-                                                        <label for="logoInput" class="btn btn-primary btn-sm" title="Atualizar Logo">
+                                                        <label for="logoInput" class="btn btn-primary btn-sm" id="botao-cancelar" title="Atualizar Logo">
                                                             <i class="bi bi-upload"></i> Atualizar Logo
                                                         </label>
                                                         <input type="file" id="logoInput" name="logoSite" accept=".jpg, .jpeg, .png, .webp" style="display: none">
@@ -69,7 +69,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i>
+                                            <button type="submit" class="botao-editar"><i class="bi bi-check-circle"></i>
                                                 Salvar Alterações</button>
                                         </div>
                                     </div>
@@ -85,7 +85,7 @@
                                                 </div>
                                                 <div class="col-md-6 col-lg-6">
                                                     <div class="pt-2">
-                                                        <label for="faviconInput" class="btn btn-primary btn-sm" title="Atualizar Logo">
+                                                        <label for="faviconInput" class="btn btn-primary btn-sm" id="botao-cancelar" title="Atualizar Logo">
                                                             <i class="bi bi-upload"></i> Atualizar Icone
                                                         </label>
                                                         <input type="file" id="faviconInput" name="favicon" accept=".jpg, .jpeg, .png" style="display: none">
@@ -94,7 +94,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i>
+                                            <button type="submit" class="botao-editar"><i class="bi bi-check-circle"></i>
                                                 Salvar Alterações</button>
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                                                     <img id="destaqueImg" src="<?php echo URL . '/public/images/'.$dados['info']->imgDestaque; ?>"
                                                         alt="Imagem Destaque" width="35%">
                                                     <div class="pt-2 pb-2">
-                                                        <label for="destaqueInput" class="btn btn-primary btn-sm" title="Atualizar Logo">
+                                                        <label for="destaqueInput" class="btn btn-primary btn-sm" id="botao-cancelar" title="Atualizar Logo">
                                                             <i class="bi bi-upload"></i> Atualizar Imagem
                                                         </label>
                                                         <input type="file" id="destaqueInput" name="destaque" accept=".jpg, .jpeg, .png" style="display: none">
@@ -165,7 +165,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-success"><i
+                                            <button type="submit" class="botao-editar"><i
                                                     class="bi bi-check-circle"></i> Salvar Alterações</button>
                                         </div>
                                     </div>
@@ -215,7 +215,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-success"><i
+                                            <button type="submit" class="botao-editar"><i
                                                     class="bi bi-check-circle"></i> Salvar Alterações</button>
                                         </div>
                                     </div>
@@ -242,7 +242,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-success"><i
+                                            <button type="submit" class="botao-editar"><i
                                                     class="bi bi-check-circle"></i> Salvar Alterações</button>
                                         </div>
                                     </div>
@@ -269,7 +269,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-success"><i
+                                            <button type="submit" class="botao-editar"><i
                                                     class="bi bi-check-circle"></i> Salvar Alterações</button>
                                         </div>
                                     </div>
@@ -285,7 +285,7 @@
                                                     <img id="fotoAcao" src="<?php echo URL . '/public/images/'.$dados['info']->logoAcao; ?>"
                                                         alt="Imagem Destaque" width="35%">
                                                     <div class="pt-2 pb-2">
-                                                        <label for="acaoInput" class="btn btn-primary btn-sm" title="Atualizar Logo">
+                                                        <label for="acaoInput" class="btn btn-primary btn-sm" id="botao-cancelar" title="Atualizar Logo">
                                                             <i class="bi bi-upload"></i> Atualizar Imagem
                                                         </label>
                                                         <input type="file" id="acaoInput" name="acao" accept=".jpg, .jpeg, .png" style="display: none">
@@ -294,7 +294,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-success"><i
+                                            <button type="submit" class="botao-editar"><i
                                                     class="bi bi-check-circle"></i> Salvar Alterações</button>
                                         </div>
                                     </div>
@@ -321,7 +321,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-success"><i
+                                            <button type="submit" class="botao-editar"><i
                                                     class="bi bi-check-circle"></i> Salvar Alterações</button>
                                         </div>
                                     </div>
@@ -348,7 +348,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-success"><i
+                                            <button type="submit" class="botao-editar"><i
                                                     class="bi bi-check-circle"></i> Salvar Alterações</button>
                                         </div>
                                     </div>
@@ -375,7 +375,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-success"><i
+                                            <button type="submit" class="botao-editar"><i
                                                     class="bi bi-check-circle"></i> Salvar Alterações</button>
                                         </div>
                                     </div>
@@ -520,7 +520,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-success"><i
+                                                <button type="submit" class="botao-editar"><i
                                                         class="bi bi-check-circle"></i> Salvar Alterações</button>
                                             </div>
                                         </div>
@@ -561,7 +561,7 @@
                                                 <p class="mb-0"><strong>Para ativar as inscrições</strong>, a data e hora de início devem ser menores que a data e hora de encerramento.<br>Exemplo: A data de início (30/05/2023 às 10:00) e a data de encerramento (01/06/2023 às 23:59).</p>
                                             </div>
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-success botaoFim"><i
+                                                <button type="submit" class="botao-editar botaoFim"><i
                                                         class="bi bi-check-circle"></i> Salvar Alterações</button>
                                             </div>
                                         </div>

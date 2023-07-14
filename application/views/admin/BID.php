@@ -136,8 +136,8 @@
                                                             Tem certeza que deseja <b>Desligar</b> o atleta selecionado?
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="<?php echo URL . '/admin/desligamentoSolicitacao/' . $listar->id_inscricao; ?>" type="button" class="btn btn-primary">Sim</a>
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                            <a href="<?php echo URL . '/admin/desligamentoSolicitacao/' . $listar->id_inscricao; ?>" type="button" class="botao-editar"><i class="bi bi-person-fill-x"></i> Sim</a>
+                                                            <button type="button" class="btn btn-secondary" id="botao-cancelar" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
                                                         </div>
                                                     </div>
                                                 </div>

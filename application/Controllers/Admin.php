@@ -3050,7 +3050,12 @@ class Admin extends Controller
         ];
         $this->view('admin/detalhe_inscricao', $dados);
     }
-    
+    public function perfil(){
+        $dados=[
+            'usuario' => $this->usuarioModel->exibirUser($_SESSION['id_user']),
+        ];
+        $this->view('admin/perfil', $dados);
+    }
     //Ativação da Conta do Novo usuário
     public function ativarConta()
     {
