@@ -257,6 +257,89 @@
 
 })()
 
+
+// BID ATLETA
+
+document.addEventListener('DOMContentLoaded', function() {
+  //Esse memberLinks ficara responsalvel de pegar o dado correto do jogador, sem ele sempre será pego do ultimo registro do BD 
+  var memberLinks = document.querySelectorAll('.member-link');
+
+  memberLinks.forEach(function(link) {
+    link.addEventListener('click', async function(event) {
+      event.preventDefault();
+      //aqui será pego o que está sendo enviado da tag "a" com "id = data-dado"
+      var dado = this.getAttribute('data-dado');
+      console.log(dado);
+      // O proximo passo
+      const dados = await fetch ('http://localhost/adesclajes/Paginas/dadosAtleta/buscarAnoEstatistica?id='+dado);
+
+      const respost = await dados.json();
+		  console.log(respost['anos']);
+      var resul = "<option value = '1'>Todos os anos</option>";
+      respost['anos'].forEach(function(resposta, i) {
+        
+        console.log(resposta['ano'])
+
+        var ano = new Date(resposta['ano']).getFullYear();
+        var Jogos = resposta['quantJogos'];
+        var gols = resposta['quantGols'];
+        var vitorias = resposta['quantVitorias'];
+        var empates = resposta['quantEmpates'];
+        var derrotas = resposta['quantDerrotas'];
+        var faltas = resposta['quantFaltas'];
+        var vermelhos = resposta['quantCartVermelho'];
+        var amarelos = resposta['quantCartAmarelo'];
+        var torneios = resposta['quantTorneio'];
+        var amistosos = resposta['quantAmistosos'];
+        
+        var optionValue = JSON.stringify({Jogos: Jogos, gols: gols, vitorias: vitorias, empates: empates, derrotas: derrotas, faltas: faltas, vermelhos: vermelhos, amarelos: amarelos, torneios: torneios, amistosos: amistosos });
+
+        resul += "<option value = '"+optionValue+"'>"+ano+"</option>";
+        
+       })
+       document.getElementById("anos").innerHTML = resul;
+
+    });
+  });
+});
+
+// Seletor do elemento <select>
+var selectElement = document.getElementById("anos");
+
+// Função a ser executada quando uma opção for selecionada
+function opcaoSelecionada() {
+    var selectedOption = selectElement.value;
+    var parsedOption = JSON.parse(selectedOption);
+    
+    var gols = parsedOption.gols;
+    var quantJogos = parsedOption.Jogos;
+    var vitorias = parsedOption.vitorias;
+    var empates = parsedOption.empates;
+    var derrotas = parsedOption.derrotas;
+    var faltas = parsedOption.faltas;
+    var vermelhos = parsedOption.vermelhos;
+    var amarelos = parsedOption.amarelos;
+    var torneios = parsedOption.torneios;
+    var amistosos = parsedOption.amistosos;
+    
+    // Aqui você pode adicionar o código da função que deseja executar
+    console.log("Opção selecionada: ", gols, quantJogos);
+    
+    document.getElementById("jogos").innerHTML = quantJogos;
+    document.getElementById("gols").innerHTML = gols;
+    document.getElementById("vitorias").innerHTML = vitorias;
+    document.getElementById("empates").innerHTML = empates;
+    document.getElementById("derrotas").innerHTML = derrotas;
+    document.getElementById("faltas").innerHTML = faltas;
+    document.getElementById("vermelhos").innerHTML = vermelhos;
+    document.getElementById("amarelos").innerHTML = amarelos;
+    document.getElementById("torneios").innerHTML = torneios;
+    document.getElementById("amistosos").innerHTML = amistosos;
+}
+// Adiciona o ouvinte de evento ao elemento <select>
+selectElement.addEventListener("change", opcaoSelecionada);
+
+
   // POP-UP
   const button = document.getElementById('botao-inscricao')
 const popup = document.querySelector(".popup-wrapper")
@@ -292,7 +375,7 @@ $(document).ready(function() {
     // Enviar a solicitação AJAX
     $.ajax({
       type: 'POST',
-      url: 'http://localhost/adesclajes.com.br/user/enviarInscricao', // O arquivo PHP que processará o formulário
+      url: 'http://localhost/adesclajes/user/enviarInscricao', // O arquivo PHP que processará o formulário
       data: formData,
       success: function(response) {
         $('#result').html(response); // Atualizar a div com a resposta do PHP
@@ -308,7 +391,7 @@ $(document).ready(function() {
 async function carregar_noticias(valor){
 	if (valor.length >= 3) {
     
-		const dados = await fetch ('http://localhost/adesclajes.com.br/Paginas/searchNews/pesquisarNoticias?value='+valor);
+		const dados = await fetch ('http://localhost/adesclajes/Paginas/searchNews/pesquisarNoticias?value='+valor);
 
     const respost = await dados.json();
 		console.log(respost);
@@ -348,7 +431,7 @@ async function listar_noticia(tl_noticia){
   let tl_noticiaDez = tl_noticia.substring(0, 25);
   document.getElementById("noticia").value = tl_noticiaDez+" ...";
 
-  const dados = await fetch ('http://localhost/adesclajes.com.br/Paginas/searchNews/listarNoticiaPesquisa?titulo='+tl_noticia);
+  const dados = await fetch ('http://localhost/adesclajes/Paginas/searchNews/listarNoticiaPesquisa?titulo='+tl_noticia);
   const resposta = await dados.json();
 
   var noticia = "";
@@ -362,9 +445,9 @@ async function listar_noticia(tl_noticia){
       noticia +=  "<div class='sidebar-item recent-posts'>"
       noticia +=  "              <div class='mt-3'>"
       noticia +=  "                  <div class='post-item mt-3'>"
-      noticia +=  "                      <img src='http://localhost/adesclajes.com.br/public/uploads/noticias/"+resposta['listarNoticiaPesquisa']['dados'][i].img_Noticia+"' alt='' class='flex-shrink-0'>"
+      noticia +=  "                      <img src='http://localhost/adesclajes/public/uploads/noticias/"+resposta['listarNoticiaPesquisa']['dados'][i].img_Noticia+"' alt='' class='flex-shrink-0'>"
       noticia +=  "                      <div>"
-      noticia +=  "                          <h4><a href='http://localhost/adesclajes.com.br/paginas/detalheNoticias/"+resposta['listarNoticiaPesquisa']['dados'][i].id_noticia+"'>"
+      noticia +=  "                          <h4><a href='http://localhost/adesclajes/paginas/detalheNoticias/"+resposta['listarNoticiaPesquisa']['dados'][i].id_noticia+"'>"
       noticia +=  resposta['listarNoticiaPesquisa']['dados'][i].tl_noticia
       noticia +=  "                          </a></h4>"
       noticia +=  "                      </div>"

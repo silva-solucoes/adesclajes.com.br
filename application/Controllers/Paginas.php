@@ -134,6 +134,24 @@ class Paginas extends Controller{
 
         $this->view('user/bid', $dados);
     }
+    
+    public function dadosAtleta()
+    {
+        $id_atleta = filter_input(INPUT_GET, "id", FILTER_DEFAULT);
+      /*  $dados = [
+            'exibirJogador' => $this->usuarioModel->exibirInscricao($idInscricao),
+            'nomeUser_erro' => '',
+        ];
+
+        // Aqui você pode adicionar a lógica para buscar os anos do banco de dados e exibi-los como opções no select
+        $id_atleta = $dados['exibirJogador']->id_atleta;
+        $dados['idAtleta'] = $id_atleta;*/
+        $anos = $this->usuarioModel->buscarAnoEstatistica($id_atleta); // Função hipotética para buscar os anos do banco de dados
+        $dados['anos'] = $anos;
+        
+        echo json_encode($dados);
+    }
+
     public function catEsportiva(){
 
         $url = $_SERVER['REQUEST_URI'];

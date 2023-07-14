@@ -73,8 +73,9 @@
                                 <a href=""><i class="bi bi-linkedin"></i></a>
                             </div>
                         </div>
+                        
                         <div class="member-info">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#BID">
+                            <a href="#" class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
                                 <h4><?=$listar->nome_atleta?></h4>
                                 <span><?=$listar->posicaoPrincipal?></span>
                             </a>
@@ -140,15 +141,7 @@
                             <h3>ESTATÍSTICAS GERAIS</h3>
                             <select class="form-control dropDownAnos" id="anos" name="ano"
                                 onchange="changeAno(this.value)">
-                                <option value="1">Todos os Anos</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
+                                
                             </select>
                         </div>
                         <div class="col-lg-5">
@@ -169,7 +162,7 @@
                                                     <i class="fas fa-futbol"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2>1</h2>
+                                                    <h2 id="jogos">2</h2>
                                                     <span class="text-muted small pt-2 ps-1">Jogos</span>
                                                 </div>
                                             </div>
@@ -190,7 +183,7 @@
                                                     <i class="fas fa-futbol"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2>2</h2>
+                                                    <h2 id="gols">2</h2>
                                                     <span class="text-muted small pt-2 ps-1">Gols Marcados</span>
 
                                                 </div>
@@ -235,7 +228,7 @@
                                                     <i class="bi bi-trophy-fill"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2>5</h2>
+                                                    <h2 id="vitorias">5</h2>
                                                     <span class="text-muted small pt-2 ps-1">Vitórias</span>
 
                                                 </div>
@@ -258,7 +251,7 @@
                                                     <i class="fas fa-equals"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2>0</h2>
+                                                    <h2 id="empates">0</h2>
                                                     <span class="text-muted small pt-2 ps-1">Empates</span>
 
                                                 </div>
@@ -281,7 +274,7 @@
                                                     <i class="fas fa-times"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2>0</h2>
+                                                    <h2 id="derrotas">0</h2>
                                                     <span class="text-muted small pt-2 ps-1">Derrotas</span>
 
                                                 </div>
@@ -304,7 +297,7 @@
                                                     <i class="fas fa-times-circle"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2>4</h2>
+                                                    <h2 id="faltas">4</h2>
                                                     <span class="text-muted small pt-2 ps-1">Faltas</span>
 
                                                 </div>
@@ -327,7 +320,7 @@
                                                     <i class="bi bi-file-fill"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2>3</h2>
+                                                    <h2 id="amarelos">3</h2>
                                                     <span class="text-muted small pt-2 ps-1">Cartões Amarelo</span>
 
                                                 </div>
@@ -350,7 +343,7 @@
                                                     <i class="bi bi-file-fill"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2>1</h2>
+                                                    <h2 id="vermelhos">1</h2>
                                                     <span class="text-muted small pt-2 ps-1">Cartões Vermelho</span>
 
                                                 </div>
@@ -373,7 +366,7 @@
                                                     <i class="fas fa-trophy"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2>0</h2>
+                                                    <h2 id="torneios">0</h2>
                                                     <span class="text-muted small pt-2 ps-1">Torneios</span>
 
                                                 </div>
@@ -396,7 +389,7 @@
                                                     <i class="fas fa-handshake"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2>0</h2>
+                                                    <h2 id="amistosos">0</h2>
                                                     <span class="text-muted small pt-2 ps-1">Amistosos</span>
 
                                                 </div>
