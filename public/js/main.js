@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var dado = this.getAttribute('data-dado');
       console.log(dado);
       // dados do atleta que já é inscrito a mais de um ano
-      const dados = await fetch ('http://localhost/adesclajes/Paginas/dadosAtleta/buscarAnoEstatistica?id='+dado);
+      const dados = await fetch ('http://localhost/adesclajes.com.br/Paginas/dadosAtleta/buscarAnoEstatistica?id='+dado);
       const respost = await dados.json();
 		  console.log(respost['anos']);
 
@@ -282,12 +282,12 @@ document.addEventListener('DOMContentLoaded', function() {
       var posicao = respost['anos'][0]['posicaoPrincipal'];
       document.getElementById("pocisaoAtleta").innerHTML = posicao;
       var peso = respost['anos'][0]['peso_atleta'];
-      document.getElementById("pesoAtleta").innerHTML = peso;
+      document.getElementById("pesoAtleta").innerHTML = peso+'Kg';
       var altura = respost['anos'][0]['altura_atleta'];
       document.getElementById("alturaAtleta").innerHTML = altura;
 
 
-      var caminhoImagem = "http://localhost/adesclajes/public/uploads/atletas/" + respost['anos'][0]['foto_atleta'];
+      var caminhoImagem = "http://localhost/adesclajes.com.br/public/uploads/atletas/" + respost['anos'][0]['foto_atleta'];
 
       var imagem = document.getElementById("fotoAtleta");
       imagem.src = caminhoImagem;
@@ -348,6 +348,8 @@ document.addEventListener('DOMContentLoaded', function() {
           amistosos = amistosos + resposta['quantAmistosos_old'];
 
         })
+
+        var golsPartida = (gols / Jogos).toLocaleString('pt-BR');
 
         document.getElementById("jogos").innerHTML = Jogos;
         document.getElementById("gols").innerHTML = gols;
@@ -488,7 +490,7 @@ $(document).ready(function() {
     // Enviar a solicitação AJAX
     $.ajax({
       type: 'POST',
-      url: 'http://localhost/adesclajes/user/enviarInscricao', // O arquivo PHP que processará o formulário
+      url: 'http://localhost/adesclajes.com.br/user/enviarInscricao', // O arquivo PHP que processará o formulário
       data: formData,
       success: function(response) {
         $('#result').html(response); // Atualizar a div com a resposta do PHP
@@ -504,7 +506,7 @@ $(document).ready(function() {
 async function carregar_noticias(valor){
 	if (valor.length >= 3) {
     
-		const dados = await fetch ('http://localhost/adesclajes/Paginas/searchNews/pesquisarNoticias?value='+valor);
+		const dados = await fetch ('http://localhost/adesclajes.com.br/Paginas/searchNews/pesquisarNoticias?value='+valor);
 
     const respost = await dados.json();
 		console.log(respost);
@@ -544,7 +546,7 @@ async function listar_noticia(tl_noticia){
   let tl_noticiaDez = tl_noticia.substring(0, 25);
   document.getElementById("noticia").value = tl_noticiaDez+" ...";
 
-  const dados = await fetch ('http://localhost/adesclajes/Paginas/searchNews/listarNoticiaPesquisa?titulo='+tl_noticia);
+  const dados = await fetch ('http://localhost/adesclajes.com.br/Paginas/searchNews/listarNoticiaPesquisa?titulo='+tl_noticia);
   const resposta = await dados.json();
 
   var noticia = "";
@@ -558,9 +560,9 @@ async function listar_noticia(tl_noticia){
       noticia +=  "<div class='sidebar-item recent-posts'>"
       noticia +=  "              <div class='mt-3'>"
       noticia +=  "                  <div class='post-item mt-3'>"
-      noticia +=  "                      <img src='http://localhost/adesclajes/public/uploads/noticias/"+resposta['listarNoticiaPesquisa']['dados'][i].img_Noticia+"' alt='' class='flex-shrink-0'>"
+      noticia +=  "                      <img src='http://localhost/adesclajes.com.br/public/uploads/noticias/"+resposta['listarNoticiaPesquisa']['dados'][i].img_Noticia+"' alt='' class='flex-shrink-0'>"
       noticia +=  "                      <div>"
-      noticia +=  "                          <h4><a href='http://localhost/adesclajes/paginas/detalheNoticias/"+resposta['listarNoticiaPesquisa']['dados'][i].id_noticia+"'>"
+      noticia +=  "                          <h4><a href='http://localhost/adesclajes.com.br/paginas/detalheNoticias/"+resposta['listarNoticiaPesquisa']['dados'][i].id_noticia+"'>"
       noticia +=  resposta['listarNoticiaPesquisa']['dados'][i].tl_noticia
       noticia +=  "                          </a></h4>"
       noticia +=  "                      </div>"

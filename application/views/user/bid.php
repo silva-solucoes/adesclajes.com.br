@@ -139,10 +139,7 @@
                         </div>
                         <div class="col-lg-7 pt-4 pt-lg-0 content text-justify" data-aos="fade-left">
                             <h3>ESTATÍSTICAS GERAIS</h3>
-                            <select class="form-control dropDownAnos" id="anos" name="ano"
-                                onchange="changeAno(this.value)">
-                                
-                            </select>
+                            <select class="form-select dropDownAnos" id="anos" name="ano" onchange="changeAno(this.value)"></select>
                         </div>
                         <div class="col-lg-5">
 
@@ -205,7 +202,7 @@
                                                     <i class="fas fa-futbol"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2>0,55</h2>
+                                                    <h2 id="golsPartida">0,55</h2>
                                                     <span class="text-muted small pt-2 ps-1">Gols por partida</span>
 
                                                 </div>
