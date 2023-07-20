@@ -1170,14 +1170,36 @@ class Usuario
         endif;
     }
     public function buscarAnoEstatistica($id){
-/*               
-        $this->bd->query("SELECT ano FROM tbl_atleta INNER JOIN tbl_detalheescolar ON tbl_detalheescolar.id_escolar = tbl_atleta.id_escola INNER JOIN tbl_detalhefiliacao ON tbl_detalhefiliacao.id_filiacao = tbl_atleta.id_filiacao INNER JOIN tbl_detalhesaude ON tbl_detalhesaude.id_saude = tbl_atleta.id_saude INNER JOIN tbl_detalhesresponsavel ON tbl_detalhesresponsavel.id_responsavel = tbl_atleta.id_responsavel INNER JOIN tbl_detalhetecnicos ON tbl_detalhetecnicos.id_tecnico = tbl_atleta.id_detalheTec INNER JOIN tbl_incricao ON tbl_incricao.id_atleta = tbl_atleta.id_atleta INNER JOIN tbl_estatisticas_old ON tbl_estatisticas_old.id_atleta = tbl_atleta.id_atleta WHERE (tbl_estatisticas_old.id_atleta = :id AND tbl_incricao.situacao_atleta = 1) GROUP BY tbl_atleta.id_atleta ORDER BY tbl_incricao.id_inscricao DESC;");
-*/        
-        $this->bd->query("SELECT * FROM tbl_estatisticas_old  WHERE tbl_estatisticas_old.id_atleta = :id");
+      
+        $this->bd->query("SELECT *
+        FROM tbl_atleta
+        JOIN tbl_estatisticas ON tbl_atleta.id_atleta = tbl_estatisticas.id_atleta
+        JOIN tbl_estatisticas_old ON tbl_atleta.id_atleta = tbl_estatisticas_old.id_atleta
+        JOIN tbl_detalheescolar ON tbl_atleta.id_escola = tbl_detalheescolar.id_escolar
+        JOIN tbl_detalhefiliacao ON tbl_atleta.id_filiacao = tbl_detalhefiliacao.id_filiacao
+        JOIN tbl_detalhesaude ON tbl_atleta.id_saude = tbl_detalhesaude.id_saude
+        JOIN tbl_detalhesresponsavel ON tbl_atleta.id_responsavel = tbl_detalhesresponsavel.id_responsavel
+        JOIN tbl_detalhetecnicos ON tbl_atleta.id_detalheTec = tbl_detalhetecnicos.id_tecnico WHERE tbl_estatisticas_old.id_atleta = :id");
         $this->bd->bind('id', $id);
+
+        if (!empty($this->bd->resultados())) {
+            return $this->bd->resultados();
+        }else{
+            $this->bd->query("SELECT *
+            FROM tbl_atleta
+            JOIN tbl_estatisticas ON tbl_atleta.id_atleta = tbl_estatisticas.id_atleta
+            JOIN tbl_detalheescolar ON tbl_atleta.id_escola = tbl_detalheescolar.id_escolar
+            JOIN tbl_detalhefiliacao ON tbl_atleta.id_filiacao = tbl_detalhefiliacao.id_filiacao
+            JOIN tbl_detalhesaude ON tbl_atleta.id_saude = tbl_detalhesaude.id_saude
+            JOIN tbl_detalhesresponsavel ON tbl_atleta.id_responsavel = tbl_detalhesresponsavel.id_responsavel
+            JOIN tbl_detalhetecnicos ON tbl_atleta.id_detalheTec = tbl_detalhetecnicos.id_tecnico WHERE tbl_atleta.id_atleta = :id");
+            $this->bd->bind('id', $id);
+            return $this->bd->resultados();
+        }
         
-        return $this->bd->resultados();
+       // return ;
     }
+
     public function dadosEstatistica($ano, $idInscricao)
     {
         $idAtleta = $this->exibirInscricao($idInscricao);

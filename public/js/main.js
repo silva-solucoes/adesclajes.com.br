@@ -270,33 +270,146 @@ document.addEventListener('DOMContentLoaded', function() {
       //aqui será pego o que está sendo enviado da tag "a" com "id = data-dado"
       var dado = this.getAttribute('data-dado');
       console.log(dado);
-      // O proximo passo
+      // dados do atleta que já é inscrito a mais de um ano
       const dados = await fetch ('http://localhost/adesclajes/Paginas/dadosAtleta/buscarAnoEstatistica?id='+dado);
-
       const respost = await dados.json();
 		  console.log(respost['anos']);
-      var resul = "<option value = '1'>Todos os anos</option>";
-      respost['anos'].forEach(function(resposta, i) {
-        
-        console.log(resposta['ano'])
 
-        var ano = new Date(resposta['ano']).getFullYear();
-        var Jogos = resposta['quantJogos'];
-        var gols = resposta['quantGols'];
-        var vitorias = resposta['quantVitorias'];
-        var empates = resposta['quantEmpates'];
-        var derrotas = resposta['quantDerrotas'];
-        var faltas = resposta['quantFaltas'];
-        var vermelhos = resposta['quantCartVermelho'];
-        var amarelos = resposta['quantCartAmarelo'];
-        var torneios = resposta['quantTorneio'];
-        var amistosos = resposta['quantAmistosos'];
-        
-        var optionValue = JSON.stringify({Jogos: Jogos, gols: gols, vitorias: vitorias, empates: empates, derrotas: derrotas, faltas: faltas, vermelhos: vermelhos, amarelos: amarelos, torneios: torneios, amistosos: amistosos });
+      //DADOS DO ATLETA SELECIONADO
 
-        resul += "<option value = '"+optionValue+"'>"+ano+"</option>";
+      var nome = respost['anos'][0]['nome_atleta'];
+      document.getElementById("nomeAtleta").innerHTML = nome;
+      var posicao = respost['anos'][0]['posicaoPrincipal'];
+      document.getElementById("pocisaoAtleta").innerHTML = posicao;
+      var peso = respost['anos'][0]['peso_atleta'];
+      document.getElementById("pesoAtleta").innerHTML = peso;
+      var altura = respost['anos'][0]['altura_atleta'];
+      document.getElementById("alturaAtleta").innerHTML = altura;
+
+
+      var caminhoImagem = "http://localhost/adesclajes/public/uploads/atletas/" + respost['anos'][0]['foto_atleta'];
+
+      var imagem = document.getElementById("fotoAtleta");
+      imagem.src = caminhoImagem;
+
+      //ESTATISTICAS SOMADAS DE TODOS OS ANOS
+      //caso o "ano" que é a coluna da tabela estatistica_old seja indefinido ele apenas colocará as estatisticas do ano atual
+      var optionValueTotal;
+      if (respost['anos'][0]['ano'] === undefined) {
+
+        var Jogos = respost['anos'][0]['quantJogos'];
+        var gols = respost['anos'][0]['quantGols'];
+        var vitorias = respost['anos'][0]['quantVitorias'];
+        var empates = respost['anos'][0]['quantEmpates'];
+        var derrotas = respost['anos'][0]['quantDerrotas'];
+        var faltas = respost['anos'][0]['quantFaltas'];
+        var vermelhos = respost['anos'][0]['quantCartVermelho'];
+        var amarelos = respost['anos'][0]['quantCartAmarelo'];
+        var torneios = respost['anos'][0]['quantTorneio'];
+        var amistosos = respost['anos'][0]['quantAmistosos'];
+          
+        document.getElementById("jogos").innerHTML = Jogos;
+        document.getElementById("gols").innerHTML = gols;
+        document.getElementById("vitorias").innerHTML = vitorias;
+        document.getElementById("empates").innerHTML = empates;
+        document.getElementById("derrotas").innerHTML = derrotas;
+        document.getElementById("faltas").innerHTML = faltas;
+        document.getElementById("vermelhos").innerHTML = vermelhos;
+        document.getElementById("amarelos").innerHTML = amarelos;
+        document.getElementById("torneios").innerHTML = torneios;
+        document.getElementById("amistosos").innerHTML = amistosos;
+
+        optionValueTotal = JSON.stringify({Jogos: Jogos, gols: gols, vitorias: vitorias, empates: empates, derrotas: derrotas, faltas: faltas, vermelhos: vermelhos, amarelos: amarelos, torneios: torneios, amistosos: amistosos });
+
+      }else{
+        //Nesse caso ele vai colocar o valor do ano atual e depois irá somar os valores dos outros anos
+        var Jogos = respost['anos'][0]['quantJogos'];
+        var gols = respost['anos'][0]['quantGols'];
+        var vitorias = respost['anos'][0]['quantVitorias'];
+        var empates = respost['anos'][0]['quantEmpates'];
+        var derrotas = respost['anos'][0]['quantDerrotas'];
+        var faltas = respost['anos'][0]['quantFaltas'];
+        var vermelhos = respost['anos'][0]['quantCartVermelho'];
+        var amarelos = respost['anos'][0]['quantCartAmarelo'];
+        var torneios = respost['anos'][0]['quantTorneio'];
+        var amistosos = respost['anos'][0]['quantAmistosos'];
         
-       })
+        respost['anos'].forEach(function(resposta, i) {
+
+          Jogos = Jogos + resposta['quantJogos_old'];
+          gols = gols + resposta['quantGols_old'];
+          vitorias = vitorias + resposta['quantVitorias_old'];
+          empates = empates + resposta['quantEmpates_old'];
+          derrotas = derrotas + resposta['quantDerrotas_old'];
+          faltas = faltas + resposta['quantFaltas_old'];
+          vermelhos = vermelhos + resposta['quantCartVermelho_old'];
+          amarelos = amarelos + resposta['quantCartAmarelo_old'];
+          torneios = torneios + resposta['quantTorneio_old'];
+          amistosos = amistosos + resposta['quantAmistosos_old'];
+
+        })
+
+        document.getElementById("jogos").innerHTML = Jogos;
+        document.getElementById("gols").innerHTML = gols;
+        document.getElementById("vitorias").innerHTML = vitorias;
+        document.getElementById("empates").innerHTML = empates;
+        document.getElementById("derrotas").innerHTML = derrotas;
+        document.getElementById("faltas").innerHTML = faltas;
+        document.getElementById("vermelhos").innerHTML = vermelhos;
+        document.getElementById("amarelos").innerHTML = amarelos;
+        document.getElementById("torneios").innerHTML = torneios;
+        document.getElementById("amistosos").innerHTML = amistosos;
+
+        optionValueTotal = JSON.stringify({Jogos: Jogos, gols: gols, vitorias: vitorias, empates: empates, derrotas: derrotas, faltas: faltas, vermelhos: vermelhos, amarelos: amarelos, torneios: torneios, amistosos: amistosos });
+      }  
+
+      var resul = "<option value = '"+optionValueTotal+"'>Todos os anos </option>";
+
+      //Definindo a opção do ano atual jogado
+      var ano_atual = new Date(respost['anos'][0]['anoAtual']).getFullYear();
+
+      var Jogos = respost['anos'][0]['quantJogos'];
+      var gols = respost['anos'][0]['quantGols'];
+      var vitorias = respost['anos'][0]['quantVitorias'];
+      var empates = respost['anos'][0]['quantEmpates'];
+      var derrotas = respost['anos'][0]['quantDerrotas'];
+      var faltas = respost['anos'][0]['quantFaltas'];
+      var vermelhos = respost['anos'][0]['quantCartVermelho'];
+      var amarelos = respost['anos'][0]['quantCartAmarelo'];
+      var torneios = respost['anos'][0]['quantTorneio'];
+      var amistosos = respost['anos'][0]['quantAmistosos'];
+      
+      var optionValue = JSON.stringify({Jogos: Jogos, gols: gols, vitorias: vitorias, empates: empates, derrotas: derrotas, faltas: faltas, vermelhos: vermelhos, amarelos: amarelos, torneios: torneios, amistosos: amistosos });
+      
+      resul += "<option value = '"+optionValue+"'>"+ano_atual+"</option>";
+
+      //Estatisticas do jogador dos anos anteriores
+      if (respost['anos'][0]['ano']) {
+      
+        respost['anos'].forEach(function(resposta, i) {
+          
+          console.log(resposta['ano'])
+
+          var ano = new Date(resposta['ano']).getFullYear();
+
+          var Jogos = resposta['quantJogos_old'];
+          var gols = resposta['quantGols_old'];
+          var vitorias = resposta['quantVitorias_old'];
+          var empates = resposta['quantEmpates_old'];
+          var derrotas = resposta['quantDerrotas_old'];
+          var faltas = resposta['quantFaltas_old'];
+          var vermelhos = resposta['quantCartVermelho_old'];
+          var amarelos = resposta['quantCartAmarelo_old'];
+          var torneios = resposta['quantTorneio_old'];
+          var amistosos = resposta['quantAmistosos_old'];
+          
+          var optionValue = JSON.stringify({Jogos: Jogos, gols: gols, vitorias: vitorias, empates: empates, derrotas: derrotas, faltas: faltas, vermelhos: vermelhos, amarelos: amarelos, torneios: torneios, amistosos: amistosos });
+
+          resul += "<option value = '"+optionValue+"'>"+ano+"</option>";
+          
+        })
+      }
+
        document.getElementById("anos").innerHTML = resul;
 
     });

@@ -123,18 +123,18 @@
                         demais aspectos relacionados ao futebol e outras modalidades esportivas.</p>
                     <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
                         <div class="col-lg-4 text-center" data-aos="fade-right">
-                            <img src="<?php echo URL . '/public/uploads/atletaA.webp'; ?>"
+                            <img src="" id="fotoAtleta"
                                 class="img-fluid rounded-circle custom-border" alt="Imagem Arredondada" width="60%">
                         </div>
                         <div class="col-lg-7 pt-4 pt-lg-0 content text-justify" data-aos="fade-left">
-                            <h3>NOME DO ATLETA EM CAIXA ALTA</h3>
-                            <p class="fst-italic">Fulano é um talentoso atleta de futsal que se destaca na posição de
+                            <h3 id="nomeAtleta">NOME DO ATLETA EM CAIXA ALTA</h3>
+                            <p class="fst-italic"><h6 id="nomeAtleta"></h6> é um talentoso atleta de futsal que se destaca na posição de
                                 meio campo. Com habilidades técnicas excepcionais e uma visão estratégica do jogo, ele
                                 desempenha um papel fundamental na equipe.</p>
                             <ul>
-                                <li><i class="bi bi-check-circle"></i> Posição: Posição (Sigla).</li>
-                                <li><i class="bi bi-check-circle"></i> Peso:.</li>
-                                <li><i class="bi bi-check-circle"></i> Altura:.</li>
+                                <li><i class="bi bi-check-circle"></i> Posição: <span id="pocisaoAtleta"></span></li>
+                                <li><i class="bi bi-check-circle"></i> Peso: <span id="pesoAtleta"></span></li>
+                                <li><i class="bi bi-check-circle"></i> Altura: <span id="alturaAtleta"></span></li>
                             </ul>
                         </div>
                         <div class="col-lg-7 pt-4 pt-lg-0 content text-justify" data-aos="fade-left">
@@ -162,7 +162,7 @@
                                                     <i class="fas fa-futbol"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2 id="jogos">2</h2>
+                                                    <h2 id="jogos">0</h2>
                                                     <span class="text-muted small pt-2 ps-1">Jogos</span>
                                                 </div>
                                             </div>
@@ -183,7 +183,7 @@
                                                     <i class="fas fa-futbol"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2 id="gols">2</h2>
+                                                    <h2 id="gols">0</h2>
                                                     <span class="text-muted small pt-2 ps-1">Gols Marcados</span>
 
                                                 </div>
@@ -228,7 +228,7 @@
                                                     <i class="bi bi-trophy-fill"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2 id="vitorias">5</h2>
+                                                    <h2 id="vitorias">0</h2>
                                                     <span class="text-muted small pt-2 ps-1">Vitórias</span>
 
                                                 </div>
@@ -297,7 +297,7 @@
                                                     <i class="fas fa-times-circle"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2 id="faltas">4</h2>
+                                                    <h2 id="faltas">0</h2>
                                                     <span class="text-muted small pt-2 ps-1">Faltas</span>
 
                                                 </div>
@@ -320,8 +320,8 @@
                                                     <i class="bi bi-file-fill"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2 id="amarelos">3</h2>
-                                                    <span class="text-muted small pt-2 ps-1">Cartões Amarelo</span>
+                                                    <h2 id="vermelhos">0</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Cartões Vermelho</span>
 
                                                 </div>
                                             </div>
@@ -343,8 +343,8 @@
                                                     <i class="bi bi-file-fill"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
-                                                    <h2 id="vermelhos">1</h2>
-                                                    <span class="text-muted small pt-2 ps-1">Cartões Vermelho</span>
+                                                    <h2 id="amarelos">0</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Cartões Amarelo</span>
 
                                                 </div>
                                             </div>
