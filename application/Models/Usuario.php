@@ -1169,6 +1169,36 @@ class Usuario
             endif;
         endif;
     }
+
+
+    public function editarEstatistica($estatisticas){
+        
+
+        $this->bd->query('UPDATE tbl_estatisticas SET quantJogos = (quantJogos + :jogos), quantGols = (quantGols + :gols), quantVitorias = (quantVitorias + :vi), quantEmpates = (quantEmpates + :em), quantDerrotas = (quantDerrotas + :der), quantFaltas = (quantFaltas + :fal), quantCartAmarelo = (quantCartAmarelo + :ca), quantCartVermelho = (quantCartVermelho + :cv), quantTorneio = (quantTorneio + :tor), quantAmistosos = (quantAmistosos + :amis) WHERE id_atleta = :id');
+       
+        $this->bd->bind(':id', $estatisticas['id']);
+
+        $this->bd->bind(':jogos', $estatisticas['qtdJogos']);
+        $this->bd->bind(':gols', $estatisticas['qtdGols']);
+        $this->bd->bind(':vi', $estatisticas['vitorias']);
+        $this->bd->bind(':em', $estatisticas['empates']);
+        $this->bd->bind(':der', $estatisticas['derrotas']);
+        $this->bd->bind(':fal', $estatisticas['faltas']);
+        $this->bd->bind(':cv', $estatisticas['cartoesV']);
+        $this->bd->bind(':ca', $estatisticas['cartoesA']);
+        $this->bd->bind(':tor', $estatisticas['torneios']);
+        $this->bd->bind(':amis', $estatisticas['amistosos']);
+
+
+
+        if ($this->bd->executa()) :
+            //Adicione alguma ação
+            return true;
+        else :
+            //Adicione alguma ação
+            return false;
+        endif;
+    }
     public function buscarAnoEstatistica($id){
       
         $this->bd->query("SELECT *

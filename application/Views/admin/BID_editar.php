@@ -669,20 +669,18 @@
                                         <p class="small fst-italic">A seção "Estatísticas Gerais" é dedicada a monitora o desempenho do atleta durante o ano.</p>
                                         <!-- Change Password Form -->
                                         <form action="<?php echo URL . '/admin/editarEstatisticas'; ?>" method="post" enctype="multipart/form-data">
-
                                             <div class="row mb-3">
                                                 <div class="card">
                                                     <div class="card-header">Formulário de Edição</div>
                                                     <div class="card-body">
                                                         <div class="row g-3 mb-3 mt-3">
-
                                                             <div class="col-md-6">
                                                                 <div class="col-md-6">
                                                                     <div class="form-floating">
                                                                         <select class="form-select" name="ano" id="ano" aria-label="State" onchange="carregarDados()">
-                                                                            <?php foreach ($dados['anos'] as $ano) : ?>
-                                                                                <option selected value="<?= $ano = date("Y", strtotime($ano)); ?>"><?= $ano = date("Y", strtotime($ano)); ?></option>
-                                                                            <?php endforeach; ?>
+                                                                            <!-- Essa opção alem de mostrar o ano ao usuario também enviará o id do atleta para o PHP que tratará os dados -->
+                                                                                <option selected value="<?php echo $dados['exibirJogador']->id_atleta;?>"><?= $ano = date("Y", strtotime($dados['exibirJogador']->anoAtual)); ?></option>
+                                                                            
                                                                         </select>
                                                                         <label for="floatingSelect">Selecione o ano:</label>
                                                                     </div>

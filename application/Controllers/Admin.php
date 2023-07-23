@@ -1767,6 +1767,33 @@ class Admin extends Controller
         $this->view('admin/BID', $dados);
     }
 
+    public function editarEstatisticas()
+    {
+
+        $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+        if (isset($formulario)) :
+
+            $dados = [
+
+                'id' => trim($formulario['ano']),
+
+                'qtdJogos' => trim($formulario['quantidadeJogos']),
+                'qtdGols' => trim($formulario['golsMarcados']),
+                'vitorias' => trim($formulario['vitorias']),
+                'empates' => trim($formulario['empates']),
+                'derrotas' => trim($formulario['derrotas']),
+                'faltas' => trim($formulario['faltas']),
+                'cartoesV' => trim($formulario['cartoesVermelhos']),
+                'cartoesA' => trim($formulario['cartoesAmarelos']),
+                'torneios' => trim($formulario['torneios']),
+                'amistosos' => trim($formulario['amistosos']),
+                'upload_erro' => '',
+            ];        
+        endif;  
+        //echo $dados['derrotas'];
+        $this->usuarioModel->editarEstatistica($dados);       
+    }
     public function detalheAtleta($idInscricao)
     {
         $dados = [
@@ -1854,7 +1881,7 @@ class Admin extends Controller
                 'upload_erro' => '',
             ];
 
-
+        
 
             if (!empty($foto)) :
                 $foto = $_FILES['fotoPerfil']['tmp_name'];
