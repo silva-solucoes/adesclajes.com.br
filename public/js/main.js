@@ -366,14 +366,13 @@ document.addEventListener('DOMContentLoaded', function () {
           // Cálculo de gols por partida (atualizado)
           golsPorPartida = (Jogos !== 0) ? (gols / Jogos) : 0;
           golsPorPartida = golsPorPartida.toFixed(2).replace('.', ',');
-          // Cálculo de aproveitamento
-          var totalPartidas = parseInt(vitorias) + parseInt(derrotas) + parseInt(empates);
-          var aproveitamento = (totalPartidas !== 0) ? (parseInt(vitorias) / totalPartidas) * 100 : 0;
-          aproveitamento = aproveitamento.toFixed(1).replace('.', ',');
-
-          // Acumule o valor do aproveitamento na variável somaAproveitamento
-          somaAproveitamento += parseFloat(aproveitamento);
+          
         });
+        
+        // Cálculo de aproveitamento
+        var totalPartidas = parseInt(vitorias) + parseInt(derrotas) + parseInt(empates);
+        var aproveitamento = (totalPartidas !== 0) ? (parseInt(vitorias) / totalPartidas) * 100 : 0;
+        aproveitamento = aproveitamento.toFixed(1).replace('.', ',');
 
         document.getElementById("jogos").innerHTML = Jogos;
         document.getElementById("gols").innerHTML = gols;
@@ -386,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById("amarelos").innerHTML = amarelos;
         document.getElementById("torneios").innerHTML = torneios;
         document.getElementById("amistosos").innerHTML = amistosos;
-        document.getElementById("aproveitamento").innerHTML = somaAproveitamento + '%';
+        document.getElementById("aproveitamento").innerHTML = aproveitamento + '%';
 
         optionValueTotal = JSON.stringify({ Jogos: Jogos, gols: gols, vitorias: vitorias, empates: empates, derrotas: derrotas, faltas: faltas, vermelhos: vermelhos, amarelos: amarelos, torneios: torneios, amistosos: amistosos, golsPorPartida: golsPorPartida, aproveitamento: aproveitamento });
       }
