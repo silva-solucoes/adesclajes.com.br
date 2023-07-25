@@ -1,163 +1,163 @@
 <?php include_once 'header.php'; ?>
 <?php
 
-if($dados['categoria'] == 'Futsal'):
-function possuiAtletasSub07($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 7) {
-            return true;
+if ($dados['categoria'] == 'Futsal') :
+    function possuiAtletasSub07($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 7) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub08($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 8) {
-            return true;
+    function possuiAtletasSub08($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 8) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub09($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 9) {
-            return true;
+    function possuiAtletasSub09($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 9) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub10($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 10) {
-            return true;
+    function possuiAtletasSub10($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 10) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub11($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 11) {
-            return true;
+    function possuiAtletasSub11($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 11) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub12($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 12) {
-            return true;
+    function possuiAtletasSub12($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 12) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub13($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 13) {
-            return true;
+    function possuiAtletasSub13($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 13) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub14($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 14) {
-            return true;
+    function possuiAtletasSub14($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 14) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub15($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 15) {
-            return true;
+    function possuiAtletasSub15($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 15) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub16($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 16) {
-            return true;
+    function possuiAtletasSub16($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 16) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub17($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 17) {
-            return true;
+    function possuiAtletasSub17($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 17) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub18($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 18) {
-            return true;
+    function possuiAtletasSub18($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 18) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub19($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 19) {
-            return true;
+    function possuiAtletasSub19($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 19) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
-function possuiAtletasSub20($dadosAtleta)
-{
-    foreach ($dadosAtleta as $listar) {
-        $dataAtual = date('Y-m-d');
-        $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
-        if ($listar->categoriaEsportiva == 2 && $idade == 20) {
-            return true;
+    function possuiAtletasSub20($dadosAtleta)
+    {
+        foreach ($dadosAtleta as $listar) {
+            $dataAtual = date('Y-m-d');
+            $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+            if ($listar->categoriaEsportiva == 2 && $idade == 20) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
 endif;
-if($dados['categoria'] == 'Futebol'):
+if ($dados['categoria'] == 'Futebol') :
     function possuiAtletasSub07($dadosAtleta)
     {
         foreach ($dadosAtleta as $listar) {
@@ -312,7 +312,7 @@ if($dados['categoria'] == 'Futebol'):
         }
         return false;
     }
-    endif;
+endif;
 ?>
 <main id="main">
 
@@ -409,7 +409,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -463,7 +463,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -513,7 +513,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -564,7 +564,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -614,7 +614,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -664,7 +664,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -714,7 +714,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -764,7 +764,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -814,7 +814,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -864,7 +864,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -914,7 +914,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -964,7 +964,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1014,7 +1014,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1064,7 +1064,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1114,7 +1114,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1169,7 +1169,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1219,7 +1219,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1270,7 +1270,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1320,7 +1320,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1370,7 +1370,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1420,7 +1420,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1470,7 +1470,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1520,7 +1520,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1570,7 +1570,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1620,7 +1620,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1670,7 +1670,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1720,7 +1720,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1770,7 +1770,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1820,7 +1820,7 @@ if($dados['categoria'] == 'Futebol'):
                                                                                     ADESC LAJES
                                                                                 </span>
                                                                             </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?=$listar->id_atleta ?>">
+                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
                                                                                 <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
                                                                             </a>
                                                                         </div>
@@ -1844,7 +1844,7 @@ if($dados['categoria'] == 'Futebol'):
                     </section><!-- Fim Perguntas Frequentes -->
 
                 </div>
-                
+
                 <div class="col-lg-12">
                     <div class="portfolio-description">
                         <p class="text-justify">
@@ -1852,7 +1852,7 @@ if($dados['categoria'] == 'Futebol'):
                         </p>
                     </div>
                 </div>
-                
+
                 <!-- Fim Modal de Atletas -->
             </div>
         </div>
@@ -1860,12 +1860,10 @@ if($dados['categoria'] == 'Futebol'):
 
     <!-- ======= Inserindo Modal Detalhes do Jogador ======= -->
     <!-- Modal -->
-    <div class="modal fade" id="BID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="BID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header"
-                    style="background-image: url('<?php echo URL; ?>/public/images/fundoBID.webp'); background-size: cover; width: 100% relative; height: 100px; color: #D98E04;">
+                <div class="modal-header" style="background-image: url('<?php echo URL; ?>/public/images/fundoBID.webp'); background-size: cover; width: 100% relative; height: 100px; color: #D98E04;">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel"><b>ATLETA DA ADESC LAJES</b></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -1875,14 +1873,14 @@ if($dados['categoria'] == 'Futebol'):
                         demais aspectos relacionados ao futebol e outras modalidades esportivas.</p>
                     <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
                         <div class="col-lg-4 text-center" data-aos="fade-right">
-                            <img src="" id="fotoAtleta"
-                                class="img-fluid rounded-circle custom-border" alt="Imagem Arredondada" width="60%">
+                            <img src="" id="fotoAtleta" class="img-fluid rounded-circle custom-border" alt="Imagem Arredondada" width="60%">
                         </div>
                         <div class="col-lg-7 pt-4 pt-lg-0 content text-justify" data-aos="fade-left">
                             <h3 id="nomeAtleta">NOME DO ATLETA EM CAIXA ALTA</h3>
-                            <p class="fst-italic"><h6 id="nomeAtleta"></h6> é um talentoso atleta de futsal que se destaca na posição de
-                                meio campo. Com habilidades técnicas excepcionais e uma visão estratégica do jogo, ele
-                                desempenha um papel fundamental na equipe.</p>
+                            <p class="fst-italic">
+                            <h6 id="nomeAtleta"></h6> é um talentoso atleta de futsal que se destaca na posição de
+                            meio campo. Com habilidades técnicas excepcionais e uma visão estratégica do jogo, ele
+                            desempenha um papel fundamental na equipe.</p>
                             <ul>
                                 <li><i class="bi bi-check-circle"></i> Posição: <span id="pocisaoAtleta"></span></li>
                                 <li><i class="bi bi-check-circle"></i> Peso: <span id="pesoAtleta"></span></li>
@@ -1906,8 +1904,7 @@ if($dados['categoria'] == 'Futebol'):
                                         <div class="card-body">
 
                                             <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="fas fa-futbol"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
@@ -1923,12 +1920,11 @@ if($dados['categoria'] == 'Futebol'):
 
                                 <!-- Revenue Card -->
                                 <div class="col-xxl-4 col-md-6">
-                                    <div class="card info-card revenue-card">
+                                    <div class="card info-card golsMarcados-card">
 
                                         <div class="card-body">
                                             <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="fas fa-futbol"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
@@ -1949,8 +1945,7 @@ if($dados['categoria'] == 'Futebol'):
 
                                         <div class="card-body">
                                             <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="fas fa-futbol"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
@@ -1972,8 +1967,7 @@ if($dados['categoria'] == 'Futebol'):
 
                                         <div class="card-body">
                                             <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="bi bi-trophy-fill"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
@@ -1995,8 +1989,7 @@ if($dados['categoria'] == 'Futebol'):
 
                                         <div class="card-body">
                                             <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="fas fa-equals"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
@@ -2018,8 +2011,7 @@ if($dados['categoria'] == 'Futebol'):
 
                                         <div class="card-body">
                                             <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="fas fa-times"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
@@ -2041,8 +2033,7 @@ if($dados['categoria'] == 'Futebol'):
 
                                         <div class="card-body">
                                             <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="fas fa-times-circle"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
@@ -2064,8 +2055,7 @@ if($dados['categoria'] == 'Futebol'):
 
                                         <div class="card-body">
                                             <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="bi bi-file-fill"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
@@ -2087,8 +2077,7 @@ if($dados['categoria'] == 'Futebol'):
 
                                         <div class="card-body">
                                             <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="bi bi-file-fill"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
@@ -2110,8 +2099,7 @@ if($dados['categoria'] == 'Futebol'):
 
                                         <div class="card-body">
                                             <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="fas fa-trophy"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
@@ -2133,13 +2121,33 @@ if($dados['categoria'] == 'Futebol'):
 
                                         <div class="card-body">
                                             <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                                     <i class="fas fa-handshake"></i>
                                                 </div>
                                                 <div class="ps-3 mt-3 text-center">
                                                     <h2 id="amistosos">0</h2>
                                                     <span class="text-muted small pt-2 ps-1">Amistosos</span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div><!-- End Customers Card -->
+                                <!-- Customers Card -->
+                                <div class="col-xxl-4 col-xl-12">
+
+                                    <div class="card info-card aproveitamentoBom-card">
+
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-emoji-smile-fill"></i>
+                                                </div>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2 id="aproveitamento">0</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Rendimento</span>
 
                                                 </div>
                                             </div>
@@ -2158,9 +2166,7 @@ if($dados['categoria'] == 'Futebol'):
                                 <div class="card-body text-center">
                                     <div class="row g-0">
                                         <div class="col-md-5 text-center">
-                                            <img src="<?php echo URL . '/public/uploads/equipeA.webp'; ?>"
-                                                class="img-fluid rounded-circle custom-border-escudo mt-3"
-                                                alt="Imagem Arredondada">
+                                            <img src="<?php echo URL . '/public/uploads/equipeA.webp'; ?>" class="img-fluid rounded-circle custom-border-escudo mt-3" alt="Imagem Arredondada">
                                         </div>
                                         <div class="col-md-6">
                                             <div class="card-body mt-5">
@@ -2193,8 +2199,7 @@ if($dados['categoria'] == 'Futebol'):
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="botao-cancelar" type="button" class="btn btn-secondary"
-                        data-bs-dismiss="modal">Voltar</button>
+                    <button id="botao-cancelar" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                 </div>
             </div>
         </div>

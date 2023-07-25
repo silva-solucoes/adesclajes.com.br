@@ -300,7 +300,6 @@ class Usuario
         INNER JOIN tbl_incricao ON tbl_atleta.id_atleta = tbl_incricao.id_atleta
         INNER JOIN categorianoticia ON tbl_detalhetecnicos.categoriaEsportiva=categorianoticia.id_categoria
         INNER JOIN tbl_estatisticas ON tbl_estatisticas.id_atleta = tbl_atleta.id_atleta
-        INNER JOIN tbl_estatisticas_old ON tbl_estatisticas_old.id_atleta = tbl_atleta.id_atleta
         WHERE tbl_incricao.id_inscricao = :idInscricao
         ORDER BY tbl_atleta.id_atleta DESC');
         $this->bd->bind('idInscricao', $idInscricao);

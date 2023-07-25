@@ -30,7 +30,9 @@
                                 </font>
                             </span>
                         </h5>
-
+                        <?php
+                            Sessao::mensagem('envioEstatistica');
+                        ?>
                         <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
 
                             <div class="datatable-container">
@@ -72,7 +74,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 text-left mt-5">
-                                                                <label for="fotoInput" class="btn btn-primary btn-sm" title="Atualizar Foto" id="botao-cancelar" >
+                                                                <label for="fotoInput" class="btn btn-primary btn-sm" title="Atualizar Foto" id="botao-cancelar">
                                                                     <i class="bi bi-upload"></i> Atualizar Foto
                                                                 </label>
                                                                 <input type="file" id="fotoInput" name="fotoPerfil" accept=".jpg, .jpeg, .png" style="display: none">
@@ -664,7 +666,7 @@
                                         </div>
 
                                     </div>
-                                    
+
                                     <div class="tab-pane fade pt-1" id="profile-change-password">
                                         <p class="small fst-italic">A seção "Estatísticas Gerais" é dedicada a monitora o desempenho do atleta durante o ano.</p>
                                         <!-- Change Password Form -->
@@ -677,10 +679,10 @@
                                                             <div class="col-md-6">
                                                                 <div class="col-md-6">
                                                                     <div class="form-floating">
-                                                                        <select class="form-select" name="ano" id="ano" aria-label="State" onchange="carregarDados()">
+                                                                        <select class="form-control" name="ano" id="ano" aria-label="State" onchange="carregarDados()">
                                                                             <!-- Essa opção alem de mostrar o ano ao usuario também enviará o id do atleta para o PHP que tratará os dados -->
-                                                                                <option selected value="<?php echo $dados['exibirJogador']->id_atleta;?>"><?= $ano = date("Y", strtotime($dados['exibirJogador']->anoAtual)); ?></option>
-                                                                            
+                                                                            <option selected value="<?php echo $dados['exibirJogador']->id_atleta; ?>"><?= $ano = date("Y", strtotime($dados['exibirJogador']->anoAtual)); ?></option>
+
                                                                         </select>
                                                                         <label for="floatingSelect">Selecione o ano:</label>
                                                                     </div>
@@ -689,63 +691,53 @@
                                                             <hr>
 
                                                             <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="number" id="quantidadeJogos" name="quantidadeJogos" value="" title="Insira a quantidade de jogos">
+                                                                <input class="form-control" type="number" id="quantidadeJogos" name="quantidadeJogos" value="" title="Insira a quantidade de jogos" required>
                                                                 <label for="quantidadeJogos">Jogos:</label>
                                                             </div>
 
                                                             <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="number" id="golsMarcados" name="golsMarcados" value="" title="Insira a quantidade de Gols Marcados">
+                                                                <input class="form-control" type="number" id="golsMarcados" name="golsMarcados" value="" title="Insira a quantidade de Gols Marcados" required>
                                                                 <label for="golsMarcados">Gols Marcados:</label>
                                                             </div>
 
                                                             <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="number" id="golsPorPartida" name="golsPorPartida" value="" title="Campo automático" disabled>
-                                                                <label for="golsPorPartida">Gols por Partida:</label>
-                                                            </div>
-
-                                                            <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="number" id="vitorias" name="vitorias" value="" title="Insira a quantidade de vitórias">
+                                                                <input class="form-control" type="number" id="vitorias" name="vitorias" value="" title="Insira a quantidade de vitórias" required>
                                                                 <label for="vitorias">Vitórias:</label>
                                                             </div>
 
                                                             <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="number" id="empates" name="empates" value="" title="Insira a quantidade de empates">
+                                                                <input class="form-control" type="number" id="empates" name="empates" value="" title="Insira a quantidade de empates" required>
                                                                 <label for="empates">Empates:</label>
                                                             </div>
 
                                                             <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="number" id="derrotas" name="derrotas" value="" title="Insira a quantidade de derrotas">
+                                                                <input class="form-control" type="number" id="derrotas" name="derrotas" value="" title="Insira a quantidade de derrotas" required>
                                                                 <label for="derrotas">Derrotas:</label>
                                                             </div>
 
                                                             <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="number" id="faltas" name="faltas" value="" title="Insira a quantidade de faltas">
+                                                                <input class="form-control" type="number" id="faltas" name="faltas" value="" title="Insira a quantidade de faltas" required>
                                                                 <label for="faltas">Faltas:</label>
                                                             </div>
 
                                                             <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="number" id="cartoesVermelhos" name="cartoesVermelhos" value="" title="Insira a quantidade de Cartões Vermelhos">
+                                                                <input class="form-control" type="number" id="cartoesVermelhos" name="cartoesVermelhos" value="" title="Insira a quantidade de Cartões Vermelhos" required>
                                                                 <label for="cartoesVermelhos">Cartões Vermelhos:</label>
                                                             </div>
 
                                                             <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="number" id="cartoesAmarelos" name="cartoesAmarelos" value="" title="Insira a quantidade de Cartões Amarelos">
+                                                                <input class="form-control" type="number" id="cartoesAmarelos" name="cartoesAmarelos" value="" title="Insira a quantidade de Cartões Amarelos" required>
                                                                 <label for="cartoesAmarelos">Cartões Amarelos:</label>
                                                             </div>
 
                                                             <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="number" id="torneios" name="torneios" value="" title="Insira a quantidade de Torneios">
+                                                                <input class="form-control" type="number" id="torneios" name="torneios" value="" title="Insira a quantidade de Torneios" required>
                                                                 <label for="torneios">Torneios:</label>
                                                             </div>
 
                                                             <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="number" id="amistosos" name="amistosos" value="" title="Insira a quantidade de Amistosos">
+                                                                <input class="form-control" type="number" id="amistosos" name="amistosos" value="" title="Insira a quantidade de Amistosos" required>
                                                                 <label for="amistosos">Amistosos:</label>
-                                                            </div>
-
-                                                            <div class="col-md-3 form-floating">
-                                                                <input class="form-control" type="text" id="aproveitamento" name="aproveitamento" value="" title="Campo automático" disabled>
-                                                                <label for="aproveitamento">Aproveitamento do Atleta:</label>
                                                             </div>
 
                                                         </div>

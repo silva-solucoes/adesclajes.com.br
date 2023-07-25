@@ -465,9 +465,14 @@
                                                                                 $r2 = $dados['exibirJogador']->quantJogos;
                                                                                 $golsPartida = 0;
 
-                                                                                if ($r2 != 0) :
+                                                                                if ($r2 != 0) {
                                                                                     $golsPartida = $r1 / $r2;
-                                                                                endif;
+                                                                                }
+
+                                                                                // Trocar ponto por vírgula nas variáveis
+                                                                                $r1 = str_replace('.', ',', $r1);
+                                                                                $r2 = str_replace('.', ',', $r2);
+                                                                                $golsPartida = str_replace('.', ',', $golsPartida);
                                                                                 ?>
                                                                                 <h2><?= $golsPartida ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Gols por partida</span>
@@ -658,22 +663,29 @@
 
                                                             <!-- Customers Card -->
                                                             <div class="col-xxl-4 col-xl-12">
-
-                                                                <div class="card info-card amistoso-card">
+                                                                <?php
+                                                                $nV = $dados['exibirJogador']->quantVitorias;
+                                                                $nE = $dados['exibirJogador']->quantEmpates;
+                                                                $nT = $dados['exibirJogador']->quantJogos;
+                                                                $nD = $dados['exibirJogador']->quantDerrotas;
+                                                                ?>
+                                                                <div class="card info-card <?php echo ($nD > $nV && $nD > $nE) ? "aproveitamentoRuim-card" : (($nE > $nD && $nE > $nV) ? "aproveitamentoMedio-card" : (($nV > $nD && $nV > $nE) ? "aproveitamentoBom-card" : (($nV == $nE) ? "aproveitamentoMedio-card" : "aproveitamentoPadrao-card"))); ?>">
 
                                                                     <div class="card-body">
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                                                <i class="bi bi-emoji-smile-fill"></i>
+                                                                                <i class="<?php echo ($nD > $nV && $nD > $nE) ? "bi bi-emoji-frown-fill" : (($nE > $nD && $nE > $nV) ? "bi bi-emoji-neutral-fill" : (($nV > $nD && $nV > $nE) ? "bi bi-emoji-smile-fill" : (($nV == $nE) ? "bi bi-emoji-neutral-fill" : "bi bi-emoji-smile-fill"))); ?>"></i>
                                                                             </div>
                                                                             <div class="ps-3 mt-3 text-center">
                                                                                 <?php
-                                                                                $nV = $dados['exibirJogador']->quantVitorias;
-                                                                                $nE = $dados['exibirJogador']->quantEmpates;
-                                                                                $nT = $dados['exibirJogador']->quantJogos;
-
-                                                                                $aproveitamento = $nV + (0.5 * $nE) * ($nT * 100);
-                                                                                $aproveitamentoFormatado = number_format($aproveitamento, 2, ',', '.');
+                                                                                //Para saber a % de vitórias:
+                                                                                $porV = ($nV / ($nV + $nD + $nE)) * 100;
+                                                                                //Para saber a % de derrotas:
+                                                                                //$porD = ($nD/($nV+$nD+$nE))*100;
+                                                                                //Para saber a % de empates:
+                                                                                $porE = $nE / (($nV + $nD + $nE) * 100);
+                                                                                $aproveitamento = $porV + $porE;
+                                                                                $aproveitamentoFormatado = number_format($aproveitamento, 1, ',', '.');
                                                                                 ?>
                                                                                 <h2><?= $aproveitamentoFormatado . '%' ?></h2>
                                                                                 <span class="text-muted small pt-2 ps-1">Aproveitamento</span>

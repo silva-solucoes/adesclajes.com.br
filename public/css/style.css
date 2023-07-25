@@ -3132,7 +3132,7 @@ section {
 }
 
 .modal-title{
-  color: #555555;
+  color: #FFFFFF;
 }
 
 .custom-border{
@@ -3222,18 +3222,14 @@ section {
   flex-grow: 0;
 }
 
+
 .jogos-card .card-icon {
   color: #3fbbc0;
   background: #f6f6fe;
 }
 
-.sales-card .card-icon {
-  color: #4154f1;
-  background: #f6f6fe;
-}
-
-.revenue-card .card-icon {
-  color: #2eca6a;
+.golsMarcados-card .card-icon{
+  color:#2eca6a;
   background: #e0f8e9;
 }
 
@@ -3249,7 +3245,7 @@ section {
 
 .empate-card .card-icon {
   color: #777777;
-  background: #e0f8e9;
+  background: #d3d3d3;
 }
 
 .derrotas-card .card-icon {
@@ -3264,7 +3260,30 @@ section {
 
 .amarelo-card .card-icon {
   color: #ffdd1d;
-  background: #ffecdf;
+  background: #fdf2b4;
+}
+
+.campeonato-card .card-icon {
+  color: #1b46f3;
+  background: #c1ccfa;
+}
+
+.amistoso-card .card-icon {
+  color: #470ba2;
+  background: #decafb;
+}
+
+.aproveitamentoBom-card .card-icon {
+  color: #3ded0c;
+  background: #dcfad4;
+}
+.aproveitamentoMedio-card .card-icon {
+  color: #debd03;
+  background: #dfd6a3;
+}
+.aproveitamentoRuim-card .card-icon {
+  color: #fc0404;
+  background: #fcc7c7;
 }
 
 .customers-card .card-icon {

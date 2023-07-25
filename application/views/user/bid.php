@@ -171,7 +171,7 @@
 
                                 <!-- Revenue Card -->
                                 <div class="col-xxl-4 col-md-6">
-                                    <div class="card info-card revenue-card">
+                                    <div class="card info-card golsMarcados-card">
 
                                         <div class="card-body">
                                             <div class="d-flex align-items-center">
@@ -388,6 +388,28 @@
                                                 <div class="ps-3 mt-3 text-center">
                                                     <h2 id="amistosos">0</h2>
                                                     <span class="text-muted small pt-2 ps-1">Amistosos</span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div><!-- End Customers Card -->
+                                <!-- Customers Card -->
+                                <div class="col-xxl-4 col-xl-12">
+
+                                    <div class="card info-card aproveitamentoBom-card">
+
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-emoji-smile-fill"></i>
+                                                </div>
+                                                <div class="ps-3 mt-3 text-center">
+                                                    <h2 id="aproveitamento">0</h2>
+                                                    <span class="text-muted small pt-2 ps-1">Rendimento</span>
 
                                                 </div>
                                             </div>

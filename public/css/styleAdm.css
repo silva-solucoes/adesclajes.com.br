@@ -757,26 +757,26 @@ h6 {
     position: absolute;
     right: 0px;
     top: 15px;
-  }
-  
-  .dashboard .filter .icon {
+}
+
+.dashboard .filter .icon {
     color: #aab7cf;
     padding-right: 20px;
     padding-bottom: 5px;
     transition: 0.3s;
     font-size: 16px;
-  }
-  
-  .dashboard .filter .icon:hover,
-  .dashboard .filter .icon:focus {
+}
+
+.dashboard .filter .icon:hover,
+.dashboard .filter .icon:focus {
     color: #4154f1;
-  }
-  
-  .dashboard .filter .dropdown-header {
+}
+
+.dashboard .filter .dropdown-header {
     padding: 8px 15px;
-  }
-  
-  .dashboard .filter .dropdown-header h6 {
+}
+
+.dashboard .filter .dropdown-header h6 {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 600;
@@ -784,48 +784,48 @@ h6 {
     color: #aab7cf;
     margin-bottom: 0;
     padding: 0;
-  }
-  
-  .dashboard .filter .dropdown-item {
+}
+
+.dashboard .filter .dropdown-item {
     padding: 8px 15px;
-  }
-  
-  /* Info Cards */
-  .dashboard .info-card {
+}
+
+/* Info Cards */
+.dashboard .info-card {
     padding-bottom: 10px;
-  }
-  
-  .dashboard .info-card h6 {
+}
+
+.dashboard .info-card h6 {
     font-size: 28px;
     color: #012970;
     font-weight: 700;
     margin: 0;
     padding: 0;
-  }
-  
-  .dashboard .card-icon {
+}
+
+.dashboard .card-icon {
     font-size: 32px;
     line-height: 0;
     width: 64px;
     height: 64px;
     flex-shrink: 0;
     flex-grow: 0;
-  }
-  
-  .dashboard .sales-card .card-icon {
+}
+
+.dashboard .sales-card .card-icon {
     color: #003680;
     background: #f6f6fe;
-  }
-  
-  .dashboard .revenue-card .card-icon {
+}
+
+.dashboard .revenue-card .card-icon {
     color: #2eca6a;
     background: #e0f8e9;
-  }
-  
-  .dashboard .customers-card .card-icon {
+}
+
+.dashboard .customers-card .card-icon {
     color: #ff771d;
     background: #ffecdf;
-  }
+}
 
 /*--------------------------------------------------------------
 # Footer
@@ -850,12 +850,12 @@ h6 {
 }
 
 /* Patrocinadore */
-.espaco{
+.espaco {
     margin-right: 20px;
     background-color: #003680;
 }
 
-.espaco:hover{
+.espaco:hover {
     margin-right: 20px;
     background-color: #024198;
 }
@@ -863,7 +863,7 @@ h6 {
 /*--------------------------------------------------------------
 # Botão do Formulário de Situação de Inscrição
 --------------------------------------------------------------*/
-#botao-aceitar{
+#botao-aceitar {
     background-color: #008000;
     border: none;
     padding: 12px 34px;
@@ -871,85 +871,89 @@ h6 {
     transition: 0.4s;
     border-radius: 50px;
 }
-#botao-aceitar:hover{
+
+#botao-aceitar:hover {
     background-color: #019a01;
     border: none;
     padding: 12px 34px;
     color: #fff;
     transition: 0.4s;
     border-radius: 50px;
-  }
-  
-  #botao-rejeitar{
+}
+
+#botao-rejeitar {
     background-color: #ff0000;
     border: none;
     padding: 12px 34px;
     color: #fff;
     transition: 0.4s;
     border-radius: 50px;
-  }
-  
-  #botao-rejeitar:hover{
+}
+
+#botao-rejeitar:hover {
     background-color: #ca1c1c;
     border: none;
     padding: 12px 34px;
     color: #fff;
     transition: 0.4s;
     border-radius: 50px;
-  }
+}
 
-  #botao-editar{
+#botao-editar {
     background-color: #003680;
     border: none;
     padding: 12px 34px;
     color: #fff;
     transition: 0.4s;
     border-radius: 50px;
-  }
-  #botao-editar:hover{
+}
+
+#botao-editar:hover {
     background-color: #1138c4;
     border: none;
     padding: 12px 34px;
     color: #fff;
     transition: 0.4s;
     border-radius: 50px;
-  }
+}
 
-  .botao-editar{
+.botao-editar {
     background-color: #003680;
     border: none;
     padding: 12px 34px;
     color: #fff;
     transition: 0.4s;
     border-radius: 50px;
-  }
-  .botao-editar:hover{
+}
+
+.botao-editar:hover {
     background-color: #1138c4;
     border: none;
     padding: 12px 34px;
     color: #fff;
     transition: 0.4s;
     border-radius: 50px;
-  }
+}
 
-  #botao-cancelar{
+#botao-cancelar {
     background-color: #6c757d;
     border: none;
     padding: 12px 34px;
     color: #fff;
     transition: 0.4s;
     border-radius: 50px;
-  }
-  #botao-cancelar:hover{
+}
+
+#botao-cancelar:hover {
     background-color: #5e646a;
     border: none;
     padding: 12px 34px;
     color: #fff;
     transition: 0.4s;
     border-radius: 50px;
-  }
+}
 
-  .profile .profile-card h2 {
+.profile .profile-card h2 {
     font-size: 24px;
     font-weight: 700;
     color: #2c384e;
@@ -977,4 +981,62 @@ h6 {
 .profile .profile-overview .row {
     margin-bottom: 20px;
     font-size: 15px;
+}
+
+.jogos-card .card-icon {
+    color: #3fbbc0;
+    background: #f6f6fe;
+}
+
+.golsPartidas-card .card-icon {
+    color: #114b27;
+    background: #e0f8e9;
+}
+
+.vitorias-card .card-icon {
+    color: #1d7d42;
+    background: #e0f8e9;
+}
+
+.empate-card .card-icon {
+    color: #777777;
+    background: #d3d3d3;
+}
+
+.derrotas-card .card-icon {
+    color: #ef3c10;
+    background: #ffecdf;
+}
+
+.vermelho-card .card-icon {
+    color: #96270b;
+    background: #ffecdf;
+}
+
+.amarelo-card .card-icon {
+    color: #ffdd1d;
+    background: #fdf2b4;
+}
+
+.campeonato-card .card-icon {
+    color: #1b46f3;
+    background: #c1ccfa;
+}
+
+.amistoso-card .card-icon {
+    color: #470ba2;
+    background: #decafb;
+}
+
+.aproveitamentoBom-card .card-icon {
+    color: #3ded0c;
+    background: #dcfad4;
+}
+.aproveitamentoMedio-card .card-icon {
+    color: #debd03;
+    background: #dfd6a3;
+}
+.aproveitamentoRuim-card .card-icon {
+    color: #fc0404;
+    background: #fcc7c7;
 }

@@ -107,7 +107,8 @@ class Admin extends Controller
 
         $this->view('admin/usuarios', $dados);
     }
-    public function exibirBuscaUser(){
+    public function exibirBuscaUser()
+    {
 
         $buscar = filter_input(INPUT_POST, 'pesquisa', FILTER_SANITIZE_STRING);
 
@@ -121,7 +122,7 @@ class Admin extends Controller
                 'user' => $resultBusca,
             ];
             $this->view('admin/usuarios', $dados);
-        else:
+        else :
             $resultBusca = $this->usuarioModel->lerUsuario($buscar);
             $dados = [
                 'user' => $resultBusca,
@@ -254,24 +255,24 @@ class Admin extends Controller
                     $dados['nomeImagem'] = 'semfoto.webp';
                 endif;
                 $dados['senhaCripto'] = password_hash($formulario['senhaUser'], PASSWORD_DEFAULT);
-                        $dados['chave_ativar'] = password_hash(date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
-                        $dados['dtAtual'] = date('Y-m-d H:i:s');
+                $dados['chave_ativar'] = password_hash(date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
+                $dados['dtAtual'] = date('Y-m-d H:i:s');
             endif;
-            
-            if($this->usuarioModel->checarEmail($dados['emailUser'])):
-            
+
+            if ($this->usuarioModel->checarEmail($dados['emailUser'])) :
+
                 if ($this->usuarioModel->armazenar($dados)) :
-                    
+
                     $this->confirmacaoEmail->enviarAtivacaoConta($dados);
                     Sessao::mensagem('cadastroUser', 'Cadastro realizado com sucesso. Um e-mail de ativação da conta foi enviado para <b>' . $dados['emailUser'] . '.</b>');
-                    #URL::redirecionar('');
-                            
+                #URL::redirecionar('');
+
                 else :
-                    
+
                     Sessao::mensagem('cadastroUser', 'Erro ao cadastrar usuário!', 'alert alert-danger');
-                    #die('Erro ao cadastrar usuário!');
+                #die('Erro ao cadastrar usuário!');
                 endif;
-            else:
+            else :
                 Sessao::mensagem('cadastroUser', 'O e-mail: <b>' . $dados['emailUser'] . '</b> já é cadastrado!', 'alert alert-danger');
             endif;
 
@@ -284,7 +285,7 @@ class Admin extends Controller
             elseif (strlen($formulario['senhaUser']) < 6) :
                 $dados['senhaUser_erro'] = 'A senha deve ter no mínimo 6 caracteres';
             endif;
-                    
+
         else :
 
             $dados = [
@@ -309,13 +310,15 @@ class Admin extends Controller
 
         $this->usuario();
     }
-    public function editUser($id){
+    public function editUser($id)
+    {
         $dados = [
             'exibirUser' => $this->usuarioModel->exibirUser($id),
         ];
         $this->view('admin/usuario_editar', $dados);
     }
-    public function editarUser($idUser){
+    public function editarUser($idUser)
+    {
 
         $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -457,7 +460,8 @@ class Admin extends Controller
 
         endif;
     }
-    public function reenviarAtivacao(){
+    public function reenviarAtivacao()
+    {
         // Verificar se a requisição é do tipo POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obter o ID do patrocinador a ser excluído
@@ -483,7 +487,8 @@ class Admin extends Controller
             echo json_encode(array('error' => 'Método não permitido'));
         }
     }
-    public function ativarUser(){
+    public function ativarUser()
+    {
         // Verificar se a requisição é do tipo POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obter o ID do patrocinador a ser excluído
@@ -507,7 +512,8 @@ class Admin extends Controller
             echo json_encode(array('error' => 'Método não permitido'));
         }
     }
-    public function desligarUser(){
+    public function desligarUser()
+    {
         // Verificar se a requisição é do tipo POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obter o ID do patrocinador a ser excluído
@@ -1789,10 +1795,19 @@ class Admin extends Controller
                 'torneios' => trim($formulario['torneios']),
                 'amistosos' => trim($formulario['amistosos']),
                 'upload_erro' => '',
-            ];        
-        endif;  
+            ];
+        endif;
         //echo $dados['derrotas'];
-        $this->usuarioModel->editarEstatistica($dados);       
+        if ($this->usuarioModel->editarEstatistica($dados)) :
+            // Redirecionar para a página anterior após o processamento
+            header("Location: {$_SERVER['HTTP_REFERER']}");
+
+            // Limpar os dados dos inputs (opcional)
+            $_POST = array();
+
+            //Mensagem de sucesso no envio
+            Sessao::mensagem('envioEstatistica', '<b>Sucesso!</b>: Estatística foi atualizada.');
+        endif;
     }
     public function detalheAtleta($idInscricao)
     {
@@ -1881,7 +1896,7 @@ class Admin extends Controller
                 'upload_erro' => '',
             ];
 
-        
+
 
             if (!empty($foto)) :
                 $foto = $_FILES['fotoPerfil']['tmp_name'];
@@ -2071,7 +2086,7 @@ class Admin extends Controller
             // Pode ser uma consulta ao banco de dados ou qualquer outra fonte de dados
             $resultBusca = $this->usuarioModel->dadosEstatistica($anoSelecionado, $id);
             $golsPartida = ($resultBusca->quantJogos != 0) ? ($resultBusca->quantGols / $resultBusca->quantJogos) : 0;
-            $aproveitamento = $resultBusca->quantVitorias+(0.5*$resultBusca->quantEmpates)*($resultBusca->quantJogos*100);
+            $aproveitamento = $resultBusca->quantVitorias + (0.5 * $resultBusca->quantEmpates) * ($resultBusca->quantJogos * 100);
             $aproveitamentoFormatado = number_format($aproveitamento, 2, ',', '.');
             // Exemplo fictício de dados
             $dados = array(
@@ -2262,10 +2277,10 @@ class Admin extends Controller
             $this->view('admin/galeria_foto', $dados);
 
         endif;
-
     }
-    public function cadastrarImagem(){
-        
+    public function cadastrarImagem()
+    {
+
         $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
         if (isset($formulario)) :
@@ -2376,15 +2391,16 @@ class Admin extends Controller
             ];
         endif;
     }
-    public function editFoto($idFoto){
+    public function editFoto($idFoto)
+    {
 
         $dados = [
             'exibirFoto' => $this->usuarioModel->exibirFoto($idFoto),
         ];
         $this->view('admin/galeria_foto_editar', $dados);
-
     }
-    public function excluirFoto(){
+    public function excluirFoto()
+    {
 
         // Verificar se a requisição é do tipo POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -2409,9 +2425,9 @@ class Admin extends Controller
             header('Content-Type: application/json');
             echo json_encode(array('error' => 'Método não permitido'));
         }
-
     }
-    public function editarFoto(){
+    public function editarFoto()
+    {
 
         $url = $_SERVER['REQUEST_URI'];
         $parts = explode('/', $url);
@@ -2529,7 +2545,8 @@ class Admin extends Controller
         ];
         $this->view('admin/categoria_esportiva', $dados);
     }
-    public function cadastrarCategoria(){
+    public function cadastrarCategoria()
+    {
 
         $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -2552,15 +2569,16 @@ class Admin extends Controller
             endif;
         endif;
         $this->esportes();
-
     }
-    public function editCategoria($id){
+    public function editCategoria($id)
+    {
         $dados = [
             'exibirCategorias' => $this->usuarioModel->exibirCategoria($id),
         ];
         $this->view('admin/categoria_esportiva_editar', $dados);
     }
-    public function editarCategoria($id){
+    public function editarCategoria($id)
+    {
 
         $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -2584,9 +2602,9 @@ class Admin extends Controller
             endif;
         endif;
         $this->esportes();
-
     }
-    public function excluirCategoria(){
+    public function excluirCategoria()
+    {
         // Verificar se a requisição é do tipo POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obter o ID do patrocinador a ser excluído
@@ -2620,7 +2638,8 @@ class Admin extends Controller
         ];
         $this->view('admin/diretoria', $dados);
     }
-    public function exibirBuscaMembro(){
+    public function exibirBuscaMembro()
+    {
 
         $buscar = filter_input(INPUT_POST, 'pesquisa', FILTER_SANITIZE_STRING);
         if (!empty($buscar)) :
@@ -2633,16 +2652,16 @@ class Admin extends Controller
                 'exibirDirecao' => $resultBusca,
             ];
             $this->view('admin/diretoria', $dados);
-        else:
+        else :
             $resultBusca = $this->usuarioModel->buscarMembro($buscar);
             $dados = [
                 'exibirDirecao' => $resultBusca,
             ];
             $this->view('admin/diretoria', $dados);
         endif;
-
     }
-    public function cadastrarMembro(){
+    public function cadastrarMembro()
+    {
         $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
         if (isset($formulario)) :
@@ -2763,13 +2782,15 @@ class Admin extends Controller
             ];
         endif;
     }
-    public function editMembro($id){
+    public function editMembro($id)
+    {
         $dados = [
             'exibirDirecao' => $this->usuarioModel->exibirMembro($id),
         ];
         $this->view('admin/diretoria_editar', $dados);
     }
-    public function editarMembro(){
+    public function editarMembro()
+    {
 
         $url = $_SERVER['REQUEST_URI'];
         $parts = explode('/', $url);
@@ -2804,7 +2825,7 @@ class Admin extends Controller
                 endif;
             else :
                 if (!empty($foto)) :
-                    
+
                     $foto = $_FILES['nomeImagem']['tmp_name'];
 
                     // Diretório onde as fotos são armazenadas
@@ -2899,7 +2920,8 @@ class Admin extends Controller
             ];
         endif;
     }
-    public function desligarMembro(){
+    public function desligarMembro()
+    {
         // Verificar se a requisição é do tipo POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obter o ID do patrocinador a ser excluído
@@ -2923,7 +2945,8 @@ class Admin extends Controller
             echo json_encode(array('error' => 'Método não permitido'));
         }
     }
-    public function ativarMembro(){
+    public function ativarMembro()
+    {
         // Verificar se a requisição é do tipo POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obter o ID do patrocinador a ser excluído
@@ -3077,8 +3100,9 @@ class Admin extends Controller
         ];
         $this->view('admin/detalhe_inscricao', $dados);
     }
-    public function perfil(){
-        $dados=[
+    public function perfil()
+    {
+        $dados = [
             'usuario' => $this->usuarioModel->exibirUser($_SESSION['id_user']),
         ];
         $this->view('admin/perfil', $dados);
