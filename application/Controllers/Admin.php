@@ -3121,6 +3121,25 @@ class Admin extends Controller
             header("Location: " . $urlDestino);
         endif;
     }
+    public function backupBD()
+    {
+        if ($this->info->backupBD()) :
+            
+            Sessao::mensagem('backupBD', '<b>Erro:</b> Backup realizado com sucesso!');
+            $refresh_time = 1; // Tempo em segundos
+
+            // Gera o refresh após o tempo especificado
+            header("refresh: $refresh_time");
+            exit; // Certifique-se de usar o exit ou die após o header para evitar execução adicional do código
+        else :
+            Sessao::mensagem('backupBD', '<b>Erro:</b> Não foi possível fazer o backup!', 'alert alert-danger');
+            $refresh_time = 1; // Tempo em segundos
+
+            // Gera o refresh após o tempo especificado
+            header("refresh: $refresh_time");
+            exit; // Certifique-se de usar o exit ou die após o header para evitar execução adicional do código
+        endif;
+    }
     //Página de erro 404
     public function erro()
     {

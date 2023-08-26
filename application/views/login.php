@@ -20,7 +20,7 @@ if (!defined('4578S9')) {
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?php echo URL . '/public/images/favicon.png'; ?>" rel="icon">
+    <link href="<?php echo URL . '/public/images/favicon.webp'; ?>" rel="icon">
     <link href="<?php echo URL . '/public/images/apple-touch-icon.php'; ?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->

@@ -386,36 +386,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 3 && $idade == 7) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 3 && $idade == 7) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -440,36 +471,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 7) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                            <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 7) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -490,36 +550,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 8) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                            <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 8) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -541,36 +630,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 9) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                            <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 9) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -591,36 +709,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 10) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                            <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 10) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -641,36 +788,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 11) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                            <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 11) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -691,36 +867,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 12) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 12) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -741,36 +946,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 13) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 13) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -791,36 +1025,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 14) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 14) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -841,36 +1104,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 15) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 15) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -891,36 +1183,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 16) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 16) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -941,36 +1262,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 17) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 17) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -991,36 +1341,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 18) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 18) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1041,36 +1420,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 19) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 19) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1091,36 +1499,65 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 2 && $idade == 20) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Fixo' => [],
+                                                                'Ala Esquerda' => [],
+                                                                'Ala Direita' => [],
+                                                                'Pivô' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 2 && $idade == 20) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1146,36 +1583,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 7) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 7) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1196,36 +1664,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 8) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 8) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1247,36 +1746,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 9) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 9) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1297,36 +1827,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 10) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 10) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1347,36 +1908,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 11) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 11) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1397,36 +1989,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 12) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 12) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1447,36 +2070,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 13) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 13) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1497,36 +2151,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 14) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 14) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1547,36 +2232,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 15) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 15) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1597,36 +2313,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 16) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 16) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1647,36 +2394,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 17) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 17) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1697,36 +2475,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 18) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 18) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1747,36 +2556,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 19) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 19) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>
@@ -1797,36 +2637,67 @@ endif;
                                                     <div class="container" data-aos="fade-up">
                                                         <div class="row">
 
-                                                            <?php $i = 0; ?>
-                                                            <?php foreach ($dados['dadosAtleta'] as $listar) : ?>
-                                                                <?php $i += 200;
-                                                                $dataAtual = date('Y-m-d'); ?>
-                                                                <?php $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y; ?>
-                                                                <?php if ($listar->categoriaEsportiva == 1 && $idade == 20) : ?>
-                                                                    <?php $dataEdicao = $listar->dt_edicao; ?>
+                                                        <?php
+                                                            $i = 0;
+                                                            $posicoes = [
+                                                                'Goleiro' => [],
+                                                                'Zagueiro' => [],
+                                                                'Lateral' => [],
+                                                                'Volante' => [],
+                                                                'Meia' => [],
+                                                                'Ponta' => [],
+                                                                'Atacante' => []
+                                                            ];
 
-                                                                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
-                                                                        <div class="post-box">
-                                                                            <div class="post-img">
-                                                                                <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                            foreach ($dados['dadosAtleta'] as $listar) {
+                                                                $i += 200;
+                                                                $dataAtual = date('Y-m-d');
+                                                                $idade = date_diff(date_create($dataAtual), date_create($listar->dtNascimento_atleta))->y;
+
+                                                                if ($listar->categoriaEsportiva == 1 && $idade == 20) {
+                                                                    $posicao = $listar->posicaoPrincipal;
+                                                                    if (array_key_exists($posicao, $posicoes)) {
+                                                                        $posicoes[$posicao][] = $listar;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $mostrouAtleta = false;
+                                                            foreach ($posicoes as $posicao => $atletas) {
+                                                                if (!empty($atletas)) {
+                                                                    if ($mostrouAtleta) {
+                                                                        echo '<div style="clear:both;"></div>';
+                                                                    }
+                                                                    foreach ($atletas as $i => $listar) {
+                                                                        $dataEdicao = $listar->dt_edicao;
+                                                            ?>
+                                                                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="<?= $i ?>">
+                                                                            <div class="post-box">
+                                                                                <div class="post-img">
+                                                                                    <img src="<?php echo URL . '/public/uploads/atletas/' . $listar->foto_atleta; ?>" class="img-fluid" alt="">
+                                                                                </div>
+                                                                                <div class="meta">
+                                                                                    <span class="post-date" title="Data de Atualização de Dados">
+                                                                                        <i class="bi bi-calendar-event"></i>
+                                                                                        <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
+                                                                                    </span>
+                                                                                    <span class="post-author">
+                                                                                        / <i class="bi bi-person-circle"></i>
+                                                                                        ADESC LAJES
+                                                                                    </span>
+                                                                                </div>
+                                                                                <a class="member-link mb-3" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
+                                                                                    <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
+                                                                                    <span class="post-author"><?= $listar->posicaoPrincipal ?></span>
+                                                                                </a>
                                                                             </div>
-                                                                            <div class="meta">
-                                                                                <span class="post-date" title="Data de Atualização de Dados">
-                                                                                    <i class="bi bi-calendar-event"></i>
-                                                                                    <?= $dataFormatada = strftime('%d de %B de %Y', strtotime($dataEdicao)); ?>
-                                                                                </span>
-                                                                                <span class="post-author">
-                                                                                    / <i class="bi bi-person-circle"></i>
-                                                                                    ADESC LAJES
-                                                                                </span>
-                                                                            </div>
-                                                                            <a class="member-link" data-bs-toggle="modal" data-bs-target="#BID" data-dado="<?= $listar->id_atleta ?>">
-                                                                                <h3 class="post-title"><?= $listar->nome_atleta ?></h3>
-                                                                            </a>
                                                                         </div>
-                                                                    </div>
-                                                                <?php endif; ?>
-                                                            <?php endforeach; ?>
+                                                            <?php
+                                                                    }
+                                                                    $mostrouAtleta = true;
+                                                                }
+                                                            }
+                                                            ?>
 
                                                         </div>
                                                     </div>

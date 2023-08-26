@@ -34,7 +34,7 @@
                             <div class="form-group col-md-5">
                                 <label for="name">Categória Esportiva:</label>
                                 <select class="form-select" aria-label="Default select example" name="cat">
-                                    <option selected>Selecione</option>
+                                    <option selected disabled>Selecione</option>
                                     <?php foreach($dados['exibirCategorias'] as $list): ?>
                                     <option value="<?=$list->id_categoria?>"><?=$list->nome?></option>
                                     <?php endforeach; ?>

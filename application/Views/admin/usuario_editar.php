@@ -87,7 +87,7 @@
                             <div class="col-md-6">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input type="password" class="form-control" name="senhaUser" id="floatingCity" value="<?= $dados['exibirUser']->senha_usuario ?>" required>
+                                        <input type="text" class="form-control" name="senhaUser" id="floatingCity" value="" required>
                                         <label for="floatingCity">Senha*:</label>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                             <hr>
                             <div class="col-12">
                                 <div class="col-md-6">
-                                    <button type="submit" id="botao-editar"><i class="bi bi-pencil-square"></i> Editar Patrocinador</button>
+                                    <button type="submit" id="botao-editar"><i class="bi bi-pencil-square"></i> Editar Usuário</button>
                                 </div>
                             </div>
                         </form>
@@ -147,6 +147,20 @@
 
 </main><!-- End #main -->
 <script>
+    function formatarTelefone(telefone) {
+        // Remove qualquer caractere que não seja número
+        telefone = telefone.replace(/\D/g, '');
+
+        // Verifica se o número de telefone tem um formato válido
+        if (telefone.length === 11) {
+            telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        } else if (telefone.length === 9) {
+            telefone = telefone.replace(/(\d{5})(\d{4})/, '$1-$2');
+        }
+
+        // Atualiza o valor do input com o telefone formatado
+        document.getElementById('telefone-input').value = telefone;
+    }
     document.getElementById('nomeFoto').addEventListener('change', function(event) {
         var file = event.target.files[0];
         var imageType = /image.*/;

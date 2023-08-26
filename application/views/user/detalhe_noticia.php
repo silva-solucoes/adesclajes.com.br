@@ -36,13 +36,13 @@ setlocale(LC_TIME, 'portuguese');
 
                         <div class="meta-top">
                             <ul>
-                                <li class="d-flex align-items-center"><i class="bi bi-person-circle"></i> <a href="blog-details.html"><?= $dados['noticia']->nome_usuario ?></a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-person-circle"></i> <a href="#"><?= $dados['noticia']->nome_usuario ?></a></li>
                                 <?php $dataPostagem = strftime('%d de %B de %Y', strtotime($dados['noticia']->dtAtualizacao)); ?>
-                                <li class="d-flex align-items-center"><i class="bi bi-calendar-event"></i> <a href="blog-details.html"><time datetime="2022-01-01"><?= $dataPostagem ?></time></a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-calendar-event"></i> <a href="#"><time datetime="2022-01-01"><?= $dataPostagem ?></time></a></li>
                                 <?php if ($dados['contagemComentarios']->quantComentario <> 0) : ?>
-                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html"><?= $dados['contagemComentarios']->quantComentario ?> Comentários</a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#"><?= $dados['contagemComentarios']->quantComentario ?> Comentários</a></li>
                                 <?php else : ?>
-                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html"><?= $dados['contagemComentarios']->quantComentario ?> Comentários</a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#"><?= $dados['contagemComentarios']->quantComentario ?> Comentários</a></li>
                                 <?php endif; ?>
                             </ul>
                         </div><!-- End meta top -->
@@ -65,19 +65,19 @@ setlocale(LC_TIME, 'portuguese');
                         <div>
                             <h4><?= $dados['noticia']->nome_membro ?></h4>
                             <div class="social-links">
-                                <?php if($dados['rsMembros']->link_Facebook != '#') : ?>
+                                <?php if ($dados['rsMembros']->link_Facebook != '#') : ?>
                                     <a href="<?= $dados['rsMembros']->link_Facebook ?>"><?= $dados['rsMembros']->iconeFacebook ?></a>
                                 <?php endif; ?>
-                                <?php if($dados['rsMembros']->link_Instagram != '#') : ?>
+                                <?php if ($dados['rsMembros']->link_Instagram != '#') : ?>
                                     <a href="<?= $dados['rsMembros']->link_Instagram ?>"><?= $dados['rsMembros']->iconeInstagram ?></a>
                                 <?php endif; ?>
-                                <?php if($dados['rsMembros']->link_Linkedin != '#') : ?>
+                                <?php if ($dados['rsMembros']->link_Linkedin != '#') : ?>
                                     <a href="<?= $dados['rsMembros']->link_Linkedin ?>"><?= $dados['rsMembros']->iconeLinkedin ?></a>
                                 <?php endif; ?>
-                                <?php if($dados['rsMembros']->link_TikTok != '#') : ?>
+                                <?php if ($dados['rsMembros']->link_TikTok != '#') : ?>
                                     <a href="<?= $dados['rsMembros']->link_TikTok ?>"><?= $dados['rsMembros']->iconeTikTok ?></a>
                                 <?php endif; ?>
-                                <?php if($dados['rsMembros']->link_Twitter != '#') : ?>
+                                <?php if ($dados['rsMembros']->link_Twitter != '#') : ?>
                                     <a href="<?= $dados['rsMembros']->link_Twitter ?>"><?= $dados['rsMembros']->iconeTwitter ?></a>
                                 <?php endif; ?>
                             </div>
@@ -93,9 +93,13 @@ setlocale(LC_TIME, 'portuguese');
                         <?php else : ?>
                             <h4 class="comments-count"><?= $dados['contagemComentarios']->quantComentario ?> Comentários</h4>
                         <?php endif; ?>
-                        <?php if ($dados['contagemComentarios']->quantComentario <> 0 && $dados['contagemComentarios']->quantComentario >= 5) : ?>
+                        <?php if ($dados['contagemComentarios']->quantComentario <> 0) : ?>
                             <div id="comment-1" class="comment">
-                                <?php foreach ($dados['comentarios'] as $ler) : ?>
+                                <?php
+                                // Verifica se há mais de 5 comentários
+                                $totalComentarios = count($dados['comentarios']);
+                                $exibirComentarios = $totalComentarios > 5 ? array_slice($dados['comentarios'], -$totalComentarios, 5) : $dados['comentarios'];
+                                foreach ($exibirComentarios as $ler) : ?>
                                     <div class="d-flex">
                                         <div class="comment-img"><img src="<?php echo URL . '/public/images/' . $ler->fotoComent; ?>" alt=""></div>
                                         <div>
@@ -109,6 +113,37 @@ setlocale(LC_TIME, 'portuguese');
                                     </div>
                                 <?php endforeach; ?>
                             </div><!-- End comment #1 -->
+                            <?php if ($dados['contagemComentarios']->quantComentario > 5) : ?>
+                                <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Ver mais comentários</button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div id="comment-1" class="comment">
+                                                    <?php
+                                                    // Exibe os comentários restantes na lista de "Ver mais comentários"
+                                                    $comentariosRestantes = array_slice($dados['todosComentarios'], 0, $dados['contagemComentarios']->quantComentario - 5);
+                                                    foreach ($comentariosRestantes as $listar) : ?>
+                                                        <div class="d-flex">
+                                                            <div class="comment-img"><img src="<?php echo URL . '/public/images/' . $listar->fotoComent; ?>" alt=""></div>
+                                                            <div>
+                                                                <h5><a href=""><?= $listar->nomeComent ?></a></h5>
+                                                                <?php $dataPostagem = strftime('%d de %B de %Y', strtotime($listar->dtCadastroComent)); ?>
+                                                                <time datetime="2020-01-01"><?= $dataPostagem ?></time>
+                                                                <p>
+                                                                    <?= $listar->comentarioInter ?>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         <?php else : ?>
                             <div id="comment-1" class="comment">
                                 <div class="d-flex">
@@ -118,36 +153,6 @@ setlocale(LC_TIME, 'portuguese');
                                 </div>
                             </div><!-- End comment #1 -->
                         <?php endif; ?>
-                        <?php if ($dados['contagemComentarios']->quantComentario > 5) : ?>
-                            <div class="accordion" id="accordionExample">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Ver mais comentários</button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <div id="comment-1" class="comment">
-                                                <?php foreach ($dados['todosComentarios'] as $listar) : ?>
-
-                                                    <div class="d-flex">
-                                                        <div class="comment-img"><img src="<?php echo URL . '/public/images/' . $listar->fotoComent; ?>" alt=""></div>
-                                                        <div>
-                                                            <h5><a href=""><?= $listar->nomeComent ?></a></h5>
-                                                            <?php $dataPostagem = strftime('%d de %B de %Y', strtotime($listar->dtCadastroComent)); ?>
-                                                            <time datetime="2020-01-01"><?= $dataPostagem ?></time>
-                                                            <p>
-                                                                <?= $listar->comentarioInter ?>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                <?php endforeach; ?>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endif; ?>
                         <div class="reply-form">
 
                             <h4>Deixe um comentário</h4>
@@ -155,15 +160,15 @@ setlocale(LC_TIME, 'portuguese');
                             <form id="formularioComentario" method="post">
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <input name="nameVisitante" type="text" class="form-control" placeholder="Seu nome*">
+                                        <input name="nameVisitante" type="text" class="form-control" placeholder="Seu nome*" required>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input name="emailVisitante" type="text" class="form-control" placeholder="Seu e-mail*">
+                                        <input name="emailVisitante" type="email" class="form-control" placeholder="Seu e-mail*" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col form-group">
-                                        <textarea id="comentarioVisitante" name="comentarioVisitante" class="form-control" placeholder="Seu comentário*"></textarea>
+                                        <textarea id="comentarioVisitante" name="comentarioVisitante" class="form-control" placeholder="Seu comentário*" required></textarea>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary" onclick="validarComentario(event)">Postar comentário</button>
@@ -248,30 +253,48 @@ setlocale(LC_TIME, 'portuguese');
 </main><!-- End #main -->
 <script>
     function validarComentario(event) {
-    event.preventDefault(); // Impede o envio automático do formulário
+        event.preventDefault(); // Impede o envio automático do formulário
 
-    // Obtém o valor do campo de comentário
-    var comentario = document.getElementById("comentarioVisitante").value;
+        // Obter os valores dos inputs
+        var nome = document.getElementsByName("nameVisitante")[0].value;
+        var email = document.getElementsByName("emailVisitante")[0].value;
+        var comentario = document.getElementById("comentarioVisitante").value;
 
-    // Lista de palavras proibidas
-    var palavrasProibidas = ["negra bonita", "arma", "armas", "neguinho", "neguinha", "negrinho", "negrinha", "negro bonito", "cabelo exótico", "cabelo exotico", "cabelo ruim", "cabelo de pixaim", "negra suja","negro sujo", "negra metida", "negro metido", "empregadinha", "empregadinho", "coisa tá preta", "coisa ruim", "bicha", "bixa", "buceta", "vulva", "vagina", "bosta", "cagar", "defecar", "caralho", "pênis", "penis", "cacete", "pica", "rôla", "piroca", "pinto", "pipiu", "cu", "cú", "ânus", "anus", "foda-se", "fodasse", "fodace", "foder", "porra", "gala", "pora", "galado", "esperma", "espermatozoide", "sêmem", "semem", "puta", "puto", "puta que pariu", "prostituta", "rapariga", "maria chuteira", "merda", "boga", "furico", "cuzinho", "bunda", "gostosa", "gostoso", "bumdão", "tabaco","tabacão", "tabaquinha", "tabacuda", "viado", "homossexual", "traveco", "travestir", "ele é menina", "ela é menino", "fresco", "ele é fresco", "ela é fresca", "Adolf Hitler", "Hitler", "nazista", "nazismo", "maconha", "bora beber", "vamos fumar", "vamos tranzar", "vamos fazer amor", "vamos fazer bebê", "vamos fazer bebe", "vamos trepar", "vamos trepa", "vamos coisa", "trepa", "trepar", "cagão", "mijão", "mijar", "sexo", "fodidinha", "pau"];
-
-    // Verifica se o comentário contém palavras proibidas
-    for (var i = 0; i < palavrasProibidas.length; i++) {
-        if (comentario.toLowerCase().includes(palavrasProibidas[i])) {
-            // Desativa o atributo "action" do formulário
-            document.getElementById("formularioComentario").removeAttribute("action");
-
-            // Exibe uma mensagem informando que o comentário contém palavras proibidas
-            alert("Seu comentário contém palavras ofensivas e não pode ser enviado.");
-
-            return; // Impede o envio do formulário
+        // Verificar se os campos não estão vazios e se o e-mail é válido
+        if (nome.trim() === '' || email.trim() === '' || comentario.trim() === '') {
+            alert("Todos os campos são obrigatórios. Por favor, preencha-os.");
+            return; // Impedir o envio caso haja campos vazios
         }
-    }
 
-    // Ativa o action do formulário e envia o formulário
-    document.getElementById("formularioComentario").setAttribute("action", "<?= URL ?>/user/enviarComentarioNoticia/<?= $dados['noticia']->id_noticia ?>");
-    document.getElementById("formularioComentario").submit();
-}
+        // Verificar se o e-mail é válido usando uma expressão regular simples
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Por favor, insira um e-mail válido.");
+            return; // Impedir o envio caso o e-mail seja inválido
+        }
+
+        // Obtém o valor do campo de comentário
+        var comentario = document.getElementById("comentarioVisitante").value;
+
+        // Lista de palavras proibidas
+        var palavrasProibidas = ["put@", "negra bonita", "arma", "armas", "neguinho", "neguinha", "negrinho", "negrinha", "negro bonito", "cabelo exótico", "cabelo exotico", "cabelo ruim", "cabelo de pixaim", "negra suja", "negro sujo", "negra metida", "negro metido", "empregadinha", "empregadinho", "coisa tá preta", "coisa ruim", "bicha", "bixa", "buceta", "vulva", "vagina", "bosta", "cagar", "defecar", "caralho", "pênis", "penis", "cacete", "pica", "rôla", "piroca", "pinto", "pipiu", "cu", "cú", "ânus", "anus", "foda-se", "fodasse", "fodace", "foder", "porra", "gala", "pora", "galado", "esperma", "espermatozoide", "sêmem", "semem", "puta", "puto", "puta que pariu", "prostituta", "rapariga", "maria chuteira", "merda", "boga", "furico", "cuzinho", "bunda", "gostosa", "gostoso", "bumdão", "tabaco", "tabacão", "tabaquinha", "tabacuda", "viado", "homossexual", "traveco", "travestir", "ele é menina", "ela é menino", "fresco", "ele é fresco", "ela é fresca", "Adolf Hitler", "Hitler", "nazista", "nazismo", "maconha", "bora beber", "vamos fumar", "vamos tranzar", "vamos fazer amor", "vamos fazer bebê", "vamos fazer bebe", "vamos trepar", "vamos trepa", "vamos coisa", "trepa", "trepar", "cagão", "mijão", "mijar", "sexo", "fodidinha", "pau"];
+
+        // Verifica se o comentário contém palavras proibidas
+        for (var i = 0; i < palavrasProibidas.length; i++) {
+            if (comentario.toLowerCase().includes(palavrasProibidas[i])) {
+                // Desativa o atributo "action" do formulário
+                document.getElementById("formularioComentario").removeAttribute("action");
+
+                // Exibe uma mensagem informando que o comentário contém palavras proibidas
+                alert("Seu comentário contém palavras ofensivas e não pode ser enviado.");
+
+                return; // Impede o envio do formulário
+            }
+        }
+
+        // Ativa o action do formulário e envia o formulário
+        document.getElementById("formularioComentario").setAttribute("action", "<?= URL ?>/user/enviarComentarioNoticia/<?= $dados['noticia']->id_noticia ?>");
+        document.getElementById("formularioComentario").submit();
+    }
 </script>
 <?php include_once 'footer.php'; ?>

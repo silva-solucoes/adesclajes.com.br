@@ -76,13 +76,13 @@
                                         <?php foreach ($dados['user'] as $ler) : ?>
                                             <tr data-index="0">
 
-                                                <td><a href="#">#<?= $ler->id_usuario ?></a></td>
+                                                <td><a href="<?= URL . '/admin/editUser/' . $ler->id_usuario ?>">#<?= $ler->id_usuario ?></a></td>
                                                 <td>
                                                     <font style="vertical-align: inherit;">
                                                         <font style="vertical-align: inherit;"><img src="<?php echo URL . '/public/uploads/adms/' . $ler->foto_user; ?>" alt="Patrocinador 1" style="width:120px;"></font>
                                                     </font>
                                                 </td>
-                                                <td><a href="#" class="text-primary">
+                                                <td><a href="<?= URL . '/admin/editUser/' . $ler->id_usuario ?>" title="Editar <?= $ler->nome_usuario ?>" class="text-primary">
                                                         <font style="vertical-align: inherit;">
                                                             <font style="vertical-align: inherit;"><?= $ler->nome_usuario ?></font>
                                                         </font>
@@ -90,24 +90,24 @@
                                                 <td><?= $ler->nome_status ?></td>
                                                 <td><span class="badge">
                                                         <font style="vertical-align: inherit;">
-                                                            <font style="vertical-align: inherit;"><a class="btn btn-warning rounded-pill" href="<?= URL.'/admin/editUser/'.$ler->id_usuario ?>" title="Editar Atleta"><i class="bi bi-pencil-square"></i></a></font>
+                                                            <font style="vertical-align: inherit;"><a class="btn btn-warning rounded-pill" href="<?= URL . '/admin/editUser/' . $ler->id_usuario ?>" title="Editar Usuário"><i class="bi bi-pencil-square"></i></a></font>
                                                             <font style="vertical-align: inherit;">
-                                                            <?php if($ler->status == 1): ?>
-                                                                <a class="btn btn-danger rounded-pill view_data" title="Desligar Usuário" id="<?php echo $ler->id_usuario; ?>">
-                                                                    <i class="fas fa-power-off"></i></i></a>
-                                                            <?php elseif($ler->status == 2  && $ler->chave_ativae == ''): ?>
-                                                                <a class="btn btn-secondary rounded-pill ativar_data" title="Ativar Usuário" id="<?php echo $ler->id_usuario; ?>">
-                                                                    <i class="fas fa-power-off"></i></i></a>
-                                                            <?php elseif($ler->status == 2  && $ler->chave_ativae != ''): ?>
-                                                                <a class="btn btn-secondary rounded-pill ativar_data" title="Usuário não ativou a conta" id="<?php echo $ler->id_usuario; ?>" disabled>
-                                                                    <i class="fas fa-power-off"></i></i></a>
-                                                            <?php endif; ?>
+                                                                <?php if ($ler->status == 1) : ?>
+                                                                    <a class="btn btn-danger rounded-pill view_data" title="Desligar Usuário" id="<?php echo $ler->id_usuario; ?>">
+                                                                        <i class="fas fa-power-off"></i></i></a>
+                                                                <?php elseif ($ler->status == 2  && $ler->chave_ativae == '') : ?>
+                                                                    <a class="btn btn-secondary rounded-pill ativar_data" title="Ativar Usuário" id="<?php echo $ler->id_usuario; ?>">
+                                                                        <i class="fas fa-power-off"></i></i></a>
+                                                                <?php elseif ($ler->status == 2  && $ler->chave_ativae != '') : ?>
+                                                                    <a class="btn btn-secondary rounded-pill ativar_data" title="Usuário não ativou a conta" id="<?php echo $ler->id_usuario; ?>" disabled>
+                                                                        <i class="fas fa-power-off"></i></i></a>
+                                                                <?php endif; ?>
                                                             </font>
-                                                            <?php if($ler->status == 2  && $ler->chave_ativae != ''): ?>
-                                                            <font style="vertical-align: inherit;">
-                                                                <a class="btn btn-warning rounded-pill ativar_enviar" title="Enviar Ativação de Conta" id="<?php echo $ler->id_usuario; ?>">
-                                                                <i class="bi bi-envelope-plus"></i></a>
-                                                            </font>
+                                                            <?php if ($ler->status == 2  && $ler->chave_ativae != '') : ?>
+                                                                <font style="vertical-align: inherit;">
+                                                                    <a class="btn btn-warning rounded-pill ativar_enviar" title="Enviar Ativação de Conta" id="<?php echo $ler->id_usuario; ?>">
+                                                                        <i class="bi bi-envelope-plus"></i></a>
+                                                                </font>
                                                             <?php endif; ?>
                                                         </font>
                                                     </span></td>
@@ -120,7 +120,7 @@
                             <div class="datatable-bottom">
                                 <div class="datatable-info">
                                     <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">Mostrando 1 a 5 de 5 entradas</font>
+                                        <font style="vertical-align: inherit;">Mostrando entradas</font>
                                     </font>
                                 </div>
                                 <nav class="datatable-pagination">
@@ -226,10 +226,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button id="botao-inscricao" type="submit" class="botao-editar">Cadastrar
+                    <button id="botao-inscricao" type="submit" class="botao-editar"><i class="bi bi-plus-circle"></i> Cadastrar
                         Usuário</button>
                     </form>
-                    <button id="botao-cancelar" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="botao-cancelar" type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
                 </div>
             </div>
         </div>
@@ -294,6 +294,20 @@
 
 </main><!-- End #main -->
 <script>
+    function formatarTelefone(telefone) {
+        // Remove qualquer caractere que não seja número
+        telefone = telefone.replace(/\D/g, '');
+
+        // Verifica se o número de telefone tem um formato válido
+        if (telefone.length === 11) {
+            telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        } else if (telefone.length === 9) {
+            telefone = telefone.replace(/(\d{5})(\d{4})/, '$1-$2');
+        }
+
+        // Atualiza o valor do input com o telefone formatado
+        document.getElementById('telefone-input').value = telefone;
+    }
     $(document).ready(function() {
         $(document).on('click', '.view_data', function() {
             var user_id = $(this).attr("id");

@@ -108,13 +108,12 @@ class User extends Controller
     {
         function getRealIPAddress()
         {
-            // Verificar se o cabeçalho X-Forwarded-For existe e não está vazio
-            if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] !== '') {
-                // Obter o endereço IP real do cliente a partir do cabeçalho X-Forwarded-For
-                $enderecoIPs = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-                return trim($enderecoIPs[0]);
+            // Verificar se o cabeçalho REMOTE_ADDR existe e não está vazio
+            if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] !== '') {
+                // Obter o endereço IP real do cliente a partir do cabeçalho REMOTE_ADDR
+                return $_SERVER['REMOTE_ADDR'];
             } else {
-                // Caso contrário, retornar o endereço IP padrão
+                // Caso contrário, retornar o endereço IP padrão do servidor
                 return $_SERVER['SERVER_ADDR'];
             }
         }

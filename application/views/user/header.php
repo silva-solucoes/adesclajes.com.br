@@ -262,7 +262,7 @@ $dataAtual = date('Y-m-d');
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-shield-lock"></i> Política de
+          <h1 style="color: black;" class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-shield-lock"></i> Política de
             Privacidade da Escolinha ADESC Lajes</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -271,8 +271,8 @@ $dataAtual = date('Y-m-d');
           <section id="secao-privada" class="inner-page">
             <div class="container" data-aos="fade-up">
               <div class="section-header text-center">
-                <p>Proteger sua privacidade é nossa prioridade. Conheça nossa política de privacidade e saiba como seus
-                  dados são utilizados e protegidos. Leia agora e fique por dentro de seus direitos!</p>
+                <p>Proteger sua privacidade é nossa prioridade.<br>Conheça nossa política de privacidade e saiba como seus
+                  dados são utilizados e protegidos.<br>Leia agora e fique por dentro de seus direitos!</p>
               </div>
 
               <p class="text-justify">

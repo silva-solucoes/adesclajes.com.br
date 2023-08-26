@@ -1,6 +1,7 @@
 <?php
 
-class Login extends Controller{
+class Login extends Controller
+{
     private $usuarioModel;
     public function __construct()
     {
@@ -30,16 +31,16 @@ class Login extends Controller{
             else :
                 if (Checa::checarEmail($formulario['email'])) :
                     $dados['email_erro'] = 'O e-mail informado é invalido';
-                    
+
                 else :
 
-                    $autenticarLogin = $this->usuarioModel->autenticarLogin($formulario['email'],$formulario['senha']);
+                    $autenticarLogin = $this->usuarioModel->autenticarLogin($formulario['email'], $formulario['senha']);
 
-                    if($autenticarLogin):
+                    if ($autenticarLogin) :
                         $this->criarSessaoUsuario($autenticarLogin);
-                    else:
-                        Sessao::mensagem('usuario','E-mail ou senha inválida', 'alert alert-danger');
-                        header("Location:".URL."/paginas/login");
+                    else :
+                        Sessao::mensagem('usuario', 'E-mail ou senha inválida', 'alert alert-danger');
+                        header("Location:" . URL . "/paginas/login");
                     endif;
 
                 endif;
@@ -58,47 +59,46 @@ class Login extends Controller{
 
 
         $this->view('user/login', $dados);
-
     }
 
     public function recuperarConta(){
-        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        if (isset($formulario)) :
-            $dados = [
-                'email' => trim($formulario['email']),
-            ];
-            if (in_array("", $formulario)) :
-                if (empty($formulario['email'])) :
-                    $dados['email_erro'] = 'Preencha o campo e-mail';
-                endif;
-            else:
-                if (Checa::checarEmail($formulario['email'])) :
-                    $dados['email_erro'] = 'O e-mail informado é invalido';
-                else:
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            if (!empty($formulario['email'])) {
+                if (Checa::checarEmail($formulario['email'])) {
+                    $dados['email_erro'] = 'O e-mail informado é inválido';
+                } else {
                     $recuperar = $this->usuarioModel->recuperar($formulario['email']);
-                    if($recuperar):
+                    if ($recuperar) {
                         header("Location:".URL."/paginas/login");
-                    else:
+                        exit;
+                    } else {
                         header("Location:".URL."/paginas/recuperar");
-                    endif;
-                endif;
-            endif;
-        else :
+                        exit;
+                    }
+                }
+            } else {
+                $dados['email_erro'] = 'Preencha o campo e-mail';
+            }
+        } else {
             header("Location:".URL."/paginas/recuperar");
-        endif;
+            exit;
+        }
     }
 
-    private function criarSessaoUsuario($autenticarLogin){
+    private function criarSessaoUsuario($autenticarLogin)
+    {
         $_SESSION['id_user'] = $autenticarLogin->id_usuario;
         $_SESSION['nome_user'] = $autenticarLogin->nome_usuario;
         $_SESSION['email_user'] = $autenticarLogin->email_usuario;
         $_SESSION['foto_user'] = $autenticarLogin->foto_user;
         $_SESSION['funcao_user'] = $autenticarLogin->nome_status;
-        header("Location:".URL."/admin/index");
+        header("Location:" . URL . "/admin/index");
         //$this->view('admin/painel');
     }
 
-    public function sair(){
+    public function sair()
+    {
         unset($_SESSION['id_user']);
         unset($_SESSION['nome_user']);
         unset($_SESSION['email_user']);
@@ -107,6 +107,6 @@ class Login extends Controller{
 
         session_destroy();
 
-        header("Location:".URL."/paginas/login");
+        header("Location:" . URL . "/paginas/login");
     }
 }

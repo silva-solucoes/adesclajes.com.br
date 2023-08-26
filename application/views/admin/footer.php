@@ -1,5 +1,6 @@
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
+    <div class="container"><?= Sessao::mensagem('backupBD'); ?></div>
     <div class="copyright">
         Copyright &copy;
         <script>
@@ -16,8 +17,7 @@
     </div>
 </footer><!-- End Footer -->
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-        class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
 <script src="<?php echo URL . '/public/vendor/apexcharts/apexcharts.min.js'; ?>"></script>
@@ -36,81 +36,81 @@
 <script src="<?php echo URL . '/public/css/dist/plugins/emoji/trumbowyg.emoji.min.js'; ?>"></script>
 <script>
     $('#editor1').trumbowyg({
-            lang: 'pt_br',
-            btns: [
-                ['viewHTML'],
-                ['undo', 'redo'], // Only supported in Blink browsers
-                ['formatting'],
-                ['strong', 'em', 'del'],
-                ['superscript', 'subscript'],
-                ['link'],
-                ['insertImage'],
-                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-                ['unorderedList', 'orderedList'],
-                ['horizontalRule'],
-                ['removeformat'],
-                ['fullscreen'],
-                ['emoji']
-            ],
-            autogrow: true
-        });
-        $('#editor2').trumbowyg({
-            lang: 'pt_br',
-            btns: [
-                ['viewHTML'],
-                ['undo', 'redo'], // Only supported in Blink browsers
-                ['formatting'],
-                ['strong', 'em', 'del'],
-                ['superscript', 'subscript'],
-                ['link'],
-                ['insertImage'],
-                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-                ['unorderedList', 'orderedList'],
-                ['horizontalRule'],
-                ['removeformat'],
-                ['fullscreen'],
-                ['emoji']
-            ],
-            autogrow: true
-        });
-        $('#conteudoNoticia').trumbowyg({
-            lang: 'pt_br',
-            btns: [
-                ['viewHTML'],
-                ['undo', 'redo'], // Only supported in Blink browsers
-                ['formatting'],
-                ['strong', 'em', 'del'],
-                ['superscript', 'subscript'],
-                ['link'],
-                ['insertImage'],
-                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-                ['unorderedList', 'orderedList'],
-                ['horizontalRule'],
-                ['removeformat'],
-                ['fullscreen'],
-                ['emoji']
-            ],
-            autogrow: true
-        });
-        $('#editarConteudoNoticia').trumbowyg({
-            lang: 'pt_br',
-            btns: [
-                ['viewHTML'],
-                ['undo', 'redo'], // Only supported in Blink browsers
-                ['formatting'],
-                ['strong', 'em', 'del'],
-                ['superscript', 'subscript'],
-                ['link'],
-                ['insertImage'],
-                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-                ['unorderedList', 'orderedList'],
-                ['horizontalRule'],
-                ['removeformat'],
-                ['fullscreen'],
-                ['emoji']
-            ],
-            autogrow: true
-        });
+        lang: 'pt_br',
+        btns: [
+            ['viewHTML'],
+            ['undo', 'redo'], // Only supported in Blink browsers
+            ['formatting'],
+            ['strong', 'em', 'del'],
+            ['superscript', 'subscript'],
+            ['link'],
+            ['insertImage'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['removeformat'],
+            ['fullscreen'],
+            ['emoji']
+        ],
+        autogrow: true
+    });
+    $('#editor2').trumbowyg({
+        lang: 'pt_br',
+        btns: [
+            ['viewHTML'],
+            ['undo', 'redo'], // Only supported in Blink browsers
+            ['formatting'],
+            ['strong', 'em', 'del'],
+            ['superscript', 'subscript'],
+            ['link'],
+            ['insertImage'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['removeformat'],
+            ['fullscreen'],
+            ['emoji']
+        ],
+        autogrow: true
+    });
+    $('#conteudoNoticia').trumbowyg({
+        lang: 'pt_br',
+        btns: [
+            ['viewHTML'],
+            ['undo', 'redo'], // Only supported in Blink browsers
+            ['formatting'],
+            ['strong', 'em', 'del'],
+            ['superscript', 'subscript'],
+            ['link'],
+            ['insertImage'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['removeformat'],
+            ['fullscreen'],
+            ['emoji']
+        ],
+        autogrow: true
+    });
+    $('#editarConteudoNoticia').trumbowyg({
+        lang: 'pt_br',
+        btns: [
+            ['viewHTML'],
+            ['undo', 'redo'], // Only supported in Blink browsers
+            ['formatting'],
+            ['strong', 'em', 'del'],
+            ['superscript', 'subscript'],
+            ['link'],
+            ['insertImage'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['removeformat'],
+            ['fullscreen'],
+            ['emoji']
+        ],
+        autogrow: true
+    });
 </script>
 <!-- Template Main JS File -->
 <script src="<?php echo URL . '/public/js/mainAdm.js'; ?>"></script>

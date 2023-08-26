@@ -27,7 +27,8 @@ class Usuario
 
         return $this->bd->resultados();
     }
-    public function exibirUser($id){
+    public function exibirUser($id)
+    {
         $this->bd->query("SELECT *
         FROM tbl_usuario
         INNER JOIN tbl_funcao ON tbl_funcao.id_funcao = tbl_usuario.id_funcao
@@ -116,7 +117,8 @@ class Usuario
             return false;
         endif;
     }
-    public function ativarUser($id){
+    public function ativarUser($id)
+    {
         $this->bd->query('UPDATE tbl_usuario SET status = :st WHERE id_usuario = :idUsuario');
         $this->bd->bind(':st', 1);
         $this->bd->bind(':idUsuario', $id);
@@ -129,7 +131,8 @@ class Usuario
             return false;
         endif;
     }
-    public function desabilitarUser($id){
+    public function desabilitarUser($id)
+    {
         $this->bd->query('UPDATE tbl_usuario SET status = :st WHERE id_usuario = :idUsuario');
         $this->bd->bind(':st', 2);
         $this->bd->bind(':idUsuario', $id);
@@ -178,14 +181,12 @@ class Usuario
         $this->bd->bind(":e", $email);
 
         $resultado = $this->bd->resultado();
-        $emailRecu = $resultado->email_usuario;
-        $nomeRecu = $resultado->nome_usuario;
 
-        if ($this->bd->resultado()) :
-            if ($resultado->status != 1) :
+        if ($resultado) {
+            if ($resultado->status != 1) {
                 Sessao::mensagem('recuperarConta', '<b>Este e-mail ainda não foi ativado.</b><br> Por favor, entre em contato com o administrador para solicitar o reenvio do link de ativação da sua conta.', 'alert alert-danger');
                 return false;
-            else :
+            } else {
                 $senha_padrao = password_hash('adesc@lajes1997', PASSWORD_DEFAULT);
                 $idUsuario = $resultado->id_usuario;
                 $this->bd->query('UPDATE tbl_usuario SET tbl_usuario.senha_usuario = :senhaPadrao, tbl_usuario.dt_edicao = NOW() WHERE tbl_usuario.id_usuario = :id');
@@ -193,37 +194,36 @@ class Usuario
                 $this->bd->bind(':senhaPadrao', $senha_padrao);
                 $this->bd->bind(':id', $idUsuario);
 
-                if ($this->bd->executa()) :
-                    //Enviar e-mail de credenciais
-                    $this->enviarRecuperacao($emailRecu, $nomeRecu);
+                if ($this->bd->executa()) {
+                    // Enviar e-mail de recuperação
+                    $this->enviarRecuperacao($email, $resultado->nome_usuario);
                     Sessao::mensagem('usuario', '<b>Senha foi alterada!</b><br> A senha foi enviada para o seu e-mail.');
                     return true;
-                else :
+                } else {
                     Sessao::mensagem('usuario', '<b>Erro:</b> Não foi possível alterar!', 'alert alert-danger');
                     return false;
-                endif;
-            endif;
-        else :
+                }
+            }
+        } else {
             Sessao::mensagem('recuperarConta', '<b>E-mail não cadastrado.</b><br> Por favor, verifique se o e-mail informado está correto.', 'alert alert-danger');
-        endif;
+            return false;
+        }
     }
 
     public function enviarRecuperacao($email, $nome)
     {
-        $resultado = $this->bd->resultado();
-        $nome = $resultado->nome_usuario;
         $mail = new PHPMailer(true);
 
         try {
-            #$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            // Habilitar o uso do SMTP
             $mail->isSMTP();
-            $mail->Host = 'sandbox.smtp.mailtrap.io';
+            $mail->Host = 'smtp.hostinger.com'; // Endereço do servidor SMTP da Hostinger
             $mail->SMTPAuth = true;
-            $mail->Username = 'b37f9d489ed790';
-            $mail->Password = '24566e2fa66e36';
-            $mail->Port = 587;
+            $mail->Username = 'comunicacao@adesclajes.com.br'; // Seu endereço de e-mail na Hostinger
+            $mail->Password = 'ADESC@comunicacao2023'; // Sua senha de e-mail na Hostinger
+            $mail->Port = 587; // Porta do servidor SMTP da Hostinger (geralmente é 587)
 
-            $mail->setFrom('adesclajes1997@gmail.com');
+            $mail->setFrom('comunicacao@adesclajes.com.br'); // Seu endereço de e-mail na Hostinger
             $mail->addAddress($email);
 
             $mail->isHTML(true);
@@ -242,8 +242,9 @@ class Usuario
 			Diretoria da ADESC Lajes.";
 
             if ($mail->send()) {
+                echo 'E-mail enviado com sucesso';
             } else {
-                echo 'Email nao enviado';
+                echo 'Erro ao enviar e-mail';
             }
         } catch (Exception $e) {
             echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
@@ -289,7 +290,7 @@ class Usuario
     }
     public function exibirInscricao($idInscricao)
     {
-         
+
         $this->bd->query('SELECT *
         FROM tbl_atleta
         INNER JOIN tbl_detalheescolar ON tbl_atleta.id_escola = tbl_detalheescolar.id_escolar
@@ -303,7 +304,7 @@ class Usuario
         WHERE tbl_incricao.id_inscricao = :idInscricao
         ORDER BY tbl_atleta.id_atleta DESC');
         $this->bd->bind('idInscricao', $idInscricao);
-        
+
         return $this->bd->resultado();
     }
     public function listarSobre()
@@ -958,10 +959,13 @@ class Usuario
 
         return $this->bd->resultados();
     }
-    
+
     public function mostrarAtleta($nome, $categoria)
     {
-        $this->bd->query("SELECT *
+
+        if ($categoria != null && $nome == null) {
+
+            $this->bd->query("SELECT *
         FROM tbl_atleta
         INNER JOIN tbl_detalheescolar ON tbl_detalheescolar.id_escolar = tbl_atleta.id_escola
         INNER JOIN tbl_detalhefiliacao ON tbl_detalhefiliacao.id_filiacao = tbl_atleta.id_filiacao
@@ -972,18 +976,70 @@ class Usuario
         INNER JOIN tbl_estatisticas ON tbl_estatisticas.id_atleta = tbl_atleta.id_atleta
         WHERE tbl_incricao.situacao_atleta = 1
         AND (
-            (:categoria = '' AND :nome = '') -- Exibe todos os registros se ambos os campos estiverem vazios
-            OR (:categoria <> '' AND tbl_detalhetecnicos.categoriaEsportiva = :categoria) -- Faz a busca pela categoria se o campo de categoria estiver preenchido
-            OR (:nome <> '' AND tbl_atleta.nome_atleta LIKE CONCAT('%',:nome ,'%')) -- Faz a busca pelo nome do atleta se o campo de nome estiver preenchido
-            OR (:categoria <> '' AND :nome <> '' AND tbl_detalhetecnicos.categoriaEsportiva = :categoria AND tbl_atleta.nome_atleta LIKE CONCAT('%',:nome,'%')) -- Faz a busca pelas informações inseridas se ambos os campos estiverem preenchidos
+            (:categoria <> '' AND tbl_detalhetecnicos.categoriaEsportiva = :categoria) -- Faz a busca pela categoria se o campo de categoria estiver preenchido
         )
         GROUP BY tbl_atleta.id_atleta
         ORDER BY tbl_incricao.id_inscricao DESC");
-        $this->bd->bind(':nome',$nome);
-        $this->bd->bind(':categoria',$categoria);
+            $this->bd->bind(':categoria', $categoria);
+        } elseif ($categoria == null && $nome != null) {
+            $this->bd->query("SELECT *
+            FROM tbl_atleta
+            INNER JOIN tbl_detalheescolar ON tbl_detalheescolar.id_escolar = tbl_atleta.id_escola
+            INNER JOIN tbl_detalhefiliacao ON tbl_detalhefiliacao.id_filiacao = tbl_atleta.id_filiacao
+            INNER JOIN tbl_detalhesaude ON tbl_detalhesaude.id_saude = tbl_atleta.id_saude
+            INNER JOIN tbl_detalhesresponsavel ON tbl_detalhesresponsavel.id_responsavel = tbl_atleta.id_responsavel
+            INNER JOIN tbl_detalhetecnicos ON tbl_detalhetecnicos.id_tecnico = tbl_atleta.id_detalheTec
+            INNER JOIN tbl_incricao ON tbl_incricao.id_atleta = tbl_atleta.id_atleta
+            INNER JOIN tbl_estatisticas ON tbl_estatisticas.id_atleta = tbl_atleta.id_atleta
+            WHERE tbl_incricao.situacao_atleta = 1
+            AND (
+                 (:nome <> '' AND tbl_atleta.nome_atleta LIKE CONCAT('%',:nome ,'%')) -- Faz a busca pelo nome do atleta se o campo de nome estiver preenchido
 
-        return $this->bd->resultados();
+            )
+            GROUP BY tbl_atleta.id_atleta
+            ORDER BY tbl_incricao.id_inscricao DESC");
+            $this->bd->bind(':nome', $nome);
+        } else {
+            $this->bd->query("SELECT *
+        FROM tbl_atleta
+        INNER JOIN tbl_detalheescolar ON tbl_detalheescolar.id_escolar = tbl_atleta.id_escola
+        INNER JOIN tbl_detalhefiliacao ON tbl_detalhefiliacao.id_filiacao = tbl_atleta.id_filiacao
+        INNER JOIN tbl_detalhesaude ON tbl_detalhesaude.id_saude = tbl_atleta.id_saude
+        INNER JOIN tbl_detalhesresponsavel ON tbl_detalhesresponsavel.id_responsavel = tbl_atleta.id_responsavel
+        INNER JOIN tbl_detalhetecnicos ON tbl_detalhetecnicos.id_tecnico = tbl_atleta.id_detalheTec
+        INNER JOIN tbl_incricao ON tbl_incricao.id_atleta = tbl_atleta.id_atleta
+        INNER JOIN tbl_estatisticas ON tbl_estatisticas.id_atleta = tbl_atleta.id_atleta
+        WHERE tbl_incricao.situacao_atleta = 1
+        AND (
+             (:categoria <> '' AND :nome <> '' AND tbl_detalhetecnicos.categoriaEsportiva = :categoria AND tbl_atleta.nome_atleta LIKE CONCAT('%',:nome,'%')) -- Faz a busca pelas informações inseridas se ambos os campos estiverem preenchidos
+        )
+        GROUP BY tbl_atleta.id_atleta
+        ORDER BY tbl_incricao.id_inscricao DESC");
+            $this->bd->bind(':nome', $nome);
+            $this->bd->bind(':categoria', $categoria);
+        }
+
+        $result = $this->bd->resultados();
+
+        if ($this->bd->resultados() == null) {
+            $this->bd->query("SELECT *
+        FROM tbl_atleta
+        INNER JOIN tbl_detalheescolar ON tbl_detalheescolar.id_escolar = tbl_atleta.id_escola
+        INNER JOIN tbl_detalhefiliacao ON tbl_detalhefiliacao.id_filiacao = tbl_atleta.id_filiacao
+        INNER JOIN tbl_detalhesaude ON tbl_detalhesaude.id_saude = tbl_atleta.id_saude
+        INNER JOIN tbl_detalhesresponsavel ON tbl_detalhesresponsavel.id_responsavel = tbl_atleta.id_responsavel
+        INNER JOIN tbl_detalhetecnicos ON tbl_detalhetecnicos.id_tecnico = tbl_atleta.id_detalheTec
+        INNER JOIN tbl_incricao ON tbl_incricao.id_atleta = tbl_atleta.id_atleta
+        INNER JOIN tbl_estatisticas ON tbl_estatisticas.id_atleta = tbl_atleta.id_atleta
+        WHERE tbl_incricao.situacao_atleta = 1 GROUP BY tbl_atleta.id_atleta
+        ORDER BY tbl_incricao.id_inscricao DESC");
+
+            $result = $this->bd->resultados();
+        }
+
+        return $result;
     }
+
     public function exibirAtleta($idAtleta)
     {
         $this->bd->query("SELECT *
@@ -1015,7 +1071,40 @@ class Usuario
         INNER JOIN tbl_estatisticas ON tbl_estatisticas.id_atleta = tbl_atleta.id_atleta
         WHERE (tbl_detalhetecnicos.categoriaEsportiva = :idCat AND tbl_incricao.situacao_atleta = 1)
         GROUP BY tbl_atleta.id_atleta
-        ORDER BY tbl_incricao.id_inscricao DESC");
+        ORDER BY tbl_atleta.nome_atleta ASC,
+                 CASE WHEN tbl_detalhetecnicos.categoriaEsportiva = 'Futebol' THEN
+                      CASE tbl_detalhetecnicos.posicaoPrincipal
+                           WHEN 'Goleiro' THEN 1
+                           WHEN 'Zagueiro' THEN 2
+                           WHEN 'Lateral' THEN 3
+                           WHEN 'Volante' THEN 4
+                           WHEN 'Meia' THEN 5
+                           WHEN 'Ponta' THEN 6
+                           WHEN 'Atacante' THEN 7
+                           ELSE 8
+                      END
+                 WHEN tbl_detalhetecnicos.categoriaEsportiva = 'Futsal' THEN
+                      CASE tbl_detalhetecnicos.posicaoPrincipal
+                           WHEN 'Goleiro' THEN 1
+                           WHEN 'Fixo' THEN 2
+                           WHEN 'Ala Esquerda' THEN 3
+                           WHEN 'Ala Direita' THEN 4
+                           WHEN 'Pivô' THEN 5
+                           ELSE 6
+                      END
+                 WHEN tbl_detalhetecnicos.categoriaEsportiva = 'Fut7' THEN
+                      CASE tbl_detalhetecnicos.posicaoPrincipal
+                           WHEN 'Goleiro' THEN 1
+                           WHEN 'Zagueiro' THEN 2
+                           WHEN 'Lateral' THEN 3
+                           WHEN 'Volante' THEN 4
+                           WHEN 'Meia' THEN 5
+                           WHEN 'Ponta' THEN 6
+                           WHEN 'Atacante' THEN 7
+                           ELSE 8
+                      END
+                 ELSE 9
+                 END;");
         $this->bd->bind('idCat', $idCategoria);
 
         return $this->bd->resultados();
@@ -1170,11 +1259,12 @@ class Usuario
     }
 
 
-    public function editarEstatistica($estatisticas){
-        
+    public function editarEstatistica($estatisticas)
+    {
+
 
         $this->bd->query('UPDATE tbl_estatisticas SET quantJogos = (quantJogos + :jogos), quantGols = (quantGols + :gols), quantVitorias = (quantVitorias + :vi), quantEmpates = (quantEmpates + :em), quantDerrotas = (quantDerrotas + :der), quantFaltas = (quantFaltas + :fal), quantCartAmarelo = (quantCartAmarelo + :ca), quantCartVermelho = (quantCartVermelho + :cv), quantTorneio = (quantTorneio + :tor), quantAmistosos = (quantAmistosos + :amis) WHERE id_atleta = :id');
-       
+
         $this->bd->bind(':id', $estatisticas['id']);
 
         $this->bd->bind(':jogos', $estatisticas['qtdJogos']);
@@ -1198,8 +1288,9 @@ class Usuario
             return false;
         endif;
     }
-    public function buscarAnoEstatistica($id){
-      
+    public function buscarAnoEstatistica($id)
+    {
+
         $this->bd->query("SELECT *
         FROM tbl_atleta
         JOIN tbl_estatisticas ON tbl_atleta.id_atleta = tbl_estatisticas.id_atleta
@@ -1213,7 +1304,7 @@ class Usuario
 
         if (!empty($this->bd->resultados())) {
             return $this->bd->resultados();
-        }else{
+        } else {
             $this->bd->query("SELECT *
             FROM tbl_atleta
             JOIN tbl_estatisticas ON tbl_atleta.id_atleta = tbl_estatisticas.id_atleta
@@ -1225,8 +1316,8 @@ class Usuario
             $this->bd->bind('id', $id);
             return $this->bd->resultados();
         }
-        
-       // return ;
+
+        // return ;
     }
 
     public function dadosEstatistica($ano, $idInscricao)

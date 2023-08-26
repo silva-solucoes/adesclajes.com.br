@@ -106,6 +106,8 @@ class Paginas extends Controller{
         $dados['controleComentarios']=$this->info->resultadoTodosComentarios($idNoticia);
         //Contagem de comentários
         $dados['contagemComentarios']=$this->info->contagemComentarios($idNoticia);
+        //Contagem de comentários
+        $dados['contagemComentarios2']=$this->info->contagemComentarios2($idNoticia);
         //Exibir categorias
         $dados['categorias']=$this->info->exibirCategorias();
         //Exibir todos os patrocinadores
