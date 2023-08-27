@@ -69,11 +69,12 @@ $dataAtual = date('Y-m-d');
                   <li><a href="<?= URL ?><?= $dados['info']->tl_link5 ?>/3">Fut7</a></li>
                 </ul>
               </li>
-              <li><a href="<?= URL ?><?= $dados['info']->tl_link6 ?>">Galeria de Fotos</a></li>
+              <li><a href="<?= URL ?><?= $dados['info']->tl_link6 ?>">Comissão Técnica</a></li>
+              <li><a href="<?= URL ?><?= $dados['info']->tl_link7 ?>">Galeria de Fotos</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="<?= URL ?><?= $dados['info']->tl_link7 ?>">Diretoria</a></li>
-          <li><a class="nav-link scrollto" href="<?= URL ?><?= $dados['info']->tl_link8 ?>">Contato</a></li>
+          <li><a class="nav-link scrollto" href="<?= URL ?><?= $dados['info']->tl_link8 ?>">Diretoria</a></li>
+          <li><a class="nav-link scrollto" href="<?= URL ?><?= $dados['info']->tl_link9 ?>">Contato</a></li>
           <?php if ($dataAtual >= $dados['info']->dt_abe_inscricao && $dataAtual <= $dados['info']->dt_enc_Inscricao) : ?>
             <li><a class="getstarted scrollto" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Área de
                 Inscrição</a></li>

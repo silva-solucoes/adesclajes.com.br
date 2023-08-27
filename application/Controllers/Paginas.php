@@ -286,6 +286,28 @@ class Paginas extends Controller{
 
         $this->view('user/erros/erro', $dados);
     }
+    public function comissaoTecnica(){
+
+        $dados=[
+            'info' => $this->info->lerInformacao()
+        ];
+        //Exibir todos os membros
+        $dados['todosMembros']=$this->info->todosMembros();
+        //Exibir todas as redes sociais de um membro
+        //$dados['rsMembros']=$this->info->lerRedesSociaisMembro($dados['info']->id_membro);
+        //Exibir perguntas frequentes
+        $dados['perguntas']=$this->info->todasPerguntas();
+        //Exibir Porque Escolher
+        $dados['escolher']=$this->info->todasOpcaoEscolher();
+        //Exibir todos os patrocinadores
+        $dados['patrocinadores']=$this->info->todasPatrocinadores();
+        //Exibir as três últimas notícias
+        $dados['ultimasNoticias']=$this->info->listarUltimasNoticias();
+        //Exibir todas as redes sociais da ADESC
+        $dados['redesSociais']=$this->info->todasRedesSociais();
+
+        $this->view('user/comissao', $dados);
+    }
     public function erro404(){
 
         $this->view('erro');
