@@ -187,32 +187,29 @@ $dataAtual = date('Y-m-d');
                             posicoes.innerHTML += `
                               <option selected disabled>Selecione</option>
                               <option value="Goleiro">Goleiro</option>
-                              <option value="Zagueiro">Zagueiro</option>
                               <option value="Lateral">Lateral</option>
+                              <option value="Zagueiro">Zagueiro</option>
                               <option value="Volante">Volante</option>
                               <option value="Meia">Meia</option>
-                              <option value="Ponta">Ponta</option>
                               <option value="Atacante">Atacante</option>
                             `;
                           } else if (categoria === "2") { // Futsal
                             posicoes.innerHTML += `
                               <option selected disabled>Selecione</option>
                               <option value="Goleiro">Goleiro</option>
+                              <option value="Ala Direita">Ala Direita</option>
                               <option value="Fixo">Fixo</option>
                               <option value="Ala Esquerda">Ala Esquerda</option>
-                              <option value="Ala Direita">Ala Direita</option>
                               <option value="Pivô">Pivô</option>
                             `;
                           } else if (categoria === "3") { // Fut7
                             posicoes.innerHTML += `
                               <option selected disabled>Selecione</option>
                               <option value="Goleiro">Goleiro</option>
+                              <option value="Ala">Ala</option>
                               <option value="Zagueiro">Zagueiro</option>
-                              <option value="Lateral">Lateral</option>
-                              <option value="Volante">Volante</option>
                               <option value="Meia">Meia</option>
-                              <option value="Ponta">Ponta</option>
-                              <option value="Atacante">Atacante</option>
+                              <option value="Pivô">Pivô</option>
                             `;
                           }
                         }

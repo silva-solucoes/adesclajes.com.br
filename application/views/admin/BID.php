@@ -184,7 +184,7 @@
                             <form class="row g-3" action="<?php echo URL . '/admin/enviarInscricao'; ?>" method="post" enctype="multipart/form-data">
                                 <div class="col-md-12 text-center">
                                     <div class="form-floating">
-                                        <img id="logoPerfil" class="rounded-circle img-fluid" src="<?php echo URL . '/public/uploads/atletas/semfoto.webp'; ?>" alt="Patrocinador 1" style="width:120px;">
+                                        <img id="logoPerfil" class="rounded-circle img-fluid" src="<?php echo URL . '/public/images/semfoto.webp'; ?>" alt="Patrocinador 1" style="width:120px;">
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-center">
@@ -196,21 +196,21 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-floating">
-                                        <input type="text" name="nomeAtleta" class="form-control" id="floatingName" placeholder="Your Name">
+                                        <input type="text" name="nomeAtleta" class="form-control" id="floatingName" placeholder="Your Name" required>
                                         <label for="floatingName">Nome do Atleta*:</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="date" name="dataAtleta" class="form-control" id="floatingCity" placeholder="Data e Hora">
+                                            <input type="date" name="dataAtleta" class="form-control" id="floatingCity" placeholder="Data e Hora" required>
                                             <label for="floatingCity">Data de Nascimento*:</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-floating mb-3">
-                                        <select class="form-select" id="floatingSelect" name="genero" aria-label="State">
+                                        <select class="form-select" id="floatingSelect" name="genero" aria-label="State" required>
                                             <option selected>Selecione</option>
                                             <option value="1">Feminino</option>
                                             <option value="2">Masculino</option>
@@ -246,42 +246,39 @@
 
                                         if (categoria === "1") { // Futebol
                                             posicoes.innerHTML += `
-                                            <option selected disabled>Selecione</option>
-                                            <option value="Goleiro">Goleiro</option>
-                                            <option value="Zagueiro">Zagueiro</option>
-                                            <option value="Lateral">Lateral</option>
-                                            <option value="Volante">Volante</option>
-                                            <option value="Meia">Meia</option>
-                                            <option value="Ponta">Ponta</option>
-                                            <option value="Atacante">Atacante</option>
-                                            `;
+                              <option selected disabled>Selecione</option>
+                              <option value="Goleiro">Goleiro</option>
+                              <option value="Lateral">Lateral</option>
+                              <option value="Zagueiro">Zagueiro</option>
+                              <option value="Volante">Volante</option>
+                              <option value="Meia">Meia</option>
+                              <option value="Atacante">Atacante</option>
+                            `;
                                         } else if (categoria === "2") { // Futsal
                                             posicoes.innerHTML += `
-                                            <option selected disabled>Selecione</option>
-                                            <option value="Goleiro">Goleiro</option>
-                                            <option value="Fixo">Fixo</option>
-                                            <option value="Ala Esquerda">Ala Esquerda</option>
-                                            <option value="Ala Direita">Ala Direita</option>
-                                            <option value="Pivô">Pivô</option>
-                                            `;
+                              <option selected disabled>Selecione</option>
+                              <option value="Goleiro">Goleiro</option>
+                              <option value="Ala Direita">Ala Direita</option>
+                              <option value="Fixo">Fixo</option>
+                              <option value="Ala Esquerda">Ala Esquerda</option>
+                              <option value="Pivô">Pivô</option>
+                            `;
                                         } else if (categoria === "3") { // Fut7
                                             posicoes.innerHTML += `
-                                            <option selected disabled>Selecione</option>
-                                            <option value="Goleiro">Goleiro</option>
-                                            <option value="Zagueiro">Zagueiro</option>
-                                            <option value="Lateral">Lateral</option>
-                                            <option value="Volante">Volante</option>
-                                            <option value="Meia">Meia</option>
-                                            <option value="Ponta">Ponta</option>
-                                            <option value="Atacante">Atacante</option>
-                                            `;
+                              <option selected disabled>Selecione</option>
+                              <option value="Goleiro">Goleiro</option>
+                              <option value="Ala">Ala</option>
+                              <option value="Zagueiro">Zagueiro</option>
+                              <option value="Meia">Meia</option>
+                              <option value="Pivô">Pivô</option>
+                            `;
                                         }
                                     }
                                 </script>
                                 <div class="col-md-3">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="text" name="alturaAtleta" class="form-control" maxlength="4" id="alturaInput" oninput="formatAltura()" placeholder="Altura">
+                                            <input type="text" name="alturaAtleta" class="form-control" maxlength="4" id="alturaInput" oninput="formatAltura()" placeholder="Altura" required>
                                             <label for="floatingCity">Altura do Atleta*:</label>
                                         </div>
                                     </div>
@@ -289,14 +286,14 @@
                                 <div class="col-md-5">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="text" name="nomeEscola" class="form-control" id="floatingCity" placeholder="Autor">
+                                            <input type="text" name="nomeEscola" class="form-control" id="floatingCity" placeholder="Autor" required>
                                             <label for="floatingCity">Nome da Escola*:</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-floating mb-3">
-                                        <select class="form-select" name="nivelEscolar" id="floatingSelect" aria-label="State">
+                                        <select class="form-select" name="nivelEscolar" id="floatingSelect" aria-label="State" required>
                                             <option selected>Selecione o nível</option>
                                             <option value="1">Ensino Fundamental I</option>
                                             <option value="2">Ensino Fundamental II</option>
@@ -309,7 +306,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="text" name="nomeMae" class="form-control" id="floatingCity" placeholder="Nome da Mãe">
+                                            <input type="text" name="nomeMae" class="form-control" id="floatingCity" placeholder="Nome da Mãe" required>
                                             <label for="floatingCity">Nome da Mãe*:</label>
                                         </div>
                                     </div>
@@ -317,7 +314,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="text" name="nomePai" class="form-control" id="floatingCity" placeholder="Nome da Pai">
+                                            <input type="text" name="nomePai" class="form-control" id="floatingCity" placeholder="Nome da Pai" required>
                                             <label for="floatingCity">Nome do Pai:</label>
                                         </div>
                                     </div>
@@ -325,7 +322,7 @@
                                 <div class="col-md-4">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="tel" name="telResponsavel" class="form-control" maxlength="11" id="phone" oninput="formatPhone(this)" placeholder="(84)99999-9999">
+                                            <input type="tel" name="telResponsavel" class="form-control" maxlength="11" id="phone" oninput="formatPhone(this)" placeholder="(84)99999-9999" required>
                                             <label for="floatingCity">Telefone do Responsável*:</label>
                                         </div>
                                     </div>
